@@ -1,5 +1,7 @@
 Guru::Application.routes.draw do
 
+  resources :interests
+
   devise_for :users
   root to: "pages#home"
 
