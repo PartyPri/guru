@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Interest do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "stub" do
+  end
 end
