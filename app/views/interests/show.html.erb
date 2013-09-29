@@ -1,0 +1,14 @@
+<h1><%= @interest.name %></h1>
+
+<div id="join">
+  <% if user_signed_in? %>
+    <%= link_to "Join!", user_interests_path(id: @interest), method: :post %>
+  <% end %>
+</div>
+<div id="members">
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,5 +1,8 @@
 Guru::Application.routes.draw do
 
+  resources :interests
+  resources :user_interests, only: :create
+
   devise_for :users
   root to: "pages#home"
 
