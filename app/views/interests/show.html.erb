@@ -1,1 +1,9 @@
-<%= @interest.name %>
+<h1><%= @interest.name %></h1>
+
+<div id="members">
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+  </ul>
+</div>

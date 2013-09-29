@@ -8,9 +8,9 @@ gem 'rails', '3.2.12'
 gem 'pg'
 gem 'devise'
 
-#group :development do
-#  gem 'debugger'
-#end
+group :development do
+ gem 'debugger'
+end
 
 #group :development, :test do
 #end
