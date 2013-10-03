@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+// Loads all Bootstrap javascripts
+//= require twitter/bootstrap
 //= require_tree .
 //
-// Loads all Bootstrap javascripts
-//= require bootstrap
