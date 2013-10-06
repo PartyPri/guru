@@ -1,0 +1,26 @@
+<%= form_for(@email_contact, :html => { :class => "class_name_here"} ) do |f| %>
+
+  <% if @email_contact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@email_contact.errors.count, "error") %>
+        prohibited this <%= @email_contact.class.to_s.underscore.humanize.downcase %>
+        from being saved:
+      </h2>
+      <p>There were problems with the following fields:</p>
+      <ul>
+      <% @email_contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+    
+  <% end %>
+
+  <!-- <div class="field"> -->
+    <%= f.text_field :email %>
+  <!-- </div> -->
+  <!-- <div class="actions"> -->
+    <%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+  <!-- </div> -->
+<% end %>

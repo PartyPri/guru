@@ -2,8 +2,8 @@ Guru::Application.routes.draw do
 
   resources :interests
   resources :user_interests, only: :create
-
-  devise_for :users
+  resources :email_contacts, only: :create
+  #devise_for :users
   root to: "pages#home"
 
   # The priority is based upon order of creation:
