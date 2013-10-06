@@ -1,0 +1,42 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+	<div class="row">
+		<div class="col-md-3">
+			<h1><%= @interest.name %></h1>
+			<div id="join">
+			  <% if user_signed_in? %>
+			  	<%= button_to "Join", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm" %>
+			  	800 members
+			  <% end %>
+			</div>
+			<div>
+				<%= image_tag "waacking_thumbnail.jpg" %>
+			</div>
+			<br>
+
+			<p>Waacking is a dance form that emerged in Los Angeles in the disco era and is presently undergroing a resurgence.</p>
+			<h6>History</h6>
+			<hr>
+			<div id="members">
+				<h6>Members (800)</h6>
+				<hr>
+		
+			    <% @users.each do |user| %>
+			      <%= user.email %>
+			    <% end %>
+			 
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div>
+				<%= image_tag "waacking_headpic.jpg" %>
+			</div>
+			<br>			
+			<h5>Activity</h5>
+			<hr>
+		</div>
+	</div>
+	</div>
+</div>
+
+

@@ -7,9 +7,14 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 gem 'devise'
-gem 'bootstrap-sass', '~> 2.3.2.1'
+gem 'bootstrap-sass-rails'
 
-group :development, :test do
+group :development do
+ gem 'debugger'
+end
+
+group :test do
+  gem 'factory_girl'
   gem 'rspec-rails'
 end
 
