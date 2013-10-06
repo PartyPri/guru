@@ -7,13 +7,11 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 gem 'devise'
+gem 'bootstrap-sass-rails'
 
 group :development do
  gem 'debugger'
 end
-
-#group :development, :test do
-#end
 
 group :test do
   gem 'factory_girl'
@@ -24,7 +22,6 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass-rails'
   # gem 'coffee-rails', '~> 3.2.1'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
