@@ -3,7 +3,8 @@ Guru::Application.routes.draw do
   resources :interests
   resources :user_interests, only: :create
 
-  devise_for :users
+  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
+
   root to: "pages#home"
 
   # The priority is based upon order of creation:
