@@ -1,9 +1,13 @@
 Guru::Application.routes.draw do
 
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
   resources :interests
   resources :user_interests, only: :create
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
+  ActiveAdmin.routes(self)
 
   root to: "pages#home"
 
