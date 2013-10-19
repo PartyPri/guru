@@ -21,7 +21,7 @@
 				<h6>Members (<%= @users.count %>)</h6>
 				<hr>
 			    <% @users.each do |user| %>
-			      <%= link_to "#{user.first_name} #{user.last_name}", profile_path(user.id) %><br>
+			      <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %><br>
 			    <% end %>
 			</div>
 		</div>
