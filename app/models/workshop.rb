@@ -5,4 +5,6 @@ class Workshop < ActiveRecord::Base
 
   has_many :workshop_interests
   has_many :interests, through: :workshop_interests, uniq: true
+
+  belongs_to :user
 end

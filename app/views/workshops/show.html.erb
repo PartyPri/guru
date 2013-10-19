@@ -1,13 +1,14 @@
 <h3><%= @workshop.title %></h3>
-<strong>Hosted by: [insert host link]</strong>
+<% if @workshop.user %>
+  <strong>Hosted by: <%= link_to @workshop.user.first_name, @workshop.user %></strong>
+<% end %>
 <p><%= @workshop.description %></p>
-
 <div id="interests">
   <h5>Styles</h5>
   <hr>
   <% if @interests %>
     <% @interests.each do |interest| %>
-      <%= interest.name %><br>
+      <%= link_to interest.name, interest %><br>
     <% end %>
   <% end %>
 </div>
