@@ -1,5 +1,7 @@
 Guru::Application.routes.draw do
 
+  get "profiles/show"
+
   resources :interests
   resources :user_interests, only: :create
 
