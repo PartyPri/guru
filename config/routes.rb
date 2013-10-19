@@ -1,13 +1,13 @@
 Guru::Application.routes.draw do
 
-  get "profiles/show"
-
   resources :interests
   resources :user_interests, only: :create
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
 
   root to: "pages#home"
+
+  get 'users/:id', to: 'profiles#show', as: :profile
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

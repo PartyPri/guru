@@ -1,2 +1,13 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="page-header">
+	<h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+</div>
+
+<div id="interests">
+	<h5>Styles</h5>
+	<hr>
+	<% if @interests %>
+		<% @interests.each do |interest| %>
+      		<%= interest.name %><br>
+    	<% end %>
+    <% end %>
+</div>
