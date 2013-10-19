@@ -7,7 +7,8 @@ Guru::Application.routes.draw do
 
   root to: "pages#home"
 
-  get 'users/:id', to: 'profiles#show', as: :profile
+  get "users/:id", to: "profiles#show", as: :profile
+  get "workshops/:id", to:"workshops#show", as: :workshop
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
