@@ -1,3 +1,13 @@
 <h3><%= @workshop.title %></h3>
 <strong>Hosted by: [insert host link]</strong>
 <p><%= @workshop.description %></p>
+
+<div id="interests">
+  <h5>Styles</h5>
+  <hr>
+  <% if @interests %>
+    <% @interests.each do |interest| %>
+      <%= interest.name %><br>
+    <% end %>
+  <% end %>
+</div>
