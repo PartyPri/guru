@@ -11,3 +11,13 @@
     <% end %>
   <% end %>
 </div>
+
+<div id="workshops">
+  <h5>Workshops</h5>
+  <hr>
+  <% if @workshops %>
+    <% @workshops.each do |workshop| %>
+      <%= link_to workshop.title, workshop %><br>
+    <% end %>
+  <% end %>
+</div>

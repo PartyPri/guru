@@ -18,6 +18,9 @@ class User < ActiveRecord::Base
   has_many :interests, through: :user_interests, uniq: true
   has_many :workshops
 
+  has_many :followerships, dependent: :destroy
+  has_many :followers, through: :followerships
+
   # Validations
 
   validates :first_name, presence: true
