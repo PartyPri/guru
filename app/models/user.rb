@@ -12,11 +12,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 
-
   # Associations
 
   has_many :user_interests
-  has_many :interests, through: :user_interests
+  has_many :interests, through: :user_interests, uniq: true
 
 
   # Validations
