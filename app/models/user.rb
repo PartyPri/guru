@@ -25,4 +25,12 @@ class User < ActiveRecord::Base
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def followed_users #refactor to use built in rails associations
+    Followership.all.map { |followership|
+      if followership.follower_id == self.id
+        User.find(followership.user_id)
+      end
+    }.delete_if {|x| x == nil}
+  end
 end
