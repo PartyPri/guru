@@ -6,8 +6,8 @@
 			<div id="join">
 			  <% if user_signed_in? %>
 			  	<%= button_to "Join", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm" %>
-			  	800 members
 			  <% end %>
+			  <%= @users.count %> members
 			</div>
 			<div>
 				<%= image_tag "waacking_thumbnail.jpg" %>
@@ -18,13 +18,11 @@
 			<h6>History</h6>
 			<hr>
 			<div id="members">
-				<h6>Members (800)</h6>
+				<h6>Members (<%= @users.count %>)</h6>
 				<hr>
-		
 			    <% @users.each do |user| %>
-			      <%= user.email %>
+			      <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %><br>
 			    <% end %>
-			 
 			</div>
 		</div>
 		<div class="col-md-9">
@@ -34,6 +32,10 @@
 			<br>			
 			<h5>Activity</h5>
 			<hr>
+				<% @workshops.each do |workshop| %>
+					<%= link_to workshop.user.first_name, workshop.user %> is hosting a workshop: <br>
+					<%= link_to workshop.title, workshop_path(workshop) %><br><br>
+				<% end %>			
 		</div>
 	</div>
 	</div>

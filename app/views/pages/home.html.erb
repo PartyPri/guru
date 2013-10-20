@@ -1,5 +1,9 @@
-<% if user_signed_in? %>
-  <h1>Your calendar</h1>
+ <% if user_signed_in? %>
+  <h1>Activity</h1>
 <% else %>
   <p>sign up</p>
+<% end %>
+
+<% @workshops.each do |workshop|%>
+  <li><%= link_to workshop.title, workshop %></li>
 <% end %>

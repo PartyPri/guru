@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1><%= "#{@user.first_name} #{@user.last_name}" %></h1>
+</div>
+
+<div id="follow">
+  <% if user_signed_in? && current_user != @user %>
+    <%= button_to "Follow", followerships_path(id: @user), method: :post, class:"btn btn-danger btn-sm" %>
+  <% end %>
+</div>
+
+<div id="interests">
+  <h5>Styles</h5>
+  <hr>
+  <% if @interests %>
+    <% @interests.each do |interest| %>
+      <%= link_to interest.name, interest_path(interest) %><br>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="workshops">
+  <h5>Workshops</h5>
+  <hr>
+  <% if @workshops %>
+    <% @workshops.each do |workshop| %>
+      <%= link_to workshop.title, workshop %><br>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="Followers">
+  <h5>Followers</h5>
+  <hr>
+  <% if @followers %>
+    <% @followers.each do |follower| %>
+      <%= link_to follower.first_name, follower %><br>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="Followed">
+  <h5>Followed Users</h5>
+  <hr>
+  <% if @followed_users %>
+    <% @followed_users.each do |followed_user| %>
+      <%= link_to followed_user.first_name, followed_user %><br>
+    <% end %>
+  <% end %>
+</div>

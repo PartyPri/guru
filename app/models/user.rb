@@ -12,15 +12,25 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name
 
-
   # Associations
 
   has_many :user_interests
-  has_many :interests, through: :user_interests
+  has_many :interests, through: :user_interests, uniq: true
+  has_many :workshops
 
+  has_many :followerships, dependent: :destroy
+  has_many :followers, through: :followerships
 
   # Validations
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def followed_users #refactor to use built in rails associations
+    Followership.all.map { |followership|
+      if followership.follower_id == self.id
+        User.find(followership.user_id)
+      end
+    }.delete_if {|x| x == nil}
+  end
 end

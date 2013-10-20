@@ -1,11 +1,15 @@
 Guru::Application.routes.draw do
 
   resources :interests
+  resources :users, :only => [:show]
   resources :user_interests, only: :create
+  resources :followerships, only: :create
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
 
   root to: "pages#home"
+
+  resources :workshops, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
