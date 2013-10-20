@@ -32,6 +32,10 @@
 			<br>			
 			<h5>Activity</h5>
 			<hr>
+				<% @workshops.each do |workshop| %>
+					[insert workshop host] is hosting a workshop: <br>
+					<%= link_to workshop.title, workshop_path(workshop) %><br><br>
+				<% end %>			
 		</div>
 	</div>
 	</div>
