@@ -1,16 +1,23 @@
- <% if user_signed_in? %>
-  <h1>Activity</h1>
-<% else %>
-  <p>sign up</p>
-<% end %>
+ <%# if user_signed_in? %>
+  <!-- <h1>Activity</h1>
+<%# else %>
+  <p>sign up</p> -->
+<%# end %>
 
-<% @workshops.each do |workshop|%>
-  <div class="well">
-  <%= link_to "#{workshop.user.first_name} #{workshop.user.last_name}", workshop.user %> is hosting a workshop: <br>
-  <%= link_to workshop.title, workshop %><br>
-  Styles: 
-  <% workshop.interests.all.each do |interest| %>
-    <%= link_to interest.name, interest %>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">What's happening in the community</h3>
   </div>
-<% end %>
+  <div class="panel-body">
+    <% @workshops.each do |workshop|%>
+      <%= link_to "#{workshop.user.first_name} #{workshop.user.last_name}", workshop.user %> is hosting a workshop: <br>
+      <%= link_to workshop.title, workshop %><br>
+      Styles: 
+      <% workshop.interests.all.each do |interest| %>
+        <%= link_to interest.name, interest %><br><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
