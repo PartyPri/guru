@@ -1,22 +1,26 @@
 <div class="panel panel-default">
+	<div class="panel-heading">
+    <h2><%= @interest.name %></h2>
+  </div>
 	<div class="panel-body">
 	<div class="row">
 		<div class="col-md-3">
-			<h1><%= @interest.name %></h1>
 			<div id="join">
 			  <% if user_signed_in? %>
 			  	<%= button_to "Join", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm" %>
 			  <% end %>
-			  <%= @users.count %> members
+			  <%#= @users.count %> <!--members-->
 			</div>
-			<div>
-				<%= image_tag "waacking_thumbnail.jpg" %>
+			<!--<div>
+				<%#= image_tag "waacking_thumbnail.jpg" %>
 			</div>
-			<br>
-
-			<p>Waacking is a dance form that emerged in Los Angeles in the disco era and is presently undergroing a resurgence.</p>
+			<br>-->
+			<h6>Description</h6>
+			<hr>
+			<p><%= @interest.description %></p>
 			<h6>History</h6>
 			<hr>
+			<p><%= @interest.history %></p>
 			<div id="members">
 				<h6>Members (<%= @users.count %>)</h6>
 				<hr>
@@ -26,12 +30,13 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<div>
+			<!--<div>
 				<%= image_tag "waacking_headpic.jpg" %>
 			</div>
-			<br>			
+			<br>	-->		
 			<h5>Activity</h5>
 			<hr>
+			<br>
 				<% @workshops.each do |workshop| %>
 					<%= link_to workshop.user.first_name, workshop.user %> is hosting a workshop: <br>
 					<%= link_to workshop.title, workshop_path(workshop) %><br><br>
