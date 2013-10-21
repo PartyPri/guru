@@ -5,5 +5,12 @@
 <% end %>
 
 <% @workshops.each do |workshop|%>
-  <li><%= link_to workshop.title, workshop %></li>
+  <div class="well">
+  <%= link_to "#{workshop.user.first_name} #{workshop.user.last_name}", workshop.user %> is hosting a workshop: <br>
+  <%= link_to workshop.title, workshop %><br>
+  Styles: 
+  <% workshop.interests.all.each do |interest| %>
+    <%= link_to interest.name, interest %>
+  <% end %>
+  </div>
 <% end %>
