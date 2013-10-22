@@ -1,14 +1,20 @@
-<h3><%= @workshop.title %></h3>
-<% if @workshop.user %>
-  <strong>Hosted by: <%= link_to @workshop.user.first_name, @workshop.user %></strong>
-<% end %>
-<p><%= @workshop.description %></p>
-<div id="interests">
-  <h5>Styles</h5>
-  <hr>
-  <% if @interests %>
-    <% @interests.each do |interest| %>
-      <%= link_to interest.name, interest %><br>
-    <% end %>
-  <% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2><%= @workshop.title %></h2>
+    <% if @workshop.user %>
+      <strong>Workshop hosted by: <%= link_to @workshop.user.first_name, @workshop.user %>
+    <% end %>    
+    <div id="interests">
+      Styles covered:
+      <% if @interests %>
+        <% @interests.each do |interest| %>
+          <%= link_to interest.name, interest %>
+        <% end %>
+      <% end %></strong>
+    </div>
+  </div>
+  <div class="panel-body">
+    <p><%= @workshop.description %></p>
+
+  </div>
 </div>

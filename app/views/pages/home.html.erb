@@ -14,8 +14,8 @@
       <%= link_to workshop.title, workshop %><br>
       Styles: 
       <% workshop.interests.all.each do |interest| %>
-        <%= link_to interest.name, interest %><br><br>
-      <% end %>
+        <%= link_to interest.name, interest %>
+      <% end %><br><br>
     <% end %>
   </div>
 </div>
