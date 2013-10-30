@@ -9,7 +9,7 @@ Guru::Application.routes.draw do
   resources :followerships, only: :create
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
-  ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
 
   root to: "pages#home"
 
