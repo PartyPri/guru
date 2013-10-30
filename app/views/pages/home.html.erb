@@ -1,5 +1,23 @@
-<% if user_signed_in? %>
-  <h1>Your calendar</h1>
-<% else %>
-  <p>sign up</p>
-<% end %>
+ <%# if user_signed_in? %>
+  <!-- <h1>Activity</h1>
+<%# else %>
+  <p>sign up</p> -->
+<%# end %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>What's happening in the community</h2>
+  </div>
+  <div class="panel-body">
+    <% @workshops.each do |workshop|%>
+      <%= link_to "#{workshop.user.first_name} #{workshop.user.last_name}", workshop.user %> is hosting a workshop: <br>
+      <%= link_to workshop.title, workshop %><br>
+      Styles: 
+      <% workshop.interests.all.each do |interest| %>
+        <%= link_to interest.name, interest %>
+      <% end %><br><br>
+    <% end %>
+  </div>
+</div>
+
+
