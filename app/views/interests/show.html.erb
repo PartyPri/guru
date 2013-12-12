@@ -1,7 +1,14 @@
+<div class="interest-heading">
+	<%= @interest.name %>
+</div>
+
+<div class="interest-menubar">
+  <% if user_signed_in? %>
+  	<button class="btn btn-danger btn-sm btn-follow-unfollow" type="submit">Follow</button>
+  <% end %>	
+</div>
+
 <div class="panel panel-default">
-	<div class="panel-heading">
-    <h2><%= @interest.name %></h2>
-  </div>
 	<div class="panel-body">
 	<div class="row">
 		<div class="col-md-3">
