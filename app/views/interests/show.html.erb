@@ -1,11 +1,11 @@
-<div class="interest-heading">
+<div class="heading">
 	<%= @interest.name %>
 </div>
-<div class="interest-subheading">
-	tagline tagline tagline tagline tagline
+<div class="subheading">
+	<%= @interest.description %>
 </div>
 
-<nav class="navbar navbar-default navbar-static-top center interest-menubar" role="navigation">
+<nav class="navbar navbar-default navbar-static-top center menubar" role="navigation">
 <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-inner">
   <div class="navbar-header">
@@ -21,11 +21,13 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
-      <li><a href="#">Followers</a></li>
+      <li><a href="#"><%= @users.count %> Followers</a></li>
+      <!-- Fix 1 Follower"s" -->
      </ul>
-     <div class="btn-follow-unfollow navbar-center">
+     <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
 	      <% if user_signed_in? %>
-	  			<button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button>
+          <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
+	  			<!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
 	  		<% end %>	
 	   </div>
 	   <ul class="nav navbar-nav">
@@ -50,19 +52,10 @@
 	<div class="panel-body">
 	<div class="row">
 		<div class="col-md-3">
-			<div id="join">
-			  <% if user_signed_in? %>
-			  	<%= button_to "Join", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm" %>
-			  <% end %>
-			  <%#= @users.count %> <!--members-->
-			</div>
 			<!--<div>
 				<%#= image_tag "waacking_thumbnail.jpg" %>
 			</div>
 			<br>-->
-			<h6>Description</h6>
-			<hr>
-			<p><%= @interest.description %></p>
 			<!--<h6>History</h6>
 			<hr>
 			<p><%= @interest.history %></p>-->
