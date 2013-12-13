@@ -1,12 +1,50 @@
 <div class="interest-heading">
 	<%= @interest.name %>
 </div>
-
-<div class="interest-menubar">
-  <% if user_signed_in? %>
-  	<button class="btn btn-danger btn-sm btn-follow-unfollow" type="submit">Follow</button>
-  <% end %>	
+<div class="interest-subheading">
+	tagline tagline tagline tagline tagline
 </div>
+
+<nav class="navbar navbar-default navbar-static-top center interest-menubar" role="navigation">
+<!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-inner">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".interest-bar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <!-- Insert follow button -->
+  </div>
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Followers</a></li>
+     </ul>
+     <div class="btn-follow-unfollow navbar-center">
+	      <% if user_signed_in? %>
+	  			<button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button>
+	  		<% end %>	
+	   </div>
+	   <ul class="nav navbar-nav">
+	   <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Posts <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</div>
+</nav>
+
+
+
+
 
 <div class="panel panel-default">
 	<div class="panel-body">
