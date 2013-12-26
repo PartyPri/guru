@@ -1,3 +1,4 @@
+<!-- Heading -->
 <div class="heading">
 	<%= @interest.name %>
 </div>
@@ -5,6 +6,7 @@
 	<%= @interest.description %>
 </div>
 
+<!-- Menubar -->
 <nav class="navbar navbar-default navbar-static-top center menubar" role="navigation">
 <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-inner">
@@ -21,8 +23,8 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
-      <li><a href="#"><%= @users.count %> Followers</a></li>
-      <!-- Fix 1 Follower"s" -->
+      <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
+      <!-- FIXME 1 Follower"s" -->
      </ul>
      <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
 	      <% if user_signed_in? %>
@@ -44,44 +46,47 @@
 </div>
 </nav>
 
+<!-- Posts -->
 
+			
 
+<div class="row">
+  <div class="col-sm-4 col-md-4">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4 col-md-4">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4 col-md-4">
+    <div class="thumbnail">
+      <img data-src="holder.js/300x200" alt="...">
+      <div class="caption">
+        <h3>Thumbnail label</h3>
+        <p>...</p>
+        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-<div class="panel panel-default">
-	<div class="panel-body">
-	<div class="row">
-		<div class="col-md-3">
-			<!--<div>
-				<%#= image_tag "waacking_thumbnail.jpg" %>
-			</div>
-			<br>-->
-			<!--<h6>History</h6>
-			<hr>
-			<p><%= @interest.history %></p>-->
-			<div id="members">
-				<h6>Members (<%= @users.count %>)</h6>
-				<hr>
-			    <% @users.each do |user| %>
-			      <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %><br>
-			    <% end %>
-			</div>
-		</div>
-		<div class="col-md-9">
-			<!--<div>
-				<%= image_tag "waacking_headpic.jpg" %>
-			</div>
-			<br>	-->		
-			<h5>Activity</h5>
-			<hr>
-			<br>
+      <br>
 				<% @workshops.each do |workshop| %>
 					<%= link_to workshop.user.first_name, workshop.user %> is hosting a workshop: <br>
 					<%= link_to workshop.title, workshop_path(workshop) %><br><br>
 				<% end %>			
-		</div>
-	</div>
-	</div>
-</div>
 
 

@@ -21,7 +21,8 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
-      <li><a href="#">Followers</a></li>
+      <li><%= link_to "#{@followers.count} Followers", user_followers_path(@user) %></li>
+      <!-- FIXME 1 Follower"s" -->
      </ul>
      <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-user">
         <% if user_signed_in? && current_user != @user %>
@@ -44,12 +45,6 @@
 </nav>
 
 
-
-
-
-
-<div class="panel panel-default">
-  <div class="panel-body">
     <div id="interests">
       <h5><%= "#{@user.first_name}" %>'s Styles</h5>
       <hr>
@@ -82,16 +77,3 @@
       <% end %>
       <br>
     </div>
-
-    <div id="Followers">
-      <h5>Followers</h5>
-      <hr>
-      <% if @followers %>
-        <% @followers.each do |follower| %>
-          <%= link_to follower.first_name, follower %><br>
-        <% end %>
-      <% end %>
-      <br>
-    </div>
-  </div>
-</div>

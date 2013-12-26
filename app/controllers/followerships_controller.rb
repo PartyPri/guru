@@ -12,4 +12,10 @@ class FollowershipsController < ApplicationController
       redirect_to :root
     end
   end
+
+  def show
+    @user = User.find(params[:id])
+    @followers      = @user.followers
+    @followed_users = @user.followed_users    
+  end
 end

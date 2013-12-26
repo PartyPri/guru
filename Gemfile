@@ -12,6 +12,8 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'uglifier', '>= 1.0.3'
 gem "jquery-rails", "< 3.0.0"
 gem 'activeadmin'
+gem 'paperclip', '~> 3.0'
+gem 'masonry-rails'
 
 group :development do
  gem 'debugger'

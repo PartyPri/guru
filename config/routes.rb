@@ -1,19 +1,25 @@
 Guru::Application.routes.draw do
 
+  get "activities/show"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   resources :interests
   resources :users, :only => [:show]
-  resources :user_interests, only: :create
+  resources :user_interests, :only => [:create, :show]
   resources :followerships, only: :create
+  resources :workshops, :only => [:show]
+  resources :posts
+  get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
+  get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
+  get 'activities/:id', to: 'activities#show', as: 'activity'
+
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
   ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
 
   root to: "pages#home"
-
-  resources :workshops, :only => [:show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

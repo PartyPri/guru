@@ -36,4 +36,7 @@ Guru::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #Tell Paperclip where to look for ImageMagick
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

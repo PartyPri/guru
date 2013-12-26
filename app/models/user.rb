@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :interests, through: :user_interests, uniq: true
   has_many :workshops
+  has_many :posts
 
   has_many :followerships, dependent: :destroy
   has_many :followers, through: :followerships

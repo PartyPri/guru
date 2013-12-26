@@ -1,0 +1,12 @@
+<!-- Heading -->
+<div class="heading">
+  <%= @interest.name %>'s Followers (<%= @users.count %>)
+  <!-- FIXME 1 Follower"s" -->
+</div>
+
+<!-- Body -->
+<div id="interest_followers">
+  <% @users.each do |user| %>
+    <%= link_to "#{user.first_name} #{user.last_name}", user_path(user) %><br>
+  <% end %>
+</div>

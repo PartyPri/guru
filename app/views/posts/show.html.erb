@@ -1,0 +1,21 @@
+<% if @post.photo.exists? %>
+  <%= image_tag @post.photo.url(:small) %>
+<% end %>
+
+<% if @post.caption %>
+  <p>Caption:</strong>
+    <%= @post.caption %>
+  </p>
+<% end %>
+
+<% if @interests %>
+  <% @interests.each do |interest| %>
+    <%= link_to interest.name, interest_path(interest) %><br>
+  <% end %>
+<% end %>
+
+<% if @activities %>
+  <% @activities.each do |activity| %>
+    <%= link_to activity.name, activity_path(activity) %><br>
+  <% end %>
+<% end %>

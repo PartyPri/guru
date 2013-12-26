@@ -1,0 +1,12 @@
+<!-- Heading -->
+<div class="heading">
+  <%= @activity.name %>s
+  <!-- TODO Fix pluralization above -->
+</div>
+
+<% if @posts %>
+  <% @posts.each do |post| %>
+    <%= link_to post.user.first_name, post.user %> posted: <br>
+    <%= link_to post.caption, post_path(post) %><br><br>
+  <% end %>   
+<% end %>

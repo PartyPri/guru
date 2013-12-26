@@ -1,0 +1,42 @@
+.heading,
+.subheading {
+  font-weight: 900;
+  font-size: 65px;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.subheading {
+  font-weight: 400;
+  font-size: 20px;
+  color: gray;
+  margin-top: -10px;
+}
+
+.menubar {
+  border-radius: 5px;
+  background: #f0f0f0;
+  margin-top: 15px;
+}
+
+
+.btn-follow-unfollow {
+  display: inline-block;
+}
+
+.center.navbar .nav,
+.center.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+}
+
+.center .navbar-inner {
+    text-align:center;
+}
+
+.center .dropdown-menu {
+    text-align: left;
+}

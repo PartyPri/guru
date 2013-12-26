@@ -1,0 +1,12 @@
+<!-- Heading -->
+<div class="heading">
+  <%= @user.first_name %>'s Followers (<%= @followers.count %>)
+  <!-- Fix 1 Follower"s" -->
+</div>
+
+<!-- Body -->
+<div id="user_followers">
+  <% @followers.each do |follower| %>
+    <%= link_to "#{follower.first_name} #{follower.last_name}", user_path(follower) %><br>
+  <% end %>
+</div>
