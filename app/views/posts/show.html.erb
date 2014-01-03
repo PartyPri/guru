@@ -2,6 +2,10 @@
   <%= image_tag @post.photo.url(:small) %>
 <% end %>
 
+<% if @post.video_url %>
+  <iframe width="300" height="197" src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+<% end %>
+
 <% if @post.caption %>
   <p>Caption:</strong>
     <%= @post.caption %>

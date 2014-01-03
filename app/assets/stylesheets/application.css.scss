@@ -15,6 +15,7 @@
 @import "twitter/bootstrap";
 @import "interests";
 @import "heading";
+@import "masonry_box";
 
 body {
  	padding-top: 50px;
@@ -23,4 +24,18 @@ body {
 
 .alert {
 	margin-top: 10px;
+}
+
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
+
+.group {
+  *zoom: 1;
 }

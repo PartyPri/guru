@@ -1,0 +1,29 @@
+#masonry-container {
+  margin: 0 auto;
+}
+
+.thumbnail {
+  margin: 8px;
+  width: 295px;
+  float: left;
+  padding: 0;
+  border: none;
+}
+
+.thumbnail .caption {
+  background: #D26;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 0 0 8px 8px;
+}
+
+#tags a, #user-data, #user-data a {
+  color: lightgray;
+  font-size: 13px;
+  font-weight: normal; 
+}
+
+#tags a {
+  font-style: italic; 
+}

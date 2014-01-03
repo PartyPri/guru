@@ -26,12 +26,21 @@ class PostsController < ApplicationController
   end
 
   def update
-    params[:post][:interests] ||= []
-    params[:post][:activities] ||= []
+    @post = Post.find(params[:id])
+    if @post.update_attributes(params[:post])
+      redirect_to @post
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+    @post = Post.find(params[:id])
   end
 
   private
-  def post_params
-    params.require(:post).permit(:caption)
-  end
+    def post_params
+      params.require(:post).permit(:photo, :video_url, :interest, :id, :caption)
+    end
+
 end

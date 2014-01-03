@@ -6,6 +6,7 @@ class InterestsController < ApplicationController
     else
       @interest = Interest.find(params[:id])
       @users = @interest.users
+      @posts = @interest.posts
       @workshops = @interest.workshops
     end
   end

@@ -23,15 +23,16 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
+      <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
+        <% if user_signed_in? %>
+          <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
+          <!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
+        <% end %> 
+      </div>
       <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
       <!-- FIXME 1 Follower"s" -->
      </ul>
-     <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
-	      <% if user_signed_in? %>
-          <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
-	  			<!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
-	  		<% end %>	
-	   </div>
+     <!-- Add back when we know what the filter choices should be
 	   <ul class="nav navbar-nav">
 	   <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Posts <b class="caret"></b></a>
@@ -41,52 +42,41 @@
           <li><a href="#">Something else here</a></li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
   </div><!-- /.navbar-collapse -->
 </div>
 </nav>
 
 <!-- Posts -->
-
-			
-
-<div class="row">
-  <div class="col-sm-4 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
+<div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
+  <% @posts.each do |post| %>
+    <div class="thumbnail group">
+      <% if post.photo.exists? %>
+        <%= image_tag post.photo.url(:large) %>
+      <% end %>
+      <% if post.video_url.present? %>
+        <iframe width="295" height="194" src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
       <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <% if post.caption.present? %>
+          <%= post.caption %><br>
+        <% end %>
+        <div id="tags">
+          <% post.interests.each do |interest| %>
+            <%= link_to interest.name, interest_path(interest) %>
+          <% end %>
+          <% post.activities.each do |activity| %>
+            <%= link_to activity.name, activity_path(activity) %>
+          <% end %>
+        </div>
+        <div id="user-data">
+          <% if post.user.present? %>
+            by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
+            <%#= link_to "edit post", edit_post_path(post) %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-    <div class="col-sm-4 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-    <div class="col-sm-4 col-md-4">
-    <div class="thumbnail">
-      <img data-src="holder.js/300x200" alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
+  <% end %>
+  <!-- Need to put else statements? -->
 </div>
-
-      <br>
-				<% @workshops.each do |workshop| %>
-					<%= link_to workshop.user.first_name, workshop.user %> is hosting a workshop: <br>
-					<%= link_to workshop.title, workshop_path(workshop) %><br><br>
-				<% end %>			
-
-

@@ -21,15 +21,16 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><a href="#">About</a></li>
-      <li><%= link_to "#{@followers.count} Followers", user_followers_path(@user) %></li>
-      <!-- FIXME 1 Follower"s" -->
-     </ul>
-     <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-user">
+      <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-user">
         <% if user_signed_in? && current_user != @user %>
           <%= button_to "Follow", followerships_path(id: @user), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
           <!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
         <% end %> 
-     </div>
+      </div>
+      <li><%= link_to "#{@followers.count} Followers", user_followers_path(@user) %></li>
+      <!-- FIXME 1 Follower"s" -->
+     </ul>
+     <!-- Add back when we know what the filter choices should be
      <ul class="nav navbar-nav">
      <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Posts <b class="caret"></b></a>
@@ -39,41 +40,41 @@
           <li><a href="#">Something else here</a></li>
         </ul>
       </li>
-    </ul>
+    </ul> -->
   </div><!-- /.navbar-collapse -->
 </div>
 </nav>
 
-
-    <div id="interests">
-      <h5><%= "#{@user.first_name}" %>'s Styles</h5>
-      <hr>
-      <% if @interests %>
-        <% @interests.each do |interest| %>
-          <%= link_to interest.name, interest_path(interest) %><br>
-        <% end %>
+<!-- Posts -->
+<div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
+  <% @user.posts.all.each do |post| %>
+    <div class="thumbnail group">
+      <% if post.photo.exists? %>
+        <%= image_tag post.photo.url(:large) %>
       <% end %>
-      <br>
-    </div>
-
-    <div id="workshops">
-      <h5>Workshops hosted by <%= "#{@user.first_name}" %></h5>
-      <hr>
-      <% if @workshops %>
-        <% @workshops.each do |workshop| %>
-          <%= link_to workshop.title, workshop %><br>
-        <% end %>
+      <% if post.video_url.present? %>
+        <iframe width="295" height="194" src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
       <% end %>
-      <br>
-    </div>
-
-    <div id="Followed">
-      <h5>Following</h5>
-      <hr>
-      <% if @followed_users %>
-        <% @followed_users.each do |followed_user| %>
-          <%= link_to followed_user.first_name, followed_user %><br>
+      <div class="caption">
+        <% if post.caption.present? %>
+          <%= post.caption %><br>
         <% end %>
-      <% end %>
-      <br>
+        <div id="tags">
+          <% post.interests.each do |interest| %>
+            <%= link_to interest.name, interest_path(interest) %>
+          <% end %>
+          <% post.activities.each do |activity| %>
+            <%= link_to activity.name, activity_path(activity) %>
+          <% end %>
+        </div>
+        <div id="user-data">
+          <% if post.user.present? %>
+            by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
+            <%#= link_to "edit post", edit_post_path(post) %>
+          <% end %>
+        </div>
+      </div>
     </div>
+  <% end %>
+  <!-- Need to put else statements? -->
+</div>
