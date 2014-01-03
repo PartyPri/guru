@@ -14,7 +14,8 @@ Guru::Application.routes.draw do
   get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
   get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
   get 'activities/:id', to: 'activities#show', as: 'activity'
-
+  get 'interests/:id/about', to: 'about_interests#show', as: 'interest_about'
+  get 'users/:id/about', to: 'about_users#show', as: 'user_about'
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
   ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?

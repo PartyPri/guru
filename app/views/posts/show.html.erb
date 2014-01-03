@@ -1,25 +1,29 @@
-<% if @post.photo.exists? %>
-  <%= image_tag @post.photo.url(:small) %>
-<% end %>
-
-<% if @post.video_url %>
-  <iframe width="300" height="197" src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
-<% end %>
-
-<% if @post.caption %>
-  <p>Caption:</strong>
-    <%= @post.caption %>
-  </p>
-<% end %>
-
-<% if @interests %>
-  <% @interests.each do |interest| %>
-    <%= link_to interest.name, interest_path(interest) %><br>
-  <% end %>
-<% end %>
-
-<% if @activities %>
-  <% @activities.each do |activity| %>
-    <%= link_to activity.name, activity_path(activity) %><br>
-  <% end %>
-<% end %>
+<div class="thumbnail post-full group">
+    <% if @post.photo.exists? %>
+      <%= image_tag @post.photo.url(:large) %>
+    <% end %>
+    <% if @post.video_url.present? %>
+      <iframe width="500" height="328" seamless src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+    <% end %>
+    <div class="caption">
+      <% if @post.caption.present? %>
+        <%= @post.caption %><br>
+      <% end %>
+      <div id="tags">
+        <% @post.interests.each do |interest| %>
+          <%= link_to interest.name, interest_path(interest) %>
+        <% end %>
+        <% @post.activities.each do |activity| %>
+          <%= link_to activity.name, activity_path(activity) %>
+        <% end %>
+      </div>
+      <div id="user-data">
+        <% if @post.user.present? %>
+          by <%= link_to "#{@post.user.first_name} #{@post.user.last_name}", user_path(@post.user) %>
+          <% if current_user.id == @post.user.id %>
+            <%= link_to "  edit post", edit_post_path(@post) %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+</div>

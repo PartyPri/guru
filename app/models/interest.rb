@@ -11,4 +11,7 @@ class Interest < ActiveRecord::Base
 
   has_many :post_interests
   has_many :posts, through: :post_interests, uniq: true
+
+  has_one :about_interest
+  has_one :about, through: :about_interest
 end

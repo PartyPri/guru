@@ -12,7 +12,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   #Attachments
-  has_attached_file :photo, :styles => {:small => "100x100>", :large => "295x"},
+  has_attached_file :photo, :styles => {:small => "100x100>", :medium => "295x", large: "500x"},
                     :url => "/assets/posts/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/posts/:id/:style/:basename.:extension"
 end

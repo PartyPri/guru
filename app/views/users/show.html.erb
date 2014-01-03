@@ -20,7 +20,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
-      <li><a href="#">About</a></li>
+      <li><%= link_to "About", user_about_path(@user) %></li>
       <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-user">
         <% if user_signed_in? && current_user != @user %>
           <%= button_to "Follow", followerships_path(id: @user), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
@@ -50,10 +50,10 @@
   <% @user.posts.all.each do |post| %>
     <div class="thumbnail group">
       <% if post.photo.exists? %>
-        <%= image_tag post.photo.url(:large) %>
+        <%= image_tag post.photo.url(:medium) %>
       <% end %>
       <% if post.video_url.present? %>
-        <iframe width="295" height="194" src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
+        <iframe width="295" height="194" seamless src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
       <% end %>
       <div class="caption">
         <% if post.caption.present? %>
@@ -70,7 +70,9 @@
         <div id="user-data">
           <% if post.user.present? %>
             by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
-            <%#= link_to "edit post", edit_post_path(post) %>
+            <% if current_user.id == post.user.id %>
+              <%= link_to "  edit post", edit_post_path(post) %>
+            <% end %>
           <% end %>
         </div>
       </div>

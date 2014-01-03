@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140101003129) do
+ActiveRecord::Schema.define(:version => 20140103194501) do
+
+  create_table "about_interests", :force => true do |t|
+    t.integer  "about_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "about_users", :force => true do |t|
+    t.integer  "about_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "abouts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false

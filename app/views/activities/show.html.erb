@@ -9,10 +9,10 @@
   <% @activity.posts.all.each do |post| %>
     <div class="thumbnail group">
       <% if post.photo.exists? %>
-        <%= image_tag post.photo.url(:large) %>
+        <%= image_tag post.photo.url(:medium) %>
       <% end %>
       <% if post.video_url.present? %>
-        <iframe width="295" height="194" src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
+        <iframe width="295" height="194" seamless src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
       <% end %>
       <div class="caption">
         <% if post.caption.present? %>
@@ -29,7 +29,9 @@
         <div id="user-data">
           <% if post.user.present? %>
             by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
-            <%#= link_to "edit post", edit_post_path(post) %>
+            <% if current_user.id == post.user.id %>
+              <%= link_to "  edit post", edit_post_path(post) %>
+            <% end %>
           <% end %>
         </div>
       </div>
