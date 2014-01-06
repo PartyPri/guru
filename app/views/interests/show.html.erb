@@ -1,9 +1,9 @@
 <!-- Heading -->
 <div class="heading">
-	<%= @interest.name %>
+  <%= @interest.name %>
 </div>
 <div class="subheading">
-	<%= @interest.description %>
+  <%= @interest.description %>
 </div>
 
 <!-- Menubar -->
@@ -23,18 +23,19 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><%= link_to "About", interest_about_path(@interest) %></li>
+      <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
       <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
         <% if user_signed_in? %>
           <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
           <!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
         <% end %> 
       </div>
-      <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
       <!-- FIXME 1 Follower"s" -->
+      <li><%= link_to "Posts", interest_path(@interest) %></li>
      </ul>
      <!-- Add back when we know what the filter choices should be
-	   <ul class="nav navbar-nav">
-	   <li class="dropdown">
+     <ul class="nav navbar-nav">
+     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Posts <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Action</a></li>

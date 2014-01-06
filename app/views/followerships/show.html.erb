@@ -5,8 +5,15 @@
 </div>
 
 <!-- Body -->
-<div id="user_followers">
+<div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
   <% @followers.each do |follower| %>
-    <%= link_to "#{follower.first_name} #{follower.last_name}", user_path(follower) %><br>
+    <div class="thumbnail smallsize group">
+      <% if follower.avatar.exists? %>
+        <%= image_tag follower.avatar.url(:small) %>
+      <% end %>
+      <div class="caption">
+        <%= link_to "#{follower.first_name} #{follower.last_name}", user_path(follower) %><br>
+      </div>
+    </div>
   <% end %>
 </div>

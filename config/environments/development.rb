@@ -37,6 +37,9 @@ Guru::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Ensures that compiled files for production mode aren't used.
+  config.assets.prefix = "/assets_dev"
+
   #Tell Paperclip where to look for ImageMagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
 end

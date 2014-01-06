@@ -1,6 +1,6 @@
 <h1>New post</h1>
 
-<%= form_for :post, url: posts_path, :html => {:multipart => true} do |f| %>
+<%= form_for :post, url: posts_path, :html => { :multipart => true } do |f| %>
   <p>
     <strong>Select image to upload:</strong><br>
     <%= f.file_field :photo %>

@@ -10,7 +10,7 @@
   border: none;
 }
 
-.thumbnail .caption {
+.thumbnail .caption, .thumbnail .caption a {
   background: #D26; //waacking
   //background: #00B2EE; popping
   //background: #9B30FF; locking
@@ -29,4 +29,12 @@
 
 #tags a {
   font-style: italic; 
+}
+
+.smallsize {
+  width: 150px;
+}
+
+.fullsize {
+  width: 500px;
 }

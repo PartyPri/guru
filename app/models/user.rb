@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Access
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :description
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :description, :avatar
 
   # Associations
 
@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
 
   has_many :followerships, dependent: :destroy
   has_many :followers, through: :followerships
+
+  # Attachments
+  has_attached_file :avatar, :styles => {:small => "150x"}
 
   # Validations
 
