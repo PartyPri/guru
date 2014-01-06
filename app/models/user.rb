@@ -23,7 +23,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :followerships
 
   # Attachments
-  has_attached_file :avatar, :styles => {:small => "150x"}
+  has_attached_file :avatar, :styles => {:small => "150x"}, 
+                    :url => "/assets/users/:id/:style/:basename.:extension",
+                    :path => ":rails_root/public/assets/users/:id/:style/:basename.:extension"
 
   # Validations
 
