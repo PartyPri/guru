@@ -14,6 +14,7 @@ gem "jquery-rails", "< 3.0.0"
 gem 'activeadmin'
 gem 'paperclip', '~> 3.0'
 gem 'masonry-rails'
+gem 'aws-sdk'
 
 group :development do
  gem 'debugger'

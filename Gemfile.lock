@@ -43,6 +43,10 @@ GEM
       activesupport (>= 3.0.0)
     arel (3.0.2)
     atomic (1.1.14)
+    aws-sdk (1.31.3)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     bootstrap-sass-rails (3.0.0.3)
       railties (>= 3.1.0)
@@ -110,7 +114,10 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.25)
+    mini_portile (0.5.2)
     multi_json (1.8.2)
+    nokogiri (1.6.1)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     paperclip (3.5.2)
       activemodel (>= 3.0.0)
@@ -180,6 +187,7 @@ GEM
     uglifier (2.3.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
 
@@ -188,6 +196,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin
+  aws-sdk
   bootstrap-sass-rails
   coffee-rails (~> 3.2.1)
   debugger
