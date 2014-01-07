@@ -7,7 +7,7 @@
 <!-- Body -->
 <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
   <% @users.each do |follower| %>
-    <div class="thumbnail smallsize group">
+    <div class="thumbnail smallsize clearfix">
       <% if follower.avatar.exists? %>
         <%= image_tag follower.avatar.url(:small) %>
       <% end %>

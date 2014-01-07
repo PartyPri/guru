@@ -12,7 +12,7 @@
 <!-- All Posts -->
 <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
   <% @posts.each do |post| %>
-    <div class="thumbnail group">
+    <div class="thumbnail clearfix">
       <% if post.photo.exists? %>
         <%= image_tag post.photo.url(:medium) %>
       <% end %>
