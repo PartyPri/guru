@@ -1,52 +1,8 @@
 <!-- Heading -->
-<div class="heading">
-  <%= @interest.name %>
-</div>
-<div class="subheading">
-  <%= @interest.description %>
-</div>
+<%= render "shared/interest_heading" %>
 
 <!-- Menubar -->
-<nav class="navbar navbar-default navbar-static-top center menubar" role="navigation">
-<!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-inner">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".interest-bar">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <!-- Insert follow button -->
-  </div>
-  <!-- Collect the nav links, forms, and other content for toggling -->
-  <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
-    <ul class="nav navbar-nav">
-      <li><%= link_to "About", interest_about_path(@interest) %></li>
-      <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
-      <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
-        <% if user_signed_in? %>
-          <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>
-          <!-- <button class="btn btn-danger btn-sm navbar-btn" type="submit">Follow</button> -->
-        <% end %> 
-      </div>
-      <!-- FIXME 1 Follower"s" -->
-      <li><%= link_to "Posts", interest_path(@interest) %></li>
-     </ul>
-     <!-- Add back when we know what the filter choices should be
-     <ul class="nav navbar-nav">
-     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">All Posts <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-        </ul>
-      </li>
-    </ul> -->
-  </div><!-- /.navbar-collapse -->
-</div>
-</nav>
+<%= render "shared/interest_menubar" %>
 
 <!-- Posts -->
 <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>

@@ -1,8 +1,8 @@
 <!-- Heading -->
-<div class="heading">
-  <%= @user.first_name %>'s Followers (<%= @followers.count %>)
-  <!-- Fix 1 Follower"s" -->
-</div>
+<%= render "shared/user_heading" %>
+
+<!-- Menubar -->
+<%= render "shared/user_menubar" %>
 
 <!-- Body -->
 <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>

@@ -1,10 +1,8 @@
 <!-- Heading -->
-<div class="heading">
-  <%= @interest.name %>
-</div>
-<div class="subheading">
-  <%= @interest.description %>
-</div>
+<%= render "shared/interest_heading" %>
+
+<!-- Menubar -->
+<%= render "shared/interest_menubar" %>
 
 <!-- Add sanitizer? http://api.rubyonrails.org/classes/ActionView/Helpers/TextHelper.html#method-i-simple_format -->
 <div class="container">
