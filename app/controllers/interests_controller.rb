@@ -5,7 +5,7 @@ class InterestsController < ApplicationController
       redirect_to :root#, error: "Post could not be found"
     else
       @interest = Interest.find(params[:id])
-      @users = @interest.users
+      @followers = @interest.users
       @posts = @interest.posts
       @workshops = @interest.workshops
     end

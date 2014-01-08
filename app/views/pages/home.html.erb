@@ -10,39 +10,6 @@
 </div>
 
 <!-- All Posts -->
-<div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
-  <% @posts.each do |post| %>
-    <div class="thumbnail clearfix">
-      <% if post.photo.exists? %>
-        <%= image_tag post.photo.url(:medium) %>
-      <% end %>
-      <% if post.video_url.present? %>
-        <iframe width="295" height="194" seamless src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
-      <% end %>
-      <div class="caption">
-        <% if post.caption.present? %>
-          <%= post.caption %><br>
-        <% end %>
-        <div id="tags">
-          <% post.interests.each do |interest| %>
-            <%= link_to interest.name, interest_path(interest) %>
-          <% end %>
-          <% post.activities.each do |activity| %>
-            <%= link_to activity.name, activity_path(activity) %>
-          <% end %>
-        </div>
-        <div id="user-data">
-          <% if post.user.present? %>
-            by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
-            <% if current_user.id == post.user.id %>
-              <%= link_to "edit post", edit_post_path(post) %>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-  <!-- Need to put else statements? -->
-</div>
+<%= render "shared/posts" %>
 
 

@@ -14,7 +14,7 @@
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
       <li><%= link_to "About", interest_about_path(@interest) %></li>
-      <li><%= link_to "#{@users.count} Followers", interest_followers_path(@interest) %></li>
+      <li><%= link_to "#{@followers.count} Followers", interest_followers_path(@interest) %></li>
       <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
         <% if user_signed_in? %>
           <%= button_to "Follow", user_interests_path(id: @interest), method: :post, class:"btn btn-danger btn-sm navbar-btn" %>

@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       redirect_to :root#, error: "User could not be found"
     else
       @interests      = @user.interests
+      @posts          = @user.posts
       @workshops      = @user.workshops
       @followers      = @user.followers
       @followed_users = @user.followed_users

@@ -1,29 +1,38 @@
-<div class="thumbnail fullsize group">
-    <% if @post.photo.exists? %>
-      <%= image_tag @post.photo.url(:large) %>
-    <% end %>
-    <% if @post.video_url.present? %>
-      <iframe width="500" height="328" seamless src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
-    <% end %>
-    <div class="caption">
-      <% if @post.caption.present? %>
-        <%= @post.caption %><br>
+<div class="container">
+  <!-- Temporary back link to previous page; replace with menubar of previous page -->
+  <div id="back-link">
+    <h4><%= link_to "Back", :back %></h4>
+  </div>
+
+  <!-- Post -->
+  <div class="thumbnail fullsize group">
+      <% if @post.photo.exists? %>
+        <%= image_tag @post.photo.url(:large) %>
       <% end %>
-      <div id="tags">
-        <% @post.interests.each do |interest| %>
-          <%= link_to interest.name, interest_path(interest) %>
+      <% if @post.video_url.present? %>
+        <iframe width="500" height="328" seamless src="<%= @post.video_url %>" frameborder="0" allowfullscreen></iframe>
+      <% end %>
+      <div class="caption">
+        <% if @post.caption.present? %>
+          <%= @post.caption %><br>
         <% end %>
-        <% @post.activities.each do |activity| %>
-          <%= link_to activity.name, activity_path(activity) %>
-        <% end %>
-      </div>
-      <div id="user-data">
-        <% if @post.user.present? %>
-          by <%= link_to "#{@post.user.first_name} #{@post.user.last_name}", user_path(@post.user) %>
-          <% if current_user.id == @post.user.id %>
-            <%= link_to "  edit post", edit_post_path(@post) %>
+        <div id="tags">
+          <% @post.interests.each do |interest| %>
+            <%= link_to interest.name, interest_path(interest) %>
           <% end %>
-        <% end %>
+          <% @post.activities.each do |activity| %>
+            <%= link_to activity.name, activity_path(activity) %>
+          <% end %>
+        </div>
+        <div id="user-data">
+          <% if @post.user.present? %>
+            by <%= link_to "#{@post.user.first_name} #{@post.user.last_name}", user_path(@post.user) %>
+            <% if current_user.id == @post.user.id %>
+              <%= link_to "  edit post", edit_post_path(@post) %>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
+  </div>
+
 </div>

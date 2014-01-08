@@ -13,6 +13,6 @@ class UserInterestsController < ApplicationController
 
   def show
     @interest = Interest.find(params[:id])
-    @users = @interest.users    
+    @followers = @interest.users    
   end
 end
