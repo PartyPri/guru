@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (3.2.12)
       actionpack (= 3.2.12)
@@ -190,6 +190,7 @@ GEM
     uuidtools (2.1.4)
     warden (1.2.3)
       rack (>= 1.0)
+    youtube_id (0.0.3)
 
 PLATFORMS
   ruby
@@ -210,3 +211,4 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
+  youtube_id (~> 0.0.3)

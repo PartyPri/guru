@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.12'
 
@@ -15,6 +15,7 @@ gem 'activeadmin'
 gem 'paperclip', '~> 3.0'
 gem 'masonry-rails'
 gem 'aws-sdk'
+gem 'youtube_id', '~> 0.0.3'
 
 group :development do
  gem 'debugger'
