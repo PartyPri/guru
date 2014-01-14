@@ -1,9 +1,7 @@
 <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
   <% @followers.each do |follower| %>
     <div class="thumbnail smallsize clearfix">
-      <% if follower.avatar.exists? %>
-        <%= link_to image_tag(follower.avatar.url(:small)), user_path(follower) %>
-      <% end %>
+      <%= link_to image_tag(follower.avatar.url(:small)), user_path(follower) %>
       <div class="caption">
         <%= link_to "#{follower.first_name} #{follower.last_name}", user_path(follower) %><br>
       </div>

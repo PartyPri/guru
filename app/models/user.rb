@@ -24,8 +24,7 @@ class User < ActiveRecord::Base
 
   # Attachments
   
-  has_attached_file :avatar, :styles => {:small => "150x"}, :default_url => "https://s3.amazonaws.com/evrystep-assets/users/avatars/missing.png"
-
+  has_attached_file :avatar, :styles => {:small => "150x"}, :default_url => "https://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png" #{}"/system/users/avatars/default/small/missing.png" 
   # Validations
 
   validates :first_name, presence: true
