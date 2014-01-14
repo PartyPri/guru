@@ -23,7 +23,8 @@
           <% if post.user.present? %>
             by <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_path(post.user) %>
             <% if current_user.id == post.user.id %>
-              <%= link_to "  edit post", edit_post_path(post) %>
+              <%= link_to "edit post", edit_post_path(post) %>
+              <%= link_to "delete post", post_path(post), method: :delete %>
             <% end %>
           <% end %>
         </div>

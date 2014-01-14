@@ -30,6 +30,7 @@
             <% if current_user.id == @post.user.id %>
               <!-- Above renders error when no user signed in, but someone tries to view post -->
               <%= link_to "  edit post", edit_post_path(@post) %>
+              <%= link_to "delete post", post_path(@post), method: :delete %>
             <% end %>
           <% end %>
         </div>
