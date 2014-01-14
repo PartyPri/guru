@@ -5,7 +5,7 @@
         <%= link_to image_tag(post.photo.url(:medium)), post_path(post) %>
       <% end %>
       <% if post.video_url.present? %>
-        <iframe width="295" height="194" seamless src="<%= post.video_url %>" frameborder="0" allowfullscreen></iframe>
+        <iframe width="295" height="194" seamless src="//www.youtube.com/embed/<%= YoutubeID.from("#{post.video_url}") %>?rel=0" frameborder="0" allowfullscreen></iframe>
       <% end %>
       <div class="caption">
         <% if post.caption.present? %>
