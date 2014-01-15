@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
       redirect_to :root#, error: "Post could not be found"
     else
       @activity = Activity.find(params[:id])
-      @posts = @activity.posts
+      @posts = @activity.posts.order("updated_at desc")
     end
   end
 end
