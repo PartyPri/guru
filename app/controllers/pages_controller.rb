@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :only => [ :home ]
 
   def home
     @posts = Post.order("updated_at desc")
   end
+
+  def landing
+  end
+
 end
