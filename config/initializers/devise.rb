@@ -222,6 +222,12 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
 
+  # Added this to accompany custom_failure.rb that changes the default
+  # route when authentication fails.
+  config.warden do |manager|
+    manager.failure_app = CustomFailure
+  end
+
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.

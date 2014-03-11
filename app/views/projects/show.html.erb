@@ -1,0 +1,33 @@
+<!-- Edit Links -->
+<% if @project.user.present? %>
+  <% if current_user.id == @project.user.id %>
+    <ul class="nav nav-pills">
+    <!-- Above renders error when no user signed in, but someone tries to view post -->
+      <li><%= link_to "edit project", edit_project_path(@project) %></li>
+      <li><%= link_to "delete project", project_path(@project), method: :delete %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<!-- Project -->
+<div class="project-container">
+  <div class="project-heading"><%= @project.name %></div>
+  <div class="subheading">by <%= @project.user.first_name %><br>
+  <%= @project.description %><br>
+  <% @project.interests.each do |interest| %>
+    <%= link_to interest.name, interest_path(interest) %>
+  <% end %>
+  </div>
+  <div id="masonry-container" class="js-masonry" data-masonry-options='{ "isFitWidth": true }'>
+    <% @media.each do |media| %>
+      <div class="thumbnail clearfix", style="text-align: center">
+        <% if media.is_a? Image %>
+          <%= image_tag(media.photo.url(:medium)) %>
+        <% else %>
+          <iframe width="295" height="194" seamless src="//www.youtube.com/embed/<%= YoutubeID.from("#{media.url}") %>?rel=0" frameborder="0" allowfullscreen></iframe>
+        <% end %>
+        <h4><%= media.caption %></h4>
+      </div>
+    <% end %>
+  </div>
+</div>

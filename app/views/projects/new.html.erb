@@ -1,0 +1,66 @@
+<br><br>
+<%= form_for @project, url: projects_path, :html => { :multipart => true, :class => 'well form-horizontal' } do |f| %>
+
+  <fieldset>
+    <h2 style="text-align: center">Create Project</h2><br>
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :name, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :name, :class => 'form-control input-lg', :placeholder => 'your project\'s name' %>
+        </div>
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :description, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :description, :class => 'form-control input-lg', :placeholder => 'what your project is about' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Categories", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <% Interest.all.each do |interest| %>
+            <%= hidden_field_tag "project[interest_ids][]", nil %>
+            <%= check_box_tag "project[interest_ids][]", interest.id %>
+            <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
+            <%= interest.name %><br>
+          <% end %>
+          <span class="help-block">select all that apply</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :cover, "Project cover", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.file_field :cover %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Project Media", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= link_to_add_fields "Add image", f, :images, class: "btn btn-default" %><br><br>
+          <%= link_to_add_fields "Add video", f, :videos, class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-actions">
+      <%= f.submit "Create", :class => 'btn btn-danger btn-lg' %>
+    </div>
+
+  </fieldset>
+<% end %>

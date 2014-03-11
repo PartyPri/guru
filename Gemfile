@@ -16,6 +16,7 @@ gem 'paperclip', '~> 3.0'
 gem 'masonry-rails'
 gem 'aws-sdk'
 gem 'youtube_id', '~> 0.0.3'
+gem 'simple_form'
 
 group :development do
  gem 'debugger'

@@ -1,0 +1,18 @@
+.project-heading {
+  font-weight: 900;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 0px;
+}
+
+.project-container {
+  border: 3px solid black;
+  //margin-top: 50px; //Figure out why the body margin doesn't apply to this view. Had to add this line for top margin
+  margin-bottom: 40px;
+  //max-width: 90em;
+}
+
+.selected {
+  color: #2a6496;
+  background-color: #eee;
+}

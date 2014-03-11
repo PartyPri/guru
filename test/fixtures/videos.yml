@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  caption: MyText
+  project_id: 1
+
+two:
+  caption: MyText
+  project_id: 1

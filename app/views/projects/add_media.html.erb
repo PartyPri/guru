@@ -1,0 +1,27 @@
+<br><br>
+<%= form_for @project, :url => { :action => :add_media }, :html => { :multipart => true, :class => 'well form-horizontal' } do |f| %>
+
+  <fieldset>
+    <h2 style="text-align: center">Add Media to Project</h2><br>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :cover, "Project Cover", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.file_field :cover %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.label "Add project cover  " %>
+      <%= f.file_field :cover %>
+      <%= f.submit "Upload", :class => 'btn btn-default' %>
+      <%= link_to_add_fields "Add Image", f, :images, class: "btn btn-danger btn-lg" %><br><br>
+      <%= link_to_add_fields "Add Video", f, :videos, class: "btn btn-danger btn-lg" %>
+    </div>
+
+  </fieldset>
+
+<% end %>
+

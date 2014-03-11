@@ -59,5 +59,9 @@ module Guru
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # The line below autoloads lib files. I added this when creating custom_failure.rb to change
+    # the default devise route from the sign_in page to a landing page.
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

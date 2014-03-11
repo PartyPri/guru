@@ -13,7 +13,7 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse interest-bar" id="interest-bar-collapse">
     <ul class="nav navbar-nav">
-      <li><%= link_to "About", interest_about_path(@interest) %></li>
+      <!-- <li><%#= link_to "About", interest_about_path(@interest) %></li> -->
       <li><%= link_to "#{@followers.count} Followers", interest_followers_path(@interest) %></li>
       <div class="btn-follow-unfollow navbar-center" id="follow-unfollow-interest">
         <% if user_signed_in? %>
@@ -21,7 +21,7 @@
         <% end %> 
       </div>
       <!-- FIXME 1 Follower"s" -->
-      <li><%= link_to "Posts", interest_path(@interest) %></li>
+      <li><%= link_to "Projects", interest_path(@interest) %></li>
      </ul>
      <!-- Add back when we know what the filter choices should be
      <ul class="nav navbar-nav">

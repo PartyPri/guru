@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top center menubar" role="navigation">
+<nav class="navbar navbar-default navbar-static-top center menubar user-show-menubar" role="navigation">
 <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-inner">
   <div class="navbar-header">
@@ -20,7 +20,7 @@
       </div>
       <li><%= link_to "#{@followers.count} Followers", user_followers_path(@user) %></li>
       <!-- FIXME 1 Follower"s" -->
-      <li><%= link_to "Posts", user_path(@user) %></li>
+      <li><%= link_to "Projects", user_path(@user) %></li>
      </ul>
      <!-- Add back when we know what the filter choices should be
      <ul class="nav navbar-nav">

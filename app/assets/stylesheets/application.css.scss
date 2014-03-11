@@ -15,12 +15,30 @@
 @import "twitter/bootstrap";
 @import "heading";
 @import "masonry_box";
+@import "projects";
+@import "users";
 
 body {
- 	padding-top: 50px;
+ 	margin-top: 60px;
  	//background-color: rgb(240,240,240);
 }
 
 .alert {
 	margin-top: 10px;
+}
+
+a.no-underline {
+  color: white;
+  text-decoration: none;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+hr {
+  border-top: 1px solid #D1D0CE;
+  //color: #555555;
 }
