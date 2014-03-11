@@ -1,7 +1,9 @@
 <div class="statbar container">
   <div class="row">
     <div class="col-sm-4">
-      <%= image_tag(@user.avatar.url(:medium)) %>
+      <% if @user.avatar.exists? %>
+        <%= image_tag(@user.avatar.url(:medium)) %>
+      <% end %>
     </div>
     <div class="col-sm-8">
       <div class="heading">
