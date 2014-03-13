@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $("form").on("click",".add_fields",function(e){var t,i;return i=(new Date).getTime(),t=new RegExp($(this).data("id"),"g"),$(this).after($(this).data("fields").replace(t,i)),e.preventDefault()})})}).call(this);
