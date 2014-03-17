@@ -1,15 +1,34 @@
- <%# if user_signed_in? %>
-  <!-- <h1>Activity</h1>
-<%# else %>
-  <p>sign up</p> -->
-<%# end %>
-
-<!-- Heading -->
+<!-- Heading --> 
 <div class="heading">
-  All Posts
+  Welcome to Evrystep!
+</div>
+<hr>
+<div class="welcome">
+  <div class="heading heading-featured">
+    Let's get started
+  </div>
+  <dl class="dl">
+    <dt>Explore</dt>
+    <dd>Click the "Styles" dropdown in the menu above to see what's going on with the styles you love.</dd><br>
+    <dt>Follow</dt>
+    <dd>Follow your favorite styles and members to grow your community.</dd><br>
+    <dt>Create</dt>
+    <dd>Create a project to share what you're working on. Tag your project with styles
+    for easy discovery.</dd>
+    <% if user_signed_in? %>
+      <%= render "shared/create_project_button" %>
+    <% end %>
+    <br>
+  </dl>
+</div>
+<hr>
+
+<!-- Heading --> 
+<div class="heading heading-featured">
+  Featured projects
 </div>
 
-<!-- All Posts -->
-<%= render "shared/posts" %>
+<!-- Featured Projects -->
+<%= render "shared/projects" %>
 
 

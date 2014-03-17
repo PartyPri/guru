@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @posts = Post.order("updated_at desc")
+    @projects = Project.order("updated_at desc")
   end
 
   def landing

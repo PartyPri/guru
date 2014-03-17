@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :description, :avatar
 
+  # Serialize
+
+  serialize :categories, Hash
+
   # Associations
 
   has_many :user_interests
@@ -32,7 +36,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  categories = Hash.new
+  # Methods
 
   def followed_users #refactor to use built in rails associations
     Followership.all.map { |followership|

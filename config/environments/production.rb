@@ -46,7 +46,7 @@ Guru::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  config.assets.precompile += [ 'masonry.pkgd.js', 'imagesloaded.pkgd.js' ]
+  config.assets.precompile += [ 'masonry.pkgd.js', 'imagesloaded.pkgd.js', 'projects.js' ]
   config.assets.precompile += %w{landing.css}
 
   # Disable delivery errors, bad email addresses will be ignored

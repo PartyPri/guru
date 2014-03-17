@@ -11,6 +11,8 @@ imagesloaded.pkgd.js: imagesloaded.pkgd-c49cd144025465426280a0d5b5bbe2be.js
 imagesloaded/index.pkgd.js: imagesloaded.pkgd-c49cd144025465426280a0d5b5bbe2be.js
 masonry.pkgd.js: masonry.pkgd-4668d081a8cf81e0773af47ba23afe6b.js
 masonry/index.pkgd.js: masonry.pkgd-4668d081a8cf81e0773af47ba23afe6b.js
+projects.js: projects-d2941f66c2aec73cfbae986ced7ec5c5.js
+projects/index.js: projects-d2941f66c2aec73cfbae986ced7ec5c5.js
 active_admin.css: active_admin-126de500031687fd199edd3b9cc25776.css
 active_admin/index.css: active_admin-126de500031687fd199edd3b9cc25776.css
 application.css: application-73ff5bfbbef0219607d8348bf99b0703.css

@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
+    @project.videos.build
   end
 
   def create
