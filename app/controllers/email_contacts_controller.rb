@@ -1,5 +1,9 @@
 class EmailContactsController < ApplicationController
 
+  def new
+    @email_contact = EmailContact.new
+  end
+
   def create
     @email_contact = EmailContact.new(params[:email_contact])
     if @email_contact.save

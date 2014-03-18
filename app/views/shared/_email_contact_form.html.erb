@@ -1,4 +1,4 @@
-<%= form_for @email_contact, :html => { :class => "form-inline"} do |f| %>
+<%= form_for :email_contact, url: email_contacts_path, :html => { :class => "form-inline"} do |f| %>
 
   <% if @email_contact.errors.any? %>
     <div id="error_explanation">

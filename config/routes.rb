@@ -3,6 +3,7 @@ Guru::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  resources :email_contacts, only: :create
   resources :interests
   resources :users, :only => [:show]
   resources :user_interests, :only => [:create, :show]
