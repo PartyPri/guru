@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def landing
+    @email_contact = EmailContact.new
   end
 
 end

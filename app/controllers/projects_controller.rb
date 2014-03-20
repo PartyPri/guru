@@ -1,12 +1,13 @@
 class ProjectsController < ApplicationController
   def new
     @project = Project.new
+    #@project.user = current_user
     #@project.videos.build
   end
 
   def create
     if user_signed_in?
-      @project = Project.new(params[:project])
+      @project = Project.new(params[:project])  
       @project.user = current_user
       @project.save
       redirect_to @project

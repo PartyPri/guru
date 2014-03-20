@@ -1,16 +1,14 @@
-<%= form_for :email_contact, url: email_contacts_path, :html => { :class => "form-inline"} do |f| %>
+<%= form_for @email_contact, :html => { :class => "form-inline"} do |f| %>
 
   <% if @email_contact.errors.any? %>
     <div id="error_explanation">
       <h2>
         <%= pluralize(@email_contact.errors.count, "error") %>
-        prohibited this <%= @email_contact.class.to_s.underscore.humanize.downcase %>
-        from being saved:
+        prevented this email from being saved:
       </h2>
-      <p>There were problems with the following fields:</p>
       <ul>
       <% @email_contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <%= message %>
       <% end %>
       </ul>
     </div>    
