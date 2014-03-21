@@ -12,7 +12,7 @@
 <!-- Project -->
 <div class="project-container">
   <div class="project-heading"><%= @project.name %></div>
-  <div class="subheading">by <%= @project.user.first_name %><br>
+  <div class="subheading">by <%= link_to @project.user.first_name, user_path(@project.user) %><br>
   <%= @project.description %><br>
   <% @project.interests.each do |interest| %>
     <%= link_to interest.name, interest_path(interest) %>

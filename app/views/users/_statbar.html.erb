@@ -12,6 +12,15 @@
       <div class="subheading">
         <%= @user.description %>
       </div>
+      <br><br>
+      <div id="project-categories" class="subheading">
+        <div style="text-decoration:underline">
+          <%= "Top Categories"%>
+        </div>
+        <% @user.categories.sort_by { |interest_id, projects| projects.count }.reverse.each do |interest_id, projects| %>
+          <%= "#{Interest.find_by_id(interest_id).name} - #{pluralize(projects.count, "project")}" %><br>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

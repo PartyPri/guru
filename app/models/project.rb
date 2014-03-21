@@ -44,11 +44,17 @@ class Project < ActiveRecord::Base
   # and the only available appropriate association callback for use is after_add. 
   
   def down_categories(interest)
-    self.user.categories[interest.id].delete(self.id)
-    #if self.user.categories[interest.id] == nil # if category is now blank, remove key from hash
-    #  self.user.categories.delete(interest.id)
-    #end
-    self.user.save
+
+    categories = self.user.categories
+    interest_id = interest.id
+    project_id = self.id
+    user = self.user
+      
+    categories[interest_id].delete(project_id)
+    if categories[interest_id] == [] # if category is now blank, remove key from hash
+      categories.delete(interest_id)
+    end
+    user.save
   end
 
 end

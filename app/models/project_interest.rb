@@ -13,20 +13,32 @@ class ProjectInterest < ActiveRecord::Base
   # and the only available appropriate association callback for use is after_add. 
 
   def up_categories
-    if self.project.user.categories[self.interest.id] == nil # if new category
-      self.project.user.categories[self.interest.id] = [self.project.id]
+
+    categories = self.project.user.categories
+    interest_id = self.interest.id
+    project_id = self.project.id
+    user = self.project.user
+
+    if categories[interest_id] == nil # if new category
+      categories[interest_id] = [project_id]
     else                                        # if existing category
-      self.project.user.categories[self.interest.id] << self.project.id
-      self.project.user.categories[self.interest.id].uniq!
+      categories[interest_id] << project_id
+      categories[interest_id].uniq!
     end
-    self.project.user.save
+    user.save
   end
 
   def down_categories
-    self.project.user.categories[self.interest.id].delete(self.project.id)
-    #if self.user.categories[interest.id] == nil # if category is now blank, remove key from hash
-    #  self.user.categories.delete(interest.id)
-    #end
-    self.project.user.save
+
+    categories = self.project.user.categories
+    interest_id = self.interest.id
+    project_id = self.project.id
+    user = self.project.user
+
+    categories[interest_id].delete(project_id)
+    if categories[interest_id] == [] # if category is now blank, remove key from hash
+      categories.delete(interest_id)
+    end
+    user.save
   end
 end
