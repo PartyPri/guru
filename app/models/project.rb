@@ -12,8 +12,8 @@ class Project < ActiveRecord::Base
   has_many :project_interests, :dependent => :destroy
   has_many :interests, through: :project_interests, uniq: true, after_remove: :down_categories#, after_add: :up_categories, after_remove: :down_categories
 
-  accepts_nested_attributes_for :images, allow_destroy: true
-  accepts_nested_attributes_for :videos, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true, :reject_if => lambda {|a| a[:photo].blank?}
+  accepts_nested_attributes_for :videos, allow_destroy: true, :reject_if => proc { |attributes| attributes['url'].blank? }
 
   # Attachments
 
