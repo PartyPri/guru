@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :caption, :project_id, :photo
+  attr_accessible :caption, :project_id, :photo, :photo_file_name
 
   belongs_to :project
 

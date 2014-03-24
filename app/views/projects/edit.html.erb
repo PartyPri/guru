@@ -72,6 +72,7 @@
 
           <%= f.fields_for :images do |builder| %>
             <%= image_tag(builder.object.photo.url(:medium)) %><br>
+            <%= builder.text_field :photo_file_name, readonly:true %><br>
             <%= builder.label :caption %>
             <%= builder.text_field :caption %><br>
             <%= builder.check_box :_destroy %>
@@ -80,6 +81,7 @@
           <% end %>
           <%= f.fields_for :videos do |builder| %>
             <iframe width="295" height="194" seamless src="//www.youtube.com/embed/<%= YoutubeID.from("#{builder.object.url}") %>?rel=0" frameborder="0" allowfullscreen></iframe>
+            <%= builder.text_field :url, readonly:true %><br>
             <%= builder.label :caption %>
             <%= builder.text_field :caption %><br>
             <%= builder.check_box :_destroy %>

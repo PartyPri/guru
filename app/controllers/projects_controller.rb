@@ -37,9 +37,9 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    #@images = @project.images
-    #@videos = @project.videos
-    #@media      = (@project.videos + @project.images).sort_by &:created_at
+    unless current_user.id == @project.user.id
+      redirect_to :root#error
+    end
     if @project.update_attributes(params[:project])
       #flash[:notice] = "Your media's been added to the project!"
       redirect_to @project
@@ -50,12 +50,18 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    unless current_user.id == @project.user.id
+      redirect_to :root#error
+    end
     @user       = @project.user
     @media      = (@project.videos + @project.images).sort_by &:created_at
   end
 
   def destroy
     @project = Project.find(params[:id])
+    unless current_user.id == @project.user.id
+      redirect_to :root#error
+    end
     @project.destroy
     flash[:notice] = "Project deleted"
     redirect_to :back
@@ -63,6 +69,6 @@ class ProjectsController < ApplicationController
 
   private
     def project_params
-      params.require(:project).permit(:images, :videos, :_destroy, :image_ids, :video_ids)
+      params.require(:project).permit(:images, :videos, :_destroy, :image_ids, :video_ids, :photo_file_name)
     end
 end
