@@ -1,8 +1,9 @@
 class ProjectsController < ApplicationController
   def new
+    unless user_signed_in?
+      redirect_to :root#error
+    end
     @project = Project.new
-    #@project.user = current_user
-    #@project.videos.build
   end
 
   def create
