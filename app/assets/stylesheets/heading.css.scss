@@ -1,7 +1,11 @@
 .heading,
-.subheading {
+.subheading,
+.heading a,
+.heading a:hover {
+  color: black;
   font-weight: 900;
   font-size: 65px;
+  text-decoration: none;
   text-align: center;
   padding-top: 0px;
 }

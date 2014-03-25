@@ -7,7 +7,7 @@
     </div>
     <div class="col-sm-8">
       <div class="heading">
-        <%= "#{@user.first_name} #{@user.last_name}" %>
+        <%= link_to "#{@user.first_name} #{@user.last_name}", user_path %>
       </div>
       <div class="subheading">
         <%= @user.description %>

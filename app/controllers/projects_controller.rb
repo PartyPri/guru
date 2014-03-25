@@ -17,13 +17,13 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def add_media
-    @project = Project.find(params[:id])
-    if @project.update_attributes(params[:project])
-      #flash[:notice] = "Your media's been added to the project!"
-    end
-    #redirect_to add_media_path(@project)
-  end
+  # def add_media
+  #   @project = Project.find(params[:id])
+  #   if @project.update_attributes(params[:project])
+  #     #flash[:notice] = "Your media's been added to the project!"
+  #   end
+  #   #redirect_to add_media_path(@project)
+  # end
 
   def show
     @project = Project.where(id: params[:id]).first

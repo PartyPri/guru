@@ -8,8 +8,8 @@ Guru::Application.routes.draw do
   resources :users, :only => [:show]
   resources :user_interests, :only => [:create, :show]
   resources :followerships, only: :create
-  resources :workshops, :only => [:show]
-  resources :posts
+  #resources :workshops, :only => [:show]
+  #resources :posts
   resources :projects do
     resources :images
   end
@@ -18,8 +18,8 @@ Guru::Application.routes.draw do
   get 'activities/:id', to: 'activities#show', as: 'activity'
   get 'interests/:id/about', to: 'about_interests#show', as: 'interest_about'
   get 'users/:id/about', to: 'about_users#show', as: 'user_about'
-  get 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
-  put 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
+  #get 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
+  #put 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   get 'landing', to: 'pages#landing', as: 'landing'
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
