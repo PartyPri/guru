@@ -22,7 +22,7 @@ Guru::Application.routes.draw do
   #put 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   get 'landing', to: 'pages#landing', as: 'landing'
 
-  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "signup" }
+  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }
   ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
 
   root to: "pages#home"
