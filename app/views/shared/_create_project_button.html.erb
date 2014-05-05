@@ -1,5 +1,7 @@
-<button type="button" class="btn btn-danger navbar-btn">
-  <%= link_to new_project_path, :method => :get, :class=>"no-underline" do %>
-    <span class="glyphicon glyphicon-plus"></span>   Create Project
-  <% end %>
-</button>
+<%= button_to "Create Project", new_project_path, :method => :get, :class => 'btn navbar-btn btn-danger btn-large' %>
+
+<!-- <button type="button" class="btn navbar-btn btn-danger btn-large">
+  <%#= link_to new_project_path, :method => :get, :class=>"no-underline" do %>
+     <bold><span class="glyphicon glyphicon-record"></span></bold>  Create Project
+  <%# end %>
+</button> -->

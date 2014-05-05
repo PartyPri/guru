@@ -17,14 +17,36 @@
 @import "masonry_box";
 @import "projects";
 @import "users";
+@import "animate";
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+@import url(http://fonts.googleapis.com/css?family=Oxygen:700|Open+Sans:400,600);  
 
 body {
- 	margin-top: 60px;
- 	//background-color: rgb(240,240,240);
+ 	margin-top: 70px;
+  margin-bottom: 0px;
+  padding-bottom: 50px;
+ 	//background-color: #F3F3F3;
+  background: white;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
+.master-container {
+  background-color: white;
+  margin-top: 75px;
+  margin-bottom: 50px;
+  padding: 25px;
+  padding-top: 10px;
 }
 
 .alert {
 	margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #1cd9d2;
 }
 
 a.no-underline {
@@ -33,12 +55,150 @@ a.no-underline {
 }
 
 .form-actions {
-    margin: 0;
-    background-color: transparent;
-    text-align: center;
+  margin: 0;
+  background-color: transparent;
+  text-align: center;
 }
 
 hr {
   border-top: 1px solid #D1D0CE;
   //color: #555555;
+}
+
+//Change font of all navbars to Roboto
+
+.navbar {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+//Change font of brand in main navbar
+
+.navbar-brand {
+  font-family: 'Satisfy', cursive;
+  font-size: 26px;  
+}
+
+.navbar-custom-bg .container {
+  padding: 0;
+}
+
+.navbar-collapse {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar > .container .last-item {
+  margin-right: 0px;
+}
+
+//Change color of all default navbar links
+
+.navbar-default .navbar-nav >li > a {
+  color: #474747;
+}
+
+.navbar-default .navbar-nav >li > a:hover {
+  color: #38bdb8; //darker tone of aqua hover color #1cd9d2
+}
+
+//Change margin around each item in the main navbar
+
+.navbar-custom-bg .navbar-nav > li > a {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+// Change default navbar colors for main navbar
+
+.navbar-custom-bg {
+  border: none;
+  background-color: #2B3A35;
+}
+
+.navbar-custom-bg .navbar-nav > li > a,
+.navbar-default .navbar-brand {
+  color: white;
+}
+
+.navbar-custom-bg .navbar-nav > li > a:hover,
+.navbar-custom-bg .navbar-nav > li > a:focus,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #1cd9d2;
+}
+
+.navbar-custom-bg .navbar-nav > .dropdown > a .caret {
+  color: white;
+  border-top-color: white;
+  border-bottom-color: white;
+}
+
+.navbar-custom-bg .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom-bg .navbar-nav > .open > a:focus .caret {
+  color: #1cd9d2;
+  border-top-color: #1cd9d2;
+  border-bottom-color: #1cd9d2;
+}
+
+.navbar-custom-bg .navbar-nav > .open > a, 
+.navbar-custom-bg .navbar-nav > .open > a:hover, 
+.navbar-custom-bg .navbar-nav > .open > a:focus {
+  background-color: #2B3A35;
+  color: #1cd9d2;
+}
+
+.navbar-custom-bg .dropdown-menu > li > a:hover,
+.navbar-custom-bg .dropdown-menu > li > a:focus {
+  background-color: #1cd9d2;
+}
+
+// Change Bootstrap buttons
+
+.centered-button {
+  text-align: center;
+}
+
+.btn-large {
+  font-size: 16px;
+  //font-weight: bold;
+}
+
+.btn-sm {
+  font-size: 14px;
+}
+
+.btn {
+  border-radius: 2px;
+  //border: none;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.btn-danger {
+  background-color: #FF3046;
+  border: none;
+}
+.btn-danger:hover {
+  background-color: #ff4458;
+}
+
+.btn-info {
+  font-weight: bold;
+  background: #1cd9d2;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #13e2db;
+}
+
+//footer
+.evrystep-footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #2B3A35;
+  color: #1cd9d2;
+  text-align: center;
 }

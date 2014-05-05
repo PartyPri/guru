@@ -24,15 +24,43 @@
 
     <div class="form-group">
       <div class="controls">
-        <%= f.label "Categories", :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label "Interests", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
+          <span class="help-block">Choose the interest(s) that best describe your project.</span>
           <% Interest.all.each do |interest| %>
             <%= hidden_field_tag "project[interest_ids][]", nil %>
             <%= check_box_tag "project[interest_ids][]", interest.id %>
             <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
             <%= interest.name %><br>
           <% end %>
-          <span class="help-block">select all that apply</span>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Project Layout", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <span class="help-block">Only the 4-element grid is currently available, but more are coming soon.</span>
+
+          <label class="radio-inline">
+            <%= image_tag("four-grid.png") %>
+          <%= radio_button :project, :project_layout, "four_element_grid", :class => "grid grid-four", :checked => true %>
+          <%= label_tag(:project_layout, "4-element grid", :class => 'radio-label') %>
+          </label>
+
+          <label class="radio-inline">
+          <%= radio_button :project, :project_layout, "five_element_grid", :class => "grid grid-five",  :disabled => true %>
+          <%= label_tag(:project_layout, "5-element grid", :class => 'radio-label disabled-input-label') %>
+          </label>
+          
+          <label class="radio-inline">
+          <%= radio_button :project, :project_layout, "nine_element_grid", :class => "grid grid-nine",  :disabled => true %>
+          <%= label_tag(:project_layout, "9-element grid", :class => 'radio-label disabled-input-label') %>
+          </label>
+
+          
         </div>
       </div>
     </div>
@@ -41,25 +69,37 @@
       <div class="controls">
         <%= f.label :cover, "Project cover", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
+          <span class="help-block">The cover will be used as a link to your project on profile and interest pages.</span>
           <%= f.file_field :cover %>
         </div>
       </div>
     </div>
 
-    <div class="form-group">
+    <div id="add-media" class="form-group">
       <div class="controls">
         <%= f.label "Project Media", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <%= link_to_add_fields "Add image", f, :images, class: "btn btn-default" %><br><br>
+          <span class="help-block">Add 4 images and videos.</span>
+          <%= link_to_add_fields "Add image", f, :images, class: "btn btn-default" %>
           <%= link_to_add_fields "Add video", f, :videos, class: "btn btn-default" %>
         </div>
       </div>
     </div>
 
-    <hr>
+    <div>
+      <div class="controls">
+        <%= f.label "Media added", :class => 'col-sm-2 h4 control-label' %>
+        <div id="added-media" class="col-sm-10">
+          <br>
+        </div>
+      </div>
+    </div>
+    <br><br>
+
+    <!-- <hr>  Figure out why <hr> disappears after content is added via JQuery -->
 
     <div class="form-actions">
-      <%= f.submit "Create", :class => 'btn btn-danger btn-lg' %>
+      <%= f.submit "Done", :class => 'btn btn-danger btn-lg' %>
     </div>
 
   </fieldset>

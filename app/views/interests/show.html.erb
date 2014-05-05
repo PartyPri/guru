@@ -1,8 +1,12 @@
 <!-- Heading -->
-<%= render "shared/interest_heading" %>
+<%= render "interest_heading" %>
 
 <!-- Menubar -->
-<%= render "shared/interest_menubar" %>
+<%= render "interest_menubar" %>
 
 <!-- Projects -->
-<%= render "shared/projects" %>
+<% if @interest.projects.present? %>
+  <%= render "shared/projects" %>
+<% else %>
+  <%= render "interest_projects_empty" %>
+<% end %>

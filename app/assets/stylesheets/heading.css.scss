@@ -1,46 +1,183 @@
+@import url(http://fonts.googleapis.com/css?family=Oxygen:700|Open+Sans:400,600); 
+@import url(http://fonts.googleapis.com/css?family=Cabin:400);
+@import url(http://fonts.googleapis.com/css?family=Satisfy);
+
+.h1, .h2, .h3, .h4, .h5, .h6,
+.h1 a, .h2 a, .h3 a, .h4 a, .h5 a, .h6 a,
+.h1 a:hover, .h2 a:hover, .h3 a:hover, .h4 a:hover, .h5 a:hover, .h6 a:hover {
+  font-family: 'Oxygen', sans-serif;
+  font-weight: 700;
+  color: #292929;
+  font-size: 50px;
+  text-decoration: none;
+  padding-top: 0px;
+  text-align: left;
+}
+
+.h2 {
+  font-size: 40px;  
+}
+
+.h3 {
+  font-size: 30px;  
+}
+
+.h4 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #474747;
+  //margin-top: -10px;  
+}
+
+.h5 {
+  font-size: 15px;
+}
+
+.h6 {
+  font-size: 10px; 
+}
+
+.welcome-to-evrystep {
+  color: #38bdb8;
+  text-align: center;
+}
+
+.container-917,
+.container-917-color {
+  max-width: 917px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+}
+
+.container-917-color {
+  background: #f8f7f5;
+  padding: 15px 25px;
+}
+
+.how-it-works-main-heading {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.how-it-works-heading {
+  font-family: "Satisfy", sans-serif; 
+  margin-bottom: 5px; 
+}
+
+.how-it-works-example-project a {
+  color: #38bdb8;
+}
+
+.how-it-works-tagline {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.how-it-works-body {
+  font-size: 18px;
+  //max-width: 600px;
+}
+
+.how-it-works-image-left {
+  float: left;
+  padding-right: 20px;
+}
+
+.how-it-works-image-right {
+  float: right;
+  padding-left: 20px;
+}
+
+.how-it-works-left-div {
+  margin-left: 0;
+  max-width: 600px;
+}
+
+.how-it-works-right-div {
+  margin-left: 317px;
+  max-width: 600px;
+}
+
+.featured-project {
+  text-align: center;
+}
+
 .heading,
 .subheading,
 .heading a,
 .heading a:hover {
-  color: black;
-  font-weight: 900;
-  font-size: 65px;
+  font-family: 'Oxygen', sans-serif;
+  color: #292929;
+  //font-weight: 300;
+  font-size: 50px;
   text-decoration: none;
-  text-align: center;
+  //text-align: center;
   padding-top: 0px;
 }
 
 .subheading {
-  font-weight: 400;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
   font-size: 20px;
-  color: gray;
-  margin-top: -10px;
+  color: #474747;
+  //margin-top: -10px;
 }
 
 .subheading a {
   color: dimgray;
 }
 
-.heading-featured {
-  font-size: 40px;
-}
-
-.welcome {
-  text-align: center;
-}
-
 .welcome dl {
   font-size: 20px;
 }
 
+.welcome {
+
+}
+
+.header {
+  max-width: 917px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding-left: 0px;
+}
+
+//Make menubar fully responsive to match width of masonry boxes. Right now, it just matches the width in the 3-column display.
+.menubar-container {
+  padding: 0;
+}
+
+.interest-bar {
+  max-width: 917px;
+}
+
 .menubar {
-  border-radius: 5px;
-  background: #f0f0f0;
-  margin-top: 15px;
+  //border-radius: 5px;
+  border: none;
+  //background: #f8f8f8;
+  //background: #f8f7f5;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 917px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.navbar {
+  min-height: 0;
+}
+
+.menubar .navbar-nav > li > a {
+  //padding-top: 12px;
+  //padding-bottom: 10px;
+  font-size: 14px;
 }
 
 .btn-follow-unfollow {
-  display: inline-block;
+  margin-right: 25px;
 }
 
 .center.navbar .nav,
@@ -53,7 +190,7 @@
 }
 
 .center .navbar-inner {
-  text-align:center;
+  //text-align:center;
 }
 
 .center .dropdown-menu {

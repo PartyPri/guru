@@ -12,7 +12,7 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'uglifier', '>= 1.0.3'
 gem "jquery-rails", "< 3.0.0"
 gem 'activeadmin'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip'
 gem 'masonry-rails'
 gem 'aws-sdk'
 gem 'youtube_id', '~> 0.0.3'

@@ -5,11 +5,11 @@ class UsersController < ApplicationController
       redirect_to :root#, error: "User could not be found"
     else
       @interests      = @user.interests
-      @posts          = @user.posts.order("updated_at desc")
       @projects       = @user.projects.order("updated_at desc")
-      @workshops      = @user.workshops
       @followers      = @user.followers
       @followed_users = @user.followed_users
+
+    
     end
   end
 

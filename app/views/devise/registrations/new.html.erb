@@ -1,8 +1,26 @@
 <br><br>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'well form-horizontal' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
 
   <fieldset>
     <h2 style="text-align: center">Sign up for evrystep!</h2><br>
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :email, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :password, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.password_field :password, :class => 'form-control input-lg' %>
+        </div>
+      </div>
+    </div>
 
     <div class="form-group">
       <div class="controls">
@@ -24,18 +42,42 @@
 
     <div class="form-group">  
       <div class="controls">
-        <%= f.label :email, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label :location, "Location", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg' %>
+          <%= f.text_field :location, :class => 'form-control input-lg', :placeholder => 'City, State' %>
         </div>
       </div>  
     </div>
 
     <div class="form-group">
       <div class="controls">
-        <%= f.label :password, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label "Profile picture", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <%= f.password_field :password, :class => 'form-control input-lg' %>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :description, "Personal tagline", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :description, :class => 'form-control input-lg', :placeholder => 'short description of you for your profile' %>
+        </div>
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Your interests", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <% Interest.all.each do |interest| %>
+            <%= hidden_field_tag "user[interest_ids][]", nil %>
+            <%= check_box_tag "user[interest_ids][]", interest.id %>
+            <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
+            <%= interest.name %><br>
+          <% end %>
+          <span class="help-block">Choose your favorite interests to follow. These will show up on your profile.</span>
         </div>
       </div>
     </div>
@@ -50,12 +92,12 @@
     </div> -->
 
     <div class="form-actions">
-      <%= f.submit "Sign up", :class => 'btn btn-danger btn-lg' %>
+      <%= f.submit "Sign up", :class => 'btn btn-info btn-lg' %>
     </div>
 
   </fieldset>
 <% end %>
 
 <div style="text-align:center">
-  <%= render "devise/shared/links" %>
+  <%#= render "devise/shared/links" %>
 </div>

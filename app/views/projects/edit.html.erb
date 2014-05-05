@@ -1,13 +1,13 @@
-<!-- Edit Links -->
-<% if @project.user.present? %>
-  <% if current_user.id == @project.user.id %>
+<!-- Edit Links
+<%# if @project.user.present? %>
+  <%# if current_user.id == @project.user.id %>
     <ul class="nav nav-pills">
-    <!-- Above renders error when no user signed in, but someone tries to view post -->
-      <li><%= link_to "show project", :back %></li>
-      <li><%= link_to "delete project", project_path(@project), method: :delete %></li>
+     Above renders error when no user signed in, but someone tries to view post
+      <li><%#= link_to "show project", :back %></li>
+      <li><%#= link_to "delete project", project_path(@project), method: :delete %></li>
     </ul>
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %> -->
 
 <%= form_for @project, url: project_path(@project), method: :put, :html => {:multipart => true, :class => 'well form-horizontal'} do |f| %>
 
@@ -67,14 +67,19 @@
       <div class="controls">
         <%= f.label "Project media", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <%= link_to_add_fields "Add new image", f, :images, class: "btn btn-default" %><br><br>
-          <%= link_to_add_fields "Add new video", f, :videos, class: "btn btn-default" %><br><br>
+          <%= link_to_add_fields "Add new image", f, :images, class: "btn btn-default" %>
+          <%= link_to_add_fields "Add new video", f, :videos, class: "btn btn-default" %>
+
+          <br><br>
+
+          <div id="added-media">
+          </div>
 
           <%= f.fields_for :images do |builder| %>
             <%= image_tag(builder.object.photo.url(:medium)) %><br>
             <%= builder.text_field :photo_file_name, readonly:true %><br>
-            <%= builder.label :caption %>
-            <%= builder.text_field :caption %><br>
+            <%#= builder.label :caption %>
+            <%#= builder.text_field :caption %><br>
             <%= builder.check_box :_destroy %>
             <%= builder.label :_destroy, "Remove image" %><br>
             <br>
@@ -82,8 +87,8 @@
           <%= f.fields_for :videos do |builder| %>
             <iframe width="295" height="194" seamless src="//www.youtube.com/embed/<%= YoutubeID.from("#{builder.object.url}") %>?rel=0" frameborder="0" allowfullscreen></iframe>
             <%= builder.text_field :url, readonly:true %><br>
-            <%= builder.label :caption %>
-            <%= builder.text_field :caption %><br>
+            <%#= builder.label :caption %>
+            <%#= builder.text_field :caption %><br>
             <%= builder.check_box :_destroy %>
             <%= builder.label :_destroy, "Remove video" %><br>
             <br>

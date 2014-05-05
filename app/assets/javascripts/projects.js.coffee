@@ -6,5 +6,6 @@ jQuery ->
   $('form').on 'click', '.add_fields', (event) ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
-    $(this).after($(this).data('fields').replace(regexp, time))
+    #$(this).after($(this).data('fields').replace(regexp, time))
+    $("#added-media").append($(this).data('fields').replace(regexp, time))
     event.preventDefault()

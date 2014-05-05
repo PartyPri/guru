@@ -1,16 +1,7 @@
  <head>
-  <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Sonsie+One' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "landing" %>
  </head>
-
-<!-- <div class="main">
-  <section class="landing-hero">
-    <h2>I am the landing hero section</h2>
-  </section>
-  <section>
-    <h2>How evrystep works</h2>
-  </section>
-</div> -->
 
 <div class="motto container">
   <div class="motto-heading">
@@ -20,13 +11,12 @@
     We’re on a mission to energize the world through creative and athletic diversity.
     Do you dance, board, emcee, or do other awesome things? Challenge yourself and empower others by repping what you do on evrystep.
   </div>
-  <div>
-    <%= render "shared/email_contact_form" %>
-<!--     <form class="form-inline">
-      <div class="form-group">
-        <input type="email" class="form-control input-lg" placeholder="Enter email">
-      </div>
-      <button class="btn btn-lg btn-danger">Join launch list</button>
-    </form> -->
+  <!--<div>
+    <%#= render "shared/email_contact_form" %>
+  </div>-->
+  <div class="centered-button">
+    <%= button_to "Sign up", new_user_registration_path, :method => "get", :class => 'btn btn-danger btn-lg' %>
   </div>
+
 </div>
+

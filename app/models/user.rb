@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Access
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :description, :avatar
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :first_name, :last_name, :description, :avatar, :location, :interest_ids
 
   # Serialize
 
@@ -29,12 +29,13 @@ class User < ActiveRecord::Base
 
   # Attachments
   
-  has_attached_file :avatar, :styles => {:small => "150x", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png" #{}"/system/users/avatars/default/small/missing.png" 
+  has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png" #{}"/system/users/avatars/default/small/missing.png" 
   
   # Validations
 
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates_presence_of :first_name, :last_name, :location, :description
+
+  do_not_validate_attachment_file_type :avatar
 
   # Methods
 

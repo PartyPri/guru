@@ -1,11 +1,14 @@
-<!-- Heading -->
-<%#= render "shared/user_heading" %>
 
 <!--Statbar (Avatar and Stats) -->
-<%= render "shared/user_statbar" %>
+<%= render "user_avatarbar" %>
 
 <!-- Menubar -->
-<%= render "shared/user_menubar" %>
+<%= render "user_menubar" %>
 
 <!-- Projects -->
-<%= render "shared/projects" %>
+
+<% if @user == current_user && !@user.projects.present? %>
+  <%= render "user_projects_empty" %>
+<% else %>
+  <%= render "shared/projects" %>
+<% end %>

@@ -1,10 +1,37 @@
 <br>
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true, :class => 'well form-horizontal' }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true, :class => 'form-horizontal' }) do |f| %>
 
   <%= devise_error_messages! %>
 
   <fieldset>
     <h2 style="text-align: center">Profile settings</h2><br>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :first_name, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :first_name, :class => 'form-control input-lg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :last_name, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :last_name, :class => 'form-control input-lg' %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :location, "Location", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :location, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>   
 
     <div class="form-group">  
       <div class="controls">
@@ -37,6 +64,7 @@
 
   </fieldset>
 
+  <br>
   <hr>
 
   <fieldset>
@@ -54,24 +82,6 @@
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label :first_name, :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :first_name, :class => 'form-control input-lg' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label :last_name, :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :last_name, :class => 'form-control input-lg' %>
-        </div>
-      </div>
-    </div>
 
     <div class="form-group">
       <div class="controls">
@@ -103,13 +113,16 @@
     </div>
 
     <div class="form-actions">
-      <%= f.submit "Save changes", :class => 'btn btn-danger btn-lg' %>
+      <%= f.submit "Save changes", :class => 'btn btn-info btn-lg' %>
     </div>
 
   </fieldset>
 <% end %>
 
-<div class="well">
+<br>
+<hr>
+
+<div>
   <h2 style="text-align: center">Cancel my account</h2>
   <h4 style="text-align: center">Oh man... Really?? So sad!</h4><br>
   <div class="form-actions">

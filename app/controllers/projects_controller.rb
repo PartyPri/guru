@@ -10,8 +10,11 @@ class ProjectsController < ApplicationController
     if user_signed_in?
       @project = Project.new(params[:project])  
       @project.user = current_user
-      @project.save
-      redirect_to @project
+      if @project.save
+        redirect_to @project
+      else
+        render "new"
+      end
     else
       flash[:notice] = "You must be signed in to create a project!"
       redirect_to :root #TODO Redirect to sign up page

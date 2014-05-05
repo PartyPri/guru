@@ -6,8 +6,8 @@ Guru::Application.routes.draw do
   resources :email_contacts, only: :create
   resources :interests
   resources :users, :only => [:show]
-  resources :user_interests, :only => [:create, :show]
-  resources :followerships, only: :create
+  resources :user_interests, :only => [:create, :show, :destroy]
+  resources :followerships, :only => [:create, :destroy]
   #resources :workshops, :only => [:show]
   #resources :posts
   resources :projects do

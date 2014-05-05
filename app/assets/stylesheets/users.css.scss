@@ -1,14 +1,92 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
+@import url(http://fonts.googleapis.com/css?family=Oxygen:700|Open+Sans:400,600);
+@import url(http://fonts.googleapis.com/css?family=Cabin:500italic);
+
 .statbar {
-  margin-top: 15px;
-  margin-bottom: 0;
-  padding: 10px 70px;
-  background: #f0f0f0;
+  //margin-top: 15px;
+  //margin-bottom: 0;
+  //padding: 10px 70px;
   text-align: center;
+  max-width: 917px;
+}
+
+.statbar .img {
+  vertical-align: top;
+  float: left;
 }
 
 .user-show-menubar {
   margin-top: 0;
   border-radius: 0 0 5px 5px;
-  background: aqua;
+  background: lightgray;
+  //background: #FFF4E8;
   #background: rgb(235,171,33);
+}
+
+.fav-categories,
+.fav-categories a,
+.fav-categories a:hover {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color: #777777;
+  font-size: 16px;
+  margin-bottom: 0px;
+  //text-align: center;
+  //font-size: 18px;
+  //display: inline-block;
+  //overflow: hidden;
+}
+
+.fav-categories a:hover {
+  color: #38bdb8;
+}
+
+.avatar {
+  float: right;
+  margin-top: 20px;
+  //margin-left: 15px;
+  //margin-top: 5px;
+  //margin-right: 25px;
+}
+
+.avatarbar {
+  background: white;
+  min-height: 150px;
+  max-width: 917px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  //margin-top: 15px;
+  //padding: 0 25px;
+}
+
+h2 .user-heading {
+  margin-top: 20px;
+}
+
+.username a,
+.username a:hover {
+  font-size: 40px;
+}
+
+a:hover .heading .username {
+  text-decoration: none;
+}
+
+.user-tagline {
+  //font-size: 22px;
+  margin-top: -15px;
+}
+
+.user-projects-empty {
+  border: 4px solid #f8f7f5;
+  padding-top: 75px;
+  padding-bottom: 75px;
+}
+
+.user-projects-empty-text {
+  text-align: center;
+  font-weight: 400;
+  color: #c5c5c5;
+  padding-bottom: 20px;
 }
