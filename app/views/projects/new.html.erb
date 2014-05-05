@@ -27,6 +27,7 @@
         <%= f.label "Interests", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <span class="help-block">Choose the interest(s) that best describe your project.</span>
+          <p class="h5">Dance</p>
           <% Interest.all.each do |interest| %>
             <%= hidden_field_tag "project[interest_ids][]", nil %>
             <%= check_box_tag "project[interest_ids][]", interest.id %>
