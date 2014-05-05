@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   def home
     #@posts = Post.order("updated_at desc")
     #@projects = Project.order("updated_at desc")
-    @project = Project.find_by_id(8)    
+    @project = Project.find_by_id(3)    
   end
 
   def landing
