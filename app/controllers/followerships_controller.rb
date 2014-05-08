@@ -19,6 +19,12 @@ class FollowershipsController < ApplicationController
     @followed_users = @user.followed_users    
   end
 
+  def show_following
+    @user = User.find(params[:id])
+    @followers      = @user.followers
+    @followed_users = @user.followed_users    
+  end
+
   def destroy
     @followership = Followership.find(params[:id])
     @followership.destroy
