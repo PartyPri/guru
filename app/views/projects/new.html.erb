@@ -27,7 +27,7 @@
         <%= f.label "Interests", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <span class="help-block">Choose the interest(s) that best describe your project.</span>
-          <p class="h5">Dance :</p>
+          <!--<p class="h5">Dance :</p>-->
           <% Interest.all.each do |interest| %>
             <%= hidden_field_tag "project[interest_ids][]", nil %>
             <%= check_box_tag "project[interest_ids][]", interest.id %>
@@ -41,12 +41,22 @@
 
     <div class="form-group">
       <div class="controls">
+        <%= f.label :cover, "Project cover", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <span class="help-block">The cover will be used as a link to your project on profile and interest pages.</span>
+          <%= f.file_field :cover %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
         <%= f.label "Project Layout", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <span class="help-block">Only the 4-element grid is currently available, but more are coming soon.</span>
 
           <label class="radio-inline">
-            <%= image_tag("four-grid.png") %>
+            <%= image_tag("four-grid labeled.png") %>
           <%= radio_button :project, :project_layout, "four_element_grid", :class => "grid grid-four", :checked => true %>
           <%= label_tag(:project_layout, "4-element grid", :class => 'radio-label') %>
           </label>
@@ -66,38 +76,61 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label :cover, "Project cover", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <span class="help-block">The cover will be used as a link to your project on profile and interest pages.</span>
-          <%= f.file_field :cover %>
-        </div>
-      </div>
-    </div>
-
     <div id="add-media" class="form-group">
       <div class="controls">
         <%= f.label "Project Media", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <span class="help-block">Add 4 images and videos.</span>
-          <%= link_to_add_fields "Add image", f, :images, class: "btn btn-default" %>
-          <%= link_to_add_fields "Add video", f, :videos, class: "btn btn-default" %>
+            <span class="help-block">Choose either an image or a video for each of the 4 spots in the grid.</span>
+          <!-- Add Media Element 1 -->
+            <div class="row">
+              <div id="media1a" class="col-sm-2">
+                1. <%= link_to_add_fields "image", f, :images, class: "" %>
+              </div>
+              <div id="media1b" class="col-sm-2">
+                <%= link_to_add_fields "video", f, :videos, class: "" %>
+              </div>
+              <div id="media1c" class="col-sm-6">
+              </div>
+            </div>
+            <!-- Add Media Element 2 -->
+            <div class="row">
+              <div id="media2a" class="col-sm-2">
+                2. <%= link_to_add_fields "image", f, :images, class: "" %>
+              </div>
+              <div id="media2b" class="col-sm-2">
+                <%= link_to_add_fields "video", f, :videos, class: "" %>
+              </div>
+              <div id="media2c" class="col-sm-6">
+              </div>
+            </div>
+            <!-- Add Media Element 3 -->
+            <div class="row">
+              <div id="media3a" class="col-sm-2">
+                3. <%= link_to_add_fields "image", f, :images, class: "" %>
+              </div>
+              <div id="media3b" class="col-sm-2">
+                <%= link_to_add_fields "video", f, :videos, class: "" %>
+              </div>
+              <div id="media3c" class="col-sm-6">
+              </div>
+            </div>
+            <!-- Add Media Element 4 -->
+            <div class="row">
+              <div id="media4a" class="col-sm-2">
+                4. <%= link_to_add_fields "image", f, :images, class: "" %>
+              </div>
+              <div id="media4b" class="col-sm-2">
+                <%= link_to_add_fields "video", f, :videos, class: "" %>
+              </div>
+              <div id="media4c" class="col-sm-6">
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    <div>
-      <div class="controls">
-        <%= f.label "Media added", :class => 'col-sm-2 h4 control-label' %>
-        <div id="added-media" class="col-sm-10">
-          <br>
-        </div>
-      </div>
-    </div>
-    <br><br>
-
-    <!-- <hr>  Figure out why <hr> disappears after content is added via JQuery -->
+    <hr>  <!-- Figure out why <hr> disappears after content is added via JQuery -->
 
     <div class="form-actions">
       <%= f.submit "Done", :class => 'btn btn-danger btn-lg' %>
