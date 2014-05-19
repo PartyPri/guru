@@ -1,12 +1,22 @@
 <br><br>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => 'form-horizontal' }) do |f| %>
 
+  <%= render 'shared/error_messages', :object => f.object %>
+
   <fieldset>
-    <h2 style="text-align: center">Sign up for evrystep!</h2><br>
+    <div style="text-align: center" class="h2 no-top-margin">Sign up for evrystep!</div>
+
+    <div class="form-group">  
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-10">
+        <span class="help-block"><span class="glyphicon glyphicon-lock"></span> Evrystep respects your privacy and will not misuse or sell your personal information.</span>
+      </div> 
+    </div>
 
     <div class="form-group">  
       <div class="controls">
-        <%= f.label :email, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label :email, "Email *", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg' %>
         </div>
@@ -15,16 +25,16 @@
 
     <div class="form-group">
       <div class="controls">
-        <%= f.label :password, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label :password, "Password *", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
-          <%= f.password_field :password, :class => 'form-control input-lg' %>
+          <%= f.password_field :password, :class => 'form-control input-lg', :placeholder => 'must be at least 8 characters' %>
         </div>
       </div>
     </div>
 
     <div class="form-group">
       <div class="controls">
-        <%= f.label :first_name, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label :first_name, "First name *", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <%= f.text_field :first_name, :class => 'form-control input-lg' %>
         </div>
@@ -33,7 +43,7 @@
 
     <div class="form-group">
       <div class="controls">
-        <%= f.label :last_name, :class => 'col-sm-2 h4 control-label' %>
+        <%= f.label :last_name, "Last name *", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <%= f.text_field :last_name, :class => 'form-control input-lg' %>
         </div>

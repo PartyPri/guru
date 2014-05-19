@@ -1,8 +1,10 @@
 <br><br>
 <%= form_for @project, url: projects_path, :html => { :multipart => true, :class => 'well form-horizontal' } do |f| %>
 
+  <%= render 'shared/error_messages', :object => f.object %>
+
   <fieldset>
-    <h2 style="text-align: center">Create Project</h2><br>
+    <div style="text-align: center" class="h2 no-top-margin">Create Project</div><br>
 
     <div class="form-group">  
       <div class="controls">
