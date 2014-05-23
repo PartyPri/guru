@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   
   # Validations
 
-  validates_presence_of :first_name, :last_name, :location, :description
+  validates_presence_of :first_name, :last_name#, :location, :description
 
   do_not_validate_attachment_file_type :avatar
 

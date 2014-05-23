@@ -25,10 +25,11 @@
 body {
  	margin-top: 70px;
   margin-bottom: 0px;
-  //padding-bottom: 50px;
+  padding-bottom: 50px;
  	//background-color: #F3F3F3;
   background: white;
   font-family: "Open Sans", sans-serif;
+  font-size: 16px;
   font-weight: 400;
 }
 
@@ -183,7 +184,9 @@ hr {
 .btn-danger {
   background-color: #FF3046;
   border: none;
+  font-weight: bold;
 }
+
 .btn-danger:hover {
   background-color: #ff4458;
 }

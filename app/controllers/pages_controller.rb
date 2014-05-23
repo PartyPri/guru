@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     @email_contact = EmailContact.new
   end
 
+  def about
+
+  end
+
   def mission
     
   end

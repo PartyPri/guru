@@ -54,26 +54,6 @@ body {
   background-size: cover;
 }
 
-h1 { 
-  font-family: 'Lato', sans-serif; 
-  font-size: 95px;
-  //color:  rgba(235,190,85,1);
-  color: red;
-  //vertical-align: bottom;
-  margin-bottom: 0px;
-}
-
-h2, h3 { 
-  margin-top: 0px;
-}
-
-h2, h3, h5 { 
-  //color:  rgba(235,190,85,1);
-  //color:  rgba(160,160,160,1);
-  //color: white;
-  //font-family: 'Open Sans', sans-serif;
-  //color:  rgba(60,60,60,1);
-}
 
 .well {
   background-color: rgba(200,200,200,.5);
@@ -90,13 +70,15 @@ h2, h3, h5 {
 
 .motto-heading {
   font-size: 60px;
-  font-weight: bold;
+  //font-weight: bold;
   line-height: 1;
   padding-bottom: 15px;
+  text-align: center;
 }
 
 .motto-content {
-  font-size: 22px;
-  line-height: 1;
+  //font-size: 22px;
+  line-height: 1.2;
   padding-bottom: 20px;
+  text-align: center;
 }

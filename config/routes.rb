@@ -22,8 +22,8 @@ Guru::Application.routes.draw do
   #get 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   #put 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   get 'landing', to: 'pages#landing', as: 'landing'
-  get 'mission', to: 'pages#mission', as: 'mission'
-  get 'team', to: 'pages#team', as: 'team'
+  get 'about', to: 'pages#about', as: 'about'
+  #get 'team', to: 'pages#team', as: 'team'
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }
   ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
