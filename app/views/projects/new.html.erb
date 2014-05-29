@@ -4,7 +4,13 @@
   <%= render 'shared/error_messages', :object => f.object %>
 
   <fieldset>
-    <div style="text-align: center" class="h2 no-top-margin">Create Project</div><br>
+    <div style="text-align: center" class="h2 no-top-margin">Create Project</div>
+
+    <div class="project-form">
+      <p class="how-it-works-body project-form">A projects is a collection of videos and images designed to capture and share an experience. </p>
+      <%= link_to "See example project", project_path(Project.find_by_id(8)) %>
+    </div>
+    <br><br>
 
     <div class="form-group">  
       <div class="controls">

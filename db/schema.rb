@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140504160635) do
+ActiveRecord::Schema.define(:version => 20140528204815) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20140504160635) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
     t.text     "history"
+    t.integer  "parent_id"
   end
 
   create_table "post_activities", :force => true do |t|

@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     if user_signed_in?
       @project = Project.new(params[:project])  
       @project.user = current_user
+      @parent_interests = Interest.find(:all, :conditions => {:parent_id => nil } )
       if @project.save
         redirect_to @project
       else
