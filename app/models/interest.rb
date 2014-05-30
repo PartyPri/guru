@@ -3,7 +3,7 @@ class Interest < ActiveRecord::Base
 
   # Associations
 
-  has_many :subinterests, :class_name => "Interest", :foreign_key => "parent_id"
+  #has_many :subinterests, :class_name => "Interest", :foreign_key => "parent_id"
   #belongs_to :parent_interest, :class_name => "Interest"
 
   has_many :user_interests
