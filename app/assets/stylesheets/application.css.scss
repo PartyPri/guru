@@ -11,14 +11,3 @@
  *= require_self
  *= require_tree .
  */
-
-@import "twitter/bootstrap";
-
- body {
- 	padding-top: 70px;
- 	background-color: white;
- }
-
- .alert {
-	margin-top: 10px;
-}
