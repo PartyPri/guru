@@ -6,7 +6,7 @@ class EmailContactsController < ApplicationController
       @email_contact = EmailContact.new
       render "pages/home", flash: { success: "Email stored" }
     else
-      render "pages/home", flash: { error: "Duplicate email" }#@email_contact.errors.first
+      render "pages/home"#, flash: { error: "Duplicate email" }#@email_contact.errors.first
     end
   end
 end
