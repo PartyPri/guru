@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :workshops
   has_many :posts
   has_many :projects#, inverse_of: :user
+  has_many :reels
 
   has_many :followerships, dependent: :destroy
   has_many :followers, through: :followerships

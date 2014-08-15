@@ -38,6 +38,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li>
+            <%= render "shared/create_reel_button" %>
+          </li>
+          <li>
             <%= render "shared/create_project_button" %>
           </li>
           <li class="dropdown">

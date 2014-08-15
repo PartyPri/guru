@@ -5,10 +5,19 @@
 <!-- Menubar -->
 <%= render "user_menubar" %>
 
-<!-- Projects -->
-
-<% if @user == current_user && !@user.projects.present? %>
+<!-- Reels -->
+<% if @user == current_user && !@user.reels.present? %>
   <%= render "user_projects_empty" %>
 <% else %>
-  <%= render "shared/projects" %>
+  <% @reels.each do |reel| %>
+    <%= reel.name %>
+  <% end %>
 <% end %>
+
+<!-- Projects -->
+
+<%# if @user == current_user && !@user.projects.present? %>
+  <%#= render "user_projects_empty" %>
+<%# else %>
+  <%#= render "shared/projects" %>
+<%# end %>

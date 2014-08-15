@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     else
       @interests      = @user.interests
       @projects       = @user.projects.order("updated_at desc")
+      @reels          = @user.reels.order("updated_at desc")
       @followers      = @user.followers
       @followed_users = @user.followed_users
 
