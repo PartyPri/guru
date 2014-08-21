@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140815002138) do
+ActiveRecord::Schema.define(:version => 20140818165629) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -147,6 +147,13 @@ ActiveRecord::Schema.define(:version => 20140815002138) do
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
     t.string   "project_layout"
+  end
+
+  create_table "reel_interests", :force => true do |t|
+    t.integer  "reel_id"
+    t.integer  "interest_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "reels", :force => true do |t|

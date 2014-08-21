@@ -1,7 +1,8 @@
 class Image < ActiveRecord::Base
-  attr_accessible :caption, :project_id, :photo, :photo_file_name
+  attr_accessible :caption, :project_id, :photo, :photo_file_name, :reel_id
 
   belongs_to :project
+  belongs_to :reel
 
   #Attachments
   has_attached_file :photo, :styles => {:small => "100x100#", :medium => "450x300#", large: "500x500#"},

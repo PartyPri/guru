@@ -11,6 +11,10 @@
 <% else %>
   <% @reels.each do |reel| %>
     <%= reel.name %>
+    <% reel.interests.each do |interest| %>
+      <%= link_to interest.name, interest_path(interest) %>
+    <% end %>
+    <br><br>
   <% end %>
 <% end %>
 
