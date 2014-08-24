@@ -4,9 +4,12 @@ class EmailContactsController < ApplicationController
     @email_contact = EmailContact.new(params[:email_contact])
     if @email_contact.save
       @email_contact = EmailContact.new
-      render "pages/home", flash: { success: "Email stored" }
+      flash[:success] = "Thanks for joining our launch list!"
+      redirect_to root_url
+      
     else
-      render "pages/home"#, flash: { error: "Duplicate email" }#@email_contact.errors.first
+      flash[:error] = @email_contact.errors.full_messages.first
+      redirect_to root_url
     end
   end
 end
