@@ -4,15 +4,16 @@ class ImagesController < ApplicationController
       redirect_to :root#error
     end
     @image = Image.new
+    @user = current_user
   end
 
   def create
     if user_signed_in?
       @image = Image.new(params[:image])  
-      #@image.user = current_user
+      @user = current_user
       if @image.save
-        redirect_to current_user
-        flash[:notice] = "Imaged added!"
+        redirect_to @user
+        flash[:notice] = "Image added!"
 
       else
         render "new"

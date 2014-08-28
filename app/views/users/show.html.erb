@@ -7,12 +7,15 @@
 
 <!-- Reels -->
 <% if @user == current_user && !@user.reels.present? %>
-  <%= render "user_projects_empty" %>
+  <%= render "user_reels_empty" %>
 <% else %>
   <% @reels.each do |reel| %>
     <%= reel.name %>
     <% reel.interests.each do |interest| %>
       <%= link_to interest.name, interest_path(interest) %>
+    <% end %>
+    <% reel.images.each do |image| %>
+      <%= image.photo_file_name %>
     <% end %>
     <br><br>
   <% end %>
