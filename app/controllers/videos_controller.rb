@@ -1,31 +1,31 @@
-class ImagesController < ApplicationController
+class VideosController < ApplicationController
   def new
     unless user_signed_in?
       redirect_to :root#error
     end
-    @image = Image.new
+    @video = Video.new
     @user = current_user
   end
 
   def create
     if user_signed_in?
-      @image = Image.new(params[:image])  
+      @video = Video.new(params[:video])
       @user = current_user
-      if @image.save
+      if @video.save
         redirect_to @user
-        flash[:notice] = "Image added!"
+        flash[:notice] = "Video added!"
 
       else
         render "new"
       end
     else
-      flash[:notice] = "You must be signed in to upload an image."
+      flash[:notice] = "You must be signed in to upload an video."
       redirect_to :root #TODO Redirect to sign up page
     end
   end
 
   private
     def reel_params
-      params.require(:image).permit(:reel_id)
+      params.require(:video).permit(:reel_id)
     end
 end

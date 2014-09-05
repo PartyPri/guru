@@ -15,6 +15,7 @@ Guru::Application.routes.draw do
   end
   resources :reels
   resources :images
+  resources :videos
   get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
   get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
   get 'users/:id/following', to: 'followerships#show_following', as: 'following'

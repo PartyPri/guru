@@ -24,6 +24,6 @@ class ReelsController < ApplicationController
 
   private
     def reel_params
-      params.require(:reel).permit(:images)
+      params.require(:reel).permit(:image_id, :video_id)
     end
 end
