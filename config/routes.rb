@@ -10,16 +10,12 @@ Guru::Application.routes.draw do
   resources :followerships, :only => [:create, :destroy]
   #resources :workshops, :only => [:show]
   #resources :posts
-  resources :projects do
-    resources :images
-  end
   resources :reels
   resources :images
   resources :videos
   get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
   get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
   get 'users/:id/following', to: 'followerships#show_following', as: 'following'
-  get 'activities/:id', to: 'activities#show', as: 'activity'
   get 'interests/:id/about', to: 'about_interests#show', as: 'interest_about'
   get 'users/:id/about', to: 'about_users#show', as: 'user_about'
   #get 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
