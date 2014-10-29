@@ -28,7 +28,6 @@
       <!--<p class="how-it-works-body">Create projects to share what you're working on or experimenting with. Tag your projects with interests for easy discovery.</p>
       <%#= link_to "See featured project", project_path(Project.find_by_id(8)) %>-->
       <p class="how-it-works-body">Learning a new dance style? Entering a special competition? Projects are collections of videos and images designed to capture and share your experiences. </p>
-      <%= link_to "See example project", project_path(Project.find_by_id(8)) %>
       <br><br>
     </div>
     <div id="how-it-works-explore" class="how-it-works-right-div">
@@ -48,16 +47,7 @@
 </div>
 <br>
 
-<div class="centered-button">
-  <%= render "shared/create_project_button" %>
-</div>
 
-<!-- Heading --> 
-<div class="h3 container-917 featured-project">
-  Featured Project
-</div>
 
-<!-- Featured Projects -->
-<%= render "shared/project" %>
 
 

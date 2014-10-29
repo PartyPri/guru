@@ -6,7 +6,7 @@ class InterestsController < ApplicationController
     else
       @interest = Interest.find(params[:id])
       @followers = @interest.users
-      @projects = @interest.projects.order("updated_at desc")
+      @reels = @interest.reels.order("updated_at desc")
     end
   end
 end
