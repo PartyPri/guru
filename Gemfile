@@ -6,7 +6,15 @@ gem 'rails', '3.2.12'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
+
+##User authentication
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
+##Secrets
+gem "figaro"
+
 gem 'bootstrap-sass-rails'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'uglifier', '>= 1.0.3'
