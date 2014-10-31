@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :description, :avatar, :location, :interest_ids,
-    :uid, :provider, :token
+    :uid, :provider, :token, :refresh_token
 
   # Serialize
 
@@ -45,7 +45,6 @@ class User < ActiveRecord::Base
 
   #Google Authentication
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
-    debugger
     data = access_token.info
     user = User.where(:email => data["email"]).first
 
@@ -58,7 +57,8 @@ class User < ActiveRecord::Base
         password: Devise.friendly_token[0,20],
         provider: access_token.provider,
         uid: access_token.uid,
-        token: access_token.credentials.token
+        token: access_token.credentials.token,
+        refresh_token: access_token.credentials.refresh_token
       )
     end
     user
