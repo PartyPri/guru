@@ -1,43 +1,56 @@
 <br><br>
-<%= form_for @video, url: videos_path, :html => { :multipart => true, :class => 'well form-horizontal' } do |f| %>
 
-  <%= render 'shared/error_messages', :object => f.object %>
+<script>
+  $(document).ready(function() {
+    var submit_button = $('#submit_pre_upload_form');
+    var video_upload = $('#video_upload');
+    //Get upload token from YouTube client
+    submit_button.click(function () {
+      $.ajax({
+        type: 'POST',
+        url: '<%= get_upload_token_path %>',
+        data: $('#video_pre_upload').serialize(),
+        dataType: 'json',
+        success: function(response) {
+          //With YouTube upload token and video_uid_url, upload video to YouTube
+          video_upload.find('#token').val(response.token);
+          video_upload.attr('action', response.url.replace(/^http:/i, window.location.protocol)).submit();
+          submit_button.unbind('click').hide();
+          $('.preloader').css('display', 'block');
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+          alert("Something went wrong. Please try again.");
+      }
+      });
+    });
+  });
+</script>
 
-  <fieldset>
-    <div style="text-align: center" class="h2 no-top-margin">Upload a Video</div>
-    <br>
+<%= form_tag '', id: 'video_pre_upload' do %>
 
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label "Choose Reel", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <span class="help-block">Choose a reel for your video:</span>
-          <%= f.collection_select(:reel_id, @user.reels.all, :id, :name, :prompt => 'Please select reel') %>          
-        </div>
-      </div>
-    </div>
+   <div class="form-group">
+    <%= collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true,) %>          
+  </div>
 
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label :url, "YouTube link", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :url %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label :caption, "Caption", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_area :caption, :class => 'form-control', :type => 'text', :rows => '3', :placeholder => 'Describe your video here' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <%= f.submit "Done", :class => 'btn btn-danger btn-lg' %>
-    </div>
-
-  </fieldset>
+  <div class="form-group">
+    <%= text_field_tag :title, @pre_upload_info[:title], required: true,
+                       placeholder: 'Title', class: 'form-control' %>
+  </div>
+ 
+  <div class="form-group">
+    <%= text_area_tag :description, @pre_upload_info[:description], required: true,
+                      placeholder: 'Description', class: 'form-control' %>
+  </div>
 <% end %>
+ 
+<%= form_tag '', id: 'video_upload', multipart: true do %>
+  <%= hidden_field_tag :token, '' %>
+ 
+  <div class="form-group">
+    <%= file_field_tag :file, required: true %>
+  </div>
+<% end %>
+ 
+<button id="submit_pre_upload_form" class="btn btn-lg btn-primary">Upload</button>
+<%= image_tag 'ajax-loader.gif', class: 'preloader', alt: 'Uploading...', title: 'Uploading...' %>
+

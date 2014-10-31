@@ -1,5 +1,5 @@
 class Reel < ActiveRecord::Base
-  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes
+  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id
 
   # Associations
 

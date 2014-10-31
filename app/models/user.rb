@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :description, :avatar, :location, :interest_ids,
-    :uid, :provider
+    :uid, :provider, :token
 
   # Serialize
 
@@ -45,20 +45,24 @@ class User < ActiveRecord::Base
 
   #Google Authentication
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    debugger
     data = access_token.info
     user = User.where(:email => data["email"]).first
 
-    #create new user if user does not exist
-    unless user
-        user = User.create(first_name: data["first_name"], 
-          last_name: data["last_name"],
-          email: data["email"],
-          password: Devise.friendly_token[0,20]
-          )
+    if user
+      user.update_attributes(token: access_token.credentials.token)
+    else
+      user = User.create(first_name: data["first_name"], 
+        last_name: data["last_name"],
+        email: data["email"],
+        password: Devise.friendly_token[0,20],
+        provider: access_token.provider,
+        uid: access_token.uid,
+        token: access_token.credentials.token
+      )
     end
     user
   end
-
 
   def followed_users #refactor to use built in rails associations
     Followership.all.map { |followership|
@@ -67,4 +71,6 @@ class User < ActiveRecord::Base
       end
     }.delete_if {|x| x == nil}
   end
+
+
 end

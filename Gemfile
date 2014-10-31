@@ -12,6 +12,9 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+#Video upload
+gem 'youtube_it'
+
 ##Secrets
 gem "figaro"
 
