@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :caption, :project_id, :photo, :photo_file_name, :reel_id
+  attr_accessible :description, :project_id, :photo, :photo_file_name, :reel_id, :title
 
   belongs_to :project
   belongs_to :reel
@@ -11,4 +11,6 @@ class Image < ActiveRecord::Base
 
   #Validations
   do_not_validate_attachment_file_type :photo
+
+  validates_presence_of :reel_id
 end

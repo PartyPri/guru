@@ -3,33 +3,66 @@
 <script>
   $(document).ready(function() {
     var submit_button = $('#submit_pre_upload_form');
-    var video_upload = $('#video_upload');
+    var media_upload = $('#media_upload');
     //Get upload token from YouTube client
     submit_button.click(function () {
-      $.ajax({
-        type: 'POST',
-        url: '<%= get_upload_token_path %>',
-        data: $('#video_pre_upload').serialize(),
-        dataType: 'json',
-        success: function(response) {
-          //With YouTube upload token and video_uid_url, upload video to YouTube
-          video_upload.find('#token').val(response.token);
-          video_upload.attr('action', response.url.replace(/^http:/i, window.location.protocol)).submit();
-          submit_button.unbind('click').hide();
-          $('.preloader').css('display', 'block');
-        },
-        error: function (xhr, ajaxOptions, thrownError) {
-          alert("Something went wrong. Please visit www.youtube.com and create a channel if you do not already have one.");
+
+      var filepath = $("#file").val();
+      var extension = getFileExtension(filepath);
+      if (extension == "") {
+        return alert("Please add an extension to your filename.");
       }
-      });
+      //If this is a movie file supported by YouTube, post to YouTube
+      if (extension.match(/^(MOV|MPEG4|MP4|AVI|WMV|MPEGPS|FLV|3GPP|WEBM)$/i)) {
+        $.ajax({
+          type: 'POST',
+          url: '<%= get_upload_token_path %>',
+          data: $('#media_pre_upload').serialize(),
+          dataType: 'json',
+          success: function(response) {
+            //With YouTube upload token and video_uid_url, upload video to YouTube
+            media_upload.find('#token').val(response.token);
+            media_upload.attr('action', response.url.replace(/^http:/i, window.location.protocol)).submit();
+            submit_button.unbind('click').hide();
+            $('.preloader').css('display', 'block');
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            //This is a common cause for YouTube upload errors:
+            alert("Something went wrong. Please visit www.youtube.com and create a channel if you do not already have one.");
+          }
+        });
+      }
+      // All other file types upload through paperclip
+      else {
+        //Add hidden copies of the pre_media_form fields to the media_upload form. NOTE: these fields are separated
+        //to create the YouTube upload token in the case of a video upload. See above.
+        var pre_media_form_groups = $("#media_pre_upload").children(".form-group").clone();
+        pre_media_form_groups.children().removeAttr('required');
+        pre_media_form_groups.hide();
+        $("#upload_fields").prepend(pre_media_form_groups);
+        $("#upload_fields #description").val($("#description").val()); //The description val, mysteriously, isn't copied.
+        $("#upload_fields #media_reel_id").val($("#media_reel_id").val())
+        media_upload.attr('action', '<%= images_url %>').submit();
+      }
     });
+
+    var getFileExtension = function(filename) {
+      var a = filename.split(".");
+      if( a.length === 1 || ( a[0] === "" && a.length === 2 ) ) {
+          return "";
+      }
+      return a.pop();
+    }
+
   });
 </script>
 
-<%= form_tag '', id: 'video_pre_upload' do %>
+ <div style="text-align: center" class="h2 no-top-margin">Upload an Image or Video</div>
+
+<%= form_tag '', id: 'media_pre_upload' do %>
 
    <div class="form-group">
-    <%= collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true,) %>          
+    <%= collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true,) %>          
   </div>
 
   <div class="form-group">
@@ -43,12 +76,15 @@
   </div>
 <% end %>
  
-<%= form_tag '', id: 'video_upload', multipart: true do %>
-  <%= hidden_field_tag :token, '' %>
- 
-  <div class="form-group">
-    <%= file_field_tag :file, required: true %>
-  </div>
+<%= form_tag '', id: 'media_upload', multipart: true do %>
+
+  <div id="upload_fields">
+    <%= hidden_field_tag :token, '' %>
+   
+    <div class="form-group">
+      <%= file_field_tag :file, required: true %>
+    </div>
+  <div>
 <% end %>
  
 <button id="submit_pre_upload_form" class="btn btn-lg btn-primary">Upload</button>

@@ -19,7 +19,7 @@ class VideosController < ApplicationController
                     keywords: [] }
 
     #save the reel on the session for use in get_video_uid
-    session[:current_reel_id] = params[:video][:reel_id]
+    session[:current_reel_id] = params[:media][:reel_id]
    
     if current_user
       youtube_client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
@@ -60,12 +60,9 @@ end
 
     #Check for upload params needed by the YouTube client and app video model
     def check_valid_params
-      unless params[:title] !='' && params[:description] !='' && params[:video][:reel_id] 
+      unless params[:title] !='' && params[:description] !='' && params[:media][:reel_id] 
         redirect_to({ :action=>'new' }, :notice => "Please fill out all form fields")
       end
     end
 
-    def reel_params
-      params.require(:video).permit(:reel_id)
-    end
 end
