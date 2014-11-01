@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20141031212730) do
+ActiveRecord::Schema.define(:version => 20141031215310) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -145,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20141031212730) do
     t.string   "uid"
     t.string   "token"
     t.string   "refresh_token"
+    t.datetime "expires_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

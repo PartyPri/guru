@@ -23,7 +23,17 @@ class VideosController < ApplicationController
    
     if current_user
       youtube_client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
-                                            dev_key: ENV['GOOGLE_APP_ID'])
+                                            dev_key: ENV['GOOGLE_APP_ID'], 
+                                            client_id: ENV['GOOGLE_CLIENT_ID'],
+                                            client_secret: ENV["GOOGLE_CLIENT_SECRET"],
+                                            client_refresh_token: current_user.refresh_token)
+
+
+      
+      if current_user.token_expired?
+        current_user.token = youtube_client.refresh_access_token!.token
+        current_user.save
+      end
    
       upload_info = youtube_client.upload_token(temp_params, get_video_uid_url)
    
