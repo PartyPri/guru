@@ -1,5 +1,11 @@
 class ReelsController < ApplicationController
 
+  def show
+    @reel = Reel.includes(:images, :videos).find(params[:id])
+    @images = @reel.images
+    @videos = @reel.videos
+  end
+
   def new
     unless user_signed_in?
       redirect_to :root#error

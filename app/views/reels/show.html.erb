@@ -1,0 +1,45 @@
+<script type="text/javascript">
+
+ $(function() {
+  window.fbAsyncInit = function() {
+    FB.init({appId: '<%= ENV["FACEBOOK_APP_ID"]%>', status: true, cookie: true,
+    xfbml: true});
+  };
+
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+    '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+
+  $('#share_button').click(function(e){
+    e.preventDefault();
+      FB.ui(
+      {
+        method: 'share_open_graph',
+        action_type: 'og.likes',
+        action_properties: JSON.stringify({
+            object:'<%= share_object %>',
+        })
+      }, function(response){
+          if (response && !response.error_code) {
+          alert('Posting completed.');
+        } else {
+          alert('Error while posting.');
+        }
+    });
+  });
+ });
+
+</script>
+
+<div id="fb-root"></div>
+
+<h1 class="text-center"> Reel: <%= @reel.name %> </h1>
+
+<%= render partial: "reels/reel", locals: { images: @images, videos: @videos } %>
+
+<button class="btn btn-lg btn-primary" id="share_button">Share to Facebook</button>
+
+<div id="result"></div>
