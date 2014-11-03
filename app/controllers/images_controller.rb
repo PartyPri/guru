@@ -1,22 +1,19 @@
 class ImagesController < ApplicationController
-  def new
-    unless user_signed_in?
-      redirect_to :root#error
-    end
-    @image = Image.new
-    @user = current_user
-  end
 
   def create
     if user_signed_in?
-      @image = Image.new(params[:image])  
-      @user = current_user
+      @image = Image.new(reel_id: params[:media][:reel_id],
+                         title: params[:title],
+                         description: params[:description],
+                         photo: params[:file] )  
       if @image.save
-        redirect_to @user
+        redirect_to current_user
         flash[:notice] = "Image added!"
 
       else
-        render "new"
+        #TODO: check validation errors
+        flash[:error] = "Error. Please try again."
+        redirect_to new_video_url
       end
     else
       flash[:notice] = "You must be signed in to upload an image."
@@ -24,8 +21,4 @@ class ImagesController < ApplicationController
     end
   end
 
-  private
-    def reel_params
-      params.require(:image).permit(:reel_id)
-    end
 end
