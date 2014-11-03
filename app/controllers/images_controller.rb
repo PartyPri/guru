@@ -4,13 +4,14 @@ class ImagesController < ApplicationController
     if user_signed_in?
       @image = Image.new(reel_id: params[:media][:reel_id],
                          title: params[:title],
-                         description: params[:description])  
+                         description: params[:description],
+                         photo: params[:file] )  
       if @image.save
         redirect_to current_user
         flash[:notice] = "Image added!"
 
       else
-        #TODO: show validation errors
+        #TODO: check validation errors
         flash[:error] = "Error. Please try again."
         redirect_to new_video_url
       end

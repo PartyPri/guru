@@ -16,6 +16,9 @@
     <% end %>
     <% reel.images.each do |image| %>
       <%= image.title %>
+      <% if image.photo %>
+        <%= image_tag image.photo.url(:medium) %>
+      <% end %>
     <% end %>
 
     <ul class="row" id="videos-list">

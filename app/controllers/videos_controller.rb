@@ -20,7 +20,6 @@ class VideosController < ApplicationController
 
     #save the reel on the session for use in get_video_uid
     session[:current_reel_id] = params[:media][:reel_id]
-   
     if current_user
       youtube_client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
                                             dev_key: ENV['GOOGLE_APP_ID'], 
@@ -29,14 +28,13 @@ class VideosController < ApplicationController
                                             client_refresh_token: current_user.refresh_token)
 
 
-      
       if current_user.token_expired?
         current_user.token = youtube_client.refresh_access_token!.token
         current_user.save
       end
    
       upload_info = youtube_client.upload_token(temp_params, get_video_uid_url)
-   
+     
       render json: {token: upload_info[:token], url: upload_info[:url]}
     else
       render json: {error_type: 'Not authorized.', status: :unprocessable_entity}
