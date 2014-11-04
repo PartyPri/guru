@@ -19,7 +19,7 @@ module ApplicationHelper
     if !@reel.images.empty?
       @reel.images.first.photo.url
     else
-      "http://www.evrystep.herokuapp.com/assets/mighty_1.jpg"  
+      "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
     end
   end
 
