@@ -16,7 +16,7 @@ module ApplicationHelper
 
   
   def reel_cover_image
-    if @reel.images
+    if !@reel.images.empty?
       @reel.images.first.photo.url
     else
       "http://www.evrystep.herokuapp.com/assets/mighty_1.jpg"  
@@ -24,9 +24,9 @@ module ApplicationHelper
   end
 
   def reel_description
-    if @reel.images
+    if !@reel.images.empty?
       @reel.images.first.description
-    elsif @reel.videos
+    elsif !@reel.videos.empty?
       @reel.videos.first.description
     else
       "What do you rep?"
