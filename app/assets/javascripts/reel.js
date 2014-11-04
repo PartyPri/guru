@@ -26,7 +26,9 @@ $(function() {
           })
         }, function(response){
             if (response && !response.error_code) {
-            alert('Posting completed.');
+              debugger;
+              $("#share_button").hide();
+              $("#share_success").show();
           } else {
             //Flash error unless post failed because user canceled the post manually
             if (response.error_code != 4201) {
