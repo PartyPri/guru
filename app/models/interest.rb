@@ -20,4 +20,7 @@ class Interest < ActiveRecord::Base
 
   has_one :about_interest
   has_one :about, through: :about_interest
+
+  has_many :reel_interests
+  has_many :reels, through: :reel_interests, uniq: true
 end

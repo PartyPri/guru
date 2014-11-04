@@ -14,7 +14,7 @@
       <div class="collapse navbar-collapse interest-bar">
         <ul class="nav navbar-nav">
           <!-- <li><%#= link_to "About", user_about_path(@user) %></li> -->
-          <li><%= link_to "Projects", user_path(@user) %></li>
+          <li><%#= link_to "Projects", user_path(@user) %></li>
           <li><%= link_to "#{@followers.count} Followers", user_followers_path(@user) %></li>
           <li><%= link_to "#{@followed_users.count} Following", following_path(@user) %></li>
         </ul>

@@ -1,7 +1,8 @@
 class Image < ActiveRecord::Base
-  attr_accessible :caption, :project_id, :photo, :photo_file_name
+  attr_accessible :description, :project_id, :photo, :photo_file_name, :reel_id, :title
 
   belongs_to :project
+  belongs_to :reel
 
   #Attachments
   has_attached_file :photo, :styles => {:small => "100x100#", :medium => "450x300#", large: "500x500#"},
@@ -9,5 +10,7 @@ class Image < ActiveRecord::Base
                     :path => ":rails_root/public/assets/posts/:id/:style/:basename.:extension"
 
   #Validations
-  do_not_validate_attachment_file_type :photo
+  validates_attachment_content_type :photo, :content_type => /\Aimage/
+
+  validates_presence_of :reel_id
 end

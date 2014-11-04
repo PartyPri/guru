@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140530171253) do
+ActiveRecord::Schema.define(:version => 20141101214519) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -47,12 +47,6 @@ ActiveRecord::Schema.define(:version => 20140530171253) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_admin_notes_on_resource_type_and_resource_id"
 
-  create_table "activities", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "admin_users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -85,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20140530171253) do
   end
 
   create_table "images", :force => true do |t|
-    t.text     "caption"
+    t.text     "description"
     t.integer  "project_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
@@ -93,6 +87,8 @@ ActiveRecord::Schema.define(:version => 20140530171253) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "reel_id"
+    t.string   "title"
   end
 
   create_table "interests", :force => true do |t|
@@ -103,50 +99,18 @@ ActiveRecord::Schema.define(:version => 20140530171253) do
     t.text     "history"
   end
 
-  create_table "post_activities", :force => true do |t|
-    t.integer  "post_id"
-    t.integer  "activity_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "post_interests", :force => true do |t|
-    t.integer  "post_id"
+  create_table "reel_interests", :force => true do |t|
+    t.integer  "reel_id"
     t.integer  "interest_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "posts", :force => true do |t|
-    t.text     "caption"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.integer  "user_id"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.string   "video_url"
-  end
-
-  create_table "project_interests", :force => true do |t|
-    t.integer  "project_id"
-    t.integer  "interest_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "projects", :force => true do |t|
+  create_table "reels", :force => true do |t|
     t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
-    t.string   "project_layout"
   end
 
   create_table "user_interests", :force => true do |t|
@@ -178,32 +142,24 @@ ActiveRecord::Schema.define(:version => 20140530171253) do
     t.datetime "avatar_updated_at"
     t.text     "categories"
     t.string   "location"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.string   "refresh_token"
+    t.datetime "expires_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "videos", :force => true do |t|
-    t.text     "caption"
-    t.integer  "project_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "url"
-  end
-
-  create_table "workshop_interests", :force => true do |t|
-    t.integer  "workshop_id"
-    t.integer  "interest_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "workshops", :force => true do |t|
-    t.string   "title"
     t.text     "description"
+    t.integer  "project_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+    t.string   "uid"
+    t.integer  "reel_id"
+    t.string   "title"
   end
 
 end

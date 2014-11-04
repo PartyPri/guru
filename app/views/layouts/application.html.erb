@@ -2,11 +2,21 @@
 <html>
 <head>
   <title>Evrystep</title>
+  <meta property="fb:app_id" content="<%=ENV['FACEBOOK_APP_ID']%>" /> 
+  <meta property="og:title" content="Evrystep"/> 
+  <meta property="og:type" content="website"/> 
+  <meta property="og:url" content="http://www.evrystep.herokuapp.com/" /> 
+  <meta property="og:image" content="http://www.evrystep.herokuapp.com/assets/mighty_1.jpg" /> 
+  <meta property="og:description" content="What do you rep?" />
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "masonry.pkgd" %>
   <%= javascript_include_tag "imagesloaded.pkgd" %>
   <%= csrf_meta_tags %>
+  <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
+
 </head>
 <body>
   <%= render "shared/nav" %>
