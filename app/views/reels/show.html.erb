@@ -1,40 +1,12 @@
-<script type="text/javascript">
+<% content_for :head do %>
+  <meta property="og:title" content="<%=@reel.name%>"/> 
+  <meta property="og:type" content="article"/> 
+  <meta property="og:url" content="<%=reel_url(@reel)%>"/> 
+  <meta property="og:image" content="<%=reel_cover_image%>" /> 
+  <meta property="og:description" content="<%=reel_description%>" />
+<% end %>
 
- $(function() {
-  window.fbAsyncInit = function() {
-    FB.init({appId: '<%= ENV["FACEBOOK_APP_ID"]%>', status: true, cookie: true,
-    xfbml: true});
-  };
-
-  (function() {
-    var e = document.createElement('script'); e.async = true;
-    e.src = document.location.protocol +
-    '//connect.facebook.net/en_US/all.js';
-    document.getElementById('fb-root').appendChild(e);
-  }());
-
-  $('#share_button').click(function(e){
-    e.preventDefault();
-      FB.ui(
-      {
-        method: 'share_open_graph',
-        action_type: 'og.likes',
-        action_properties: JSON.stringify({
-            object:'<%= share_object %>',
-        })
-      }, function(response){
-          if (response && !response.error_code) {
-          alert('Posting completed.');
-        } else {
-          alert('Error while posting.');
-        }
-    });
-  });
- });
-
-</script>
-
-<div id="fb-root"></div>
+<div id="fb-root" data-share-object="<%= share_object %>" data-fb-app-id="<%= ENV['FACEBOOK_APP_ID']%>"</div>
 
 <h1 class="text-center"> Reel: <%= @reel.name %> </h1>
 
