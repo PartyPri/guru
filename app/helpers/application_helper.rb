@@ -9,4 +9,9 @@ module ApplicationHelper
   			"alert alert-danger"
 		end
 	end
+
+  def share_object
+    Rails.env == "production" ? request.original_url : 'https://developers.facebook.com/docs/'
+  end
+  
 end

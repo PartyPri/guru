@@ -18,6 +18,9 @@ gem 'youtube_it'
 ##Secrets
 gem "figaro"
 
+#SEO
+gem 'meta-tags'
+
 gem 'bootstrap-sass-rails'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'uglifier', '>= 1.0.3'
