@@ -11,7 +11,26 @@ module ApplicationHelper
 	end
 
   def share_object
-    Rails.env == "production" ? request.original_url : 'https://developers.facebook.com/docs/'
+    Rails.env == "production" ? reel_url(@reel) : 'https://developers.facebook.com/docs/'
+  end
+
+  
+  def reel_cover_image
+    if @reel.images
+      @reel.images.first.photo.url
+    else
+      "http://www.evrystep.herokuapp.com/assets/mighty_1.jpg"  
+    end
+  end
+
+  def reel_description
+    if @reel.images
+      @reel.images.first.description
+    elsif @reel.videos
+      @reel.videos.first.description
+    else
+      "What do you rep?"
+    end
   end
   
 end

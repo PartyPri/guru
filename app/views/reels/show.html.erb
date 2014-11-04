@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <meta property="og:title" content="<%=@reel.name%>"/> 
+  <meta property="og:type" content="article"/> 
+  <meta property="og:url" content="<%=reel_url(@reel)%>"/> 
+  <meta property="og:image" content="<%=reel_cover_image%>" /> 
+  <meta property="og:description" content="<%=reel_description%>" />
+<% end %>
+
 <div id="fb-root" data-share-object="<%= share_object %>" data-fb-app-id="<%= ENV['FACEBOOK_APP_ID']%>"</div>
 
 <h1 class="text-center"> Reel: <%= @reel.name %> </h1>
