@@ -15,27 +15,5 @@ $(function() {
       document.getElementById('fb-root').appendChild(e);
     }());
 
-    $('#share_button').click(function(e){
-      e.preventDefault();
-        FB.ui(
-        {
-          method: 'share_open_graph',
-          action_type: 'og.likes',
-          action_properties: JSON.stringify({
-              object: share_object,
-          })
-        }, function(response){
-            if (response && !response.error_code) {
-              debugger;
-              $("#share_button").hide();
-              $("#share_success").show();
-          } else {
-            //Flash error unless post failed because user canceled the post manually
-            if (response.error_code != 4201) {
-              alert('Error while posting.');
-            }
-          }
-      });
-    });
  }
 });

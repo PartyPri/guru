@@ -12,7 +12,6 @@
 
 <%= render partial: "reels/reel", locals: { images: @images, videos: @videos } %>
 
-<button class="btn btn-lg btn-primary" id="share_button">Share to Facebook</button>
-<div id="share_success" style="display:none;"><p>You've shared this reel!</p></div>
+<div class="fb-share-button" data-href="<%=share_object%>" data-width="300" data-layout="link"></div>
 
 <div id="result"></div>
