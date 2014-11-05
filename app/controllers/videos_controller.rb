@@ -59,7 +59,7 @@ end
     #Check for upload params needed by the YouTube client and app video model
     def check_valid_params
       unless params[:title] !='' && params[:description] !='' && params[:media][:reel_id] 
-        redirect_to({ :action=>'new' }, :notice => "Please fill out all form fields")
+        render json: {error_type: 'Missing params.', status: :unprocessable_entity}
       end
     end
 

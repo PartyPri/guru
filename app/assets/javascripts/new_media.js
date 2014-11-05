@@ -3,7 +3,8 @@ $(document).ready(function() {
     var submit_button = $('#submit_pre_upload_form');
     var media_upload = $('#media_upload');
     //Get upload token from YouTube client
-    submit_button.click(function () {
+    submit_button.click(function (event) {
+      event.preventDefault();
       var filepath = $("#file").val();
       var extension = getFileExtension(filepath);
       //If no file extension on the file, cry for help.
@@ -12,7 +13,7 @@ $(document).ready(function() {
       }
       //If this is a movie file supported by YouTube, post to YouTube
       if (extension.match(/^(MOV|MPEG4|MP4|AVI|WMV|MPEGPS|FLV|3GPP|WEBM)$/i)) {
-        upload_video(media_upload, submit_button);
+        validate_and_upload(media_upload, submit_button);
       }
       // All other file types upload through paperclip
       else {
@@ -40,6 +41,16 @@ $(document).ready(function() {
           }
       });
     }
+
+    var validate_and_upload = function(media_upload, submit_button) {
+      if(($("#title").val() != "") && ($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
+        upload_video(media_upload, submit_button);
+      }
+      else {
+        alert("Please fill out all form fields");
+      }
+    }
+
     
     var upload_image = function(media_upload) {
       var image_upload_url = $('#image-upload-url').data("image-upload-url"); 
