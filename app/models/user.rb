@@ -47,8 +47,11 @@ class User < ActiveRecord::Base
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first
-
-    unless user
+    
+    if user
+      user.update_attributes(token: access_token.credentials.token, 
+        expires_at: Time.at(access_token.credentials.expires_at))
+    else
       user = User.create(first_name: data["first_name"], 
         last_name: data["last_name"],
         email: data["email"],
@@ -56,31 +59,12 @@ class User < ActiveRecord::Base
         provider: access_token.provider,
         uid: access_token.uid,
         token: access_token.credentials.token,
-        refresh_token: access_token.credentials.refresh_token,
         expires_at: Time.at(access_token.credentials.expires_at)
       )
     end
     user
   end
 
-  #Using oauth2 refresh logic ?
-  def refresh_token_if_expired
-    self.access_token = access_token.refresh! if access_token.expired?
-  end
-
-  #Refreshes the Google user token if it is expired. Note: expires approximately 1 hr after granting.
-  # def refresh_token_if_expired
-  #   if token_expired?
-  #     response = RestClient.post "#{ENV['DOMAIN']}oauth2/token", :grant_type => 'refresh_token', :refresh_token => self.refresh_token, :client_id => ENV['GOOGLE_CLIENT_ID'], :client_secret => ENV['GOOGLE_CLIENT_SECRET'] 
-  #     refreshed_hash = JSON.parse(response.body)
-  #     self.token     = refreshed_hash['access_token']
-  #     debugger
-  #     self.expires_at = DateTime.now + refresh_hash["expires_in"].to_i.seconds
-
-  #     self.save
-  #     puts 'Saved'
-  #   end
-  # end
 
   def token_expired?
     self.expires_at < Time.now

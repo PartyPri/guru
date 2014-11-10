@@ -35,10 +35,17 @@ $(document).ready(function() {
             submit_button.unbind('click').hide();
             $('.preloader').css('display', 'block');
           },
-          error: function (xhr, ajaxOptions, thrownError) {
+          error: function (xhr) {
+            if(xhr.status == 401) {
+              alert("Your session has timed out. Please login again.");
+              var root_path = $("#root-path").data("root-path");
+              window.location.replace(root_path);
+              }
+            else {
             //This is a common cause for YouTube upload errors:
             alert("Something went wrong. Please visit www.youtube.com and create a channel if you do not already have one.");
           }
+        }
       });
     }
 
