@@ -1,4 +1,5 @@
 module ApplicationHelper
+
 	def flash_class(type)
 		case type
   		when :alert
@@ -10,10 +11,20 @@ module ApplicationHelper
 		end
 	end
 
-  def share_object
-    Rails.env == "production" ? reel_url(@reel) : 'https://developers.facebook.com/docs/'
+  def share_object(type)
+    if Rails.env != "production" 
+      'https://developers.facebook.com/docs/'
+    else
+      case type
+        when 'reel'
+          reel_url(@reel) 
+        when 'user'
+          user_url(@user)
+        else 
+          'https://developers.facebook.com/docs/'
+      end
+    end
   end
-
   
   def reel_cover_image
     if !@reel.images.empty?
@@ -21,6 +32,14 @@ module ApplicationHelper
     else
       "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
     end
+  end
+
+  def user_image
+    @user.avatar ? @user.avatar.url : "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
+  end
+
+  def user_description
+    @user.description || "What do you rep?"
   end
 
   def reel_description
