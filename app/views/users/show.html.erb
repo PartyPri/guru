@@ -1,9 +1,19 @@
+<% content_for :head do %>
+  <meta property="og:title" content="<%=@user.first_name%> <%=@user.last_name%>"/> 
+  <meta property="og:type" content="website"/> 
+  <meta property="og:url" content="<%=user_url(@user)%>"/> 
+  <meta property="og:image" content="<%=user_image%>" /> 
+  <meta property="og:description" content="<%=user_description%>" />
+<% end %>
 
 <!--Statbar (Avatar and Stats) -->
 <%= render "user_avatarbar" %>
 
 <!-- Menubar -->
 <%= render "user_menubar" %>
+
+<div id="fb-root" data-fb-app-id="<%= ENV['FACEBOOK_APP_ID']%>"</div>
+<div class="fb-share-button" data-href="<%=share_object('user')%>" data-width="300" data-layout="link"></div>
 
 <!-- Reels -->
 <% if @user == current_user && !@user.reels.present? %>
