@@ -1,200 +1,70 @@
-<!--
-
-<div class="container" style="text-align: center">
-	<div class="row">
-		<H1>DARE TO DREAM</H1>
-		<h2>Discover the world around your style.</h2>
-	</div>
-	<div class="row">
-		<h4><strong>Find out when we launch!</strong></h4>
-	</div>
-	<div class="row">
-		<%#= render "shared/email_contact_form" %>
-	</div>
-</div>
-
-<br><br><br><br><br><br><br><br><br><br>
-
-<div class="well" style="text-align: center">
-	<div class="row">
-		<h3>Locking, waacking, house, breaking, and more...</h3>
-	</div>
-	<div class="row">
-	  <div class="col-xs-4 col-sm-4">
-	  	<strong>Follow</strong><br>
-	  	Create your Evrystep community by following styles and people.
-	  </div>
-	  <div class="col-xs-4 col-sm-4">
-	  	<strong>Discover</strong><br>
-	  	Discover events, videos, inspiration, and more through your community.
-	  </div>
-	  <div class="col-xs-4 col-sm-4">
-	  	<strong>Share</strong><br>
-	  	Contribute to the community by sharing what you do.
-	  </div>
-	</div>
-</div> -->
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Evrystep</title>
-
-    <%= stylesheet_link_tag  "application", :media => "all" %>
-
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/freelancer.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body id="page-top" class="index">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand logo-font" href="#page-top">Evrystep</a>
-            </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <!--<li class="page-scroll">
-                        <a href="#featured">Featured</a>
-                    </li>-->
-                    <li class="page-scroll">
-                        <a href="#about">About</a>
-                    </li>
-                    <!--<li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li>-->
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--<img class="img-responsive" src="img/profile.png" alt="">-->
-                    <div class="intro-text">
-                        <span class="name">Showcase your passion</span>
-                        <hr class="star-light">
-                        <span class="skills">Evrystep is a fun and easy way to share what you do!</span>
-                        <br>
-                        <span class="skills">Find inspiration, meet friends, and get gigs.</span>
-                        <br><br><br>
-                        <div class="row body-primary">
-                            <%= render "shared/email_contact_form" %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- About Section -->
-    <section class="" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>About</h2>
-                    <hr class="star-primary">
-                    <p>Evrystep is a social network that inspires people to do what they love.</p>
+<!-- Header -->
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!--<img class="img-responsive" src="img/profile.png" alt="">-->
+                <div class="intro-text">
+                    <span class="name">Showcase your passion</span>
+                    <hr class="star-light">
+                    <span class="skills">Evrystep is a fun and easy way to share what you do!</span>
                     <br>
-                    <h3>Discover Inspiration</h3>
-                    <p>Discover people who share your passions and see what they've been up to.</p>
-                    <br>
-                    <h3>Upload Images and Videos</h3>
-                    <p>Upload images and videos that showcase what you do.</p>
-                    <br>
-                    <h3>Organize Uploads Into Reels</h3>
-                    <p>Reels are where you collect your uploads by interest or theme.</p>
-                    <br><br>
-                    <div class="row">
+                    <span class="skills">Find inspiration, meet friends, and get gigs.</span>
+                    <br><br><br>
+                    <div class="row body-primary">
                         <%= render "shared/email_contact_form" %>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</header>
 
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="footer-below">
-            <div class="container">
+<!-- About Section -->
+<section class="" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>About</h2>
+                <hr class="star-primary">
+                <p>Evrystep is a social network that inspires people to do what they love.</p>
+                <br>
+                <h3>Discover Inspiration</h3>
+                <p>Discover people who share your passions and see what they've been up to.</p>
+                <br>
+                <h3>Upload Images and Videos</h3>
+                <p>Upload images and videos that showcase what you do.</p>
+                <br>
+                <h3>Organize Uploads Into Reels</h3>
+                <p>Reels are where you collect your uploads by interest or theme.</p>
+                <br><br>
                 <div class="row">
-                    <div class="col-lg-12">
-                        <!--Copyright &copy; Your Website 2014-->
-                        Made with <i class="fa fa-heart heart-icon"> </i> in the Bay Area
-                    </div>
+                    <%= render "shared/email_contact_form" %>
                 </div>
             </div>
         </div>
-    </footer>
-
-
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-    <div class="scroll-top page-scroll visible-xs visble-sm">
-        <a class="btn btn-primary" href="#page-top">
-            <i class="fa fa-chevron-up"></i>
-        </a>
     </div>
+</section>
 
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
+<!-- Footer -->
+<footer class="text-center">
+    <div class="footer-below">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!--Copyright &copy; Your Website 2014-->
+                    Made with <i class="fa fa-heart heart-icon"> </i> in the Bay Area
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="js/freelancer.js"></script>
-
-</body>
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-top page-scroll visible-xs visble-sm">
+    <a class="btn btn-primary" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+</div>

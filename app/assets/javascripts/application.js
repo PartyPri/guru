@@ -10,9 +10,13 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
+//= require jquery-1.11.0
 //= require jquery_ujs
 // Loads all Bootstrap javascripts
-//= require twitter/bootstrap
+//= require bootstrap.min
+//= require jqBootstrapValidation.js
+//= require cbpAnimatedHeader.min
+//= require classie
+//= require freelancer
 //= require_tree .
 //
