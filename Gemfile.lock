@@ -92,6 +92,8 @@ GEM
       thor (~> 0.14)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    haml (4.0.5)
+      tilt
     has_scope (0.6.0.rc)
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
@@ -247,6 +249,7 @@ DEPENDENCIES
   devise
   factory_girl
   figaro
+  haml
   jquery-rails (< 3.0.0)
   masonry-rails
   meta-tags
