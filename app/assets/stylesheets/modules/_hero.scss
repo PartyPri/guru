@@ -1,0 +1,17 @@
+.hero-image {
+  width: 100%;
+  position: relative;
+  background-size: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat no-repeat;
+}
+
+.fixed {
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.hero {
+  background-color: rgba(0, 0, 0, 0.40);
+}

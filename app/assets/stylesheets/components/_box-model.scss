@@ -1,0 +1,69 @@
+@each $val in  0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80 {
+
+  // Padding
+  .p-#{$val}, %p-#{$val} {
+    padding: #{$val}px;
+  }
+
+  .p-top-#{$val}, %p-top-#{$val} {
+    padding-top: #{$val}px;
+  }
+
+  .p-right-#{val}, %p-right-#{val} {
+    padding-right: #{$val}px;
+  }
+
+  .p-bottom-#{$val}, %p-bottom-#{$val} {
+    padding-bottom: #{$val}px;
+  }
+
+  .p-left-#{$val}, %p-left-#{$val} {
+    padding-left: #{$val}px;
+  }
+
+  .p-y-#{$val}, %p-x-#{$val} {
+    padding-top: #{$val}px;
+    padding-bottom: #{$val}px;
+  }
+
+  .p-x-#{$val}, %p-y-#{$val} {
+    padding-right: #{$val}px;
+    padding-left: #{$val}px;
+  }
+
+  // Margin
+  .m-#{$val}, %m-#{$val} {
+    margin: #{$val}px;
+  }
+
+  .m-top-#{$val}, %m-top-#{$val} {
+    margin-top: #{$val}px;
+  }
+
+  .m-right-#{$val}, %m-right-#{$val} {
+    margin-right: #{$val}px;
+  }
+
+  .m-bottom-#{$val}, %m-bottom-#{$val} {
+    margin-bottom: #{$val}px;
+  }
+
+  .m-left-#{$val}, %m-left-#{$val} {
+    margin-left: #{$val}px;
+  }
+
+  .m-y-#{$val}, %m-x-#{$val} {
+    margin-top: #{$val}px;
+    margin-bottom: #{$val}px;
+  }
+
+  .m-x-#{$val}, %m-y-#{$val} {
+    margin-right: #{$val}px;
+    margin-left: #{$val}px;
+  }
+
+}
+
+.center {
+  margin: 0 auto;
+}
