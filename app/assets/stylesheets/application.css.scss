@@ -13,26 +13,14 @@
  */
 
 @import "twitter/bootstrap";
+@import "bootstrap_overwrites/bootstrap_overwrites";
+@import "modules/modules";
 @import "heading";
 @import "masonry_box";
 @import "users";
 @import "pages";
 @import "animate";
 @import "reels";
-@import url(http://fonts.googleapis.com/css?family=Roboto:400);
-@import url(http://fonts.googleapis.com/css?family=Satisfy);
-@import url(http://fonts.googleapis.com/css?family=Oxygen:700|Open+Sans:400,600);  
-
-body {
- 	margin-top: 70px;
-  margin-bottom: 0px;
-  padding-bottom: 50px;
- 	//background-color: #F3F3F3;
-  background: white;
-  font-family: "Open Sans", sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-}
 
 .master-container {
   background-color: white;
@@ -122,12 +110,6 @@ hr {
 
 // Change default navbar colors for main navbar
 
-.navbar-custom-bg {
-  border: none;
-  //background-color: #2B3A35;
-  background-color: #13e2db;
-}
-
 .navbar-custom-bg .navbar-nav > li > a,
 .navbar-default .navbar-brand {
   color: white;
@@ -155,17 +137,17 @@ hr {
   border-bottom-color: #1cd9d2;
 }
 
-.navbar-custom-bg .navbar-nav > .open > a, 
-.navbar-custom-bg .navbar-nav > .open > a:hover, 
-.navbar-custom-bg .navbar-nav > .open > a:focus {
-  background-color: #2B3A35;
-  color: #1cd9d2;
-}
+// .navbar-custom-bg .navbar-nav > .open > a, 
+// .navbar-custom-bg .navbar-nav > .open > a:hover, 
+// .navbar-custom-bg .navbar-nav > .open > a:focus {
+//   background-color: #2B3A35;
+//   color: #1cd9d2;
+// }
 
-.navbar-custom-bg .dropdown-menu > li > a:hover,
-.navbar-custom-bg .dropdown-menu > li > a:focus {
-  background-color: #1cd9d2;
-}
+// .navbar-custom-bg .dropdown-menu > li > a:hover,
+// .navbar-custom-bg .dropdown-menu > li > a:focus {
+//   background-color: #1cd9d2;
+// }
 
 // Change Bootstrap buttons
 
