@@ -18,7 +18,6 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav">
-        <li><%= link_to "About", about_path %></li>
         <!--
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <b class="caret"></b></a>
@@ -63,7 +62,9 @@
           </li>
 
         <% else %>
-          <li><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li><%= link_to "Explore", "/" %></li>
+          <!--<li><%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %></li>-->
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

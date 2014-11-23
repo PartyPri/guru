@@ -13,6 +13,7 @@
  */
 
 @import "twitter/bootstrap";
+@import "base/base";
 @import "bootstrap_overwrites/bootstrap_overwrites";
 @import "components/components";
 @import "modules/modules";
@@ -176,8 +177,6 @@ hr {
 }
 
 .btn {
-  border-radius: 2px;
-  //border: none;
   font-family: 'Open Sans', sans-serif;
 }
 
