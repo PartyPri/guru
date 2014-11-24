@@ -2,10 +2,14 @@
   border-radius: 0px;
   text-transform: uppercase;
   padding: 18px 20px;
+  font-family: $sans-serif;
 }
 
 .btn-primary {
   background-color: $red;
   border-color: none;
   border: none;
+  &:hover {
+    background-color: darken($red, 5);
+  }
 }
