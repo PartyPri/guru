@@ -47,6 +47,7 @@ a {
 
   &:hover {
     color: $hover-link-color;
+    cursor: pointer;
   }
 
   &:active, &:focus {

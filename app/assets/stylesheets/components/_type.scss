@@ -1,1 +1,8 @@
 .ta-center { text-align: center; }
+
+.list-inline > .divider {
+  &:after{
+    color: $gray;
+    content: '\2758';
+  }
+}
