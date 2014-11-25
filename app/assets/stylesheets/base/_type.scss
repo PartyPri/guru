@@ -17,25 +17,40 @@ h1 {
 }
 
 h2 {
-  font-size: $base-font-size * 2; // 16 * 2 = 32px
+  font-size: $base-font-size * 2.5; // 16 * 2.5 = 40px
 }
 
 h3 {
-  font-size: $base-font-size * 1.75; // 16 * 1.75 = 28px
+  font-size: $base-font-size * 1.875; // 16 * 1.875 = 30px
 }
 
 h4 {
-  font-size: $base-font-size * 1.5; // 16 * 1.5 = 24px
-}
-
-h5 {
   font-size: $base-font-size * 1.25; // 16 * 1.25 = 20px
 }
 
+h5 {
+  font-size: $base-font-size * 0.9375; // 16 * 0.9375 = 15px
+}
+
 h6 {
-  font-size: $base-font-size;
+  font-size: $base-font-size * 0.625; // 16 * 0.625 = 10px
 }
 
 p {
   margin: 0 0 ($base-line-height * .5);
+}
+
+a {
+  color: $base-link-color;
+  text-decoration: none;
+  @include transition(color 0.1s linear);
+
+  &:hover {
+    color: $hover-link-color;
+  }
+
+  &:active, &:focus {
+    color: $hover-link-color;
+    outline: none;
+  }
 }

@@ -19,4 +19,13 @@ $base-border-radius: 3px;
 $white:    #fff;
 $red:      #ff3046;
 $turq:     #0fb3ad;
+$lt-turq:  #1cd9d2;
 $drk-gray: #2b3a35;
+
+// Font Colors
+$base-font-color: $drk-gray;
+$base-accent-color: $turq;
+
+//  Text Link Colors
+$base-link-color: $base-accent-color;
+$hover-link-color: $lt-turq;

@@ -17,24 +17,6 @@
 @import "bootstrap_overwrites/bootstrap_overwrites";
 @import "components/components";
 @import "modules/modules";
-@import "heading";
-@import "masonry_box";
-@import "users";
-@import "pages";
-@import "animate";
-@import "reels";
-
-.master-container {
-  background-color: white;
-  margin-top: 75px;
-  margin-bottom: 50px;
-  padding: 25px;
-  padding-top: 10px;
-}
-
-.alert {
-	margin-top: 10px;
-}
 
 a:hover {
   text-decoration: none;
