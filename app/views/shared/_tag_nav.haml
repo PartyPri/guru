@@ -1,25 +1,17 @@
+- interest = Interest.all
+- length = interest.length
 .bgc-lt-gray  
   .container.ta-center
     .row
       .col-sm-12.hidden-xs
-        -# APRIL: Dynamically load section names
         %ul.list-inline.p-y-15
-          %li
-            %h5
-              %a Performing Arts
-          %li.divider
-          %li
-            %h5
-              %a Sports
-          %li.divider
-          %li
-            %h5
-              %a Fashion &amp; Beauty
-          %li.divider
-          %li
-            %h5
-              %a Health &amp; Fitness
-          %li.divider
-          %li
-            %h5
-              %a Art
+          - interest.each_with_index do |interest, x|
+            - if x+1 != length
+              %li
+                %h5
+                  = link_to(interest.name, "/interests/#{interest.id}/about")
+              %li.divider
+            - else
+              %li
+                %h5
+                  = link_to(interest.name, "/interests/#{interest.id}/about")
