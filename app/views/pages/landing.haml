@@ -10,79 +10,8 @@
       .row.p-top-50
         .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
           %button.btn.btn-primary.btn-large sign up with google
-.bgc-lt-gray  
-  .container.ta-center
-    .row
-      .col-sm-12.hidden-xs
-        %ul.list-inline.p-y-15
-          %li
-            %h5
-              %a Performing Arts
-          %li.divider
-          %li
-            %h5
-              %a Sports
-          %li.divider
-          %li
-            %h5
-              %a Fashion &amp; Beauty
-          %li.divider
-          %li
-            %h5
-              %a Health &amp; Fitness
-          %li.divider
-          %li
-            %h5
-              %a Art
+= render 'shared/tag_nav'
 .container.p-y-60
-  .row.ta-center
-    .col-xs-12
-      %h1 Featured Reels
-  - 3.times do
-    .row.p-top-20
-      .col-xs-12
-        -# APRIL: Hook up to reel names and tags
-        %h3 Performing with Dynamix
-        %ul.list-inline
-          %li
-            %a Dance
-          %li.divider
-          %li
-            %a Health &amp; Fitness
-    .row.p-top-20.ta-center
-      .col-xs-12
-        %div.reel-carousel
-          -# APRIL: Hook up reel images and titles to carousel
-          - 7.times do
-            %div
-              %a
-                %img{src: "http://trailerpilot.files.wordpress.com/2012/07/thodos-dance-chicago-2012-new-dances-9.jpg", width: "100%"}
-                %h4.p-top-15 Video Title Here
-.bgc-lt-gray.p-y-40
-  .container
-    .row
-      .col-xs-12.col-sm-6
-        %h1 Discover Inspiration
-        %h3.c-med-gray.p-top-15 Discover people who share the same passions as you and see what they've been up to lately.
-      .col-sm-6
-        %img{src: "http://www.newyorker.com/wp-content/uploads/2013/07/Pilobolus-dance.jpg"}
-    %hr.m-y-50
-.container.p-y-40
-  .row
-    .col-xs-12.col-sm-6
-      %img{src: "http://www.newyorker.com/wp-content/uploads/2013/07/Pilobolus-dance.jpg"}
-    .col-sm-6.ta-right
-      %h1 Share Your Work
-      %h3.c-med-gray.p-top-15 Upload images and videos that showcase what you do.
-.bgc-lt-gray.p-y-40
-  .container
-    .row
-    .col-xs-12.col-sm-6
-      %h1 Publish the Best
-      %h3.c-med-gray.p-top-15 Organize your work into thematic or strategic reels.
-    .col-sm-6
-      %img{src: "http://www.newyorker.com/wp-content/uploads/2013/07/Pilobolus-dance.jpg"}
-
-
-
-
+  = render 'shared/featured_reels'
+%hr.p-y-40
+= render 'shared/how_it_works'
