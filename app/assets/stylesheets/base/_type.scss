@@ -3,6 +3,7 @@ body {
   -webkit-font-smoothing: antialiased;
   line-height: $base-line-height;
   font-family: $base-font-family;
+  color: $drk-gray;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -48,10 +49,12 @@ a {
   &:hover {
     color: $hover-link-color;
     cursor: pointer;
+    text-decoration: none;
   }
 
   &:active, &:focus {
     color: $hover-link-color;
     outline: none;
+    text-decoration: none;
   }
 }

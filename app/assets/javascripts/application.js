@@ -15,5 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require slick.min
+//= require slick_carousel
 //= require_tree .
 //
