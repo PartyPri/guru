@@ -1,9 +1,9 @@
-<nav class="navbar" role="navigation">
+<nav class="navbar" id="nav-menu" role="navigation">
   <div class="container">
   <!-- Brand and toggle get grouped for better mobile display -->
     <div class="row">
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle .visible-xs p-y-15" data-toggle="collapse" data-target=".navbar-ex1-collapse", style="line-height: 30px;">
+        <button type="button" class="navbar-toggle visible-xs p-y-15" data-toggle="collapse" data-target=".navbar-ex1-collapse", style="line-height: 30px;" onclick="navColor('nav-menu')">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar bgc-white"></span>
           <span class="icon-bar bgc-white"></span>
@@ -44,9 +44,9 @@
           </ul>
         </li>
 
-        <!-- <% else %>
-          <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>
-        <% end %> -->
+          <% else %>
+            <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>
+          <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div>

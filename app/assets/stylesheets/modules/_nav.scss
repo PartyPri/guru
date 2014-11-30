@@ -1,3 +1,7 @@
 .nav > li > a {
   color: #fff;
 }
+
+// Give background color on toggle
+nav { background-color: transparent; }
+nav.toggled { background-color: rgba(0,0,0,0.75); }
