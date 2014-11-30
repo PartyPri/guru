@@ -67,3 +67,10 @@
 .center {
   margin: 0 auto;
 }
+
+.cont-padding { padding: 30px 0px}
+
+@media (min-width:768px) {
+  .cont-padding { padding: 60px 0px; }
+}
+

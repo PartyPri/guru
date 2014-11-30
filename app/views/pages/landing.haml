@@ -1,9 +1,9 @@
 .hero-image.landing
   .hero
     = render 'shared/nav'
-    .container.p-y-100.ta-center
+    .container.hero-content
       .row
-        .col-lg-12.c-white
+        .col-xs-12.c-white
           %h1.hero-text.p-bottom-5 Showcase Your Passion
           %h5 Evrystep lets you create beautiful portfolios to showcase what you do.
           %h5 Find inspiration, meet friends, and get gigs!
@@ -12,7 +12,7 @@
 
           = link_to "sign up with google", user_omniauth_authorize_path(:google_oauth2), target: "_blank", class: "btn btn-primary btn-large"
 = render 'shared/tag_nav'
-.container.p-y-60
+.container.cont-padding
   = render 'shared/featured_reels'
 %hr.p-y-40
 = render 'shared/how_it_works'
