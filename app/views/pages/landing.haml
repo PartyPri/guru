@@ -9,7 +9,8 @@
           %h5 Find inspiration, meet friends, and get gigs!
       .row.p-top-50
         .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
-          %button.btn.btn-primary.btn-large sign up with google
+
+          = link_to "sign up with google", user_omniauth_authorize_path(:google_oauth2), target: "_blank", class: "btn btn-primary btn-large"
 = render 'shared/tag_nav'
 .container.p-y-60
   = render 'shared/featured_reels'
