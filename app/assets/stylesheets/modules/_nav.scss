@@ -3,5 +3,8 @@
 }
 
 // Give background color on toggle
-nav { background-color: transparent; }
+nav { 
+  background-color: transparent;
+  @include transition(all 0.1s ease-in-out);
+}
 nav.toggled { background-color: rgba(0,0,0,0.75); }
