@@ -16,6 +16,11 @@
   background-color: rgba(0, 0, 0, 0.50);
 }
 
+.hero-content {
+  padding: 60px 0px;
+  text-align: center;
+}
+
 .landing {
   background-image: url(evrystep_landing_hero.jpg);
 }
@@ -23,4 +28,11 @@
 .about {
   background-color: $turq;
   background-image: url(large_logo.png);
+}
+
+.hero-text { font-size: 3rem; }
+
+@media (min-width:768px) {
+  .hero-text { font-size: 4.5rem; }
+  .hero-content { padding: 100px 0px; }
 }
