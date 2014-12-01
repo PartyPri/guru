@@ -12,3 +12,8 @@ ul.list-inline > li.active > a {
   color: $drk-gray;
   cursor: default;
 }
+
+.quote {
+  font-family: $base-font-family;
+  font-style: italic;
+}

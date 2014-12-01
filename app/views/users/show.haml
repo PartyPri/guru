@@ -1,0 +1,172 @@
+- content_for :head do
+  %meta{ property: "og:title", content: "<%=@user.first_name%> <%=@user.last_name%>" }
+  %meta{ property: "og:type", content: "website" } 
+  %meta{ property: "og:url", content: "<%=user_url(@user)%>" } 
+  %meta{ property: "og:image", content:"<%=user_image%>" }
+  %meta{ property: "og:description", content: "<%=user_description%>" }
+
+.hero-image.landing
+  .hero
+    = render 'shared/nav'
+    .container.p-y-100.ta-center{style: "height: 300px;"}
+.container.ta-center{style: "height: 80px;"}
+  .row
+    %span{style: "position: relative; top: -75px;"}
+      = image_tag(@user.avatar.url(:small), style: "border: 1px solid white; background-color: white; padding: 5px;")
+.container.ta-center.p-y-20
+  .row
+    .col-xs-12
+      %h1= @user.first_name + " " + @user.last_name
+  .row
+    .col-xs-12
+      %p.quote= '"'+ @user.description + '"'
+  .row.m-top-20
+    .col-xs-12
+      %h4= @user.location
+      %ul.list-inline
+        - @user.interests.each do |interest|
+          %li
+            %h5
+              = link_to(interest.name, "/interests/#{interest.id}/about")
+.container
+  .row.ta-center
+    .col-xs-12
+      %ul.list-inline
+        %li.active
+          %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+        %li.divider
+        %li
+          %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
+.container.ta-center.m-y-50{style: "height: 1px; background-color: #cccccc;"}
+  %span{style: "background-color: white; position: relative; top: -30px;"}
+    - if current_user.present?
+      - if @user.id == current_user.id
+        %button.btn.btn-default.btn-large Edit Profile
+    - else
+      %button.btn.btn-primary.btn-large Follow
+.tab-content.m-bottom-60
+  .container.tab-pane#bio{role: "tabpanel"}
+    -# PRIYA: Need to add bio to user table
+    .row.ta-center
+      .col-xs-12.col-sm-8.col-sm-offset-2
+        %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed viverra auctor purus ut ullamcorper. Quisque pellentesque vulputate tincidunt. Donec viverra nisl mauris, nec varius ante venenatis ac. Vivamus vel nisl mattis, blandit magna non, dignissim dolor. Quisque ac tempus velit. Fusce accumsan laoreet lacus, vitae gravida ante imperdiet efficitur. Suspendisse ac purus at neque finibus tempus rhoncus quis lacus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ut volutpat dolor, placerat mattis lectus. In egestas, lorem sit amet hendrerit eleifend, arcu justo porta massa, posuere dictum lectus sapien sagittis mi. Mauris porttitor nulla purus, et bibendum nunc dignissim vitae. Suspendisse mattis fringilla consequat. Duis eu mattis mauris, vitae tincidunt purus. Curabitur eu lectus a ipsum fermentum dictum a eu magna. Duis tristique tincidunt semper. Phasellus laoreet placerat finibus.
+        %p Sed varius, eros sed porta fringilla, tellus neque elementum sapien, quis vulputate metus lacus vitae dui. Quisque vel ante nec sapien maximus aliquet ullamcorper accumsan mi. Donec vel tincidunt velit. In vulputate congue molestie. In varius pellentesque diam id laoreet. Pellentesque sit amet nulla non leo convallis fermentum. Vivamus vestibulum maximus sem sed consequat. Vestibulum lacinia accumsan dapibus.
+  .container.tab-pane.active#work{role: "tabpanel"}
+    .container.p-y-10{role: "tabpanel"}
+      .row.ta-right
+        .col-xs-12
+          %ul.list-inline
+            %li.active
+              %a{href: "#reels", role: "tab", "data-toggle" => "tab"} Reels
+            %li
+              %a{href: "#timeline", role: "tab", "data-toggle" => "tab"} Timeline
+    .tab-content
+      -# APRIL: Need to hook up user content here
+      .container.tab-pane#timeline{role: "tabpanel"}
+        - 6.times do
+          .row
+            .col-xs-12.col-sm-6
+              %h4
+                -# APRIL: Make reel dates and names dynamic
+                %strong October 13, 2014
+                %span= "by" + " " + @user.first_name + @user.last_name
+              %h4 Performing with Dynamix
+              %img.m-top-10{src: "http://ecstaticdancespokane.com/wp-content/uploads/dance_in_the_shutter_IX_by_mehmeturgut.jpg", width: "100%"}
+              %h5.ta-center.m-top-10 Reel description to go here.
+            .col-xs-12.col-sm-6
+              %h4
+                -# APRIL: Make reel dates and names dynamic
+                %strong October 13, 2014
+                %span= "by" + " " + @user.first_name + @user.last_name
+              %h4 Performing with Dynamix
+              %img.m-top-10{src: "http://ecstaticdancespokane.com/wp-content/uploads/dance_in_the_shutter_IX_by_mehmeturgut.jpg", width: "100%"}
+              %h5.ta-center.m-top-10 Reel description to go here.
+      .container.tab-pane.active#reels{role: "tabpanel"}
+        - 3.times do
+          .row.p-top-20
+            .col-xs-12
+              -# APRIL: Hook up to reel names and tags
+              %h3 Performing with Dynamix
+              %ul.list-inline
+                %li
+                  %a Dance
+                %li.divider
+                %li
+                  %a Health &amp; Fitness
+          .row.p-top-20.ta-center
+            .col-xs-12
+              %div.reel-carousel
+                -# APRIL: Hook up reel images and titles to carousel
+                - 7.times do
+                  %div.m-20
+                    %a
+                      %img{src: "http://trailerpilot.files.wordpress.com/2012/07/thodos-dance-chicago-2012-new-dances-9.jpg", width: "100%"}
+                      %h4.p-top-15 Video Title Here
+
+
+-# <!--Statbar (Avatar and Stats) -->
+  <%= render "user_avatarbar" %>
+
+  <!-- Menubar -->
+  <%= render "user_menubar" %>
+
+  <div id="fb-root" data-fb-app-id="<%= ENV['FACEBOOK_APP_ID']%>"</div>
+  <div class="fb-share-button" data-href="<%=share_object('user')%>" data-width="300" data-layout="link"></div>
+
+  <!-- Reels -->
+  <% if @user == current_user && !@user.reels.present? %>
+    <%= render "user_reels_empty" %>
+  <% else %>
+    <% @reels.each do |reel| %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="row">
+          <h2> <%= link_to reel.name, reel %> </h2>
+        <div>
+        <div class="row">
+        <% reel.interests.each do |interest| %>
+          <%= link_to interest.name, interest_path(interest) %>
+        <% end %>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <% reel.images.each do |image| %>
+            <div class="row">
+              <h3> <%= image.title %> </h3>
+            </div>
+            <div class="row">
+              <% if image.photo %>
+                <%= image_tag image.photo.url(:medium) %>
+              <% end %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row" id="videos-list" style:"list-style: none;">
+          <% reel.videos.each do |video| %>
+            <div class="row">
+              <h2> <%= video.title %> </h2>
+              <p> <%= video.description %> </p>
+            </div>
+            <div class="row">
+              <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/<%=video.uid%>" allowfullscreen frameborder="0">
+              </iframe>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+
+      <br><br>
+    <% end %>
+  <% end %>
+
+  <!-- Projects -->
+
+  <%# if @user == current_user && !@user.projects.present? %>
+    <%#= render "user_projects_empty" %>
+  <%# else %>
+    <%#= render "shared/projects" %>
+  <%# end %>

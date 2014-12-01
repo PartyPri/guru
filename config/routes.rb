@@ -33,5 +33,5 @@ Guru::Application.routes.draw do
   ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
 
 
-  root to: "pages#home"
+  root to: "pages#landing"
 end
