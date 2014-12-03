@@ -19,7 +19,7 @@
       %h1= @user.first_name + " " + @user.last_name
   .row
     .col-xs-12
-      %p.quote= '"'+ @user.description + '"'
+      %p.quote= '"'+ (@user.description || "") + '"'
   .row.m-top-20
     .col-xs-12
       %h4= @user.location

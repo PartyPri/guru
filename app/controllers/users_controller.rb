@@ -11,8 +11,6 @@ class UsersController < ApplicationController
       @reels          = @user.reels.order("updated_at desc")
       @followers      = @user.followers
       @followed_users = @user.followed_users
-
-    
     end
   end
 

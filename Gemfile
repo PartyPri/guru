@@ -38,6 +38,7 @@ gem 'simple_form'
 
 group :development do
  gem 'debugger'
+ gem 'faker'
 end
 
 group :test do
