@@ -1,76 +1,76 @@
 @each $val in  0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100 {
 
   // Padding
-  .p-#{$val}, %p-#{$val} {
-    padding: #{$val}px;
-  }
-
-  .p-top-#{$val}, %p-top-#{$val} {
-    padding-top: #{$val}px;
-  }
-
-  .p-right-#{val}, %p-right-#{val} {
-    padding-right: #{$val}px;
-  }
-
-  .p-bottom-#{$val}, %p-bottom-#{$val} {
-    padding-bottom: #{$val}px;
-  }
-
-  .p-left-#{$val}, %p-left-#{$val} {
-    padding-left: #{$val}px;
-  }
-
-  .p-y-#{$val}, %p-x-#{$val} {
+  .p-#{$val} { padding: #{$val}px; }
+  .p-top-#{$val} { padding-top: #{$val}px; }
+  .p-right-#{val} {padding-right: #{$val}px; }
+  .p-bottom-#{$val} { padding-bottom: #{$val}px; }
+  .p-left-#{$val} { padding-left: #{$val}px; }
+  .p-y-#{$val} {
     padding-top: #{$val}px;
     padding-bottom: #{$val}px;
   }
-
-  .p-x-#{$val}, %p-y-#{$val} {
+  .p-x-#{$val} {
     padding-right: #{$val}px;
     padding-left: #{$val}px;
   }
 
   // Margin
-  .m-#{$val}, %m-#{$val} {
-    margin: #{$val}px;
-  }
-
-  .m-top-#{$val}, %m-top-#{$val} {
-    margin-top: #{$val}px;
-  }
-
-  .m-right-#{$val}, %m-right-#{$val} {
-    margin-right: #{$val}px;
-  }
-
-  .m-bottom-#{$val}, %m-bottom-#{$val} {
-    margin-bottom: #{$val}px;
-  }
-
-  .m-left-#{$val}, %m-left-#{$val} {
-    margin-left: #{$val}px;
-  }
-
-  .m-y-#{$val}, %m-x-#{$val} {
+  .m-#{$val} { margin: #{$val}px; }
+  .m-top-#{$val} { margin-top: #{$val}px; }
+  .m-right-#{$val} { margin-right: #{$val}px; }
+  .m-bottom-#{$val} { margin-bottom: #{$val}px; }
+  .m-left-#{$val} { margin-left: #{$val}px; }
+  .m-y-#{$val} {
     margin-top: #{$val}px;
     margin-bottom: #{$val}px;
   }
-
-  .m-x-#{$val}, %m-y-#{$val} {
+  .m-x-#{$val} {
     margin-right: #{$val}px;
     margin-left: #{$val}px;
   }
 
+  @media (min-width: 768px) {
+    // Padding
+    .sm-p-#{$val} { padding: #{$val}px; }
+    .sm-p-top-#{$val} { padding-top: #{$val}px; }
+    .sm-p-right-#{val} {padding-right: #{$val}px; }
+    .sm-p-bottom-#{$val} { padding-bottom: #{$val}px; }
+    .sm-p-left-#{$val} { padding-left: #{$val}px; }
+    .sm-p-y-#{$val} {
+      padding-top: #{$val}px;
+      padding-bottom: #{$val}px;
+    }
+    .sm-p-x-#{$val} {
+      padding-right: #{$val}px;
+      padding-left: #{$val}px;
+    }
+
+    // Margin
+    .sm-m-#{$val} { margin: #{$val}px; }
+    .sm-m-top-#{$val} { margin-top: #{$val}px; }
+    .sm-m-right-#{$val} { margin-right: #{$val}px; }
+    .sm-m-bottom-#{$val} { margin-bottom: #{$val}px; }
+    .sm-m-left-#{$val} { margin-left: #{$val}px; }
+    .sm-m-y-#{$val} {
+      margin-top: #{$val}px;
+      margin-bottom: #{$val}px;
+    }
+    .sm-m-x-#{$val} {
+      margin-right: #{$val}px;
+      margin-left: #{$val}px;
+    }
+  }
 }
 
 .center {
   margin: 0 auto;
 }
 
-.cont-padding { padding: 30px 0px}
-
-@media (min-width:768px) {
-  .cont-padding { padding: 60px 0px; }
+.cont-padding { 
+  padding: 30px 35px;
+  @media (min-width:768px) {
+    padding: 60px 0px;
+  }
 }
 
