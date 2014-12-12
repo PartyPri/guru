@@ -18,9 +18,13 @@
 </head>
 <body>
   <!-- add master-container class to above div? -->
-  <%= render "shared/flash_messages" %>
-  <%= yield %>
-  <%= render "shared/footer" %>
-
+  <div class="wrapper">
+    <%= render "shared/flash_messages" %>
+    <!-- pad for height of footer -->
+    <div style="padding-bottom: 39px;">
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
+  </div>
 </body>
 </html>

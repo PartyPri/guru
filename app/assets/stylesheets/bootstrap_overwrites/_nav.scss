@@ -14,9 +14,20 @@
   font-size: 1.125rem;
 }
 
-.nav .open > a,
-.nav .open > a:hover,
-.nav .open > a:focus {
-  background-color: none;
-  border-color: none;
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.dropdown-menu > li > a, .dropdown-menu > li > a {
+  color: white;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: transparent;
+  color: $turq;
+}
+
+.dropdown-menu {
+  background-color: rgba(0,0,0,0.75);
 }
