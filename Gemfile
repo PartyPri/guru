@@ -38,7 +38,8 @@ gem 'youtube_id', '~> 0.0.3'
 gem 'simple_form'
 
 group :development do
- gem 'debugger'
+ #gem 'debugger', '~> 1.6.8'
+ gem 'byebug'
  gem 'faker'
 end
 
