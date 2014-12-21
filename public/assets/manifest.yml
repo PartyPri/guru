@@ -17,6 +17,8 @@ webfonts/evrystep.woff: webfonts/evrystep-0e81de63390cf52537969b8daf816717.woff
 webfonts/evrystep/index.woff: webfonts/evrystep-0e81de63390cf52537969b8daf816717.woff
 webfonts/svg_test.html: webfonts/svg_test-0753fe16f7d74d5a97f9a300d4a68520.html
 webfonts/svg_test/index.html: webfonts/svg_test-0753fe16f7d74d5a97f9a300d4a68520.html
+add.svg: add-62e8c86ea37fed0c2d2caf98f88b2187.svg
+add/index.svg: add-62e8c86ea37fed0c2d2caf98f88b2187.svg
 ajax-loader.gif: ajax-loader-6de17f6ee5598c80be37a10de34f6368.gif
 ajax-loader/index.gif: ajax-loader-6de17f6ee5598c80be37a10de34f6368.gif
 evrystep_landing_hero.jpg: evrystep_landing_hero-ade68b8a37b66228823cc4e48c584576.jpg
@@ -47,6 +49,8 @@ mighty_1.jpg: mighty_1-71ef0dfb43d65ec782a2c13df001f1d1.jpg
 mighty_1/index.jpg: mighty_1-71ef0dfb43d65ec782a2c13df001f1d1.jpg
 rails.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
 rails/index.png: rails-a3386665c05a2d82f711a4aaa72d247c.png
+reel.svg: reel-ff153f2bd6f692e110a9c912683a6a12.svg
+reel/index.svg: reel-ff153f2bd6f692e110a9c912683a6a12.svg
 right_arrow.ai: right_arrow-1ba4c17bd34900f21e260743ac28e671.ai
 right_arrow/index.ai: right_arrow-1ba4c17bd34900f21e260743ac28e671.ai
 right_arrow.svg: right_arrow-2911002be54c72a3f04f98d66f3d3736.svg
@@ -63,8 +67,8 @@ masonry.pkgd.js: masonry.pkgd-3c82973d09fa5f45b53de9a60f7d6bec.js
 masonry/index.pkgd.js: masonry.pkgd-3c82973d09fa5f45b53de9a60f7d6bec.js
 active_admin.css: active_admin-229444ff53d165c8e135a5356e04be8e.css
 active_admin/index.css: active_admin-229444ff53d165c8e135a5356e04be8e.css
-application.css: application-f4faa40f84eeca1969280a6b9804ad42.css
-application/index.css: application-f4faa40f84eeca1969280a6b9804ad42.css
+application.css: application-60aa5cda21fd27bccb4b32c61e860dd1.css
+application/index.css: application-60aa5cda21fd27bccb4b32c61e860dd1.css
 masonry/loader.gif: masonry/loader-e2a65b9489a6a7d066dd12455c270cc5.gif
 masonry/loader/index.gif: masonry/loader-e2a65b9489a6a7d066dd12455c270cc5.gif
 active_admin/admin_notes_icon.png: active_admin/admin_notes_icon-25b05cd8197f7a271d0624853a6dbdd5.png
