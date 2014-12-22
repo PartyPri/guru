@@ -23,9 +23,6 @@ class User < ActiveRecord::Base
 
   has_many :user_interests
   has_many :interests, through: :user_interests, uniq: true
-  has_many :workshops
-  has_many :posts
-  has_many :projects#, inverse_of: :user
   has_many :reels
 
   has_many :followerships, dependent: :destroy

@@ -30,7 +30,6 @@ Guru::Application.routes.draw do
   #get 'team', to: 'pages#team', as: 'team'
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-  ActiveAdmin.routes(self) #did the regenerator accidentally make this twice?
 
 
   root to: "pages#landing"
