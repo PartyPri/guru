@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # Access
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
-    :first_name, :last_name, :description, :avatar, :location, :interest_ids,
+    :first_name, :last_name, :description, :bio, :avatar, :location, :interest_ids,
     :uid, :provider, :token, :refresh_token, :expires_at
 
   # Serialize
