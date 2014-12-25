@@ -5,7 +5,7 @@
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
 
-.hero-image.landing
+.hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
   .hero
     = render 'shared/nav'
     .container.p-y-100.ta-center{style: "height: 300px;"}
@@ -19,7 +19,7 @@
       %h1= @user.first_name + " " + @user.last_name
   .row
     .col-xs-12
-      %p.quote= '"'+ (@user.description || "") + '"'
+      %p.quote= @user.description
   .row.m-top-20
     .col-xs-12
       %h4= @user.location
@@ -46,7 +46,6 @@
       %button.btn.btn-primary.btn-large Follow
 .tab-content.m-bottom-60
   .container.tab-pane#bio{role: "tabpanel"}
-    -# PRIYA: Need to add bio to user table
     .row.ta-center
       .col-xs-12.col-sm-8.col-sm-offset-2
         %p= @user.bio

@@ -71,6 +71,26 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Cover picture", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <% if @user.cover_photo.exists? %>
+            <%= image_tag @user.cover_photo.url(:large) %>
+            <br>
+            <%= @user.cover_photo_file_name %>
+            <br>
+          <% else %>
+            <p class="h4 control-label" style="text-align:left">Whaaat? You don't have a cover pic yet!</p>
+          <% end %>
+          <br>
+          <p class="h4 control-label" style="text-align:left">Choose a new pic:</p>
+          <br>
+          <%= f.file_field :cover_photo %>
+        </div>
+      </div>
+    </div>
+
   </fieldset>
 
   <br>
