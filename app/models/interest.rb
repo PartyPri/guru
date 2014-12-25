@@ -14,4 +14,10 @@ class Interest < ActiveRecord::Base
 
   has_many :reel_interests
   has_many :reels, through: :reel_interests, uniq: true
+
+  # Attachments
+  
+  has_attached_file :cover_photo, :styles => {:large => "1000x400#"}
+  do_not_validate_attachment_file_type :cover_photo
+
 end

@@ -1,5 +1,5 @@
 -# APRIL: Custom interest image to go here
-.hero-image.landing
+.hero-image{style: "background-image: url(#{@interest.cover_photo.url(:large)});"}
   .hero
     = render 'shared/nav'
     .container.p-y-100.ta-center{style: "height: 300px;"}
