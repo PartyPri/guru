@@ -1,5 +1,5 @@
 class Interest < ActiveRecord::Base
-  attr_accessible :name, :description, :history
+  attr_accessible :name, :description, :history, :quote_author
 
   # Associations
 
