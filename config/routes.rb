@@ -23,6 +23,7 @@ Guru::Application.routes.draw do
   get 'users/:id/following', to: 'followerships#show_following', as: 'following'
   get 'interests/:id/about', to: 'about_interests#show', as: 'interest_about'
   get 'users/:id/about', to: 'about_users#show', as: 'user_about'
+  get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   #get 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   #put 'projects/:id/addmedia', to: 'projects#add_media', as: 'add_media'
   get 'landing', to: 'pages#landing', as: 'landing'

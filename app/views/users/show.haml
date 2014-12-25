@@ -41,7 +41,8 @@
   %span{style: "background-color: white; position: relative; top: -30px;"}
     - if current_user.present?
       - if @user.id == current_user.id
-        %button.btn.btn-default.btn-large Edit Profile
+        %button.btn.btn-default.btn-large= link_to "Edit Profile", edit_profile_path
+        -#= link_to "sign up with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
     - else
       %button.btn.btn-primary.btn-large Follow
 .tab-content.m-bottom-60
@@ -61,53 +62,43 @@
     .tab-content
       -# APRIL: Need to hook up user content here
       .container.tab-pane#timeline{role: "tabpanel"}
-        - 6.times do
-          .row
-            .col-xs-12.col-sm-4
-              %h4
-                -# APRIL: Make reel dates and names dynamic
-                %strong October 13, 2014
-                %span= "by" + " " + @user.first_name + @user.last_name
-              %h4 Performing with Dynamix
-              %img.m-top-10{src: "http://ecstaticdancespokane.com/wp-content/uploads/dance_in_the_shutter_IX_by_mehmeturgut.jpg", width: "100%"}
-              %h5.ta-center.m-top-10 Media Caption Here
-            .col-xs-12.col-sm-4
-              %h4
-                -# APRIL: Make reel dates and names dynamic
-                %strong October 13, 2014
-                %span= "by" + " " + @user.first_name + @user.last_name
-              %h4 Performing with Dynamix
-              %img.m-top-10{src: "http://ecstaticdancespokane.com/wp-content/uploads/dance_in_the_shutter_IX_by_mehmeturgut.jpg", width: "100%"}
-              %h5.ta-center.m-top-10 Media Caption Here
-            .col-xs-12.col-sm-4
-              %h4
-                -# APRIL: Make reel dates and names dynamic
-                %strong October 13, 2014
-                %span= "by" + " " + @user.first_name + @user.last_name
-              %h4 Performing with Dynamix
-              %img.m-top-10{src: "http://ecstaticdancespokane.com/wp-content/uploads/dance_in_the_shutter_IX_by_mehmeturgut.jpg", width: "100%"}
-              %h5.ta-center.m-top-10 Media Caption Here
+        .row
+          - @reels.each do |reel|
+            - reel.images.each do |image|
+              .col-xs-12.col-sm-4
+                %h4
+                  -# APRIL: Make reel dates and names dynamic
+                  %strong= image.updated_at
+                  -#%span= "by" + " " + @user.first_name + @user.last_name
+                %h4= image.reel.name
+                %img.m-top-10= image_tag(image.photo.url, width: "100%")
+                %h5.ta-center.m-top-10= image.description
       .container.tab-pane.active#reels{role: "tabpanel"}
-        - 3.times do
+        - @reels.each do |reel|
           .row.p-top-20
             .col-xs-12
               -# APRIL: Hook up to reel names and tags
-              %h3 Performing with Dynamix
+              %h3= reel.name
+              - interest = reel.interests
+              - length = interest.length
               %ul.list-inline
-                %li
-                  %a Dance
-                %li.divider
-                %li
-                  %a Health &amp; Fitness
+                - interest.each_with_index do |interest, x|
+                  - if x+1 != length
+                    %li
+                      = link_to(interest.name, "/interests/#{interest.id}/about")
+                    %li.divider
+                  - else
+                    %li
+                      = link_to(interest.name, "/interests/#{interest.id}/about")
           .row.p-top-20.ta-center
             .col-xs-12
               %div.reel-carousel
                 -# APRIL: Hook up reel images and titles to carousel
-                - 7.times do
+                - reel.images.each do |image|
                   %div.m-20
                     %a
-                      %img{src: "http://trailerpilot.files.wordpress.com/2012/07/thodos-dance-chicago-2012-new-dances-9.jpg", width: "100%"}
-                      %h4.p-top-15 Media Caption Here
+                      = image_tag(image.photo.url, width: "100%")
+                      %h4.p-top-15= image.description
 
 
 -# <!--Statbar (Avatar and Stats) -->
