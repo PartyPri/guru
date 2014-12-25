@@ -28,6 +28,27 @@ class ReelsController < ApplicationController
     end
   end
 
+  def edit
+    @reel = Reel.find(params[:id])
+  end
+
+  def update
+    @reel = Reel.find(params[:id])  
+    if @reel.update_attributes( params[:reel] )
+      flash[:notice] = "Reel Updated."
+      redirect_to @reel.user
+    else
+      flash[:notice] = "Saving failed. Please try again"
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @reel = Reel.find(params[:id])
+    @reel.destroy
+    redirect_to current_user
+  end
+
   private
     def reel_params
       params.require(:reel).permit(:image_id, :video_id)
