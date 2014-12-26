@@ -42,7 +42,6 @@
     - if current_user.present?
       - if @user.id == current_user.id
         %button.btn.btn-default.btn-large= link_to "Edit Profile", edit_profile_path
-        -#= link_to "sign up with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
     - else
       %button.btn.btn-primary.btn-large Follow
 .tab-content.m-bottom-60
@@ -70,7 +69,7 @@
                   -# APRIL: Make reel dates and names dynamic
                   %strong= image.updated_at
                   -#%span= "by" + " " + @user.first_name + @user.last_name
-                %h4= image.reel.name
+                %h4= link_to(image.reel.name, "/reels/#{reel.id}")
                 %img.m-top-10= image_tag(image.photo.url, width: "100%")
                 %h5.ta-center.m-top-10= image.description
       .container.tab-pane.active#reels{role: "tabpanel"}
