@@ -45,8 +45,8 @@
             %h4
               -# APRIL: Make reel dates and names dynamic
               %strong= image.updated_at
-              -#%span= "by" + " " + @user.first_name + @user.last_name
-            %h4= image.reel.name
+              %span= "by" + " " + reel.user.first_name + " " + reel.user.last_name
+            %h4= link_to(image.reel.name, "/reels/#{reel.id}")
             %img.m-top-10= image_tag(image.photo.url, width: "100%")
             %h5.ta-center.m-top-10= image.description
   .container.tab-pane.active#reels{role: "tabpanel"}
@@ -54,7 +54,8 @@
       .row.p-top-20
         .col-xs-12
           -# APRIL: Hook up to reel names and tags
-          %h3= reel.name
+          %h3= link_to(reel.name, "/reels/#{reel.id}")
+          %span= "by" + " " + reel.user.first_name + " " + reel.user.last_name
           - interest = reel.interests
           - length = interest.length
           %ul.list-inline

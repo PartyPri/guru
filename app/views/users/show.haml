@@ -77,7 +77,7 @@
           .row.p-top-20
             .col-xs-12
               -# APRIL: Hook up to reel names and tags
-              %h3= reel.name
+              %h3= link_to(reel.name, "/reels/#{reel.id}")
               - interest = reel.interests
               - length = interest.length
               %ul.list-inline
