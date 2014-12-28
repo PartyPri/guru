@@ -1,0 +1,44 @@
+.bgc-turq.p-y-20
+  .container
+    .row
+      .col-sm-12
+        .d-inline-block.m-right-10= image_tag 'evrystep_logo.svg', width: "150px;"
+        %h4.c-white.d-inline-block.uppercase 
+          %span.m-right-10 &#47; 
+          Style Guide
+.container.p-y-60
+  .row
+    .col-sm-12
+      %h1 Colors
+  .row.m-top-20
+    .col-sm-12
+      %h4.uppercase Main Colors
+  .row
+    - colors = ["white", "red", "lt-turq", "turq"]
+    - colors.each do |color|
+      .col-sm-12.col-md-3
+        %div.ta-center.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;"}
+          %p $#{color}
+          %p .bgc-#{color}
+          %p .c-#{color}
+  .row.m-top-20
+    .col-sm-12
+      %h4.uppercase Grays
+    - grays = ["drk-gray", "med-gray", "gray", "lt-gray"]
+    - grays.each do |gray|
+      .col-sm-12.col-md-3{class: (gray == "drk-gray" ? "c-white" : "")}
+        %div.ta-center.p-20{class: "bgc-#{gray}", style: "border: 1px solid #eee;"}
+          %p $#{gray}
+          %p .bgc-#{gray}
+          %p .c-#{gray}
+  .row.m-top-20
+    .col-sm-12
+      %h4.uppercase Feedback Colors
+    - feedback = [["lt-success", "success"], ["lt-warning", "warning"], ["lt-alert", "alert"]]
+    - feedback.each do |bg, color|
+      .col-sm-12.col-md-3
+        %div.ta-center.p-20{class: "bgc-#{bg} c-#{color}", style: "border: 1px solid #eee;"}
+          %p $#{bg}
+          %p $#{color}
+          %p .bgc-#{bg}
+          %p .c-#{color}

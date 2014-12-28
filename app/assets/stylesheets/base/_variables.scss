@@ -25,6 +25,34 @@ $med-gray: #aaaaaa;
 $gray:     #cccccc;
 $lt-gray:  #f3f3f3;
 
+// Success & Alert Colors - Borrowed from http://isabelcastillo.com/error-info-messages-css
+// Yellows
+$lt-warning:  #feefb3;
+$warning:     #9f6000;
+//Greens
+$lt-success:  #DFF2BF;
+$success:     #4f8a10;
+// Reds
+$lt-alert:    #ffbaba;
+$alert:       #ff0000;
+
+$evrystep-colors: (
+  ('white',      $white),
+  ('red',        $red),
+  ('turq',       $turq),
+  ('lt-turq',    $lt-turq),
+  ('drk-gray',   $drk-gray),
+  ('med-gray',   $med-gray),
+  ('gray',       $gray),
+  ('lt-gray',    $lt-gray), 
+  ('lt-warning', $lt-warning),
+  ('warning',    $warning),
+  ('lt-success', $lt-success),
+  ('success',    $success),
+  ('lt-alert',   $lt-alert),
+  ('alert',      $alert)
+);
+
 // Font Colors
 $base-font-color: $drk-gray;
 $base-accent-color: $turq;

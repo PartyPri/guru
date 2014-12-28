@@ -1,6 +1,13 @@
 .ta-center { text-align: center; }
 .ta-right  { text-align: right; }
 
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-block        { display: block; }
+
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+
 .list-inline > .divider {
   &:after{
     color: $gray;
