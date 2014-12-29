@@ -24,3 +24,6 @@ ul.list-inline > li.active > a {
   font-family: $base-font-family;
   font-style: italic;
 }
+
+.header-font { font-family: $header-font-family; }
+.base-font   { font-family: $base-font-family; }
