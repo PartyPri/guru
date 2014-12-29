@@ -14,8 +14,6 @@
 // Loads all Bootstrap javascripts
 //= require jquery
 //= require jquery_ujs
-//= require foundation.min
-//= require foundation.equalizer
 //= require twitter/bootstrap
 //= require slick.min
 //= require slick_carousel

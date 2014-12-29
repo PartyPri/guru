@@ -1,30 +1,26 @@
 .container.p-y-60
   .row
-    .col-sm-12
+    .col-sm-12.col-md-3
       %h1 Colors
-  .row.m-top-20
-    .col-sm-12
-      %h4.uppercase Main Colors
-  .row{"data-equalizer" => "true"}
-    .col-sm-12.col-md-1
-      %div.bgc-lt-gray.side{"data-equalizer-watch" => "true"}
-        %h4.uppercase Main Colors
-    .col-sm-12.col-md-11
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.uppercase.c-red Main Colors
       .row
         - colors = ["white", "red", "lt-turq", "turq"]
         - colors.each do |color|
           .col-sm-12.col-md-3
-            %div.ta-center.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;", "data-equalizer-watch" => "true"}
+            %div.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;"}
               %p $#{color}
               %p .bgc-#{color}
               %p .c-#{color}
-  .row.m-top-20
-    .col-sm-12
-      %h4.uppercase Grays
-    - grays = ["drk-gray", "med-gray", "gray", "lt-gray"]
-    - grays.each do |gray|
-      .col-sm-12.col-md-3{class: (gray == "drk-gray" ? "c-white" : "")}
-        %div.ta-center.p-20{class: "bgc-#{gray}", style: "border: 1px solid #eee;"}
-          %p $#{gray}
-          %p .bgc-#{gray}
-          %p .c-#{gray}
+      .row.m-top-40
+        .col-sm-12
+          %h4.uppercase.c-red Grays
+        - grays = ["drk-gray", "med-gray", "gray", "lt-gray"]
+        - grays.each do |gray|
+          .col-sm-12.col-md-3{class: (gray == "drk-gray" ? "c-white" : "")}
+            %div.p-20{class: "bgc-#{gray}", style: "border: 1px solid #eee;"}
+              %p $#{gray}
+              %p .bgc-#{gray}
+              %p .c-#{gray}
