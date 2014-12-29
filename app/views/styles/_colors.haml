@@ -5,14 +5,19 @@
   .row.m-top-20
     .col-sm-12
       %h4.uppercase Main Colors
-  .row
-    - colors = ["white", "red", "lt-turq", "turq"]
-    - colors.each do |color|
-      .col-sm-12.col-md-3
-        %div.ta-center.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;"}
-          %p $#{color}
-          %p .bgc-#{color}
-          %p .c-#{color}
+  .row{"data-equalizer" => "true"}
+    .col-sm-12.col-md-1
+      %div.bgc-lt-gray.side{"data-equalizer-watch" => "true"}
+        %h4.uppercase Main Colors
+    .col-sm-12.col-md-11
+      .row
+        - colors = ["white", "red", "lt-turq", "turq"]
+        - colors.each do |color|
+          .col-sm-12.col-md-3
+            %div.ta-center.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;", "data-equalizer-watch" => "true"}
+              %p $#{color}
+              %p .bgc-#{color}
+              %p .c-#{color}
   .row.m-top-20
     .col-sm-12
       %h4.uppercase Grays
