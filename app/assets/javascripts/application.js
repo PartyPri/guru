@@ -18,5 +18,6 @@
 //= require slick.min
 //= require slick_carousel
 //= require resp_menu
+//= require tooltips
 //= require_tree .
 //
