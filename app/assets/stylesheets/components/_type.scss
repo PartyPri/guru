@@ -1,13 +1,13 @@
+// Text Align
 .ta-center { text-align: center; }
 .ta-right  { text-align: right; }
+.ta-left   { text-align: left; }
 
-.d-inline       { display: inline; }
-.d-inline-block { display: inline-block; }
-.d-block        { display: block; }
+// Transforms
+.tt-upper { text-transform: uppercase; }
+.tt-lower { text-transform: lowercase; }
 
-.uppercase { text-transform: uppercase; }
-.lowercase { text-transform: lowercase; }
-
+// Lists
 .list-inline > .divider {
   &:after{
     color: $gray;
@@ -20,10 +20,13 @@ ul.list-inline > li.active > a {
   cursor: default;
 }
 
+
+// Quote Attribution
 .quote {
   font-family: $base-font-family;
   font-style: italic;
 }
 
+// Font Classes
 .header-font { font-family: $header-font-family; }
 .base-font   { font-family: $base-font-family; }
