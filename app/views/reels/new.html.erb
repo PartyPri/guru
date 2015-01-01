@@ -1,45 +1,56 @@
-<br><br>
-<%= form_for @reel, url: reels_path, :html => { :multipart => true, :class => 'well form-horizontal' } do |f| %>
+<div class="hero-image landing">
+  <div class="hero">
+    <%= render 'shared/nav' %>
+  </div>
+</div>
+<%= form_for @reel, url: reels_path, :html => { :multipart => true } do |f| %>
 
   <%= render 'shared/error_messages', :object => f.object %>
 
-  <fieldset>
-    <div style="text-align: center" class="h2 no-top-margin">Create Reel</div>
+  <div class="container p-y-60">
+    <div class="row">
+      <div class="col-xs-12">
+        <fieldset>
+          <div style="text-align: center" class="no-top-margin">
+            <h1>Create Reel</h1>
+            <p>A reel is a collection of videos and images that showcase what you do.</p>
+          </div>
 
-    <div class="project-form">A reel is a collection of videos and images that showcase what you do. </p>
-      <%#= link_to "See example project", project_path(Project.find_by_id(8)) %>
-    </div>
-    <br><br>
+          <!-- <div class="project-form">A reel is a collection of videos and images that showcase what you do. </p>
+            <%#= link_to "See example project", project_path(Project.find_by_id(8)) %>
+          </div>
+          <br><br> -->
+          <div class="row m-top-40">
+            <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+              <div class="form-group">  
+                <div class="controls">
+                  <%= f.label :name, :class => 'control-label' %>
+                </div>
+                <div>
+                  <%= f.text_field :name, :class => 'form-control input-lg', :placeholder => 'your reel\'s name' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="controls">
+                  <%= f.label "Interests", :class => 'control-label' %>
+                </div>
+                <div>
+                  <span class="help-block">Choose the interests that best describe your reel:</span>
+                  <!--<p class="h5">Dance :</p>-->
+                  <% Interest.all.each do |interest| %>
+                    <%= hidden_field_tag "reel[interest_ids][]", nil %>
+                    <%= check_box_tag "reel[interest_ids][]", interest.id %>
+                    <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
+                    <%= interest.name %><br>
+                  <% end %>
+                </div>
+              </div>
+              <hr />
+              <div class="form-actions text-center">
+                <%= f.submit "Create Reel", :class => 'btn btn-primary' %>
+              </div>
+            </div>
+          </div>
 
-    <div class="form-group">  
-      <div class="controls">
-        <%= f.label :name, :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :name, :class => 'form-control input-lg', :placeholder => 'your reel\'s name' %>
-        </div>
-      </div>  
-    </div>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label "Interests", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <span class="help-block">Choose the interests that best describe your reel:</span>
-          <!--<p class="h5">Dance :</p>-->
-          <% Interest.all.each do |interest| %>
-            <%= hidden_field_tag "reel[interest_ids][]", nil %>
-            <%= check_box_tag "reel[interest_ids][]", interest.id %>
-            <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
-            <%= interest.name %><br>
-          <% end %>
-          
-        </div>
-      </div>
-    </div>
-
-    <div class="form-actions text-center">
-      <%= f.submit "Done", :class => 'btn btn-danger btn-lg' %>
-    </div>
-
-  </fieldset>
+        </fieldset>
 <% end %>

@@ -1,6 +1,7 @@
 class ReelsController < ApplicationController
 
   def show
+    @user = User.where( id: params[:id] ).first
     @reel = Reel.includes(:images, :videos).find(params[:id])
     @images = @reel.images
     @videos = @reel.videos
