@@ -1,0 +1,18 @@
+.container.p-y-60
+  .row
+    .col-sm-12.col-md-3
+      %h1 Carousels
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.text-uppercase.c-red Slick
+      .row
+        .col-sm-12
+          %p 
+            For carousel functionality, we use <a href="http://kenwheeler.github.io/slick/">Slick</a>.
+          %div.reel-carousel.text-center
+            - 7.times do
+              %div.m-20
+                %a
+                  %img{src: "https://placekitten.com/g/200/139", width: "100%"}
+                  %h4.p-top-15 Video Title Here 
