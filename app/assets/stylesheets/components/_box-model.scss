@@ -68,22 +68,9 @@
 .d-inline-block { display: inline-block; }
 .d-block        { display: block; }
 
-.center {
-  margin: 0 auto;
-}
-
 .cont-padding { 
   padding: 30px 35px;
   @media (min-width:768px) {
     padding: 60px 0px;
   }
 }
-
-// Rotation
-.side {
-  -ms-transform:rotate(270deg); /* IE 9 */
-  -moz-transform:rotate(270deg); /* Firefox */
-  -webkit-transform:rotate(270deg); /* Safari and Chrome */
-  -o-transform:rotate(270deg); /* Opera */
-}
-

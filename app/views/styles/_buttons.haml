@@ -1,0 +1,61 @@
+.container.p-y-60
+  .row
+    .col-sm-12.col-md-3
+      %h1 Buttons
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.text-uppercase.c-red Button Styles
+      .row
+        .col-sm-12.col-md-3
+          .btn.btn-primary{style: "width: 100%;"} Primary Button
+          %div.m-top-15
+            %span.bgc-lt-gray.p-10 .btn.btn-primary
+        .col-sm-12.col-md-3
+          .btn.btn-primary{style: "width: 100%;", "disabled" => "disabled"} Disabled Primary
+        .col-sm-12.col-md-3
+          .btn.btn-default{style: "width: 100%;"} Secondary Button
+          %div.m-top-15
+            %span.bgc-lt-gray.p-10 .btn.btn-default
+        .col-sm-12.col-md-3
+          .btn.btn-default{style: "width: 100%;", "disabled" => "disabled"} Disabled Secondary
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Dropdowns
+      .row
+        .col-sm-12.col-md-3
+          %div.dropdown
+            %button.btn.btn-primary.dropdown-toggle{type: "button", id: "exdropdown1", "data-toggle" => "dropdown", style: "width: 100%;"}
+              Dropdown
+              %span.caret
+            %ul.dropdown-menu{role: "menu"}
+              %li.dropdown-header Dropdown Header
+              %li
+                %a Item One
+              %li.disabled
+                %a Item Two
+              %li
+                %a Item Three
+              %li
+                %a Item Four
+              %li.divider
+              %li
+                %a Item Five
+        .col-sm-12.col-md-3
+          %div.dropdown
+            %button.btn.btn-default.dropdown-toggle{type: "button", id: "exdropdown1", "data-toggle" => "dropdown", style: "width: 100%;"}
+              Dropdown
+              %span.caret
+            %ul.dropdown-menu{role: "menu"}
+              %li.dropdown-header Dropdown Header
+              %li
+                %a Item One
+              %li.disabled
+                %a Item Two
+              %li
+                %a Item Three
+              %li
+                %a Item Four
+              %li.divider
+              %li
+                %a Item Five

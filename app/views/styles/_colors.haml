@@ -5,7 +5,7 @@
     .col-sm-12.col-md-9
       .row
         .col-sm-12
-          %h4.tt-upper.c-red Main Colors
+          %h4.text-uppercase.c-red Main Colors
       .row
         - colors = ["white", "red", "lt-turq", "turq"]
         - colors.each do |color|
@@ -16,7 +16,7 @@
               %p .c-#{color}
       .row.m-top-40
         .col-sm-12
-          %h4.tt-upper.c-red Grays
+          %h4.text-uppercase.c-red Grays
         - grays = ["drk-gray", "med-gray", "gray", "lt-gray"]
         - grays.each do |gray|
           .col-sm-12.col-md-3{class: (gray == "drk-gray" ? "c-white" : "")}

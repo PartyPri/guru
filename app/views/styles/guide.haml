@@ -3,10 +3,11 @@
     .row
       .col-sm-12
         .d-inline-block.m-right-10= image_tag 'evrystep_logo.svg', width: "150px;"
-        %h4.c-white.d-inline-block.tt-upper
+        %h4.c-white.d-inline-block.text-uppercase
           %span.m-right-10 &#47; 
           Style Guide
-= render 'colors'
-= render 'divider'
-= render 'typography'
-= render 'divider'
+- sections = ["colors", "shadows", "typography", "buttons", "iconography", "forms", "tables", "box-model"]
+- sections.each do |section|
+  = render section
+  - if section != sections[-1]
+    = render 'divider'
