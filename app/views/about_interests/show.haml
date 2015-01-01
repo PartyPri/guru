@@ -2,16 +2,16 @@
 .hero-image{style: "background-image: url(#{@interest.cover_photo.url(:large)});"}
   .hero
     = render 'shared/nav'
-    .container.p-y-100.ta-center{style: "height: 300px;"}
+    .container.p-y-100.text-center{style: "height: 300px;"}
 .container.p-y-40
-  .row.ta-center
+  .row.text-center
     .col-lg-12
       %h1.hero-text.p-bottom-5= @interest.name
       -# APRIL: Custom interest quote to go here
       %h4= @interest.description
       -# APRIL: Custom interest quote attribution to go here
       %h5= @interest.quote_author
-  .row.ta-center.p-top-20
+  .row.text-center.p-top-20
     .col-xs-12
       %ul.list-inline
         %li
@@ -25,11 +25,11 @@
         %li
           %h5
             %a Followers
-.container.ta-center.m-top-40{style: "height: 1px; background-color: #cccccc;"}
+.container.text-center.m-top-40{style: "height: 1px; background-color: #cccccc;"}
   %span{style: "background-color: white; position: relative; top: -30px;"}
     %button.btn.btn-primary.btn-large Follow
 .container.p-y-20{role: "tabpanel"}
-  .row.ta-right.m-bottom-30
+  .row.text-right.m-bottom-30
     .col-xs-12
       %ul.list-inline
         %li.active
@@ -48,7 +48,7 @@
               %span= "by" + " " + reel.user.first_name + " " + reel.user.last_name
             %h4= link_to(image.reel.name, "/reels/#{reel.id}")
             %img.m-top-10= image_tag(image.photo.url, width: "100%")
-            %h5.ta-center.m-top-10= image.description
+            %h5.text-center.m-top-10= image.description
   .container.tab-pane.active#reels{role: "tabpanel"}
     - @reels.each do |reel|
       .row.p-top-20
@@ -67,7 +67,7 @@
               - else
                 %li
                   = link_to(interest.name, "/interests/#{interest.id}/about")
-      .row.p-top-20.ta-center
+      .row.p-top-20.text-center
         .col-xs-12
           %div.reel-carousel
             -# APRIL: Hook up reel images and titles to carousel

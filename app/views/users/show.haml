@@ -8,12 +8,12 @@
 .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
   .hero
     = render 'shared/nav'
-    .container.p-y-100.ta-center{style: "height: 300px;"}
-.container.ta-center{style: "height: 80px;"}
+    .container.p-y-100.text-center{style: "height: 300px;"}
+.container.text-center{style: "height: 80px;"}
   .row
     %span{style: "position: relative; top: -75px;"}
       = image_tag(@user.avatar.url(:small), style: "border: 1px solid white; background-color: white; padding: 5px;")
-.container.ta-center.p-y-20
+.container.text-center.p-y-20
   .row
     .col-xs-12
       %h1= @user.first_name + " " + @user.last_name
@@ -29,7 +29,7 @@
             %h5
               = link_to(interest.name, "/interests/#{interest.id}/about")
 .container
-  .row.ta-center
+  .row.text-center
     .col-xs-12
       %ul.list-inline
         %li.active
@@ -37,7 +37,7 @@
         %li.divider
         %li
           %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
-.container.ta-center.m-y-50{style: "height: 1px; background-color: #cccccc;"}
+.container.text-center.m-y-50{style: "height: 1px; background-color: #cccccc;"}
   %span{style: "background-color: white; position: relative; top: -30px;"}
     - if current_user.present?
       - if @user.id == current_user.id
@@ -46,12 +46,12 @@
       %button.btn.btn-primary.btn-large Follow
 .tab-content.m-bottom-60
   .container.tab-pane#bio{role: "tabpanel"}
-    .row.ta-center
+    .row.text-center
       .col-xs-12.col-sm-8.col-sm-offset-2
         %p= @user.bio
   .container.tab-pane.active#work{role: "tabpanel"}
     .container.p-y-10{role: "tabpanel"}
-      .row.ta-right
+      .row.text-right
         .col-xs-12
           %ul.list-inline
             %li.active
@@ -71,7 +71,7 @@
                   -#%span= "by" + " " + @user.first_name + @user.last_name
                 %h4= link_to(image.reel.name, "/reels/#{reel.id}")
                 %img.m-top-10= image_tag(image.photo.url, width: "100%")
-                %h5.ta-center.m-top-10= image.description
+                %h5.text-center.m-top-10= image.description
       .container.tab-pane.active#reels{role: "tabpanel"}
         - @reels.each do |reel|
           .row.p-top-20
@@ -89,7 +89,7 @@
                   - else
                     %li
                       = link_to(interest.name, "/interests/#{interest.id}/about")
-          .row.p-top-20.ta-center
+          .row.p-top-20.text-center
             .col-xs-12
               %div.reel-carousel
                 -# APRIL: Hook up reel images and titles to carousel

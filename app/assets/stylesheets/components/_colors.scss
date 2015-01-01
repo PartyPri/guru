@@ -1,17 +1,9 @@
-.c-white    { color: $white; }
-.c-red      { color: $red; }
-.c-turq     { color: $turq; }
-.c-lt-turq  { color: $lt-turq; }
-.c-drk-gray { color: $drk-gray; }
-.c-med-gray { color: $med-gray; }
-.c-gray     { color: $gray; }
-.c-lt-gray  { color: $lt-gray; }
+@each $name, $color in $evrystep-colors {
 
-.bgc-white    { background-color: $white; }
-.bgc-red      { background-color: $red; }
-.bgc-turq     { background-color: $turq; }
-.bgc-lt-turq  { background-color: $lt-turq; }
-.bgc-drk-gray { background-color: $drk-gray; }
-.bgc-med-gray { background-color: $med-gray; }
-.bgc-gray     { background-color: $gray; }
-.bgc-lt-gray  { background-color: $lt-gray; }
+  // Font Color Classes
+  .c-#{$name} { color: $color; }
+
+  // Background Color Classes
+  .bgc-#{$name} { background-color: $color; }
+
+}

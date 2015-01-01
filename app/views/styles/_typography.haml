@@ -1,0 +1,110 @@
+.container.p-y-60
+  .row
+    .col-sm-12.col-md-3
+      %h1 Type
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.text-uppercase.c-red Header Font Family
+      .row
+        .col-sm-12
+          %h1 Museo Sans
+      .row
+        .col-sm-12
+          %h2 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      .row
+        .col-sm-12
+          %h2 abcdefghijklmnopqrstuvwxyz
+      .row
+        .col-sm-12
+          %h2 0123456789
+      .row.m-top-20
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 $header-font-family
+          %span.bgc-lt-gray.p-10 .header-font
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Base Font Family
+      .row
+        .col-sm-12
+          %h1.base-font Open Sans
+      .row
+        .col-sm-12
+          %h2.base-font ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      .row
+        .col-sm-12
+          %h2.base-font abcdefghijklmnopqrstuvwxyz
+      .row
+        .col-sm-12
+          %h2.base-font 0123456789
+      .row.m-top-20
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 $base-font-family
+          %span.bgc-lt-gray.p-10 .base-font
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Headers
+      .row
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h1 h1
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 3.125
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h2 h2
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 2.5
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h3 h3
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 1.875
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h4 h4
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 1.25
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h5 h5
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 0.9375
+        .col-sm-12.col-md-2
+          %div.p-20.text-center{style: "border: 1px solid #eee;"}
+            %h6 h6
+          %div.p-5.text-center.bgc-lt-gray.m-top-10
+            %p.m-bottom-0 base * 0.625
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Body Copy
+          %p Fingerstache kitsch bicycle rights tattooed, YOLO try-hard mustache lumbersexual cardigan Austin beard. Fashion axe put a bird on it bitters plaid retro tote bag, craft beer deep v fanny pack locavore sriracha. Flannel yr authentic kitsch pug tattooed. Pork belly retro next level letterpress migas, tote bag hashtag cardigan Helvetica Vice normcore raw denim actually. Flexitarian meditation sriracha vinyl next level. Seitan photo booth pug, selfies gluten-free tofu Williamsburg next level retro typewriter raw denim Neutra lumbersexual banh mi Pinterest. Blue Bottle deep v meditation, put a bird on it trust fund ennui ethical sustainable cold-pressed heirloom brunch.
+          %div.m-top-20
+            %span.bgc-lt-gray.p-10 1rem
+            %span.bgc-lt-gray.p-10 16px
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Link Text
+          %a.disabled Fingerstache kitsch bicycle
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Inline List Dividers
+      .row
+        .col-sm-12
+          %ul.list-inline
+            - 1.upto(5) do |i|
+              %li Inline List Item #{i}
+              - if i != 5
+                %li.divider
+          %div.m-top-20
+            %span.bgc-lt-gray.p-10 %ul.inline-list &#62; %li.divider
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Quote Attribution
+      .row
+        .col-sm-12.text-center
+          %div.p-40
+            %h4 "Fingerstache kitsch bicycle rights tattooed, YOLO try-hard mustache lumbersexual cardigan Austin beard. Fashion axe put a bird on it bitters plaid retro tote bag, craft beer deep v fanny pack locavore sriracha. Flannel yr authentic kitsch pug tattooed. Pork belly retro next level letterpress migas, tote bag hashtag cardigan Helvetica Vice normcore raw denim actually."
+            %h4.c-turq.quote.m-top-10 - Quote Author
+            %div.m-top-20
+              %span.bgc-lt-gray.p-10 .quote

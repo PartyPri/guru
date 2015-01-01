@@ -1,0 +1,26 @@
+.container.p-y-60
+  .row
+    .col-sm-12.col-md-3
+      %h1 Colors
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.text-uppercase.c-red Main Colors
+      .row
+        - colors = ["white", "red", "lt-turq", "turq"]
+        - colors.each do |color|
+          .col-sm-12.col-md-3
+            %div.p-20{class: "bgc-#{color}", style: "border: 1px solid #eee;"}
+              %p $#{color}
+              %p .bgc-#{color}
+              %p .c-#{color}
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Grays
+        - grays = ["drk-gray", "med-gray", "gray", "lt-gray"]
+        - grays.each do |gray|
+          .col-sm-12.col-md-3{class: (gray == "drk-gray" ? "c-white" : "")}
+            %div.p-20{class: "bgc-#{gray}", style: "border: 1px solid #eee;"}
+              %p $#{gray}
+              %p .bgc-#{gray}
+              %p .c-#{gray}

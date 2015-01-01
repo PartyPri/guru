@@ -63,9 +63,10 @@
   }
 }
 
-.center {
-  margin: 0 auto;
-}
+// Displays
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-block        { display: block; }
 
 .cont-padding { 
   padding: 30px 35px;
@@ -73,4 +74,3 @@
     padding: 60px 0px;
   }
 }
-
