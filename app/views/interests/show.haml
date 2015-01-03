@@ -1,0 +1,78 @@
+-# APRIL: Custom interest image to go here
+.hero-image{style: "background-image: url(#{@interest.cover_photo.url(:large)});"}
+  .hero
+    = render 'shared/nav'
+    .container.p-y-100.ta-center{style: "height: 300px;"}
+.container.p-y-40
+  .row.ta-center
+    .col-lg-12
+      %h1.hero-text.p-bottom-5= @interest.name
+      -# APRIL: Custom interest quote to go here
+      %h4= @interest.description
+      -# APRIL: Custom interest quote attribution to go here
+      %h5= @interest.quote_author
+  .row.ta-center.p-top-20
+    .col-xs-12
+      %ul.list-inline
+        %li
+          %h5
+            %a Reels
+        %li.divider
+        %li
+          %h5
+            %a About
+        %li.divider
+        %li
+          %h5
+            %a Followers
+.container.ta-center.m-top-40{style: "height: 1px; background-color: #cccccc;"}
+  %span{style: "background-color: white; position: relative; top: -30px;"}
+    %button.btn.btn-primary.btn-large Follow
+.container.p-y-20{role: "tabpanel"}
+  .row.ta-right.m-bottom-30
+    .col-xs-12
+      %ul.list-inline
+        %li.active
+          %a{href: "#reels", role: "tab", "data-toggle" => "tab"} Reels
+        %li
+          %a{href: "#timeline", role: "tab", "data-toggle" => "tab"} Timeline
+.tab-content
+  .container.tab-pane#timeline{role: "tabpanel"}
+    .row
+      - @reels.each do |reel|
+        - reel.images.each do |image|
+          .col-xs-12.col-sm-4
+            %h4
+              -# APRIL: Make reel dates and names dynamic
+              %strong= image.updated_at
+              %span= "by" + " " + @user.first_name + @user.last_name
+            %h4= link_to(image.reel.name, "/reels/#{reel.id}")
+            %img.m-top-10= image_tag(image.photo.url, width: "100%")
+            %h5.ta-center.m-top-10= image.description
+  .container.tab-pane.active#reels{role: "tabpanel"}
+    - @reels.each do |reel|
+      .row.p-top-20
+        .col-xs-12
+          -# APRIL: Hook up to reel names and tags
+          %h3= link_to(reel.name, "/reels/#{reel.id}")
+          %span= "by" + " " + reel.user.first_name + reel.user.last_name
+          - interest = reel.interests
+          - length = interest.length
+          %ul.list-inline
+            - interest.each_with_index do |interest, x|
+              - if x+1 != length
+                %li
+                  = link_to(interest.name, "/interests/#{interest.id}/about")
+                %li.divider
+              - else
+                %li
+                  = link_to(interest.name, "/interests/#{interest.id}/about")
+      .row.p-top-20.ta-center
+        .col-xs-12
+          %div.reel-carousel
+            -# APRIL: Hook up reel images and titles to carousel
+            - reel.images.each do |image|
+              %div.m-20
+                %a
+                  = image_tag(image.photo.url, width: "100%")
+                  %h4.p-top-15= image.description

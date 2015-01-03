@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   has_many :user_interests
   has_many :interests, through: :user_interests, uniq: true
   has_many :reels
+  has_many :images, through: :reels
+  has_many :videos, through: :reels
 
   has_many :followerships, dependent: :destroy
   has_many :followers, through: :followerships
@@ -77,5 +79,9 @@ class User < ActiveRecord::Base
     }.delete_if {|x| x == nil}
   end
 
+  def timeline_media (id)
+    @user = User.find_by_id(id)
+    (@user.images + @user.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+  end
 
 end

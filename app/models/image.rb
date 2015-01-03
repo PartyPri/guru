@@ -1,7 +1,6 @@
 class Image < ActiveRecord::Base
   attr_accessible :description, :project_id, :photo, :photo_file_name, :reel_id, :title
 
-  belongs_to :project
   belongs_to :reel
 
   #Attachments

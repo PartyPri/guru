@@ -1,5 +1,5 @@
 class Reel < ActiveRecord::Base
-  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id
+  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id, :reel_media
 
   # Associations
 
@@ -12,5 +12,10 @@ class Reel < ActiveRecord::Base
   
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
+
+  def reel_media (id)
+    @reel = Reel.find_by_id(id)
+    (@reel.images + @reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+  end
   
 end
