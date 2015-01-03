@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150103032250) do
+ActiveRecord::Schema.define(:version => 20150103140645) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -96,6 +96,7 @@ ActiveRecord::Schema.define(:version => 20150103032250) do
     t.integer  "reel_id"
     t.string   "title"
     t.integer  "user_id"
+    t.integer  "interest_id"
   end
 
   create_table "interests", :force => true do |t|
@@ -223,6 +224,7 @@ ActiveRecord::Schema.define(:version => 20150103032250) do
     t.integer  "reel_id"
     t.string   "title"
     t.integer  "user_id"
+    t.integer  "interest_id"
   end
 
   create_table "workshop_interests", :force => true do |t|
