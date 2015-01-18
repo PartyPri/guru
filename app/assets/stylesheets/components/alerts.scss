@@ -1,0 +1,17 @@
+.evrystep-alert-box {
+  background-color: rgba(0,0,0,0.75);
+  color: white;
+  padding: 15px;
+  border-radius: 0px 0px 5px 5px;
+}
+
+.evrystep-alert-wrapper {
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0%);
+  -moz-transform: translate(-50%, 0%);
+  -ms-transform: translate(-50%, 0%);
+}

@@ -97,3 +97,24 @@ fieldset[disabled] .btn-default.active {
   border-color: transparent;
   color: #fff;
 }
+
+// Change look of "close" on alerts
+
+.close {
+  float: right;
+  font-size: 19px;
+  font-weight: normal;
+  line-height: 1;
+  color: $red;
+  text-shadow: none;
+  filter: none;
+  opacity: 1;
+}
+.close:hover,
+.close:focus {
+  color: darken($red, 5%);
+  text-decoration: none;
+  cursor: pointer;
+  filter: none;
+  opacity: 1;
+}
