@@ -1,0 +1,34 @@
+.bgc-lt-gray
+  = render 'shared/light_nav'
+  .container.p-y-40
+    %div{style: "background-color: white; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center#new-media
+          %h1 Upload Media
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          = form_tag '', id: 'media_pre_upload' do
+            .form-group
+              %label{for: "reel_select"} Select a reel:
+              .select-style#reel_select
+                = collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
+            #upload-token-path{"data-upload-token-path" => "#{get_upload_token_path}"}
+            #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
+            #root-path{"data-root-path" => "#{ root_path }"}
+            .form-group
+              %label{for: "title"} Media Title:
+              = text_field_tag :title, @pre_upload_info[:title], required: true, id: :title, placeholder: 'Title', class: "form-control"
+            .form-group
+              %label{for: "description"} Media Description:
+              = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter brief description here...', class: "form-control"
+          = form_tag '', id: 'media_upload', multipart: true do
+            #upload_fields
+              = hidden_field_tag :token, '', id: :token
+              %button.btn.btn-default.file-upload
+                Upload Media
+                = file_field_tag :file, required: true, id: :file, class: "upload", "data-print" => "#emp-image-print"
+              %p.text-center#emp-image-print.m-top-10
+          %hr.m-y-20
+          .text-center
+            %button.btn.btn-primary#submit_pre_upload_form.w-100 Upload
+          = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."

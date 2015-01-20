@@ -19,5 +19,6 @@
 //= require slick_carousel
 //= require resp_menu
 //= require tooltips
+//= require upload_name
 //= require_tree .
 //
