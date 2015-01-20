@@ -25,7 +25,7 @@
             #upload_fields
               = hidden_field_tag :token, '', id: :token
               %button.btn.btn-default.file-upload
-                Upload Media
+                Select Media
                 = file_field_tag :file, required: true, id: :file, class: "upload", "data-print" => "#emp-image-print"
               %p.text-center#emp-image-print.m-top-10
           %hr.m-y-20
