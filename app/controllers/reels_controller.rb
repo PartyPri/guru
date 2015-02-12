@@ -36,10 +36,10 @@ class ReelsController < ApplicationController
   def update
     @reel = Reel.find(params[:id])  
     if @reel.update_attributes( params[:reel] )
-      flash[:notice] = "Reel Updated."
-      redirect_to @reel.user
+      flash[:notice] = "Your reel's been updated!"
+      redirect_to @reel
     else
-      flash[:notice] = "Saving failed. Please try again"
+      flash[:notice] = "Woops! Your changes couldn't be saved."
       render 'edit'
     end
   end

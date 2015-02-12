@@ -1,10 +1,14 @@
-<%= render 'shared/nav' %>
+<%= render 'shared/light_nav' %>
 
 <br>
 <%= form_for @reel, :html => { :method => :put, :multipart => true, :class => 'form-horizontal' } do |f| %>
 
   <fieldset>
-    <h2 style="text-align: center">Profile settings</h2><br>
+    <h2 style="text-align: center">Editing Reel</h2><br>
+    <div class="text-center">
+      <%= link_to "Cancel", reel_path(@reel), class: "btn btn-default" %>
+    </div>
+    <br>  
 
     <div class="form-group">
       <div class="controls">
@@ -15,8 +19,53 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Interests", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <% Interest.all.each do |interest| %>
+            <%= hidden_field_tag "reel[interest_ids][]", nil %>
+            <%= check_box_tag "reel[interest_ids][]", interest.id, @reel.interest_ids.include?(interest.id) %>
+            <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
+            <%= interest.name %><br>
+          <% end %>
+          <span class="help-block">select all that apply</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Reel media", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.fields_for :images do |builder| %>
+            <%= image_tag(builder.object.photo.url(:medium)) %><br>
+            <%= builder.label :description %>
+            <%= builder.text_field :description %><br>
+            <%= builder.check_box :_destroy %>
+            <%= builder.label :_destroy, "Remove image" %><br>
+            <br>
+          <% end %>
+          <%= f.fields_for :videos do |builder| %>
+            <iframe width="450" height="296" seamless src="//www.youtube.com/embed/<%= YoutubeID.from("#{builder.object.uid}") %>?rel=0" frameborder="0" allowfullscreen></iframe><br>
+            <%= builder.label :description %>
+            <%= builder.text_field :description %><br>
+            <%= builder.check_box :_destroy %>
+            <%= builder.label :_destroy, "Remove video" %><br>
+            <br>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+<!-- Temp edit media fields -->
+
+    <%#= f.text_field :description %><br>
+
+
+
     <div class="form-actions text-center">
-      <%= f.submit "Save changes", :class => 'btn btn-info btn-lg' %>
+      <%= f.submit "Save changes", :class => 'btn btn-primary btn-lg' %>
     </div>
 
   </fieldset>

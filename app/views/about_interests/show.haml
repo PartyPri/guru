@@ -75,5 +75,5 @@
             - reel.images.each do |image|
               %div.m-20
                 %a
-                  = image_tag(image.photo.url, width: "100%")
+                  = link_to(image_tag(image.photo.url, width: "100%"), reel_path)
                   %h4.p-top-15= image.description
