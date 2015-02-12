@@ -12,7 +12,7 @@
 .container.p-y-60.text-center{style: "height: 100%;"}
   .row
     .col-xs-12
-      %h1.text-center= @reel.name
+      %h1.text-center= @reel.name  
       %h5.text-center= link_to("by" + " " + @reel.user.first_name + " " + @reel.user.last_name, @reel.user)
       - interest = @reel.interests
       - length = interest.length
@@ -27,6 +27,8 @@
               = link_to(interest.name, "/interests/#{interest.id}/about")
       - if current_user.id == @reel.user.id         
         = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default"
+      %div.fb-share-button{"data-href" => "<%=share_object('reel')%>", "data-width" => "300", "data-layout" => "button"}
+      %div#result
   .row
     .col-xs-12
       %div.reel-carousel-center
@@ -38,7 +40,3 @@
             - else
               %iframe.youtube-player{type: "text/html", width: "800", height: "500", src: "http://www.youtube.com/embed/#{media.uid}", "allowfullscreen" => "true", "frameborder" => "0"}
               %p.p-top-15= media.description
-  .row
-    .col-xs-12
-      %div.fb-share-button{"data-href" => "<%=share_object('reel')%>", "data-width" => "300", "data-layout" => "button"}
-      %div#result
