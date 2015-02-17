@@ -12,7 +12,7 @@
   .row
     .col-xs-12
       %h1.text-center= @reel.name  
-      %h5.text-center= link_to("by" + " " + @reel.user.first_name + " " + @reel.user.last_name, @reel.user)
+      %h5.text-center= link_to("by" + " " + @user.first_name + " " + @user.last_name, @user)
       - interest = @reel.interests
       - length = interest.length
       %ul.list-inline
@@ -24,7 +24,7 @@
           - else
             %li
               = link_to(interest.name, "/interests/#{interest.id}/about")
-      - if current_user.id == @reel.user.id         
+      - if current_user.id == @user.id         
         = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default"
       %div.fb-share-button{"data-href" => share_object('reel'), "data-width" => "300", "data-layout" => "button"}
       %div#result
