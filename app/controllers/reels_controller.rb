@@ -11,6 +11,7 @@ class ReelsController < ApplicationController
     unless user_signed_in?
       redirect_to :root#error
     end
+    render 'new.haml'
     @reel = Reel.new
   end
 

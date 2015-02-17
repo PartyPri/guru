@@ -1,7 +1,8 @@
-.bgc-lt-gray
+/ .bgc-lt-gray
+.container
   = render 'shared/light_nav'
   .container.p-y-40
-    %div{style: "background-color: white; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
       .row
         .col-xs-12.text-center#new-media
           %h1 Upload Media
@@ -19,7 +20,7 @@
               %label{for: "title"} Media Title:
               = text_field_tag :title, @pre_upload_info[:title], required: true, id: :title, placeholder: 'Title', class: "form-control"
             .form-group
-              %label{for: "description"} Media Description:
+              %label{for: "description"} Description:
               = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter brief description here...', class: "form-control"
           = form_tag '', id: 'media_upload', multipart: true do
             #upload_fields

@@ -1,4 +1,3 @@
--# APRIL: Custom interest image to go here
 .hero-image{style: "background-image: url(#{@interest.cover_photo.url(:large)});"}
   .hero
     = render 'shared/nav'
@@ -27,7 +26,7 @@
   /           %a Followers
 .container.text-center.m-top-40{style: "height: 1px; background-color: #cccccc;"}
   %span{style: "background-color: white; position: relative; top: -30px;"}
-    %button.btn.btn-primary.btn-large Follow
+    -#%button.btn.btn-primary.btn-large Follow
 .container.p-y-20{role: "tabpanel"}
   .row.text-right.m-bottom-30
     .col-xs-12
@@ -43,7 +42,6 @@
         - reel.images.each do |image|
           .col-xs-12.col-sm-4
             %h4
-              -# APRIL: Make reel dates and names dynamic
               %strong= image.updated_at
               //%span= "by" + " " + reel.user.first_name + " " + reel.user.last_name
               %span= link_to("by" + " " + reel.user.first_name + " " + reel.user.last_name, reel.user)
@@ -54,7 +52,6 @@
     - @reels.each do |reel|
       .row.p-top-20
         .col-xs-12
-          -# APRIL: Hook up to reel names and tags
           %h3= link_to(reel.name, "/reels/#{reel.id}")
           %span= link_to("by" + " " + reel.user.first_name + " " + reel.user.last_name, reel.user)
           - interest = reel.interests
@@ -71,9 +68,12 @@
       .row.p-top-20.text-center
         .col-xs-12
           %div.reel-carousel
-            -# APRIL: Hook up reel images and titles to carousel
-            - reel.images.each do |image|
+            - reel.reel_media(reel.id).each do |media|
               %div.m-20
-                %a
-                  = link_to(image_tag(image.photo.url, width: "100%"), reel_path)
-                  %h4.p-top-15= image.description
+                - if media.is_a? Image
+                  %a
+                    = link_to(image_tag(media.photo.url, width: "100%"), reel_path)
+                  %p.p-top-15= media.description
+                - else
+                  %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{media.uid}", "allowfullscreen" => "true", "frameborder" => "0"}
+                  %p.p-top-15= media.description

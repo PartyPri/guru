@@ -6,9 +6,8 @@
   %meta{ property: "og:description", content: "<%=reel_description%>" }
 - media = @images.zip(@videos).flatten.compact
 %div#fb-root{"data-fb-app-id" => "<%= ENV['FACEBOOK_APP_ID']%>"}
-.hero-image.landing
-  .hero
-    = render 'shared/nav'
+.container
+  = render 'shared/light_nav'
 .container.p-y-60.text-center{style: "height: 100%;"}
   .row
     .col-xs-12

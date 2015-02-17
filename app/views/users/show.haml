@@ -103,8 +103,9 @@
                   - elsif media.class.name == "Video"
                     %div.m-20
                       %a
-                        <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/<%=media.uid%>" allowfullscreen frameborder="0">
-                        </iframe>
+                        / <iframe class="youtube-player" type="text/html" width="640" height="385" src="http://www.youtube.com/embed/<%=media.uid%>" allowfullscreen frameborder="0">
+                        / </iframe>
+                        %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{media.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
                         %h4.p-top-15= media.description
 
 
