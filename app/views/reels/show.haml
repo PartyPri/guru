@@ -1,11 +1,11 @@
 - content_for :head do
-  %meta{ property: "og:title", content: "<%=@reel.name%>" }
+  %meta{ property: "og:title", content: @reel.name }
   %meta{ property: "og:type", content: "website" } 
-  %meta{ property: "og:url", content: "<%=reel_url(@reel)%>" } 
-  %meta{ property: "og:image", content:"<%=user_image%>" }
-  %meta{ property: "og:description", content: "<%=reel_description%>" }
+  %meta{ property: "og:url", content: reel_url(@reel) } 
+  %meta{ property: "og:image", content: user_image }
+  %meta{ property: "og:description", content: reel_description }
 - media = @images.zip(@videos).flatten.compact
-%div#fb-root{"data-fb-app-id" => "<%= ENV['FACEBOOK_APP_ID']%>"}
+%div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
 .container
   = render 'shared/light_nav'
 .container.p-y-60.text-center{style: "height: 100%;"}
@@ -26,7 +26,7 @@
               = link_to(interest.name, "/interests/#{interest.id}/about")
       - if current_user.id == @reel.user.id         
         = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default"
-      %div.fb-share-button{"data-href" => "<%=share_object('reel')%>", "data-width" => "300", "data-layout" => "button"}
+      %div.fb-share-button{"data-href" => share_object('reel'), "data-width" => "300", "data-layout" => "button"}
       %div#result
   .row
     .col-xs-12
