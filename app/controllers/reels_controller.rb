@@ -1,10 +1,11 @@
 class ReelsController < ApplicationController
 
   def show
-    @user = User.where( id: params[:id] ).first
+    # TODO this should probably removed
     @reel = Reel.includes(:images, :videos).find(params[:id])
     @images = @reel.images
     @videos = @reel.videos
+    @user = @reel.user#User.where( id: params[:id] ).first
   end
 
   def new
