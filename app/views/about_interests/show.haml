@@ -66,14 +66,6 @@
                 %li
                   = link_to(interest.name, "/interests/#{interest.id}/about")
       .row.p-top-20.text-center
-        .col-xs-12
+        .col-xs-12x
           %div.reel-carousel
-            - reel.reel_media(reel.id).each do |media|
-              %div.m-20
-                - if media.is_a? Image
-                  %a
-                    = link_to(image_tag(media.photo.url, width: "100%"), reel_path)
-                  %p.p-top-15= media.description
-                - else
-                  %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{media.uid}", "allowfullscreen" => "true", "frameborder" => "0"}
-                  %p.p-top-15= media.description
+            = render partial: 'shared/reel', locals: { reel: reel }
