@@ -1,0 +1,8 @@
+- reels.each do |reel|
+  - reel.images.each do |image|
+    .col-xs-12.col-sm-4
+      %h4
+        %strong= image.updated_at
+      %h4= link_to(image.reel.name, "/reels/#{reel.id}")
+      %img.m-top-10= image_tag(image.photo.url, width: "100%")
+      %h5.text-center.m-top-10= image.description
