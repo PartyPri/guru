@@ -13,6 +13,8 @@ class Reel < ActiveRecord::Base
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
 
+  scope :featured, -> { where(featured: true) }
+
   def reel_media
     (self.images + self.videos).sort_by(&:updated_at)
   end
