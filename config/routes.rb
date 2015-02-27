@@ -8,10 +8,9 @@ Guru::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
   resources :user_interests, :only => [:create, :show, :destroy]
   resources :followerships, :only => [:create, :destroy]
-  #resources :workshops, :only => [:show]
-  #resources :posts
   resources :reels
   resources :images
+  resources :articles
 
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token

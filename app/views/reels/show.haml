@@ -37,5 +37,5 @@
               = image_tag media.photo.url(:large)
               %p.p-top-15= media.description
             - else
-              %iframe.youtube-player{type: "text/html", width: "800", height: "500", src: "http://www.youtube.com/embed/#{media.uid}", "allowfullscreen" => "true", "frameborder" => "0"}
+              %iframe.youtube-player{type: "text/html", width: "800", height: "500", src: "http://www.youtube.com/embed/#{media.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0", "allowfullscreen" => true, "frameborder" => 0}
               %p.p-top-15= media.description
