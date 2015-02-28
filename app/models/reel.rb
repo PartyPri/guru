@@ -9,6 +9,7 @@ class Reel < ActiveRecord::Base
   has_many :interests, through: :reel_interests, uniq: true
   has_many :images
   has_many :videos
+  has_many :articles
   
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
