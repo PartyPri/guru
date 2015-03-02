@@ -1,11 +1,11 @@
-- reel.reel_media.each do |media|
-  - if media.is_a? Image
+- reel.media.each do |medium|
+  - if medium.is_a? Image
     %div.m-20
       %a
-        = link_to(image_tag(media.photo.url, width: "100%"), reel_path)
-        %h4.p-top-15= media.description
+        = link_to(image_tag(medium.photo.url, width: "100%"), reel_path)
+        %h4.p-top-15= medium.description
   - else # Video
     %div.m-20
       %a
         %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{media.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0", "allowfullscreen" => true, "frameborder" => 0}
-        %h4.p-top-15= media.description
+        %h4.p-top-15= medium.description
