@@ -8,7 +8,7 @@
     %ul.list-inline
       - reel.interests.each do |interest|
         %li
-          = link_to(interest.name, "/interests/#{interest.id}/about")
+          = link_to(interest.name, "/interests/#{interest.id}")
   .row.p-top-20.text-center
     .col-xs-12
       %div.reel-carousel

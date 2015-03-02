@@ -27,7 +27,7 @@
         - @user.interests.each do |interest|
           %li
             %h5
-              = link_to(interest.name, "/interests/#{interest.id}/about")
+              = link_to(interest.name, "/interests/#{interest.id}")
 .container
   .row.text-center
     .col-xs-12
@@ -76,11 +76,11 @@
                 - interest.each_with_index do |interest, x|
                   - if x+1 != length
                     %li
-                      = link_to(interest.name, "/interests/#{interest.id}/about")
+                      = link_to(interest.name, "/interests/#{interest.id}")
                     %li.divider
                   - else
                     %li
-                      = link_to(interest.name, "/interests/#{interest.id}/about")
+                      = link_to(interest.name, "/interests/#{interest.id}")
           .row.p-top-20.text-center
             .col-xs-12
               %div.reel-carousel
