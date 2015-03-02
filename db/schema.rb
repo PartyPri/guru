@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150223203117) do
+ActiveRecord::Schema.define(:version => 20150226205835) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(:version => 20150223203117) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
+    t.boolean  "featured"
   end
 
   create_table "user_interests", :force => true do |t|

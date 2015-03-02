@@ -2,7 +2,7 @@
   - if media.is_a? Image
     %div.m-20
       %a
-        = link_to(image_tag(media.photo.url, width: "100%"), reel_path)
+        = link_to(image_tag(media.photo.url, width: "100%"), reel)
         %h4.p-top-15= media.description
   - else # Video
     %div.m-20
