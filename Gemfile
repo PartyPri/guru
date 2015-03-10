@@ -3,13 +3,10 @@ ruby "2.1.1"
 
 gem 'rails', '3.2.12'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'haml'
 
-##User authentication
+#User authentication
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
@@ -17,7 +14,7 @@ gem 'omniauth-google-oauth2'
 #Video upload
 gem 'youtube_it'
 
-##Secrets
+#Secrets
 gem "figaro"
 
 #SEO
@@ -38,9 +35,9 @@ gem 'youtube_id', '~> 0.0.3'
 gem 'simple_form'
 
 group :development do
- #gem 'debugger', '~> 1.6.8'
- gem 'byebug'
- gem 'faker'
+  gem 'pry'
+  gem 'byebug'
+  gem 'faker'
 end
 
 group :test do
@@ -55,8 +52,6 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
-
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
