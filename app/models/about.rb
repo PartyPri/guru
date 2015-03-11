@@ -1,6 +1,6 @@
 class About < ActiveRecord::Base
-  # attr_accessible :title, :body
 
+  #Associations
   has_many :about_interests
   has_many :interests, through: :about_interests
 end

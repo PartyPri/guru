@@ -1,10 +1,7 @@
 class Interest < ActiveRecord::Base
   attr_accessible :name, :description, :history, :quote_author
 
-  # Associations
-
-  #has_many :subinterests, :class_name => "Interest", :foreign_key => "parent_id"
-  #belongs_to :parent_interest, :class_name => "Interest"
+  #Associations
 
   has_many :user_interests
   has_many :users, through: :user_interests, uniq: true
@@ -18,8 +15,7 @@ class Interest < ActiveRecord::Base
   has_many :images, through: :reels
   has_many :videos, through: :reels
 
-  # Attachments
-  
+  #Attachments
   has_attached_file :cover_photo, :styles => {:large => "1000x400#"}
   do_not_validate_attachment_file_type :cover_photo
 
