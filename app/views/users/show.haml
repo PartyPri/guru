@@ -37,13 +37,13 @@
         %li.divider
         %li
           %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
-.container.text-center.m-y-50{style: "height: 1px; background-color: #cccccc;"}
+.container.text-center.m-y-50.page-divider{style: "height: 1px; background-color: #cccccc;"}
   %span{style: "background-color: white; position: relative; top: -30px;"}
     - if current_user.present?
       - if @user.id == current_user.id
         %button.btn.btn-default.btn-large= link_to "Edit Profile", edit_profile_path
     - else
-      %button.btn.btn-primary.btn-large Follow
+      %button.btn.btn-default.btn-large Follow
 .tab-content.m-bottom-60
   .container.tab-pane#bio{role: "tabpanel"}
     .row.text-center
@@ -65,23 +65,24 @@
           = render partial: 'shared/timeline', locals: { reels: @reels }
       .container.tab-pane.active#reels{role: "tabpanel"}
         - @reels.each do |reel|
-          .row.p-top-20
-            .col-xs-12
-              -# APRIL: Hook up to reel names and tags
-              %h3= link_to(reel.name, "/reels/#{reel.id}")
-              - interest = reel.interests
-              - length = interest.length
-              - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-              %ul.list-inline
-                - interest.each_with_index do |interest, x|
-                  - if x+1 != length
-                    %li
-                      = link_to(interest.name, "/interests/#{interest.id}")
-                    %li.divider
-                  - else
-                    %li
-                      = link_to(interest.name, "/interests/#{interest.id}")
-          .row.p-top-20.text-center
-            .col-xs-12
-              %div.reel-carousel
-                = render partial: 'shared/reel', locals: { reel: reel }
+          .teaser
+            .row-fluid
+              .col-xs-12
+                -# APRIL: Hook up to reel names and tags
+                %h3= link_to(reel.name, "/reels/#{reel.id}")
+                - interest = reel.interests
+                - length = interest.length
+                - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+                %ul.list-inline.interests
+                  - interest.each_with_index do |interest, x|
+                    - if x+1 != length
+                      %li
+                        = link_to(interest.name, "/interests/#{interest.id}")
+                      %li.divider
+                    - else
+                      %li
+                        = link_to(interest.name, "/interests/#{interest.id}")
+            .row.text-center
+              .col-xs-12
+                %div.reel-carousel
+                  = render partial: 'shared/reel', locals: { reel: reel }
