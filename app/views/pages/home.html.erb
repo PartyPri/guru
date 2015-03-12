@@ -1,70 +1,19 @@
-<!-- Header -->
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <!--<img class="img-responsive" src="img/profile.png" alt="">-->
-                <div class="intro-text">
-                    <span class="name">Showcase your passion</span>
-                    <hr class="star-light">
-                    <span class="skills">Evrystep is a fun and easy way to share what you do!</span>
-                    <br>
-                    <span class="skills">Find inspiration, meet friends, and get gigs.</span>
-                    <br><br><br>
-                    <div class="row body-primary">
-                        <%= render "shared/email_contact_form" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
+.hero-image.landing
+  .hero
+    = render 'shared/nav'
+    .container.hero-content
+      .row
+        .col-xs-12.c-white
+          %h1.hero-text.p-bottom-5 Showcase Your Passion
+          %h4 Create beautiful portfolios to showcase what you do.
+          %h4 Discover inspiration, friends, and gigs!
+      .row.p-top-50
+        .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
 
-<!-- About Section -->
-<section class="" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2>About</h2>
-                <hr class="star-primary">
-                <p>Evrystep is a social network that inspires people to do what they love.</p>
-                <br>
-                <h3>Discover Inspiration</h3>
-                <p>Discover people who share your passions and see what they've been up to.</p>
-                <br>
-                <h3>Upload Images and Videos</h3>
-                <p>Upload images and videos that showcase what you do.</p>
-                <br>
-                <h3>Organize Uploads Into Reels</h3>
-                <p>Reels are where you collect your uploads by interest or theme.</p>
-                <br><br>
-                <div class="row">
-                    <%= render "shared/email_contact_form" %>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+          = link_to "sign up with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
+          = render 'shared/email_contact_form'
+= render 'shared/tag_nav'
+.container.cont-padding
 
-
-<!-- Footer -->
-<footer class="text-center">
-    <div class="footer-below">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <!--Copyright &copy; Your Website 2014-->
-                    Made with <i class="fa fa-heart heart-icon"> </i> in the Bay Area
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<div class="scroll-top page-scroll visible-xs visble-sm">
-    <a class="btn btn-primary" href="#page-top">
-        <i class="fa fa-chevron-up"></i>
-    </a>
-</div>
+%hr.sm-p-y-40
+= render 'shared/how_it_works'
