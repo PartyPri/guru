@@ -1,0 +1,16 @@
+.hero-image.landing
+  .hero    
+    .container.hero-content
+      .row
+        .col-xs-12.c-white
+          %h1.hero-text.p-bottom-5 Showcase Your Passion
+          %h4 Create beautiful portfolios to showcase what you do.
+          %h4 Discover inspiration, friends, and gigs!
+      .row.p-top-50
+        .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
+          = render :partial => 'shared/email_contact_form', :handlers => [:haml]
+= render 'shared/tag_nav'
+%hr.sm-p-y-20.m-top-0
+= render 'shared/what_is_evrystep'
+%hr.sm-p-y-0.m-top-60.m-y-0
+= render 'shared/how_it_works'

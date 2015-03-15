@@ -2,17 +2,29 @@
 <html>
 <head>
   <title>Evrystep</title>
+  <meta property="fb:app_id" content="<%=ENV['FACEBOOK_APP_ID']%>"/> 
+  <meta property="og:site_name" content="Evrystep" />
+  <script src="//use.typekit.net/suw2hsl.js"></script>
+  <script>try{Typekit.load();}catch(e){}</script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <% if content_for?(:head) %>
+    <%= yield(:head) %>
+  <% end %>
+
 </head>
 <body>
-    <% flash.each do |type, message| %>
-      <div class="alert <%= flash_class type %>">
-        <button class="close" data-dismiss="alert">x</button>
-        <%= message %>
-      </div>
-    <% end %>
-  <%= yield %>
+  <div class="wrapper">
+    <%= render "shared/flash_messages" %>
+    <!-- pad for height of footer -->
+    <div style="padding-bottom: 39px;">
+      <%= yield %>
+    </div>
+    <%= render "shared/footer" %>
+  </div>
+  <script>
+  $(document).foundation();
+  </script>
 </body>
 </html>

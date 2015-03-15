@@ -1,0 +1,26 @@
+.nav > li > a {
+  color: #fff;
+}
+
+.nav.light-nav > li > a {
+  color: $turq;
+}
+
+// Give background color on toggle
+nav { 
+  background-color: transparent;
+  @include transition(all 0.1s ease-in-out);
+}
+nav.toggled { background-color: rgba(0,0,0,0.75); }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+}

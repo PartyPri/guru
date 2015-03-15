@@ -1,0 +1,22 @@
+// Lists
+.list-inline > .divider {
+  &:after{
+    color: $gray;
+    content: '\2758';
+  }
+}
+
+ul.list-inline > li.active > a {
+  color: $drk-gray;
+  cursor: default;
+}
+
+// Quote Attribution
+.quote {
+  font-family: $base-font-family;
+  font-style: italic;
+}
+
+// Font Classes
+.header-font { font-family: $header-font-family; }
+.base-font   { font-family: $base-font-family; }

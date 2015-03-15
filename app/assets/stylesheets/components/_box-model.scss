@@ -1,0 +1,79 @@
+@each $val in  0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100 {
+
+  // Padding
+  .p-#{$val} { padding: #{$val}px; }
+  .p-top-#{$val} { padding-top: #{$val}px; }
+  .p-right-#{val} {padding-right: #{$val}px; }
+  .p-bottom-#{$val} { padding-bottom: #{$val}px; }
+  .p-left-#{$val} { padding-left: #{$val}px; }
+  .p-y-#{$val} {
+    padding-top: #{$val}px;
+    padding-bottom: #{$val}px;
+  }
+  .p-x-#{$val} {
+    padding-right: #{$val}px;
+    padding-left: #{$val}px;
+  }
+
+  // Margin
+  .m-#{$val} { margin: #{$val}px; }
+  .m-top-#{$val} { margin-top: #{$val}px; }
+  .m-right-#{$val} { margin-right: #{$val}px; }
+  .m-bottom-#{$val} { margin-bottom: #{$val}px; }
+  .m-left-#{$val} { margin-left: #{$val}px; }
+  .m-y-#{$val} {
+    margin-top: #{$val}px;
+    margin-bottom: #{$val}px;
+  }
+  .m-x-#{$val} {
+    margin-right: #{$val}px;
+    margin-left: #{$val}px;
+  }
+
+  @media (min-width: 768px) {
+    // Padding
+    .sm-p-#{$val} { padding: #{$val}px; }
+    .sm-p-top-#{$val} { padding-top: #{$val}px; }
+    .sm-p-right-#{val} {padding-right: #{$val}px; }
+    .sm-p-bottom-#{$val} { padding-bottom: #{$val}px; }
+    .sm-p-left-#{$val} { padding-left: #{$val}px; }
+    .sm-p-y-#{$val} {
+      padding-top: #{$val}px;
+      padding-bottom: #{$val}px;
+    }
+    .sm-p-x-#{$val} {
+      padding-right: #{$val}px;
+      padding-left: #{$val}px;
+    }
+
+    // Margin
+    .sm-m-#{$val} { margin: #{$val}px; }
+    .sm-m-top-#{$val} { margin-top: #{$val}px; }
+    .sm-m-right-#{$val} { margin-right: #{$val}px; }
+    .sm-m-bottom-#{$val} { margin-bottom: #{$val}px; }
+    .sm-m-left-#{$val} { margin-left: #{$val}px; }
+    .sm-m-y-#{$val} {
+      margin-top: #{$val}px;
+      margin-bottom: #{$val}px;
+    }
+    .sm-m-x-#{$val} {
+      margin-right: #{$val}px;
+      margin-left: #{$val}px;
+    }
+  }
+}
+
+// Displays
+.d-inline       { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-block        { display: block; }
+
+.cont-padding { 
+  padding: 30px 35px;
+  @media (min-width:768px) {
+    padding: 60px 0px;
+  }
+}
+
+// Width Percents
+.w-100 { width: 100%; }

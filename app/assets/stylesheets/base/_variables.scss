@@ -1,30 +1,65 @@
-// COLORS
-////////////////////////////////////////////////////////////////////////////////
-
-$pink-red:       #ff3046; // RGB: 255, 48, 70
-$turqoise:  #0fb3ad; // RGB: 15, 179, 173
-$lt-blue:   #13e2db; // RGB: 19, 226, 219
-$drk-green: #2b3a35; // RGB: 43, 58, 53
-
-$evrystep-colors: (
-  ('pink-red',  $pink-red),
-  ('turqoise',  $turqoise),
-  ('lt-blue',   $lt-blue),
-  ('drk-green', $drk-green)
-);
-
 // Typography
 ///////////////////////////////////////////////////////////////////////////////
-$sans-serif: 'MuseoSans-500', Arial, sans-serif;
-
-$base-font-family: $sans-serif;
-$header-font-family: $base-font-family;
-
-// Main Heading Fonts
+$sans-serif:        'Open Sans', Arial, sans-serif;
 $museo-sans:        'MuseoSans-500', Arial, sans-serif;
 $museo-sans-italic: 'MuseoSans-500Italic', Arial, sans-serif;
+
+$base-font-family: $sans-serif;
+$header-font-family: $museo-sans;
 
 // Sizes
 ///////////////////////////////////////////////////////////////////////////////
 $base-font-size: 1rem;
 $base-line-height: $base-font-size * 1.3;
+$base-border-radius: 3px;
+
+// Colors
+///////////////////////////////////////////////////////////////////////////////
+
+$white:    #fff;
+$red:      #ff3046;
+$turq:     #0fb3ad;
+//$lt-turq:  #1cd9d2;
+$lt-turq:  #FFE57F;
+$drk-gray: #2b3a35;
+$med-gray: #aaaaaa;
+$gray:     #cccccc;
+$lt-gray:  #f3f3f3;
+$yellow:   #ffeb3b;
+
+// Success & Alert Colors - Borrowed from http://isabelcastillo.com/error-info-messages-css
+// These are not in the style guide as we haven't used them yet.
+// Yellows
+$lt-warning:  #feefb3;
+$warning:     #9f6000;
+//Greens
+$lt-success:  #DFF2BF;
+$success:     #4f8a10;
+// Reds
+$lt-alert:    #ffbaba;
+$alert:       #ff0000;
+
+$evrystep-colors: (
+  ('white',      $white),
+  ('red',        $red),
+  ('turq',       $turq),
+  ('lt-turq',    $lt-turq),
+  ('drk-gray',   $drk-gray),
+  ('med-gray',   $med-gray),
+  ('gray',       $gray),
+  ('lt-gray',    $lt-gray), 
+  ('lt-warning', $lt-warning),
+  ('warning',    $warning),
+  ('lt-success', $lt-success),
+  ('success',    $success),
+  ('lt-alert',   $lt-alert),
+  ('alert',      $alert)
+);
+
+// Font Colors
+$base-font-color: $drk-gray;
+$base-accent-color: $turq;
+
+//  Text Link Colors
+$base-link-color: $base-accent-color;
+$hover-link-color: $lt-turq;

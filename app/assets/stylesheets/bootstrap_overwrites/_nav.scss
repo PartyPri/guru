@@ -1,0 +1,37 @@
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.navbar-nav > li > a {
+  line-height: 30px;
+}
+
+.navbar {
+  margin-bottom: 0px;
+  font-family: $base-font-family;
+  font-size: 1.125rem;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.dropdown-menu > li > a, .dropdown-menu > li > a {
+  color: white;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-color: transparent;
+  color: $turq;
+}
+
+.dropdown-menu {
+  background-color: rgba(0,0,0,0.75);
+}
+
+.footer {
+  width: 100%
+}

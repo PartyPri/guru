@@ -1,0 +1,17 @@
+- interest = Interest.all
+- length = interest.length
+.bgc-lt-gray  
+  .container.text-center
+    .row
+      .col-sm-12.hidden-xs
+        %ul.list-inline.p-y-15
+          - interest.each_with_index do |interest, x|
+            - if x+1 != length
+              %li
+                %h5
+                  = interest.name
+              %li.divider
+            - else
+              %li
+                %h5
+                  = interest.name

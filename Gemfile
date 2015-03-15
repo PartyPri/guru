@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'haml-rails'
+gem 'haml'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -9,13 +10,17 @@ gem 'haml-rails'
 gem 'pg'
 #gem 'devise'
 gem 'bootstrap-sass-rails'
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails'
+gem 'sass', '~> 3.3'
 gem 'uglifier', '>= 1.0.3'
-gem 'jquery-rails'
+gem 'jquery-rails', "< 3.0.0"
 
-group :development do
- gem 'debugger'
-end
+#group :development do
+# gem 'debugger'
+#end
+
+#Configuration
+gem "figaro"
 
 group :test do
   gem 'factory_girl'
