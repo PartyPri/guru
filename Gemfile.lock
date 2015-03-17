@@ -64,13 +64,7 @@ GEM
       activesupport (>= 3.0)
     cocaine (0.5.4)
       climate_control (>= 0.0.3, < 1.0)
-    coffee-rails (3.2.2)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.2.0)
-    coffee-script (2.2.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.7.0)
+    coderay (1.1.0)
     columnize (0.9.0)
     debugger-linecache (1.2.0)
     devise (3.2.4)
@@ -126,6 +120,7 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.5.3)
     multi_json (1.9.3)
@@ -162,6 +157,10 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.4)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -247,7 +246,6 @@ DEPENDENCIES
   aws-sdk
   bootstrap-sass-rails
   byebug
-  coffee-rails (~> 3.2.1)
   devise
   factory_girl
   faker
@@ -261,6 +259,7 @@ DEPENDENCIES
   omniauth-google-oauth2
   paperclip
   pg
+  pry
   rails (= 3.2.12)
   rspec-rails
   sass-rails (~> 3.2.3)
