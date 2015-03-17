@@ -8,7 +8,9 @@
           %h4 Discover inspiration, friends, and gigs!
       .row.p-top-50
         .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
-          = render :partial => 'shared/email_contact_form', :handlers => [:haml]
+          = form_for @email_contact, class: "form-inline" do |f|
+            = f.text_field :email, class: "input-lg launch-input", style: "vertical-align: middle", placeholder: "email"
+            = f.submit "Join launch list", class: "btn btn-danger btn-lg"
 = render 'shared/tag_nav'
 %hr.sm-p-y-20.m-top-0
 = render 'shared/what_is_evrystep'
