@@ -1,0 +1,30 @@
+.container
+  = render 'shared/light_nav'
+  .container.p-y-40
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center#new-media
+          %h1 Submit Payment
+          %h2 $11.00
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          %form#payment-form{:action => "/checkout/create", :method => "POST"}
+            %span.payment-errors
+            .form-row
+              .form-group
+                %label Card Number
+                .credit-card
+                  %input{"data-stripe" => "number", :size => "20", :type => "text"}/
+            .form-row
+              .form-group
+                %label CVC
+                .cvc
+                  %input{"data-stripe" => "cvc", :size => "4", :type => "text"}/
+            .form-row
+              .form-group
+                %label Expiration (MM/YY)
+                .expiration
+                  %input{"data-stripe" => "exp-month", :size => "2", :type => "text"}/
+                  %span /
+                  %input{"data-stripe" => "exp-year", :size => "4", :type => "text"}/
+            %button.btn.btn-default.file-upload{:type => "submit"} Submit Payment
