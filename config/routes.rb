@@ -11,6 +11,7 @@ Guru::Application.routes.draw do
   resources :reels
   resources :images
   resources :articles
+  resources :checkout
 
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
@@ -29,6 +30,8 @@ Guru::Application.routes.draw do
   get 'about', to: 'pages#about', as: 'about'
   #get 'team', to: 'pages#team', as: 'team'
   get 'style-guide', to: 'styles#guide', as: 'style_guide'
+
+  post 'checkout/create'
 
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
