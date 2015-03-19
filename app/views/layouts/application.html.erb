@@ -9,6 +9,8 @@
   <script>try{Typekit.load();}catch(e){}</script>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "masonry.pkgd" %>
+  <%= javascript_include_tag "imagesloaded.pkgd" %>
   <%= csrf_meta_tags %>
   <% if content_for?(:head) %>
     <%= yield(:head) %>
@@ -16,6 +18,7 @@
 
 </head>
 <body>
+  <!-- add master-container class to above div? -->
   <div class="wrapper">
     <%= render "shared/flash_messages" %>
     <!-- pad for height of footer -->

@@ -1,0 +1,1 @@
+(function(){jQuery(function(){return $("form").on("click",".add_fields",function(e){var t,a;return a=(new Date).getTime(),t=new RegExp($(this).data("id"),"g"),$("#added-media").append($(this).data("fields").replace(t,a)),e.preventDefault()})})}).call(this);

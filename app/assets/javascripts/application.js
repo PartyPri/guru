@@ -15,6 +15,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require slick.min
+//= require slick_carousel
 //= require resp_menu
 //= require tooltips
 //= require upload_name

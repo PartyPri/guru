@@ -1,0 +1,54 @@
+.container
+  = render 'shared/light_nav'
+  .container.p-y-40
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center#new-media
+          %h1 Edit Reel
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          = form_for @reel, :html => { :method => :put, :multipart => true } do |f|
+            .form-group
+              %label{for: "name"} Name:
+              = f.text_field :name, class: "form-control"
+            .form-group
+              %label{for: "interests"} Interests:
+              %span.help-block Choose the interests the best describe your reel.
+              - Interest.all.each do |interest|
+                = hidden_field_tag "reel[interest_ids][]", nil
+                = check_box_tag "reel[interest_ids][]", interest.id, @reel.interest_ids.include?(interest.id)
+                = interest.name
+                %br
+            .form-group
+              %label{for: "media"} Media:
+              <br><br>
+              = f.fields_for :images do |builder|
+                = image_tag(builder.object.photo.url(:medium))
+                = builder.check_box :_destroy
+                = builder.label :_destroy, "Remove image"
+                <br>
+                = builder.label :description, "Change description"
+                = builder.text_field :description, class: "form-control"
+                <br><br>
+              = f.fields_for :videos do |builder|
+                %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
+                = builder.check_box :_destroy
+                = builder.label :_destroy, "Remove video"
+                <br>
+                = builder.label :description, "Change description"
+                = builder.text_field :description, class: "form-control"
+                <br><br>
+            %hr.m-y-20
+            .text-center
+              = f.submit "Save Changes", class: "button btn btn-primary w-100"       
+  .container.p-y-40
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center#account-settings
+          %h4 Delete Reel
+      .row.p-top-20
+        .col-xs-12.col-md-6.col-md-offset-3.text-center
+          %span You will not be able to access any media in your reel once it's deleted.
+          %hr.m-y-20
+            .text-center
+              = button_to "Delete Reel", reel_path(@reel), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button btn btn-default w-100"

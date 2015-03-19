@@ -55,7 +55,7 @@ module Guru
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    #config.assets.initialize_on_precompile = false #might need this for deploying on heroku
+    config.assets.initialize_on_precompile = false #might need this for deploying on heroku
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
@@ -63,5 +63,8 @@ module Guru
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
         html_tag
     }
+    # The line below autoloads lib files. I added this when creating custom_failure.rb to change
+    # the default devise route from the sign_in page to a landing page.
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

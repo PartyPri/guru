@@ -1,0 +1,104 @@
+<br>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true, :class => 'form-horizontal' }) do |f| %>
+
+  <%= devise_error_messages! %>
+
+  <fieldset>
+    <h2 style="text-align: center">Profile settings</h2><br>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :first_name, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :first_name, :class => 'form-control input-lg' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label :last_name, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :last_name, :class => 'form-control input-lg' %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :location, "Location", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :location, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>   
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :description, "Personal tagline", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.text_field :description, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.label "Profile picture", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <% if @user.avatar.exists? %>
+            <%= image_tag @user.avatar.url(:small) %>
+            <br>
+            <%= @user.avatar_file_name %>
+            <br>
+          <% else %>
+            <p class="h4 control-label" style="text-align:left">Whaaat? You don't have a pic yet!</p>
+          <% end %>
+          <br>
+          <p class="h4 control-label" style="text-align:left">Choose a new pic:</p>
+          <br>
+          <%= f.file_field :avatar %>
+        </div>
+      </div>
+    </div>
+
+  </fieldset>
+
+  <br>
+  <hr>
+
+  <fieldset>
+    <h2 style="text-align: center">Account settings</h2><br>
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :email, :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.email_field :email, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="form-actions">
+      <%= f.submit "Save changes", :class => 'btn btn-info btn-lg' %>
+    </div>
+
+  </fieldset>
+<% end %>
+
+<br>
+<hr>
+
+<div>
+  <h2 style="text-align: center">Cancel my account</h2>
+  <h4 style="text-align: center">Oh man... Really?? So sad!</h4><br>
+  <div class="form-actions">
+    <%= button_to "Cancel", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-default btn-lg' %>
+  </div>
+</div>
+
+<%#= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'btn btn-danger btn-lg' %>

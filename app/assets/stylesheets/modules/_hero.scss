@@ -13,7 +13,11 @@
 }
 
 .hero {
+<<<<<<< HEAD
   background-color: rgba(0, 0, 0, 0.38);
+=======
+  background-color: rgba(0, 0, 0, 0.50);
+>>>>>>> develop
 }
 
 .hero-content {
@@ -35,6 +39,7 @@
 @media (min-width:768px) {
   .hero-text { font-size: 4.5rem; }
   .hero-content { padding: 100px 0px; }
+<<<<<<< HEAD
 }
 
 @media (max-width: 400px) {
@@ -49,4 +54,6 @@
       font-size: 2rem;
     }
   }
+=======
+>>>>>>> develop
 }
