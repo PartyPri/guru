@@ -14,6 +14,9 @@
 /log/*.log
 /tmp
 
+# Ignore configs
+/config/application.yml
+
 .DS_STORE
 .rspec
 .rvmrc
@@ -21,3 +24,6 @@ logfile
 
 # Ignore application configuration
 /config/application.yml
+
+# Uploaded assets
+/public/assets/*
