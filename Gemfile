@@ -49,6 +49,10 @@ group :development do
   gem 'faker'
 end
 
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+end
+
 group :test do
   gem 'factory_girl'
   gem 'rspec-rails'
