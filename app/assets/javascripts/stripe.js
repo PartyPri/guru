@@ -1,5 +1,5 @@
 jQuery(function($) {
-  $('#payment-form').submit(function(event) {
+  $('#registration-form').submit(function(event) {
     var $form = $(this);
 
     // Disable the submit button to prevent repeated clicks
@@ -13,7 +13,7 @@ jQuery(function($) {
 });
 
 function stripeResponseHandler(status, response) {
-  var $form = $('#payment-form');
+  var $form = $('#registration-form');
 
   if (response.error) {
     // Show the errors on the form
