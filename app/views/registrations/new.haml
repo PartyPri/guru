@@ -1,0 +1,25 @@
+.container
+  = render 'shared/light_nav'
+  .container.p-y-40
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center#new-reel
+          %h1 
+            = @event.name
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          = form_for :registration, url: event_registrations_path, :html => { :multipart => true } do |f|
+            .form-group
+              %label{for: "name"} Name:
+              = f.text_field :name, :placeholder => 'Your name', class: "form-control"
+            .form-group
+              %label{for: "email"} Email:
+              = f.text_field :email, :placeholder => 'Your email', class: "form-control"
+            .form-group
+              %label{for: "phone"} Phone:
+              = f.text_field :phone, :placeholder => 'Your phone number', class: "form-control"
+            .form-group
+              = f.check_box("I am available on Saturday, June 13, 2015 from 1pm to 6pm.")
+            %hr.m-y-20
+            .text-center
+              = f.submit "Register", class: "button btn btn-primary w-100"
