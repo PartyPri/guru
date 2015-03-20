@@ -16,7 +16,18 @@ class VideosController < ApplicationController
   #YouTube client and retrieve an upload token.
   def get_upload_token
 
-    temp_params = { title: params[:title], description: params[:description], category: 'Entertainment',
+    @reel = Reel.find(params[:media][:reel_id])
+    @reel_name = @reel.name
+
+    if Video.where(reel_id: @reel).blank?
+      @video_id = 1 
+    else
+      @video_obj = Video.where(reel_id: @reel).last  
+      @video_id = @video_obj.id - 1 
+    end
+
+
+    temp_params = { title: "#{@reel_name} - #{@video_id}", description: params[:description], category: 'Entertainment',
                     keywords: [] }
 
     #save the reel on the session for use in get_video_uid
