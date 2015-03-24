@@ -27,3 +27,4 @@ logfile
 
 # Uploaded assets
 /public/assets/*
+/public/system/*
