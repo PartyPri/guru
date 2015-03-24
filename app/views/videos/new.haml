@@ -17,9 +17,6 @@
             #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
             #root-path{"data-root-path" => "#{ root_path }"}
             .form-group
-              %label{for: "title"} Media Title:
-              = text_field_tag :title, @pre_upload_info[:title], required: true, id: :title, placeholder: 'Title', class: "form-control"
-            .form-group
               %label{for: "description"} Description:
               = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter brief description here...', class: "form-control"
           = form_tag '', id: 'media_upload', multipart: true do
