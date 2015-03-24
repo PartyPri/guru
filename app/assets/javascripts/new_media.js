@@ -50,7 +50,7 @@ $(document).ready(function() {
     }
 
     var validate_and_upload = function(media_upload, submit_button) {
-      if(($("#title").val() != "") && ($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
+      if(($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
         upload_video(media_upload, submit_button);
       }
       else {

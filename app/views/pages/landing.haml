@@ -1,6 +1,6 @@
 .hero-image.landing
   .hero
-    = render 'shared/nav'
+    /= render 'shared/nav'
     .container.hero-content
       .row
         .col-xs-12.c-white
@@ -10,10 +10,12 @@
       .row.p-top-50
         .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
 
-          = link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
+          /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
           = link_to "register for Evrystyles", new_event_registration_path(event_id: 1), class: "btn btn-info btn-large"
 = render 'shared/tag_nav'
+/ .container.cont-padding
+/   = render 'shared/featured_reels'
 .container.cont-padding
-  = render 'shared/featured_reels'
-%hr.sm-p-y-40
+  = render 'shared/what_is_evrystep'
+/%hr.sm-p-top-40.sm-p-bottom-0
 = render 'shared/how_it_works'

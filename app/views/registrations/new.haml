@@ -1,5 +1,5 @@
 .container
-  = render 'shared/light_nav'
+  /= render 'shared/light_nav'
   .container.p-y-40
     %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
       .row
@@ -19,7 +19,11 @@
               %label{for: "phone"} Phone:
               = f.text_field :phone, :placeholder => 'Your phone number', class: "form-control"
             .form-group
-              = f.check_box("I am available on Saturday, June 13, 2015 from 1pm to 6pm.")
+              = f.check_box :availability_confirmation
+              = "I am available on Saturday, June 13, 2015 from 1pm to 6pm."
+            .form-group
+              %label{for: "payment"} Payment:
+              %h5 [Add Payment Gateway here]
             %hr.m-y-20
             .text-center
               = f.submit "Register", class: "button btn btn-primary w-100"
