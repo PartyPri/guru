@@ -8,7 +8,7 @@
             = @event.name
       .row.p-top-40
         .col-xs-12.col-md-6.col-md-offset-3
-          = form_for :registration, url: event_registrations_path, :html => { :multipart => true } do |f|
+          = form_for :registration, url: event_registrations_path, :html => { :multipart => true, :id => "registration-form" } do |f|
             .form-group
               %label{for: "name"} Name:
               = f.text_field :name, :placeholder => 'Your name', class: "form-control"
@@ -21,9 +21,24 @@
             .form-group
               = f.check_box :availability_confirmation
               = "I am available on Saturday, June 13, 2015 from 1pm to 6pm."
+            .text-center.m-top-40.m-bottom-40
+              %h1 PAYMENT
+              %p Registrants pay $10 + $1 transaction
             .form-group
-              %label{for: "payment"} Payment:
-              %h5 [Add Payment Gateway here]
+              %label Card Number
+              .card-number
+                %input{"data-stripe" => "number", :size => "20", :type => "text", :class => "form-control"}
+            .form-group
+              %label Exp. Date
+              .exp-date
+                %input{"data-stripe" => "exp-month", :size => "2", :type => "text", :placeholder => "mm", :class => "form-control small-width"}/
+                %span /
+                %input{"data-stripe" => "exp-year", :size => "4", :type => "text", :placeholder => "yyyy", :class => "form-control small-width"}
+            .form-group
+              %label CVC
+              .cvc
+                %input{"data-stripe" => "cvc", :size => "8", :type => "text", :class => "form-control small-width"}
+
             %hr.m-y-20
             .text-center
               = f.submit "Register", class: "button btn btn-primary w-100"
