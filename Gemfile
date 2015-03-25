@@ -43,6 +43,9 @@ gem 'masonry-rails'
 #AWS
 gem 'aws-sdk'
 
+#Stripe
+gem 'stripe'
+
 group :development do
   gem 'pry'
   gem 'byebug'
