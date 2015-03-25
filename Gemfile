@@ -35,7 +35,7 @@ gem 'newrelic_rpm'
 gem 'activeadmin'
 
 #Upload
-gem 'paperclip'
+gem "paperclip"
 
 #Frontend
 gem 'masonry-rails'
