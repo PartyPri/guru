@@ -33,6 +33,8 @@
               - else
                 %p Choose a profile picture
               = f.file_field :avatar
+              %img{ id: "profile_image_viewer", src: "#", alt: "your image" }
+              %canvas{ id: "cropped_image_canvas"}
             .form-group
               %label{for: "cover_photo"} Cover Picture:
               - if @user.cover_photo.exists?
@@ -45,8 +47,6 @@
               - else
                 %p Choose a cover picture
               = f.file_field :cover_photo
-              %img{ id: "profile_image_viewer", src: "#", alt: "your image" }
-              %canvas{ id: "cropped_image_canvas"}
               / %button.btn.btn-default.file-upload
               /   Choose picture
               /   = file_field_tag :file, required: false, id: :avatar, class: "upload", "data-print" => "#emp-image-print"
@@ -56,42 +56,5 @@
             %hr.m-y-20
             .text-center
               = f.submit "Save Changes", class: "button btn btn-primary w-100"
-:javascript
-  function showCoords(c) {
-    console.log("x ", c.x);
-    console.log("y ", c.y);
-    console.log("x2 ", c.x2);
-    console.log("y2 ", c.y2);
-    console.log("w ", c.w);
-    console.log("h ", c.h);
-  }
-
-  function setSelectionToCanvas(c) {
-    var canvas = $('#cropped_image_canvas')[0];
-    var ctx = canvas.getContext("2d");
-    ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
-
-    var image = $('#profile_image_viewer')[0];
-    ctx.drawImage(image, c.x, c.y, c.w, c.h, 0, 0, c.w, c.h);
-  }
-
-  function readURL(input) {
-    if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function(e) {
-        $('#profile_image_viewer').attr('src', e.target.result);
-        $('#profile_image_viewer').Jcrop({
-          onSelect: setSelectionToCanvas
-        });
-      };
-
-      reader.readAsDataURL(input.files[0]);
-    }
-  }
-
-  $(function() {
-    $("#user_cover_photo").change(function(){
-      readURL(this);
-    });
-  });
+= javascript_tag do
+  window.evryStepUserId = "#{@user.id}";

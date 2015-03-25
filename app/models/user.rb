@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   # Attachments
   
-  has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png" #{}"/system/users/avatars/default/small/missing.png" 
+  has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png"
   has_attached_file :cover_photo, :styles => {:medium => "500x200#", :large => "1000x400#"}
   
   # Validations
@@ -70,7 +70,6 @@ class User < ActiveRecord::Base
     user
   end
 
-
   def token_expired?
     self.expires_at < Time.now
   end
@@ -87,5 +86,4 @@ class User < ActiveRecord::Base
     @user = User.find_by_id(id)
     (@user.images + @user.videos).sort{|a,b| b.updated_at <=> a.updated_at }
   end
-
 end
