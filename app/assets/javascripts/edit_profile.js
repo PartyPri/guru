@@ -14,6 +14,7 @@ function readURL(input) {
     reader.onload = function(e) {
       $('#profile_image_viewer').attr('src', e.target.result);
       $('#profile_image_viewer').Jcrop({
+        keySupport: false,
         onSelect: setSelectionToCanvas
       });
     };
