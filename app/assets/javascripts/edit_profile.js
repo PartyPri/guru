@@ -69,7 +69,7 @@ $(function() {
         contentType: false,
         type: 'POST',
         success: function(data){
-          console.log("success");
+          window.location.href = "/users/" + evryStepUserId;
         }
       });
 
