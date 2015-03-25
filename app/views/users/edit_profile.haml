@@ -33,7 +33,8 @@
               - else
                 %p Choose a profile picture
               = f.file_field :avatar
-              %img{ id: "profile_image_viewer", src: "#", alt: "your image" }
+              %img{ id: "profile_image_viewer", src: "", alt: "your image" }
+              %br
               %canvas{ id: "cropped_image_canvas"}
             .form-group
               %label{for: "cover_photo"} Cover Picture:

@@ -24,7 +24,6 @@ class UsersController < ApplicationController
   end
 
   def update
-
     if params[:user][:cropped_image]
       params[:user][:avatar] = params[:user].delete(:cropped_image)
     end

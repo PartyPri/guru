@@ -1,5 +1,7 @@
 function setSelectionToCanvas(c) {
   var canvas = $('#cropped_image_canvas')[0];
+  canvas.width = c.w;
+  canvas.height = c.h;
   var ctx = canvas.getContext("2d");
   var image = $('#profile_image_viewer')[0];
 
@@ -15,6 +17,7 @@ function readURL(input) {
       $('#profile_image_viewer').attr('src', e.target.result);
       $('#profile_image_viewer').Jcrop({
         keySupport: false,
+        aspectRatio: 1,
         onSelect: setSelectionToCanvas
       });
     };
@@ -57,6 +60,8 @@ $(function() {
   $("#user_avatar").change(function(){
     readURL(this);
   });
+
+  $('img#profile_image_viewer[src=""]').hide();
 
   if (typeof evryStepUserId != 'undefined')  {
     var formSelectorString = "form#edit_user_" + evryStepUserId;
