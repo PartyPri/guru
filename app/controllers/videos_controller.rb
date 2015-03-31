@@ -28,6 +28,7 @@ class VideosController < ApplicationController
 
     temp_params = { title: "#{@reel_name} - #{@video_id}", description: params[:description], category: 'Entertainment', keywords: [] }
 
+
     #save the reel on the session for use in get_video_uid
     session[:current_reel_id] = params[:media][:reel_id]
     youtube_client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
