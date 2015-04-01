@@ -46,3 +46,13 @@
   width: 60px;
   display: inline;
 }
+
+.errors {
+  ul {
+    margin-bottom: 30px;
+  }
+
+  li, .payment-errors {
+    color: $alert;
+  }
+}
