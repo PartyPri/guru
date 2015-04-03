@@ -22,9 +22,9 @@
         <li class="dropdown">
           <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Explore<b class="caret m-left-5"></b></a>-->
           <ul class="dropdown-menu">
-            <%# interest.each do |interest| %>
-              <li><%#= link_to interest.name, "/interests/#{interest.id}" %></li>
-            <%# end %>
+            <% interest.each do |interest| %>
+              <li><%= link_to interest.name, "/interests/#{interest.id}" %></li>
+            <% end %>
           </ul>
         </li>
       </ul>

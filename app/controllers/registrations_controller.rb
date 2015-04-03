@@ -9,14 +9,17 @@ class RegistrationsController < ApplicationController
     #end
 
     @registration = Registration.new
-    @event = Event.find_by_id(1)
+    @event = Event.find(params[:event_id])
+    #@event = Event.find_by_id(1)
   end
 
   def create
     #if user_signed_in?
     @registration = Registration.new(params[:registration])
-    @registration.event_id = 1
-    #@user = current_user
+    #@registration.event_id = 1
+    @registration.user = User.find_by_id(12)
+    @event = Event.find(params[:event_id])
+    @registration.event_id = @event.id
     #@registration.user_id = @user.id
 
     # Set your secret key: remember to change this to your live secret key in production
@@ -28,12 +31,15 @@ class RegistrationsController < ApplicationController
     token = params[:stripeToken]
 
     # Create the charge on Stripe's servers - this will charge the user's card
-    charge = Stripe::Charge.create(
-      :amount => 1100, # amount in cents, again
-      :currency => "usd",
-      :source => token,
-      #:description => @registration.user_id
-    )
+    
+    if @event.payment_required
+      charge = Stripe::Charge.create(
+        :amount => 1100, # amount in cents, again
+        :currency => "usd",
+        :source => token,
+        #:description => @registration.user_id
+      )
+    end
 
     if @registration.save
       flash[:notice] = "You are now registered!" #for #{@registration.event.name.find(params[:id]).first_name}!"
