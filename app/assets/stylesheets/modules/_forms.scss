@@ -47,6 +47,16 @@
   display: inline;
 }
 
+.errors {
+  ul {
+    margin-bottom: 30px;
+  }
+
+  li, .payment-errors {
+    color: $alert;
+  }
+}
+
 .registration {
   padding: 40px;
 
