@@ -12,8 +12,10 @@
           = form_for @email_contact, class: "form-inline" do |f|
             = f.text_field :email, class: "input-lg launch-input", style: "vertical-align: middle", placeholder: "email"
             = f.submit "Join launch list", class: "btn btn-danger btn-lg"
-          /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
-          /= link_to "Register for Evrystyles", new_event_registration_path(event_id: 1)
+          /- Event.all.each do |event|
+            /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
+            /=link_to "Register for Event", new_event_registration_path(@event)
+            /= link_to event.name, new_event_registration_path(event.id)
 = render 'shared/tag_nav'
 / .container.cont-padding
 /   = render 'shared/featured_reels'

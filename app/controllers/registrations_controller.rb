@@ -9,13 +9,14 @@ class RegistrationsController < ApplicationController
     #end
 
     @registration = Registration.new
-    @event = Event.find_by_id(1)
+    @event = Event.find(params[:event_id])
+    #@event = Event.find_by_id(1)
   end
 
   def create
     #if user_signed_in?
     @registration = Registration.new(params[:registration])
-    @registration.event_id = 1
+    #@registration.event_id = 1
     #@user = current_user
     #@registration.user_id = @user.id
 
