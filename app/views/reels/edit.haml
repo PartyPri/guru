@@ -38,6 +38,9 @@
                 = builder.label :description, "Change description"
                 = builder.text_field :description, class: "form-control"
                 <br><br>
+            .form-group
+              = f.label :tag_list, "Tags (separated by commas)"
+              = f.text_field :tag_list
             %hr.m-y-20
             .text-center
               = f.submit "Save Changes", class: "button btn btn-primary w-100"       
