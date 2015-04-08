@@ -93,6 +93,6 @@
                           %h4.p-top-15= medium.description
                     - else # Video
                       %div.m-20.teaser-media
-                        %a.magnific-video{:href => "http://www.youtube.com/embed/#{medium.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0"}
-                          %iframe.youtube-player{type: "text/html", width: "100%", height: "296", src: "http://www.youtube.com/embed/#{medium.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0", "allowfullscreen" => true, "frameborder" => 0}
+                        %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{medium.uid}"}
+                          %img{src: "http://img.youtube.com/vi/#{medium.uid}/0.jpg"}
                           %h4.p-top-15= medium.description

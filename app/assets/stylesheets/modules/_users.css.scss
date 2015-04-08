@@ -45,10 +45,16 @@
   cursor: pointer;
 
   .mfp-img {
-    min-height: 400px;
+    min-height: 600px;
   }
 
   .mfp-close {
     cursor: pointer;
+  }
+}
+
+.magnific-video {
+  img {
+    width: 100%;
   }
 }
