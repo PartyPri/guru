@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:google_oauth2]
@@ -14,10 +15,6 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :description, :bio, :cover_photo, :avatar, :location, :interest_ids,
     :uid, :provider, :token, :refresh_token, :expires_at
-
-  # Serialize
-
-  serialize :categories, Hash
 
   # Associations
 
@@ -69,7 +66,6 @@ class User < ActiveRecord::Base
     end
     user
   end
-
 
   def token_expired?
     self.expires_at < Time.now

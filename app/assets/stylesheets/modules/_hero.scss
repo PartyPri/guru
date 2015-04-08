@@ -13,7 +13,7 @@
 }
 
 .hero {
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgba(0, 0, 0, 0.38);
 }
 
 .hero-content {
@@ -35,4 +35,18 @@
 @media (min-width:768px) {
   .hero-text { font-size: 4.5rem; }
   .hero-content { padding: 100px 0px; }
+}
+
+@media (max-width: 400px) {
+  .hero {
+
+    input {
+      width: 85%;
+      margin: 5px 0;
+    }
+
+    .hero-text {
+      font-size: 2rem;
+    }
+  }
 }

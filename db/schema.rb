@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150319001917) do
+ActiveRecord::Schema.define(:version => 20150403034406) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -90,8 +90,13 @@ ActiveRecord::Schema.define(:version => 20150319001917) do
   create_table "events", :force => true do |t|
     t.string   "name"
     t.datetime "date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.boolean  "payment_required"
+    t.string   "time"
+    t.string   "special_copy"
+    t.string   "location"
+    t.string   "description"
   end
 
   create_table "followerships", :force => true do |t|
@@ -191,13 +196,14 @@ ActiveRecord::Schema.define(:version => 20150319001917) do
   end
 
   create_table "registrations", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.string   "name"
     t.string   "email"
     t.string   "phone"
     t.integer  "user_id"
     t.integer  "event_id"
+    t.boolean  "availability_confirmation"
   end
 
   create_table "user_interests", :force => true do |t|

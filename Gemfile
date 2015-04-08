@@ -5,10 +5,10 @@ ruby "2.1.1"
 gem 'rails', '3.2.12'
 gem 'haml'
 gem 'bootstrap-sass-rails'
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails'
+gem 'sass', '~> 3.3'
 gem 'uglifier', '>= 1.0.3'
-gem "jquery-rails", "< 3.0.0"
-gem 'simple_form'
+gem 'jquery-rails', "< 3.0.0"
 
 #Database
 gem 'pg'
@@ -42,6 +42,9 @@ gem 'masonry-rails'
 
 #AWS
 gem 'aws-sdk'
+
+#Stripe
+gem 'stripe'
 
 group :development do
   gem 'pry'
