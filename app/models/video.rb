@@ -6,4 +6,6 @@ class Video < ActiveRecord::Base
 
   #Validations
   validates_presence_of :reel_id, :title, :description, :uid
+
+  acts_as_taggable
 end
