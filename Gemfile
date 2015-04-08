@@ -46,6 +46,9 @@ gem 'aws-sdk'
 #Stripe
 gem 'stripe'
 
+#Tagging
+gem 'acts-as-taggable-on', '~> 3.4'
+
 group :development do
   gem 'pry'
   gem 'byebug'
