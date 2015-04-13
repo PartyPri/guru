@@ -17,7 +17,7 @@ class RegistrationsController < ApplicationController
     #if user_signed_in?
     @registration = Registration.new(params[:registration])
     #@registration.event_id = 1
-    @registration.user = User.find_by_id(12)
+    @registration.user = User.find_by_id(1)
     @event = Event.find(params[:event_id])
     @registration.event_id = @event.id
     #@registration.user_id = @user.id

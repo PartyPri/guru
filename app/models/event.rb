@@ -5,5 +5,6 @@ class Event < ActiveRecord::Base
 
   # Associations
   has_many :users, through: :registrations#, uniq: true
+  has_many :registrations
 
 end
