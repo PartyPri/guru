@@ -1,6 +1,6 @@
 class Api::TagsController < ApplicationController
 
   def index
-    render json: ["test", "hello"]
+    render json: ActsAsTaggableOn::Tag.all.map{|t| t.name}
   end
 end

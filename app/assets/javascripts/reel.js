@@ -17,5 +17,7 @@ $(function() {
   }
 
   // Tagging
-  $('#reel_tag_list').tagsInput();
+  $('#reel_tag_list').tagsInput({
+    autocomplete_url:'/api/tags'
+  });
 });

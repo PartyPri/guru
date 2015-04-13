@@ -9,6 +9,7 @@ gem 'sass-rails'
 gem 'sass', '~> 3.3'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', "< 3.0.0"
+gem 'jquery-ui-sass-rails'
 
 #Database
 gem 'pg'
