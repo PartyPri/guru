@@ -70,6 +70,8 @@
               .col-xs-12
                 -# APRIL: Hook up to reel names and tags
                 %h3= link_to(reel.name, "/reels/#{reel.id}")
+                .tags
+                  =reel.tag_list.join(", ")
                 - interest = reel.interests
                 - length = interest.length
                 - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
