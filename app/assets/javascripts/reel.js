@@ -14,6 +14,8 @@ $(function() {
       '//connect.facebook.net/en_US/all.js';
       document.getElementById('fb-root').appendChild(e);
     }());
+  }
 
- }
+  // Tagging
+  $('#reel_tag_list').tagsInput();
 });
