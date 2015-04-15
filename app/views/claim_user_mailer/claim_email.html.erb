@@ -5,5 +5,6 @@
   </head>
   <body>
     <h1>This is a test mailer!</h1>
+    <%= link_to "Claim your Account!", "http://localhost:3000/auth/google_oauth2?claim_token=#{@token}" %>
   </body>
 </html>
