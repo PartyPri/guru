@@ -1,6 +1,7 @@
 class Api::TagsController < ApplicationController
 
   def index
-    render json: ActsAsTaggableOn::Tag.all.map{|t| t.name}
+    tags = ActsAsTaggableOn::Tag.where("name like ?", "%#{params[:term]}%")
+    render json: tags.map(&:name)
   end
 end
