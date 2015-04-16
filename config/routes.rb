@@ -59,6 +59,7 @@ Guru::Application.routes.draw do
   get 'landing', to: 'pages#landing', as: 'landing'
   get 'about', to: 'pages#about', as: 'about'
   get 'style-guide', to: 'styles#guide', as: 'style_guide'
+  get "claim_users/new", to: 'claim_users#new'
 
   post 'checkout/create'
 
