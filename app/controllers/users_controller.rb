@@ -24,8 +24,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:cropped_image]
+      params[:user][:avatar] = params[:user].delete(:cropped_image)
+    end
+
     @user = User.find(params[:id])
-    if @user.update_attributes( params[:user] )
+    if @user.update_attributes(params[:user])
       flash[:notice] = "Profile Updated."
       redirect_to @user
     else

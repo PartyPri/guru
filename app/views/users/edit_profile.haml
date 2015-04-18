@@ -27,12 +27,15 @@
                 <br>
                 = image_tag @user.avatar.url(:small)
                 <br>
-                = @user.avatar_file_name
+                =# @user.avatar_file_name
                 <br><br>
                 %p Select a new profile picture 
               - else
                 %p Choose a profile picture
               = f.file_field :avatar
+              %img{ id: "profile_image_viewer", src: "", alt: "your image" }
+              %br
+              %canvas{ id: "cropped_image_canvas"}
             .form-group
               %label{for: "cover_photo"} Cover Picture:
               - if @user.cover_photo.exists?
@@ -44,7 +47,7 @@
                 %p Select a new cover picture 
               - else
                 %p Choose a cover picture
-              = f.file_field :cover_photo  
+              = f.file_field :cover_photo
               / %button.btn.btn-default.file-upload
               /   Choose picture
               /   = file_field_tag :file, required: false, id: :avatar, class: "upload", "data-print" => "#emp-image-print"
@@ -53,4 +56,6 @@
               = f.text_area :bio, class: "form-control"
             %hr.m-y-20
             .text-center
-              = f.submit "Save Changes", class: "button btn btn-primary w-100"   
+              = f.submit "Save Changes", class: "button btn btn-primary w-100"
+= javascript_tag do
+  window.evryStepUserId = "#{@user.id}";
