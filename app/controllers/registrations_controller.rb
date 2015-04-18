@@ -34,7 +34,7 @@ class RegistrationsController < ApplicationController
     
     if @event.payment_required
       charge = Stripe::Charge.create(
-        :amount => 1100, # amount in cents, again
+        :amount => 1150, # amount in cents, again
         :currency => "usd",
         :source => token,
         #:description => @registration.user_id
