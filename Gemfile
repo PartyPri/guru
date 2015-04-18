@@ -41,7 +41,8 @@ gem "paperclip"
 gem 'masonry-rails'
 
 #AWS
-gem 'aws-sdk'
+#gem 'aws-sdk'
+gem "aws-s3", :require => "aws/s3"
 
 #Stripe
 gem 'stripe'
