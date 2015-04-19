@@ -62,6 +62,10 @@ Guru::Application.routes.draw do
 
   post 'checkout/create'
 
+  namespace :api do
+    resources :tags, only: [:index]
+  end
+
   devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 end

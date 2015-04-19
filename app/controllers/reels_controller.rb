@@ -51,9 +51,4 @@ class ReelsController < ApplicationController
     @reel.destroy
     redirect_to current_user
   end
-
-  private
-    def reel_params
-      params.require(:reel).permit(:image_id, :video_id)
-    end
 end

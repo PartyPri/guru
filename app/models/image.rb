@@ -11,6 +11,7 @@ class Image < ActiveRecord::Base
 
   #Validations
   validates_attachment_content_type :photo, :content_type => /\Aimage/
-
   validates_presence_of :reel_id
+
+  acts_as_taggable
 end
