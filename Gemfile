@@ -41,7 +41,7 @@ gem 'paperclip'
 gem 'masonry-rails'
 
 #AWS
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 
 #Stripe
 gem 'stripe'
