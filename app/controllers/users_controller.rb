@@ -22,15 +22,4 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render 'edit_profile.haml'
   end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes( params[:user] )
-      flash[:notice] = "Profile Updated."
-      redirect_to @user
-    else
-      flash[:notice] = "Oops, your info wasn't saved! Please try again."
-      render 'edit'
-    end
-  end
 end
