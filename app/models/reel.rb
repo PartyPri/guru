@@ -15,7 +15,7 @@ class Reel < ActiveRecord::Base
 
   #Scopes
   scope :featured, -> { where(featured: true) }
-
+  scope :by_user_id, lambda{|user_id| { conditions: { user_id: user_id } } }
   acts_as_taggable
 
   def media
