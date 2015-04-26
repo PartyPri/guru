@@ -1,0 +1,41 @@
+- content_for :head do
+  %meta{ property: "og:title", content: @reel.name }
+  %meta{ property: "og:type", content: "website" } 
+  %meta{ property: "og:url", content: reel_url(@reel) } 
+  %meta{ property: "og:image", content: user_image }
+  %meta{ property: "og:description", content: reel_description }
+- media = @images.zip(@videos).flatten.compact
+%div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
+.container
+  = render 'shared/light_nav'
+.container.p-y-60.text-center{style: "height: 100%;"}
+  .row
+    .col-xs-12
+      %h1.text-center= @reel.name  
+      %h5.text-center= link_to("by" + " " + @user.first_name + " " + @user.last_name, @user)
+      - interest = @reel.interests
+      - length = interest.length
+      %ul.list-inline
+        - interest.each_with_index do |interest, x|
+          - if x+1 != length
+            %li
+              = link_to(interest.name, "/interests/#{interest.id}/about")
+            %li.divider
+          - else
+            %li
+              = link_to(interest.name, "/interests/#{interest.id}/about")
+      - if current_user.id == @user.id         
+        = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default"
+      %div.fb-share-button{"data-href" => share_object('reel'), "data-width" => "300", "data-layout" => "button"}
+      %div#result
+  .row
+    .col-xs-12
+      %div.reel-carousel-center
+        - media.each do |media|
+          %div.m-20
+            - if @images.include? media
+              = image_tag media.photo.url(:large)
+              %p.p-top-15= media.description
+            - else
+              %iframe.youtube-player{type: "text/html", width: "800", height: "500", src: "http://www.youtube.com/embed/#{media.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0", "allowfullscreen" => true, "frameborder" => 0}
+              %p.p-top-15= media.description

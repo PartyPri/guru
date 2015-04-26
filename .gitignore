@@ -21,3 +21,10 @@
 .rspec
 .rvmrc
 logfile
+
+# Ignore application configuration
+/config/application.yml
+
+# Uploaded assets
+/public/assets/*
+/public/system/*

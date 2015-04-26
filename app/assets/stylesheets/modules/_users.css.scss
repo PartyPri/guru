@@ -5,3 +5,56 @@
   //margin-top: 5px;
   //margin-right: 25px;
 }
+
+.page-divider {
+	width: 100%;
+}
+
+.teaser {
+	padding-top: 10px;
+	-webkit-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+	-moz-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+	box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+  margin-bottom: 30px;
+  overflow: hidden;
+
+	a {
+		color: $drk-gray;
+	}
+
+	.interests a {
+		color: $med-gray;
+	}
+
+	.slick-slide {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+  .track {
+    width: 200%;
+  }
+
+  .teaser-media {
+    width: 300px;
+    float: left;
+  }
+}
+
+.mfp-content, .mfp-image-holder {
+  cursor: pointer;
+
+  .mfp-img {
+    min-height: 600px;
+  }
+
+  .mfp-close {
+    cursor: pointer;
+  }
+}
+
+.magnific-video {
+  img {
+    width: 100%;
+  }
+}

@@ -1,0 +1,11 @@
+- reels.each do |reel|
+  - reel.media.each do |medium|
+    .col-xs-12.col-sm-4
+      %h4
+        %strong= medium.updated_at
+      %h4= link_to(medium.reel.name, "/reels/#{reel.id}")
+      - if medium.is_a? Image
+        %img.m-top-10= image_tag(medium.photo.url, width: "100%")
+      - else
+        %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{medium.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
+      %h5.text-center.m-top-10= medium.description

@@ -1,0 +1,95 @@
+- intervals = [0, 5, 10, 15, 20, 25, 30, 40, 50, 60, 70, 80, 90, 100]
+.container.p-y-60
+  .row
+    .col-sm-12.col-md-3
+      %h1 Box Model
+    .col-sm-12.col-md-9
+      .row
+        .col-sm-12
+          %h4.text-uppercase.c-red Padding
+      .row
+        .col-sm-12
+          - intervals.each do |padding|
+            %div.bgc-lt-gray.m-bottom-10{class: "p-#{padding}"}
+              %p.text-center.m-bottom-0 #{padding}
+      .row.m-top-20
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .p-#
+          %span.bgc-lt-gray.p-10 .p-top-#
+          %span.bgc-lt-gray.p-10 .p-right-#
+          %span.bgc-lt-gray.p-10 .p-bottom-#
+          %span.bgc-lt-gray.p-10 .p-left-#
+      .row.m-top-20
+        .col-sm-12
+          %div.alert.alert-info
+            %p 
+              Use
+              %span.bgc-lt-gray.p-10 .sm-
+              in front of any padding classes to apply the padding on mobile devices.
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Margin
+      .row
+        .col-sm-12
+          - intervals.each do |margin|
+            %div.bgc-lt-gray{class: "m-#{margin}"}
+              %p.text-center.m-bottom-0 #{margin}
+      .row.m-top-20
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .m-#
+          %span.bgc-lt-gray.p-10 .m-top-#
+          %span.bgc-lt-gray.p-10 .m-right-#
+          %span.bgc-lt-gray.p-10 .m-bottom-#
+          %span.bgc-lt-gray.p-10 .m-left-#
+      .row.m-top-20
+        .col-sm-12
+          %div.alert.alert-info
+            %p 
+              Use
+              %span.bgc-lt-gray.p-10 .sm-
+              in front of any margin classes to apply the margin on mobile devices.
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Displays
+      .row
+        .col-sm-12
+          %p
+            The span in
+            %span.d-inline.c-turq the middle
+            is displayed inline.
+      .row.m-top-10
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .d-inline
+      .row.m-top-30
+        .col-sm-12
+          %p
+            The span in
+            %span.d-inline-block.c-turq the middle
+            is displayed as a block inline.
+      .row.m-top-10
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .d-inline-block
+      .row.m-top-30
+        .col-sm-12
+          %p
+            The span in
+            %span.d-block.c-turq the middle
+            is displayed as a block.
+      .row.m-top-10
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .d-block
+      .row.m-top-40
+        .col-sm-12
+          %h4.text-uppercase.c-red Special Classes
+      .row
+        .col-sm-12
+          %div.bgc-lt-gray.cont-padding
+            %p Container Padding
+      .row.m-top-20
+        .col-sm-12
+          %span.bgc-lt-gray.p-10 .cont-padding
+      .row.m-top-20
+        .col-sm-12
+          %div.alert.alert-info
+            %p Use this class on large containers of information to provide the correct appearance on smaller screens.
+
