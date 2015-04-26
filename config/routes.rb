@@ -1,6 +1,5 @@
 Guru::Application.routes.draw do
-
-  #devise_for :users
+  devise_for :users
   #root to: "pages#home"
   root to: "pages#landing"
 
@@ -35,12 +34,13 @@ Guru::Application.routes.draw do
 
   resources :email_contacts, only: :create
   resources :interests
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, :only => [:show, :edit] #, :get_upload_token
   resources :user_interests, :only => [:create, :show, :destroy]
   resources :followerships, :only => [:create, :destroy]
   resources :reels
   resources :images
   resources :articles
+  resources :claim_users, :only => [:new, :create]
   resources :events do
     resources :registrations, :only => [:create, :new]
   end
@@ -62,6 +62,5 @@ Guru::Application.routes.draw do
 
   post 'checkout/create'
 
-  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 end
