@@ -48,6 +48,10 @@
     }
   }
 
+  .teaser:hover {
+    border: 1px solid $lt-turq;
+  }
+
   .teaser {
   	padding: 10px 40px;
     background: #fff;
