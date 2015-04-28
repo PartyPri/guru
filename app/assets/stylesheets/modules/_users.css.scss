@@ -1,60 +1,77 @@
-.avatar {
-  float: right;
-  margin-top: 20px;
-  //margin-left: 15px;
-  //margin-top: 5px;
-  //margin-right: 25px;
-}
+.profile {
 
-.page-divider {
-	width: 100%;
-}
+  .hero {
+    height: 475px;
+  
+    .user {
+      color: #fff;
+      bottom: 0;
+      position: absolute;
+      padding-left: 5%;
+      padding-bottom: 30px;   
+    }
 
-.teaser {
-	padding-top: 10px;
-	-webkit-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-	-moz-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-	box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-  margin-bottom: 30px;
-  overflow: hidden;
+    .avatar {
+      border-radius: 100px;
+      border: solid #fff 2px;
+      height: 100px;
+      width: 100px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-right: 20px;
+    }
 
-	a {
-		color: $drk-gray;
-	}
-
-	.interests a {
-		color: $med-gray;
-	}
-
-	.slick-slide {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-
-  .track {
-    width: 200%;
+    .avatar, .info {
+      display: inline-block;
+    }
   }
 
-  .teaser-media {
-    width: 300px;
-    float: left;
-  }
-}
-
-.mfp-content, .mfp-image-holder {
-  cursor: pointer;
-
-  .mfp-img {
-    min-height: 600px;
+  .tabs {
+    padding: 30px 0;
+    text-align: center
   }
 
-  .mfp-close {
-    cursor: pointer;
-  }
-}
+  .profile-content {
+    background: #f3f3f3;
+    padding: 30px 0;
 
-.magnific-video {
-  img {
-    width: 100%;
+    .content-container {
+      width: 1310px;
+      margin: 0 auto;
+    }
+  }
+
+  .teaser {
+  	padding: 15px 30px;
+    background: #fff;
+    border-radius: 5px;
+  	-webkit-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+  	-moz-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+  	box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
+    margin-bottom: 30px;
+    overflow: hidden;
+
+    h1, p {
+      color: #000;
+    }
+
+    ul {
+      margin: 12px 0;
+
+      li:nth-child(4) {
+        margin: 0;
+      }
+    }
+
+    li.teaser-media {
+      width: 300px;
+      height: 250px;
+      margin-right: 12px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      border-radius: 10px;
+    }
   }
 }

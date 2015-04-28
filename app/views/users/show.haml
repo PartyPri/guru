@@ -5,99 +5,61 @@
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
 
-.hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
-  .hero
-    = render 'shared/nav'
-    .container.p-y-100.text-center{style: "height: 300px;"}
-.container.text-center{style: "height: 80px;"}
-  .row
-    %span{style: "position: relative; top: -75px;"}
-      = image_tag(@user.avatar.url(:small), style: "border: 1px solid white; background-color: white; padding: 5px;")
-.container.text-center.p-y-20
-  .row
-    .col-xs-12
-      %h1= @user.first_name + " " + @user.last_name
-  .row
-    .col-xs-12
-      %p.quote= @user.description
-  .row.m-top-20
-    .col-xs-12
-      %h4= @user.location
-      %ul.list-inline
-        - @user.interests.each do |interest|
-          %li
-            %h5
-              = link_to(interest.name, "/interests/#{interest.id}")
-.container
-  .row.text-center
-    .col-xs-12
+.profile
+  .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
+    .hero
+      = render 'shared/nav'
+      .user
+        .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+        .info
+          %h1=@user.first_name + " " + @user.last_name
+          %h3= @user.description
+          %h3= @user.location
+  .container.tabs
+    .row
       %ul.list-inline
         %li.active
           %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
         %li.divider
         %li
           %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
-.container.text-center.m-y-50.page-divider{style: "height: 1px; background-color: #cccccc;"}
-  %span{style: "background-color: white; position: relative; top: -30px;"}
-    - if current_user.present?
-      - if @user.id == current_user.id
-        %button.btn.btn-default.btn-large= link_to "Edit Profile", edit_profile_path
-    - else
-      %button.btn.btn-default.btn-large Follow
-.tab-content.m-bottom-60
-  .container.tab-pane#bio{role: "tabpanel"}
-    .row.text-center
-      .col-xs-12.col-sm-8.col-sm-offset-2
-        %p= @user.bio
-  .container.tab-pane.active#work{role: "tabpanel"}
-    .container.p-y-10{role: "tabpanel"}
-      .row.text-right
-        .col-xs-12
-          %ul.list-inline
-            %li.active
-              %a{href: "#reels", role: "tab", "data-toggle" => "tab"} Reels
-            %li
-              %a{href: "#timeline", role: "tab", "data-toggle" => "tab"} Timeline
-    .tab-content
-      -# APRIL: Need to hook up user content here
-      .container.tab-pane#timeline{role: "tabpanel"}
-        .row
-          = render partial: 'shared/timeline', locals: { reels: @reels }
-      .container.tab-pane.active#reels{role: "tabpanel"}
-        - @reels.each do |reel|
-          .teaser
-            .row-fluid
-              .col-xs-12
-                -# APRIL: Hook up to reel names and tags
-                %h3= link_to(reel.name, "/reels/#{reel.id}")
-                .tags
-                  =reel.tag_list.join(", ")
-                - interest = reel.interests
-                - length = interest.length
-                - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-                %ul.list-inline.interests
-                  - interest.each_with_index do |interest, x|
-                    - if x+1 != length
-                      %li
-                        = link_to(interest.name, "/interests/#{interest.id}")
-                      %li.divider
-                    - else
-                      %li
-                        = link_to(interest.name, "/interests/#{interest.id}")
-            .row.text-center
-              .col-xs-12.track
-                %div
-                  - reel.media.take(4).each do |medium|
-                    - if medium.is_a? Image
-                      %div.m-20.teaser-media
-                        %a.magnific{:href => medium.photo.url}
-                          = image_tag(medium.photo.url, width: "100%")
-                          %h4.p-top-15= medium.description
-                    - else # Video
-                      %div.m-20.teaser-media
-                        %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{medium.uid}"}
-                          %img{src: "http://img.youtube.com/vi/#{medium.uid}/0.jpg"}
-                          %h4.p-top-15= medium.description
-            .row-fluid
-              .col-xs-12
-                = reel.description
+  .profile-content
+    .container.tab-pane#bio{role: "tabpanel"}
+      .row.text-center
+        .col-xs-12.col-sm-8.col-sm-offset-2
+          %p= @user.bio
+    .content-container.tab-pane.active#work{role: "tabpanel"}
+      .tab-content
+        .tab-pane#timeline{role: "tabpanel"}
+          .row
+            = render partial: 'shared/timeline', locals: { reels: @reels }
+        .tab-pane.active#reels{role: "tabpanel"}
+          - @reels.each do |reel|
+            %a{href: "/reels/#{reel.id}"}
+              .teaser
+                .row-fluid
+                  .col-xs-12
+                    %h1= reel.name
+                    .tags
+                      =reel.tag_list.join(", ")
+                    - interest = reel.interests
+                    - length = interest.length
+                    - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+                    %ul.list-inline.interests
+                      - interest.each_with_index do |interest, x|
+                        - if x+1 != length
+                          %li
+                            = interest.name
+                          %li.divider
+                        - else
+                          %li
+                            = interest.name
+                .row
+                  .col-xs-12
+                    %ul.list-inline
+                      - reel.media.take(4).each do |medium|
+                        - if medium.is_a? Image
+                          %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
+                        - else # Video
+                          %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
+                    %p= reel.description
