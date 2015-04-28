@@ -88,11 +88,40 @@
     li.teaser-media {
       width: 200px;
       height: 150px;
-      margin-right: 12px;
+      margin-right: 20px;
       background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
       border-radius: 10px;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .profile {
+    .profile-content {
+      .content-container {
+        width: 700px;
+      }
+    }
+
+    .teaser {
+      li.teaser-media {
+        width: 300px;
+        height: 250px;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .profile {
+    .profile-content {
+      .content-container {
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 }
