@@ -9,73 +9,75 @@
   .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
     .hero
       = render 'shared/nav'
-      .user
-        .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-        %h1=@user.first_name + " " + @user.last_name
-        %h4.m-top-1= @user.description
-        %h4.m-top-5= @user.location
+      %a{href: "#bio", role: "tab", "data-toggle" => "tab"}
+        .user
+          .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+          %h1=@user.first_name + " " + @user.last_name
+          %h4.m-top-1= @user.description
+          %h4.m-top-5= @user.location
   .tabs
     .row
       %ul.list-inline
-        %li.active
+        %li
           %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
         %li.divider
         %li
           %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
   .profile-content
-    .container.tab-pane#bio{role: "tabpanel"}
-      .row.text-center
-        .col-xs-12.col-sm-8.col-sm-offset-2
-          %p= @user.bio
-    .content-container.tab-pane.active#work{role: "tabpanel"}
-      .tab-content
-        .tab-pane#timeline{role: "tabpanel"}
-          .row
-            = render partial: 'shared/timeline', locals: { reels: @reels }
-        .tab-pane.active#reels{role: "tabpanel"}
-          - @reels.each do |reel|
-            %a{href: "/reels/#{reel.id}"}
-              .teaser
-                .container
-                  .row-fluid
-                    /.col-xs-12
-                    %h2= reel.name
-                    / .tags
-                    /   =reel.tag_list.join(", ")
-                    / - interest = reel.interests
-                    / - length = interest.length
-                    / - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-                    / %ul.list-inline.interests
-                    /   - interest.each_with_index do |interest, x|
-                    /     - if x+1 != length
-                    /       %li
-                    /         = interest.name
-                    /       %li.divider
-                    /     - else
-                    /       %li
-                    /         = interest.name
-                  .row
-                    .col-xs-12
-                      %ul.list-inline
-                        - reel.media.take(4).each do |medium|
-                          - if medium.is_a? Image
-                            %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
-                          - else # Video
-                            %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-                      = reel.description
-                  .row-fluid
-                    /.col-xs-12
-                    / .tags
-                    /   =reel.tag_list.join(", ")
-                    - interest = reel.interests
-                    - length = interest.length
-                    - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-                    %ul.list-inline.interests
-                      - interest.each_with_index do |interest, x|
-                        - if x+1 != length
-                          %li
-                            = interest.name
-                          %li.divider
-                        - else
-                          %li
-                            = interest.name
+    .tab-content
+      .container.tab-pane#bio{role: "tabpanel"}
+        .row.text-center
+          .col-xs-12.col-sm-8.col-sm-offset-2
+            %p= @user.bio
+      .content-container.tab-pane.active#work{role: "tabpanel"}
+        .tab-content
+          .tab-pane#timeline{role: "tabpanel"}
+            .row
+              = render partial: 'shared/timeline', locals: { reels: @reels }
+          .tab-pane.active#reels{role: "tabpanel"}
+            - @reels.each do |reel|
+              %a{href: "/reels/#{reel.id}"}
+                .teaser
+                  .container
+                    .row-fluid
+                      /.col-xs-12
+                      %h2= reel.name
+                      / .tags
+                      /   =reel.tag_list.join(", ")
+                      / - interest = reel.interests
+                      / - length = interest.length
+                      / - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+                      / %ul.list-inline.interests
+                      /   - interest.each_with_index do |interest, x|
+                      /     - if x+1 != length
+                      /       %li
+                      /         = interest.name
+                      /       %li.divider
+                      /     - else
+                      /       %li
+                      /         = interest.name
+                    .row
+                      .col-xs-12
+                        %ul.list-inline
+                          - reel.media.take(4).each do |medium|
+                            - if medium.is_a? Image
+                              %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
+                            - else # Video
+                              %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
+                        = reel.description
+                    .row-fluid
+                      /.col-xs-12
+                      / .tags
+                      /   =reel.tag_list.join(", ")
+                      - interest = reel.interests
+                      - length = interest.length
+                      - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+                      %ul.list-inline.interests
+                        - interest.each_with_index do |interest, x|
+                          - if x+1 != length
+                            %li
+                              = interest.name
+                            %li.divider
+                          - else
+                            %li
+                              = interest.name
