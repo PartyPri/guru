@@ -21,6 +21,8 @@
 //= require resp_menu
 //= require tooltips
 //= require upload_name
+//= require jquery.tagsinput
 //= require magnific-popup.min
+//= require jquery-ui
 //= require_tree .
 //

@@ -1,60 +1,92 @@
-.avatar {
-  float: right;
-  margin-top: 20px;
-  //margin-left: 15px;
-  //margin-top: 5px;
-  //margin-right: 25px;
-}
+.profile {
 
-.page-divider {
-	width: 100%;
-}
+  .hero {
+    height: 475px;
+  
+    .user {
+      margin: 0 auto;
+      color: #fff;
+      bottom: 0;
+      position: absolute;
+      text-align: center;
+      padding-left: 39%;
+      padding-bottom: 30px;   
+    }
 
-.teaser {
-	padding-top: 10px;
-	-webkit-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-	-moz-box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-	box-shadow: 1px 0px 1px 1px rgba(223,223,223,1);
-  margin-bottom: 30px;
-  overflow: hidden;
+    .avatar {
+      border-radius: 80px;
+      border: solid #fff 2px;
+      height: 80px;
+      width: 80px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      margin-bottom: 8px;
+    }
 
-	a {
-		color: $drk-gray;
-	}
-
-	.interests a {
-		color: $med-gray;
-	}
-
-	.slick-slide {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
-
-  .track {
-    width: 200%;
+    .avatar, .info {
+      display: inline-block;
+    }
   }
 
-  .teaser-media {
-    width: 300px;
-    float: left;
-  }
-}
-
-.mfp-content, .mfp-image-holder {
-  cursor: pointer;
-
-  .mfp-img {
-    min-height: 600px;
+  .tabs {
+    padding: 15px 0;
+    text-align: center;
+    height: 50px;
+    box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22);
+    -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22);
+    -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,0.22);
   }
 
-  .mfp-close {
-    cursor: pointer;
-  }
-}
+  .profile-content {
+    background: #e9e9e9;
+    padding: 30px 0;
 
-.magnific-video {
-  img {
-    width: 100%;
+    .content-container {
+      width: 956px;
+      margin: 0 auto;
+    }
+  }
+
+  .teaser {
+  	padding: 10px 40px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+  	-webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+  	-moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: $drk-gray;
+
+    h1, p {
+      color: #000;
+    }
+
+    ul {
+      margin: 6px 0;
+
+      li:nth-child(4) {
+        margin: 0;
+      }
+
+    }
+
+    .interests {
+      margin-top: 4px;
+      margin-bottom: 0px;
+      font-size: $base-font-size * 0.9375;
+      color: $med-gray;
+    }
+
+    li.teaser-media {
+      width: 200px;
+      height: 150px;
+      margin-right: 12px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      border-radius: 10px;
+    }
   }
 }

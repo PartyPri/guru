@@ -25,6 +25,8 @@ logfile
 # Ignore application configuration
 /config/application.yml
 
-# Uploaded assets
+# Ignore uploaded assets
 /public/assets/*
+
+# Ignore server generated assets
 /public/system/*
