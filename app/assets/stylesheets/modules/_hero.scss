@@ -1,3 +1,32 @@
+.page-hero {
+  height: 475px;
+
+  .page-info {
+    margin: 0 auto;
+    color: #fff;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 30px;   
+  }
+
+  .avatar {
+    border-radius: 80px;
+    border: solid #fff 2px;
+    height: 80px;
+    width: 80px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-bottom: 8px;
+  }
+
+  .avatar, .info {
+    display: inline-block;
+  }
+}
+
 .hero-image {
   width: 100%;
   position: relative;

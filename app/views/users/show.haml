@@ -5,12 +5,12 @@
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
 
-.profile
+.page
   .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
-    .hero
+    .page-hero
       = render 'shared/nav'
       %a{href: "#bio", role: "tab", "data-toggle" => "tab"}
-        .user
+        .page-info
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
           %h1=@user.first_name + " " + @user.last_name
           %h4.m-top-1= @user.description
@@ -29,7 +29,7 @@
             .btn.btn-default.edit-profile= link_to "Edit Profile", edit_profile_path
         - else
           .btn.btn-default.edit-profile Follow
-  .profile-content
+  .page-content
     .tab-content
       .container.tab-pane#bio{role: "tabpanel"}
         .row.text-center
@@ -69,7 +69,7 @@
                         %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
                       - else # Video
                         %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-                  %p= reel.description
+                  %p= truncate(reel.description, length: 125)
                   .row-fluid
                     /.col-xs-12
                     / .tags
@@ -85,4 +85,4 @@
                           %li.divider
                         - else
                           %li
-                            = test
+                            = interest.name
