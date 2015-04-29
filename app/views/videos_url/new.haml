@@ -1,0 +1,23 @@
+/ .bgc-lt-gray
+.container
+  = render 'shared/light_nav'
+  .container.p-y-40
+    %div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
+      .row
+        .col-xs-12.text-center
+          %h1 Add Video 
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          = form_tag :video_add do  
+            .form-group
+              %label{for: "reel_select"} Select a reel:
+              .select-style#reel_select
+                = collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
+            .form-group
+              %label{for: "description"} Description:
+              %textarea{:name => "description", :cols => "30", :rows => "3", class: "form-control"}
+            .form-group
+              %label{for: "video_url"} Youtube URL:
+              %input{required: true, id: "video-url", placeholder: 'Enter the youtube URL here...', class: "form-control"} 
+              = hidden_field_tag :uid
+            = submit_tag "Submit", class: "button btn btn-primary w-100", id: "add-video"
