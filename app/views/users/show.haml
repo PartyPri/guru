@@ -17,18 +17,25 @@
           %h4.m-top-5= @user.location
   .tabs
     .row-fluid
-      %ul.list-inline
-        %li
-          %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-        %li.divider
-        %li
-          %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
+      .content-container
+        %ul.list-inline
+          %li
+            %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+          %li.divider
+          %li
+            %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
+        - if current_user.present?
+          - if @user.id == current_user.id
+            .btn.btn-default.edit-profile= link_to "Edit Profile", edit_profile_path
+        - else
+          .btn.btn-default.edit-profile Follow
   .profile-content
     .tab-content
       .container.tab-pane#bio{role: "tabpanel"}
         .row.text-center
           .col-xs-12.col-sm-8.col-sm-offset-2
-            %p= @user.bio
+            .teaser.bio
+              %p= @user.bio
       .content-container.tab-pane.active#work{role: "tabpanel"}
         .tab-content
           .tab-pane#timeline{role: "tabpanel"}
