@@ -7,7 +7,7 @@ class ReelsController < ApplicationController
       tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
     end
 
-    render json: tagged_reels
+    render json: tagged_reels, include: { images: {methods: :photo}, videos: {} }
   end
 
   def show
