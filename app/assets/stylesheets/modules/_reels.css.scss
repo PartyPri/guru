@@ -95,7 +95,27 @@
   }
 }
 
+@media (max-width: 767px) {
+  .grid-item {
+    margin-bottom: 20px;
+  }
+
+  .reel-grid {
+    .row-fluid {
+      margin: 0;
+    }
+  }
+}
+
 @media (max-width: 450px) {
+  .reel-page {
+    .hero {
+      h4 {
+        width: 90%;
+      }
+    }
+  }
+
   .reel-page {
     .edit-reel {
       position: relative;
@@ -104,4 +124,6 @@
       margin: 20px 0;
     }
   }
+
 }
+

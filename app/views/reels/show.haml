@@ -44,7 +44,7 @@
           - @images.each_slice(3) do |media|
             .row-fluid.m-bottom-20.clearfix
               - media.each do |img|
-                .col-md-4.col-sm-6.col-sx-12
+                .col-md-4.col-sm-6.col-sx-6
                   %a.magnific{:href => img.photo.url}
                     .grid-item{:style => "background-image: url(#{img.photo.url});"}
                       - if img.description.present?
@@ -56,7 +56,7 @@
           - @videos.each_slice(3) do |video|
             .row-fluid.m-bottom-20.cleafix
               - video.each do |vid|
-                .col-md-4.col-sm-6.col-sx-12
+                .col-md-4.col-sm-6.col-sx-6
                   %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{vid.uid}"}
                     .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{vid.uid}/0.jpg);"}
                       =image_tag "video_arrow_right.png"
