@@ -59,6 +59,8 @@ Guru::Application.routes.draw do
   get 'landing', to: 'pages#landing', as: 'landing'
   get 'about', to: 'pages#about', as: 'about'
   get 'style-guide', to: 'styles#guide', as: 'style_guide'
+  match 'video/add', to: 'videos_url#new', via: 'get'
+  match 'video/add', to: 'videos_url#create', via: 'post'
 
   post 'checkout/create'
 
