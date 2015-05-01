@@ -14,6 +14,9 @@
               .select-style#reel_select
                 = collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
             .form-group
+              %label{for: "title"} Title:
+              %input{required: true, :name => "title", placeholder: 'Enter your video title here...', class: "form-control"} 
+            .form-group
               %label{for: "description"} Description:
               %textarea{:name => "description", :cols => "30", :rows => "3", class: "form-control"}
             .form-group

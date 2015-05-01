@@ -51,7 +51,22 @@ class VideosController < ApplicationController
     v.save
     flash[:notice] = 'Thanks for uploading your video!'
     redirect_to current_user
-end
+  end
+
+  def youtube
+    @video = Video.new
+  end
+
+  def create_youtube_video
+    @video = Video.new(:uid => params[:uid], :description => params[:description], :reel_id => params[:video][:reel_id], :title => params[:title])
+    if @video.save
+      redirect_to :root
+      flash[:success] = "Video successfully added!"
+    else
+      render 'new'
+      flash[:error] = "Something went wrong"
+    end
+  end
 
   private
 
