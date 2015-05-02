@@ -1,13 +1,21 @@
 class ReelsController < ApplicationController
 
   def index
-    tagged_reels = Reel.tagged_with(params[:tag])
+    interest_id = params[:interest_id]
+
+    if interest_id && interest = Interest.find(interest_id)
+      reels = interest.reels
+    else
+      reels = Reel
+    end
+
+    tagged_reels = reels.tagged_with(params[:tag])
 
     if params[:user_id]
       tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
     end
 
-    render json: tagged_reels
+    render json: tagged_reels, include: { images: {methods: :photo}, videos: {}, articles: {} }
   end
 
   def show

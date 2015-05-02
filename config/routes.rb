@@ -1,6 +1,5 @@
 Guru::Application.routes.draw do
-
-  #devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   #root to: "pages#home"
   root to: "pages#landing"
 
@@ -35,12 +34,13 @@ Guru::Application.routes.draw do
 
   resources :email_contacts, only: :create
   resources :interests
-  resources :users, :only => [:show, :edit, :update]
+  resources :users, :only => [:show, :edit] #, :get_upload_token
   resources :user_interests, :only => [:create, :show, :destroy]
   resources :followerships, :only => [:create, :destroy]
   resources :reels
   resources :images
   resources :articles
+  resources :claim_users, :only => [:new, :create]
   resources :events do
     resources :registrations, :only => [:create, :new]
   end
@@ -59,13 +59,13 @@ Guru::Application.routes.draw do
   get 'landing', to: 'pages#landing', as: 'landing'
   get 'about', to: 'pages#about', as: 'about'
   get 'style-guide', to: 'styles#guide', as: 'style_guide'
+  get '/video/add', to: 'videos#youtube'
+  post '/video/add', to: 'videos#create_youtube_video'
 
   post 'checkout/create'
 
   namespace :api do
     resources :tags, only: [:index]
   end
-
-  devise_for :users, :path => '', :path_names => { :sign_in => "signin", :sign_out => "signout", :sign_up => "/golden/2014/signup" }, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
 end
