@@ -64,5 +64,8 @@ Guru::Application.routes.draw do
 
   post 'checkout/create'
 
+  namespace :api do
+    resources :tags, only: [:index]
+  end
 
 end

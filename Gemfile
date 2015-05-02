@@ -9,6 +9,7 @@ gem 'sass-rails'
 gem 'sass', '~> 3.3'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', "< 3.0.0"
+gem 'jquery-ui-sass-rails'
 
 #Database
 gem 'pg'
@@ -45,6 +46,9 @@ gem 'aws-sdk', '< 2.0'
 
 #Stripe
 gem 'stripe'
+
+#Tagging
+gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
   gem 'pry'

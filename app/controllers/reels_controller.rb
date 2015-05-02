@@ -1,5 +1,23 @@
 class ReelsController < ApplicationController
 
+  def index
+    interest_id = params[:interest_id]
+
+    if interest_id && interest = Interest.find(interest_id)
+      reels = interest.reels
+    else
+      reels = Reel
+    end
+
+    tagged_reels = reels.tagged_with(params[:tag])
+
+    if params[:user_id]
+      tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
+    end
+
+    render json: tagged_reels, include: { images: {methods: :photo}, videos: {}, articles: {} }
+  end
+
   def show
     # TODO this should probably removed
     @reel = Reel.includes(:images, :videos).find(params[:id])
@@ -51,9 +69,4 @@ class ReelsController < ApplicationController
     @reel.destroy
     redirect_to current_user
   end
-
-  private
-    def reel_params
-      params.require(:reel).permit(:image_id, :video_id)
-    end
 end
