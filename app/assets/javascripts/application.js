@@ -23,6 +23,7 @@
 //= require upload_name
 //= require jquery.tagsinput
 //= require magnific-popup.min
+//= require tabs
 //= require jquery-ui
 //= require_tree .
 //

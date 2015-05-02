@@ -9,7 +9,7 @@
   .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
     .page-hero
       = render 'shared/nav'
-      %a{href: "#bio", role: "tab", "data-toggle" => "tab"}
+      %a#user-tab
         .page-info
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
           %h1=@user.first_name + " " + @user.last_name
@@ -20,10 +20,10 @@
       .content-container
         %ul.list-inline
           %li
-            %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} Reels
           %li.divider
           %li
-            %a{href: "#bio", role: "tab", "data-toggle" => "tab"} Bio
+            %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
         - if current_user.present?
           - if @user.id == current_user.id
             .btn.btn-default.edit-profile= link_to "Edit Profile", edit_profile_path
