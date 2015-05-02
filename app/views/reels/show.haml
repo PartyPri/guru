@@ -15,7 +15,7 @@
         %h4= @reel.description  
         - interest = @reel.interests
         - length = interest.length
-        %ul.list-inline.m-bottom-10
+        %ul.list-inline.m-bottom-10.interests
           - interest.each_with_index do |interest, x|
             - if x+1 != length
               %li
@@ -32,10 +32,10 @@
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
         .col-md-2
+          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+        .col-md-2
           - if current_user.id == @user.id         
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-        .col-md-2
-          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
 
   .reel
     .container
