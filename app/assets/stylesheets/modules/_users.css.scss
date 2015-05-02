@@ -6,6 +6,10 @@
   }
 }
 
+.teaser.bio:hover {
+  border: solid 1px transparent;
+}
+
 @media (max-width: 400px) {
   .tabs {
     .edit-profile {
