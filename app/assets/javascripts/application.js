@@ -21,5 +21,9 @@
 //= require resp_menu
 //= require tooltips
 //= require upload_name
+//= require video_url
+//= require inputmask
+//= require input
+//= require magnific-popup.min
 //= require_tree .
 //

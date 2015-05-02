@@ -1,10 +1,8 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!, :only => [ :home ]
+
+  #before_filter :authenticate_user!, :only => [ :home ]
 
   def home
-    #@posts = Post.order("updated_at desc")
-    #@projects = Project.order("updated_at desc")
-    
   end
 
   def landing
@@ -12,15 +10,6 @@ class PagesController < ApplicationController
   end
 
   def about
-
-  end
-
-  def mission
-    
-  end
-
-  def team
-
   end
 
 end

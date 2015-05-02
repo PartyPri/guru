@@ -2,10 +2,12 @@
 <html>
 <head>
   <title>Evrystep</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta property="fb:app_id" content="<%=ENV['FACEBOOK_APP_ID']%>"/> 
   <meta property="og:site_name" content="Evrystep" />
   <script src="//use.typekit.net/suw2hsl.js"></script>
   <script>try{Typekit.load();}catch(e){}</script>
+  <%= favicon_link_tag '/favicon.ico' %>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag "masonry.pkgd" %>
@@ -16,9 +18,18 @@
   <% end %>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript">Stripe.setPublishableKey("<%=ENV['STRIPE_PUBLISHABLE_KEY']%>");</script>
-
 </head>
 <body>
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5KZJKH"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5KZJKH');
+  </script>
+  <!-- End Google Tag Manager -->
   <!-- add master-container class to above div? -->
   <div class="wrapper">
     <%= render "shared/flash_messages" %>

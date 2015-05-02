@@ -9,9 +9,11 @@
             - if x+1 != length
               %li
                 %h5
-                  = link_to(interest.name, "/interests/#{interest.id}")
+                  = interest.name
+                  /= link_to(interest.name, "/interests/#{interest.id}")
               %li.divider
             - else
               %li
-                %h5
-                  = link_to(interest.name, "/interests/#{interest.id}")
+                %h5 
+                  = interest.name         
+                  /= link_to(interest.name, "/interests/#{interest.id}")
