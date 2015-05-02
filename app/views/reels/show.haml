@@ -8,14 +8,14 @@
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
 .container
   = render 'shared/light_nav'
-.container.p-y-60.text-center{style: "height: 100%;"}
-  .row
+.container.p-y-60.text-center.reel-page{style: "height: 100%;"}
+  .row-fluid.m-bottom-20.clearfix
     .col-xs-12
-      %h1.text-center= @reel.name  
-      %h5.text-center= link_to("by" + " " + @user.first_name + " " + @user.last_name, @user)
+      %h1.text-center.m-bottom-10= @reel.name  
+      %h5.text-center.m-bottom-10= link_to("by" + " " + @user.first_name + " " + @user.last_name, @user)
       - interest = @reel.interests
       - length = interest.length
-      %ul.list-inline
+      %ul.list-inline.m-bottom-10
         - interest.each_with_index do |interest, x|
           - if x+1 != length
             %li
@@ -24,18 +24,27 @@
           - else
             %li
               = link_to(interest.name, "/interests/#{interest.id}/about")
-      - if current_user.id == @user.id         
-        = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default"
       %div.fb-share-button{"data-href" => share_object('reel'), "data-width" => "300", "data-layout" => "button"}
       %div#result
-  .row
-    .col-xs-12
-      %div.reel-carousel-center
-        - media.each do |media|
-          %div.m-20
-            - if @images.include? media
-              = image_tag media.photo.url(:large)
-              %p.p-top-15= media.description
-            - else
-              %iframe.youtube-player{type: "text/html", width: "800", height: "500", src: "http://www.youtube.com/embed/#{media.uid}?modestbranding=1&showinfo=0&theme=light&autohide=1&rel=0", "allowfullscreen" => true, "frameborder" => 0}
-              %p.p-top-15= media.description
+      - if current_user.id == @user.id         
+        = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+  -if @images.any?
+    .row-fluid.reel-grid.clearfix.m-bottom-20
+      %h2.m-bottom-20 Image Gallery
+      - @images.each_slice(3) do |media|
+        .row-fluid.m-bottom-20.clearfix
+          - media.each do |img|
+            .col-md-4.grid-item
+              %a.magnific{:href => img.photo.url}
+                = image_tag(img.photo.url, width: "100%")
+                %h4.p-top-15= img.description
+  -if @videos.any?
+    .row-fluid.reel-grid.clearfix
+      %h2.m-bottom-20 Video Gallery
+      - @videos.each_slice(3) do |video|
+        .row-fluid.m-bottom-20.cleafix
+          - video.each do |vid|
+            .col-md-4.grid-item
+              %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{vid.uid}"}
+                %img{src: "http://img.youtube.com/vi/#{vid.uid}/0.jpg"}
+                %h4.p-top-15= vid.description
