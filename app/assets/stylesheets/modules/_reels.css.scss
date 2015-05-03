@@ -27,7 +27,6 @@
     -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
     -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
     box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
-    height: 50px;
 
     .avatar {
       height: 40px;
@@ -126,6 +125,16 @@
   .reel {
     .grid-container {
       width: 770px;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .reel-page {
+    .link-bar {
+      .col-md-2 {
+        text-align: left;
+      }
     }
   }
 }
