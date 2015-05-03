@@ -24,12 +24,12 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: $base-font-size * 2.5; // 16 * 2.5 = 40px
-  text-transform: uppercase;
   font-weight: 700;
 }
 
 h2 {
   font-size: $base-font-size * 2; // 16 * 2 = 32px
+  color: rgba(21, 21, 21, 0.8);
 }
 
 h3 {
@@ -53,7 +53,8 @@ p {
 }
 
 a {
-  color: $base-link-color;
+  //color: $base-link-color;
+  color: $drk-gray;
   text-decoration: none;
   @include transition(color 0.1s linear);
 

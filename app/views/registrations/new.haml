@@ -48,7 +48,7 @@
             /%h1 PAYMENT
             /%p Registrants pay $10 + $1 transaction
             - if @event.payment_required
-              %h4 Entry fee: $10 + $1.50 transaction
+              %h5 Entry fee: $10 + $1.50 transaction
               .m-y-20
                 %span 
                   =image_tag "visa.png"
@@ -62,18 +62,18 @@
                 %label Card Number
                 %span.c-med-gray.glyphicon.glyphicon-lock
                 .card-number
-                  %input{"data-stripe" => "number", :size => "20", :type => "text", :class => "form-control", :required => "required"}
+                  %input{"data-stripe" => "number", :size => "20", :type => "text", :class => "form-control", :required => "required", :id => "credit-card"}
               .form-group
                 %label Exp. Date
                 .exp-date
-                  %input{"data-stripe" => "exp-month", :size => "2", :type => "text", :placeholder => "mm", :class => "form-control small-width", :required => "required"}
+                  %input{"data-stripe" => "exp-month", :size => "2", :type => "text", :placeholder => "mm", :class => "form-control small-width", :required => "required", :maxlength => "2"}
                   %span 
-                  %input{"data-stripe" => "exp-year", :size => "4", :type => "text", :placeholder => "yyyy", :class => "form-control small-width", :required => "required"}
+                  %input{"data-stripe" => "exp-year", :size => "4", :type => "text", :placeholder => "yyyy", :class => "form-control small-width", :required => "required", :maxlength => "4"}
               .form-group
                 %label CVC
                 %span.c-med-gray.glyphicon.glyphicon-question-sign{'data-content' => "The CVC is usually a 3- or 4- digit number, typically printed on the back of a credit card", 'data-trigger' => 'hover', 'data-toggle' => 'popover', 'data-placement' => 'right'}
                 .cvc
-                  %input{"data-stripe" => "cvc", :size => "8", :type => "text", :class => "form-control small-width", :required => "required"}
+                  %input{"data-stripe" => "cvc", :size => "8", :type => "text", :class => "form-control small-width", :required => "required", :maxlength => "3"}
             %hr.m-y-20
             .text-center
               = f.submit "Register", class: "button btn btn-primary w-100"

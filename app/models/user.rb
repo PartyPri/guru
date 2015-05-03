@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   # Attachments
   
   has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png"
-  has_attached_file :cover_photo, :styles => {:medium => "500x200#", :large => "1000x400#"}
+  has_attached_file :cover_photo, :styles => {:medium => "500x200#", :large => "1000x400#"}, :default_url => "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
   
   # Validations
 

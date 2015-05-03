@@ -1,0 +1,61 @@
+.teaser {
+  padding: 10px 40px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: $drk-gray;
+
+  h1, p {
+    color: #000;
+  }
+
+  ul {
+    margin: 6px 0;
+
+    li:nth-child(4) {
+      margin: 0;
+    }
+
+  }
+
+  .interests {
+    margin-top: 4px;
+    margin-bottom: 0px;
+    font-size: $base-font-size * 0.9375;
+    color: $med-gray;
+  }
+
+  li.teaser-media {
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 10px;
+  }
+}
+
+.teaser.bio {
+  min-height: 300px;
+}
+
+.teaser:hover {
+  border: 1px solid $lt-turq;
+}
+
+@media (max-width: 990px) {
+
+  .teaser {
+    li.teaser-media {
+      width: 300px;
+      height: 250px;
+      margin-right: 6px;
+    }
+  }
+}

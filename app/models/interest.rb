@@ -19,6 +19,8 @@ class Interest < ActiveRecord::Base
   has_attached_file :cover_photo, :styles => {:large => "1000x400#"}
   do_not_validate_attachment_file_type :cover_photo
 
+  acts_as_taggable
+
   def interest_media (id)
     @interest = Interest.find_by_id(id)
     (@interest.images + @interest.videos).sort{|a,b| b.updated_at <=> a.updated_at }
