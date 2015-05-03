@@ -22,9 +22,9 @@
                 = check_box_tag "reel[interest_ids][]", interest.id
                 = interest.name
                 %br
-            .form-group
-              = f.label :tag_list, "Tags (separated by commas)"
-              = f.text_field :tag_list
+            / .form-group
+            /   = f.label :tag_list, "Tags (separated by commas)"
+            /   = f.text_field :tag_list
             %hr.m-y-20
             .text-center
               = f.submit "Save", class: "button btn btn-primary w-100"
