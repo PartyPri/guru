@@ -69,7 +69,7 @@
                         %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
                       - else # Video
                         %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-                  %p= truncate(reel.description, length: 125)
+                  %p= truncate(reel.description, length: 120)
                   .row-fluid
                     /.col-xs-12
                     / .tags
