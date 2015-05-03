@@ -27,15 +27,20 @@
   .link-bar
     .container
       .row-fluid
-        .col-md-8
+        .col-md-7
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
-        .col-md-2
+        / .col-md-2
+        /   .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+        .col-md-1
           .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
         .col-md-2
           - if current_user.id == @user.id         
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+        .col-md-2
+          - if current_user.id == @user.id 
+            = link_to "Add Media", new_video_path, class: "btn btn-default edit-reel" #prepopulate reel info
 
   .reel
     .grid-container

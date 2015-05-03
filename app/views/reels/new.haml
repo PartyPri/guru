@@ -10,7 +10,10 @@
           = form_for :reel, url: reels_path, :html => { :multipart => true } do |f|
             .form-group
               %label{for: "name"} Name:
-              = f.text_field :name, :placeholder => 'Your reel\'s name', class: "form-control"
+              = f.text_field :name, :placeholder => 'Name your reel', class: "form-control"
+            .form-group
+              %label{for: "description"} Description:
+              = f.text_area :description, :placeholder => 'Describe your reel', class: "form-control"
             .form-group
               %label{for: "interests"} Interests:
               %span.help-block Choose the interests the best describe your reel.
@@ -19,6 +22,9 @@
                 = check_box_tag "reel[interest_ids][]", interest.id
                 = interest.name
                 %br
+            / .form-group
+            /   = f.label :tag_list, "Tags (separated by commas)"
+            /   = f.text_field :tag_list
             %hr.m-y-20
             .text-center
               = f.submit "Save", class: "button btn btn-primary w-100"
