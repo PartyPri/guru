@@ -38,28 +38,23 @@
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 
   .reel
-    .container
-      .row-fluid.reel-grid.clearfix.m-bottom-20
-        -if @images.any?
-          - @images.each_slice(3) do |media|
-            .row-fluid.m-bottom-20.clearfix
-              - media.each do |img|
-                .col-md-4.col-sm-6.col-sx-6
-                  %a.magnific{:href => img.photo.url}
-                    .grid-item{:style => "background-image: url(#{img.photo.url});"}
-                      - if img.description.present?
-                        .caption
-                          %p= img.description
-                    // Need to include image for Magnific popup
-                    %img{src: img.photo.url, :style => "display: none"}
-        - if @videos.any?
-          - @videos.each_slice(3) do |video|
-            .row-fluid.m-bottom-20.cleafix
-              - video.each do |vid|
-                .col-md-4.col-sm-6.col-sx-6
-                  %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{vid.uid}"}
-                    .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{vid.uid}/0.jpg);"}
-                      =image_tag "video_arrow_right.png"
-                      .caption
-                        %p= vid.description
-                    %img{src: "http://img.youtube.com/vi/#{vid.uid}/0.jpg", :style => "display: none"}
+    .grid-container
+      .row-fluid.reel-grid
+        %ul.list-inline
+          - @images.each do |img|
+            %li.m-bottom-20
+              %a.magnific{:href => img.photo.url, :title => img.description}
+                .grid-item{:style => "background-image: url(#{img.photo.url});"}
+                  - if img.description.present?
+                    .caption
+                      %p= img.description
+                  // Need to include image for Magnific popup
+                  %img{src: img.photo.url, :style => "display: none"}
+          - @videos.each do |vid|
+            %li.m-bottom-20
+              %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{vid.uid}", :title => vid.description}
+                .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{vid.uid}/0.jpg);"}
+                  =image_tag "video_arrow_right.png"
+                  .caption
+                    %p= vid.description
+                  %img{src: "http://img.youtube.com/vi/#{vid.uid}/0.jpg", :style => "display: none"}
