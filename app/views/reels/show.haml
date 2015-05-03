@@ -19,11 +19,11 @@
           - interest.each_with_index do |interest, x|
             - if x+1 != length
               %li
-                = link_to(interest.name, "/interests/#{interest.id}/about")
+                = link_to(interest.name, "/interests/#{interest.id}")
               %li.divider
             - else
               %li
-                = link_to(interest.name, "/interests/#{interest.id}/about")
+                = link_to(interest.name, "/interests/#{interest.id}")
   .link-bar
     .container
       .row-fluid
