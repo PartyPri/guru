@@ -19,22 +19,20 @@
           - interest.each_with_index do |interest, x|
             - if x+1 != length
               %li
-                = link_to(interest.name, "/interests/#{interest.id}/about")
+                = link_to(interest.name, "/interests/#{interest.id}")
               %li.divider
             - else
               %li
-                = link_to(interest.name, "/interests/#{interest.id}/about")
+                = link_to(interest.name, "/interests/#{interest.id}")
   .link-bar
     .container
       .row-fluid
-        .col-md-7
+        .col-md-8
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
-        / .col-md-2
+        / .col-md-1
         /   .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
-        .col-md-1
-          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
         .col-md-2
           - if current_user.id == @user.id         
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
