@@ -1,6 +1,8 @@
 class InterestsController < ApplicationController
   def show
     @interest = Interest.where(id: params[:id]).first
+    @tags = Reel.tag_counts
+
     if @interest.blank?
       redirect_to :root#, error: "Post could not be found"
     else

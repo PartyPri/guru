@@ -11,6 +11,9 @@
         %ul.list-inline
           %li
             %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+        %select#tag-select.select-style{:name => "tags"}
+          - @tags.each do |tag|
+            %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
 
   .page-content
     .tab-content
