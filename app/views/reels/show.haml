@@ -36,10 +36,10 @@
         .col-md-1
           .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
         .col-md-2
-          - if current_user.id == @user.id         
+          - if current_user && current_user.id == @user.id         
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
         .col-md-2
-          - if current_user.id == @user.id 
+          - if current_user && current_user.id == @user.id 
             = link_to "Add Media", new_video_path, class: "btn btn-default edit-reel" #prepopulate reel info
 
   .reel
