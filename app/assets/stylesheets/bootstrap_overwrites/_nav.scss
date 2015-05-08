@@ -33,5 +33,18 @@
 }
 
 .footer {
-  width: 100%
+  width: 100%;
+  border-top: 1px solid $gray;
 }
+
+.navbar-new-button {
+  height: 35px;
+  padding: 5px 20px;
+
+  li > a:hover, li > a:focus {
+    background-color: transparent;
+    color: $red;
+  }
+
+}
+

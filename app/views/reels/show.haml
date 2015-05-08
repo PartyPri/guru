@@ -33,12 +33,13 @@
             %h5= @user.first_name + " " + @user.last_name
         / .col-md-1
         /   .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
-        .col-md-2
+        .col-md-4
           - if current_user && current_user.id == @user.id         
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-        .col-md-2
-          - if current_user && current_user.id == @user.id 
-            = link_to "Add Media", new_video_path, class: "btn btn-default edit-reel" #prepopulate reel info
+            .btn.btn-primary.edit-reel
+              %span.m-right-5
+                = image_tag "add.svg", height: "16px"
+              = link_to "Media", new_video_path #prepopulate reel info
 
   .reel
     .grid-container
