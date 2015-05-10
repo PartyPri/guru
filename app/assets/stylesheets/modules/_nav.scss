@@ -6,6 +6,12 @@
   color: $turq;
 }
 
+.nav.light-nav {
+  .btn-primary {
+    color: #fff;
+  }
+}
+
 // Give background color on toggle
 nav { 
   background-color: transparent;

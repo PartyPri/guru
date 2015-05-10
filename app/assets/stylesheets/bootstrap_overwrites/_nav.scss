@@ -33,5 +33,18 @@
 }
 
 .footer {
-  width: 100%
+  width: 100%;
+  border-top: 1px solid $gray;
 }
+
+.nav {
+  .navbar-new-button {
+    margin-top: 13px;
+    padding: 5px 20px;
+  }
+
+  .navbar-new-button:hover, .navbar-new-button:focus {
+    background: $red !important;
+  }
+}
+

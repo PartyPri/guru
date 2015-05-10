@@ -26,7 +26,11 @@
             %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
         - if current_user.present?
           - if @user.id == current_user.id
-            .btn.btn-default.edit-profile= link_to "Edit Profile", edit_profile_path
+            = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
+            .btn.btn-primary.edit-profile
+              %span.m-right-5
+                = image_tag "reel.svg", height: "18px"
+              = link_to "New Reel", new_reel_path
         - else
           .btn.btn-default.edit-profile Follow
   .page-content
