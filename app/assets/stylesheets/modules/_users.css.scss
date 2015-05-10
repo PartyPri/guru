@@ -3,6 +3,7 @@
     float: right;
     padding: 5px 20px;
     margin-top: -25px;
+    margin-left: 10px;
   }
 
   .create-reel {
@@ -15,6 +16,13 @@
 
 .teaser.bio:hover {
   border: solid 1px transparent;
+}
+
+@media (max-width: 650px) {
+  .tabs .edit-profile {
+    float: none;
+    margin-top: 10px;
+  }
 }
 
 @media (max-width: 400px) {

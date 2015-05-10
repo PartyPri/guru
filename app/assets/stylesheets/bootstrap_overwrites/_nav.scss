@@ -37,14 +37,14 @@
   border-top: 1px solid $gray;
 }
 
-.navbar-new-button {
-  height: 35px;
-  padding: 5px 20px;
-
-  li > a:hover, li > a:focus {
-    background-color: transparent;
-    color: $red;
+.nav {
+  .navbar-new-button {
+    margin-top: 13px;
+    padding: 5px 20px;
   }
 
+  .navbar-new-button:hover, .navbar-new-button:focus {
+    background: $red !important;
+  }
 }
 
