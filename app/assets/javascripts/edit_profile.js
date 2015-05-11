@@ -7,6 +7,7 @@ function setSelectionToCanvas(c) {
 
   ctx.clearRect ( 0 , 0 , canvas.width, canvas.height );
   ctx.drawImage(image, c.x, c.y, c.w, c.h, 0, 0, c.w, c.h);
+  profileAvatarUpdated = true;
 }
 
 function readURL(input) {
@@ -48,15 +49,20 @@ function dataURItoBlob(dataURI) {
 
 function cloneFormDataAndAddCroppedImage(form) {
   var formData = new FormData(form);
-  var canvas = $('#cropped_image_canvas')[0];
-  var dataURL = canvas.toDataURL();
-  var blob = dataURItoBlob(dataURL);
 
-  formData.append("user[cropped_image]", blob);
+  if (profileAvatarUpdated) {
+    var canvas = $('#cropped_image_canvas')[0];
+    var dataURL = canvas.toDataURL();
+    var blob = dataURItoBlob(dataURL);
+
+    formData.append("user[cropped_image]", blob);
+  }
   return formData;
 }
 
 $(function() {
+  window.profileAvatarUpdated = false;
+
   $("#user_avatar").change(function(){
     readURL(this);
   });

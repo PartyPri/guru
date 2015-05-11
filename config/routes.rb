@@ -34,7 +34,7 @@ Guru::Application.routes.draw do
 
   resources :email_contacts, only: :create
   resources :interests
-  resources :users, :only => [:show, :edit] #, :get_upload_token
+  resources :users, :only => [:show, :edit, :update] #, :get_upload_token
   resources :user_interests, :only => [:create, :show, :destroy]
   resources :followerships, :only => [:create, :destroy]
   resources :reels
