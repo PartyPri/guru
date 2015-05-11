@@ -12,9 +12,18 @@
 .btn-primary {
   background-color: $red;
   border-color: none;
-  border: none;
+  border: 1px solid $red;
   &:hover, &:active, &:focus {
     background-color: darken($red, 5);
+  }
+}
+
+.btn-info {
+  background-color: $turq;
+  border-color: none;
+  border: none;
+  &:hover, &:active, &:focus {
+    background-color: darken($turq, 5);
   }
 }
 
@@ -93,7 +102,7 @@ fieldset[disabled] .btn-default.active {
 .btn-default:active,
 .btn-default.active,
 .open > .dropdown-toggle.btn-default {
-  background-color: $turq;
+  background-color: $lt-turq;
   border-color: transparent;
   color: #fff;
 }
@@ -117,4 +126,8 @@ fieldset[disabled] .btn-default.active {
   cursor: pointer;
   filter: none;
   opacity: 1;
+}
+
+.btn-reel {
+  height: 25px;
 }

@@ -10,7 +10,7 @@
     text-align: center;
 
     h4 {
-      width: 50%;
+      width: 75%;
       margin: 0 auto;
     }
   }
@@ -20,7 +20,6 @@
   }
 
   .link-bar {
-    width: 100%;
     border-top: solid $lt-gray 1px;
     padding: 5px 0;
     position: relative;
@@ -32,36 +31,35 @@
       height: 40px;
       width: 40px;
       margin: 0;
-      float: none;
       display: inline-block !important;
       border-radius: 100px;
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
+      vertical-align: middle;
     }
 
-    .col-md-8, .col-md-2 {
+    .user, .links {
       padding: 0;
     }
 
-    .col-md-2 {
-      text-align: right
+    .links {
+      text-align: right;
+
+      span {
+        vertical-align: middle;
+      }
     }
 
-    .avatar, h5 {
+    h5 {
       display: inline;
-      vertical-align: middle
+      vertical-align: middle;
     }
   }
 
   .edit-reel {
     padding: 5px 20px;
-    //float: right;
     margin-top: 2px;
-  }
-
-  .fb-share-button {
-    margin-top: 6px;
   }
 }
 
@@ -173,3 +171,8 @@
   }
 }
 
+.btn-primary {
+  a {
+    color: white;
+  }
+}
