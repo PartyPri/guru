@@ -3,8 +3,13 @@ $(document).ready(function() {
     //When dropdown changes, get it's value
     var tag = $(this).val();
 
+    //Get Interest ID from URL
+    var url = window.location.pathname;
+    var interest_id = url.substring(url.lastIndexOf('/') + 1);
+
     //Using tag, create query parameter for GET request
-    var data = {'tag':tag};
+    var data = {'tag':tag, 'interest_id':interest_id};
+    console.log(interest_id)
 
     $.ajax({
       type: 'GET',
@@ -37,11 +42,13 @@ $(document).ready(function() {
     var img_html = " ";
     var vid_html = " ";
 
+    //Loop through getReelImages and append to img_html
     for (r = 0; r < reel.images.length; r++) {
       var images = getReelImages(reel, r);
       img_html += images;
     }
 
+    //Loop thorugh getReelVideos and append to vid_html
     for (v = 0; v < reel.videos.length; v++) {
       var vids = getReelVideos(reel, v);
       vid_html += vids;
