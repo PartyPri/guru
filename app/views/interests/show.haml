@@ -1,10 +1,11 @@
+.reel-page
+  .container
+    = render 'shared/light_nav'
+    .hero
+      .container
+        %h1.text-center.m-bottom-10= @interest.name
+        %h4= @interest.description 
 .page
-  .hero-image{style: "background-image: url(#{@interest.cover_photo.url(:large)});"}
-    .page-hero
-      = render 'shared/nav'
-      .page-info
-        %h1= @interest.name
-        %h4.m-top-1= @interest.description
   .tabs
     .row-fluid
       .content-container
