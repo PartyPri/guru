@@ -3,7 +3,8 @@
     = render 'shared/light_nav'
     .hero
       .container
-        %h1.text-center.m-bottom-10= @interest.name
+        =link_to @interest do
+          %h1.text-center.m-bottom-10= @interest.name
         %h4= @interest.description 
 .page
   .tabs
@@ -12,9 +13,11 @@
         %ul.list-inline
           %li
             %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-        %select#tag-select.select-style{:name => "tags"}
-          - @tags.each do |tag|
-            %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
+        - unless @tags.length < 1
+          %select#tag-select.select-style{:name => "tags"}
+            %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
+            - @tags.each do |tag|
+              %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
 
   .page-content
     .tab-content
