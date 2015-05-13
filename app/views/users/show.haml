@@ -67,7 +67,7 @@
                       /     - else
                       /       %li
                       /         = interest.name
-                  %ul.list-inline
+                  %ul.list-inline.media-list
                     - reel.media.take(4).each do |medium|
                       - if medium.is_a? Image
                         %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
