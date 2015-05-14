@@ -51,7 +51,6 @@ gem 'stripe'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 group :development do
-  gem 'pry'
   gem 'byebug'
   gem 'faker'
 end
@@ -63,4 +62,8 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec-rails'
+end
+
+group :development, :test do
+  gem 'pry'
 end
