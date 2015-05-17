@@ -10,7 +10,7 @@ describe Api::TagsController, type: :controller do
         get :index, term: "wa"
       end
 
-      it "returns 200 on success" do
+      it "returns 200" do
         expect(response.status).to eq 200
       end
 
