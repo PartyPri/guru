@@ -41,17 +41,30 @@ $(document).ready(function() {
     var id = reel.id
     var img_html = " ";
     var vid_html = " ";
+    var media_limit = 0;
 
     //Loop through getReelImages and append to img_html
     for (r = 0; r < reel.images.length; r++) {
+      //Prevent more than 4 items in teaser
+      if (media_limit == 4) {
+        break;
+      }
+
       var images = getReelImages(reel, r);
       img_html += images;
+      media_limit += 1;
     }
 
     //Loop thorugh getReelVideos and append to vid_html
     for (v = 0; v < reel.videos.length; v++) {
+      //Prevent more than 4 items in teaser
+      if (media_limit == 4) {
+        break;
+      }
+
       var vids = getReelVideos(reel, v);
       vid_html += vids;
+      media_limit += 1;
     }
 
     //Build teaser div with reel information

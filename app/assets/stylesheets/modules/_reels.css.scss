@@ -70,7 +70,6 @@
   .grid-container {
     width: 1140px;
     margin: 0 auto;
-    min-height: 360px;
   }
 
   .reel-grid {
@@ -80,6 +79,7 @@
     -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
     -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
     box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+    min-height: 360px;
 
     ul {
       padding-left: 30px;
