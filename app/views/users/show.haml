@@ -42,9 +42,6 @@
               %p= @user.bio
       .content-container.tab-pane.active#work{role: "tabpanel"}
         .tab-content
-          .tab-pane#timeline{role: "tabpanel"}
-            .row
-              = render partial: 'shared/timeline', locals: { reels: @reels }
           .tab-pane.active#reels{role: "tabpanel"}
             - @reels.each do |reel|
               =render :partial => 'shared/teaser', :locals => {:reel => reel}
