@@ -39,7 +39,7 @@ class ReelsController < ApplicationController
       @reel = Reel.new(params[:reel])  
       @reel.user = current_user
       if @reel.save
-        redirect_to @reel.user
+        redirect_to @reel
       else
         render "new"
       end

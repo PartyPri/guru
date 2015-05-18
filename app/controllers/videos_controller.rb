@@ -50,7 +50,7 @@ class VideosController < ApplicationController
     v.description = yt_video.description
     v.save
     flash[:notice] = 'Thanks for uploading your video!'
-    redirect_to current_user
+    redirect_to reel_path(session[:current_reel_id])
   end
 
   def youtube

@@ -35,8 +35,8 @@ Guru::Application.routes.draw do
   resources :email_contacts, only: :create
   resources :interests
   resources :users, :only => [:show, :edit, :update] #, :get_upload_token
-  resources :user_interests, :only => [:create, :show, :destroy]
-  resources :followerships, :only => [:create, :destroy]
+  #resources :user_interests, :only => [:create, :show, :destroy]
+  #resources :followerships, :only => [:create, :destroy]
   resources :reels
   resources :images
   resources :articles
@@ -50,11 +50,9 @@ Guru::Application.routes.draw do
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
   
   resources :videos
-  get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
-  get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
-  get 'users/:id/following', to: 'followerships#show_following', as: 'following'
-  get 'interests/:id/about', to: 'about_interests#show', as: 'interest_about'
-  get 'users/:id/about', to: 'about_users#show', as: 'user_about'
+  #get 'interests/:id/followers', to: 'user_interests#show', as: 'interest_followers'
+  #get 'users/:id/followers', to: 'followerships#show', as: 'user_followers'
+  #get 'users/:id/following', to: 'followerships#show_following', as: 'following'
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
   get 'landing', to: 'pages#landing', as: 'landing'
   get 'about', to: 'pages#about', as: 'about'

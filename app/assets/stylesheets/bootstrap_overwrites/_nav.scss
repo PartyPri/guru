@@ -28,6 +28,11 @@
   color: $turq;
 }
 
+.dropdown-menu .disabled {
+  padding: 3px 20px;
+  color: #aaa;
+}
+
 .dropdown-menu {
   background-color: rgba(0,0,0,0.75);
 }
