@@ -6,6 +6,12 @@
   color: $turq;
 }
 
+.nav.light-nav {
+  .btn-primary {
+    color: #fff;
+  }
+}
+
 // Give background color on toggle
 nav { 
   background-color: transparent;
@@ -37,14 +43,6 @@ nav.toggled { background-color: rgba(0,0,0,0.75); }
   nav {
     ul {
       font-size: 12px;
-    }
-  }
-
-  .nav {
-    li {
-      a {
-        padding: 10px;
-      }
     }
   }
 }

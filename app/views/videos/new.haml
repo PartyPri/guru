@@ -12,7 +12,7 @@
             .form-group
               %label{for: "reel_select"} Select a reel:
               .select-style#reel_select
-                = collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
+                = collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :selected => params[:reel], required: true)
             #upload-token-path{"data-upload-token-path" => "#{get_upload_token_path}"}
             #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
             #root-path{"data-root-path" => "#{ root_path }"}
@@ -28,5 +28,5 @@
               %p.text-center#emp-image-print.m-top-10
           %hr.m-y-20
           .text-center
-            %button.btn.btn-primary#submit_pre_upload_form.w-100 Upload
+            %button.btn.btn-info#submit_pre_upload_form.w-100 Upload
           = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
