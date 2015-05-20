@@ -50,13 +50,13 @@ gem 'stripe'
 #Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
 
+group :assets do
+  gem 'coffee-rails', '~> 3.2.1'
+end
+
 group :development do
   gem 'byebug'
   gem 'faker'
-end
-
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
 end
 
 group :test do
