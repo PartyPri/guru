@@ -4,7 +4,7 @@ class InterestsController < ApplicationController
     @tags = @interest.reels.tag_counts
 
     if @interest.blank?
-      redirect_to :root#, error: "Post could not be found"
+      redirect_to :root
     else
       @interest = Interest.find(params[:id])
       @followers = @interest.users

@@ -23,12 +23,12 @@ class ReelsController < ApplicationController
     @reel = Reel.includes(:images, :videos).find(params[:id])
     @images = @reel.images
     @videos = @reel.videos
-    @user = @reel.user#User.where( id: params[:id] ).first
+    @user = @reel.user
   end
 
   def new
     unless user_signed_in?
-      redirect_to :root#error
+      redirect_to :root
     end
     render 'new.haml'
     @reel = Reel.new

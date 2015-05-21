@@ -5,9 +5,9 @@ class Image < ActiveRecord::Base
   belongs_to :reel
 
   #Attachments
-  has_attached_file :photo, :styles => {:small => "100x100#", :medium => "450x300#", large: "500x500#"},
-                    :url => "/assets/posts/:id/:style/:basename.:extension",
-                    :path => ":rails_root/public/assets/posts/:id/:style/:basename.:extension"
+  has_attached_file :photo, styles: {small: "100x100#", medium: "450x300#", large: "500x500#"},
+                    url: "/assets/posts/:id/:style/:basename.:extension",
+                    path: ":rails_root/public/assets/posts/:id/:style/:basename.:extension"
 
   #Validations
   validates_attachment_content_type :photo, :content_type => /\Aimage/
