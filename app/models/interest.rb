@@ -12,7 +12,7 @@ class Interest < ActiveRecord::Base
   has_many :videos, through: :reels
 
   #Attachments
-  has_attached_file :cover_photo, :styles => {:large => "1000x400#"}
+  has_attached_file :cover_photo, styles: { large: "1000x400#" }
   do_not_validate_attachment_file_type :cover_photo
 
   acts_as_taggable
