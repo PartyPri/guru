@@ -13,14 +13,12 @@
   }
 
   .avatar {
-    border-radius: 80px;
     border: solid #fff 2px;
     height: 80px;
     width: 80px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     margin-bottom: 8px;
+    @include background-image;
+    @include border-radius(100%);
   }
 
   .avatar, .info {

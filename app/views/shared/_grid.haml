@@ -1,0 +1,20 @@
+.grid-container
+  .row-fluid.reel-grid
+    %ul.list-inline
+      - @images.each do |img|
+        %li.m-bottom-20
+          %a.magnific{:href => img.photo.url, :title => img.description}
+            .grid-item{:style => "background-image: url(#{img.photo.url});"}
+              - if img.description.present?
+                .caption
+                  %p= img.description
+              // Need to include image for Magnific popup
+              %img{src: img.photo.url, :style => "display: none"}
+      - @videos.each do |vid|
+        %li.m-bottom-20
+          %a.magnific-video{:href => "https://www.youtube.com/watch?v=#{vid.uid}", :title => vid.description}
+            .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{vid.uid}/0.jpg);"}
+              =image_tag "video_arrow_right.png"
+              .caption
+                %p= vid.description
+              %img{src: "http://img.youtube.com/vi/#{vid.uid}/0.jpg", :style => "display: none"}
