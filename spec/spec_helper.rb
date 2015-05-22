@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 require "factory_girl"
+require "devise"
 
 FactoryGirl.find_definitions
 
@@ -40,4 +41,6 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.include FactoryGirl::Syntax::Methods
+
+  config.include Devise::TestHelpers, :type => :controller
 end
