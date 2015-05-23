@@ -48,7 +48,7 @@
             /%h1 PAYMENT
             /%p Registrants pay $10 + $1 transaction
             - if @event.payment_required
-              %h5 Entry fee: $10 + $1.50 transaction
+              %h5 Entry fee: $12
               .m-y-20
                 %span 
                   =image_tag "visa.png"
@@ -76,4 +76,4 @@
                   %input{"data-stripe" => "cvc", :size => "8", :type => "text", :class => "form-control small-width", :required => "required", :maxlength => "3"}
             %hr.m-y-20
             .text-center
-              = f.submit "Register", class: "button btn btn-primary w-100"
+              = f.submit "Register", class: "button btn btn-info w-100"
