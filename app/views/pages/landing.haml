@@ -16,10 +16,11 @@
             /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
             /= link_to "Register for Event", new_event_registration_path(@event)
             /= link_to event.name, new_event_registration_path(event.id)
+    .hero-caption Photography by RandmVision | B-Boy Bailrok
 /= render 'shared/tag_nav'
 / .container.cont-padding
 /   = render 'shared/featured_reels'
-.container.cont-padding
+.container
   = render 'shared/what_is_evrystep'
 = render 'shared/interests_grid'
 =render 'shared/featured_event'
