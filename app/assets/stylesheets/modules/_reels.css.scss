@@ -18,9 +18,7 @@
     border-top: solid $lt-gray 1px;
     padding: 5px 0;
     position: relative;
-    -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
-    -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
-    box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
+    @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
 
     .avatar {
       height: 40px;
