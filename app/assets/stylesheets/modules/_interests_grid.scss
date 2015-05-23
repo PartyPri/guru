@@ -43,11 +43,19 @@
 
   .interest-tile.last {
     width: 100%;
+    
+    .overlay {
+      padding: 20% 0;
+    }
   }
 }
 
 @media (max-width: 400px) {
-  .interest-tile {
+  .interest-tile, .interest-tile.last {
     width: 100%;
+
+    .overlay {
+      padding: 30% 0;
+    }
   }
 }
