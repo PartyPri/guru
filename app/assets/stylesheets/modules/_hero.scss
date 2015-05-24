@@ -42,6 +42,16 @@
 
 .hero {
   background-color: rgba(0, 0, 0, 0.38);
+
+  .hero-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    padding: 15px 20px;
+    color: $lt-gray;
+    font-size: 20px;
+  }
 }
 
 .hero-content {
@@ -65,6 +75,12 @@
   .hero-content { padding: 100px 0px; }
 }
 
+@media (max-width: 550px) {
+  .hero-image {
+    background-position: 20% 50%
+  }
+}
+
 @media (max-width: 400px) {
   .hero {
 
@@ -75,6 +91,10 @@
 
     .hero-text {
       font-size: 2rem;
+    }
+
+    .hero-caption {
+      font-size: 12px;
     }
   }
 }

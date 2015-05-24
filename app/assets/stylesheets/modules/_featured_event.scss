@@ -1,0 +1,38 @@
+.featured-event {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(Evrystep_Battle_Cover.jpg);
+  text-align: center;
+  position: relative;
+
+  .overlay {
+    padding: 75px 0;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .title {
+    color: #fff;
+  }
+
+  .info {
+    width: 500px;
+    display: block;
+    margin: 30px auto;
+
+  }
+
+  .btn {
+    width: 300px;
+    border-width: 3px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-event {
+    .info {
+      width: 300px;
+    }
+  }
+}
