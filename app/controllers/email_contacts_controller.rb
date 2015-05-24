@@ -5,10 +5,9 @@ class EmailContactsController < ApplicationController
     if @email_contact.save
       @email_contact = EmailContact.new
       flash[:success] = "Thanks for joining our launch list!"
-      redirect_to root_url
     else
       flash[:error] = @email_contact.errors.full_messages.first
-      redirect_to root_url
     end
+      redirect_to root_url
   end
 end

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.where( id: params[:id] ).first
     if @user.blank?
-      redirect_to :root#, error: "User could not be found"
+      redirect_to :root
     else
       @interests      = @user.interests
       @reels          = @user.reels.order("updated_at desc")
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    #@user = User.find(params[:id])
   end
 
   def edit_profile

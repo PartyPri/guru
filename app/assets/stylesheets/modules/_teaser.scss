@@ -1,14 +1,12 @@
 .teaser {
   padding: 10px 40px;
   background: #fff;
-  border-radius: 3px;
   border: 1px solid transparent;
-  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
-  -webkit-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
-  -moz-box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.22);
   margin-bottom: 30px;
   overflow: hidden;
   color: $drk-gray;
+  @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
+  @include border-radius(3px);
 
   h1, p {
     color: #000;
@@ -38,10 +36,8 @@
     width: 200px;
     height: 150px;
     margin-right: 20px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    border-radius: 10px;
+    @include background-image;
+    @include border-radius(10px);
   }
 }
 

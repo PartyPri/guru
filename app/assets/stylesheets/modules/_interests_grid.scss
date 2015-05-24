@@ -1,0 +1,61 @@
+.interest-tile {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 20%;
+  float: left;
+  text-align: center;
+
+  .overlay {
+    padding: 40% 0;
+    background: rgba(30, 30, 30, .4);
+  }
+
+  .title {
+    color: #fff;
+  }
+}
+
+.art {
+  background-image: url(art.jpg);
+}
+
+.dance {
+  background-image: url(dance.jpg);
+}
+
+.beauty {
+  background-image: url(beauty.jpg);
+}
+
+.film {
+  background-image: url(film.png);
+}
+
+.more {
+  background-image: url(sports.jpg);
+}
+
+@media (max-width: 769px) {
+  .interest-tile {
+    width: 50%;
+  }
+
+  .interest-tile.last {
+    width: 100%;
+    
+    .overlay {
+      padding: 20% 0;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .interest-tile, .interest-tile.last {
+    width: 100%;
+
+    .overlay {
+      padding: 30% 0;
+    }
+  }
+}

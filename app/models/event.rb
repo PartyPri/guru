@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   # and so is adding another attribute "time" of type string for an urgent solution. 4/2/15
 
   # Associations
-  has_many :users, through: :registrations#, uniq: true
+  has_many :users, through: :registrations
   has_many :registrations
 
 end
