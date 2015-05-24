@@ -78,9 +78,4 @@ class User < ActiveRecord::Base
       end
     }.delete_if {|x| x == nil}
   end
-
-  def timeline_media (id)
-    @user = User.find_by_id(id)
-    (@user.images + @user.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-  end
 end

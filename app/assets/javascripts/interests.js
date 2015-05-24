@@ -9,7 +9,6 @@ $(document).ready(function() {
 
     //Using tag, create query parameter for GET request
     var data = {'tag':tag, 'interest_id':interest_id};
-    console.log(interest_id)
 
     $.ajax({
       type: 'GET',

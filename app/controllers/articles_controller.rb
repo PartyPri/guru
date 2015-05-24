@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
     if user_signed_in?
       @article = Article.new(params[:article])
       if @article.save
-        redirect_to current_user
+        redirect_to @article.reel
       else
         render "new"
       end
@@ -30,7 +30,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])  
     if @article.update_attributes( params[:article] )
       flash[:notice] = "Your story has been updated!"
-      redirect_to current_user
+      redirect_to @article.reel
     else
       flash[:notice] = "Woops! Your changes couldn't be saved."
       render 'edit'

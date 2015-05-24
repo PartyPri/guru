@@ -1,12 +1,11 @@
 class VideosController < ApplicationController
 
-  before_filter :check_valid_params, only: :get_upload_token
-  before_filter :check_valid_session, only: :get_upload_token
+  before_filter :check_valid_params, :check_valid_session, only: :get_upload_token
 
   def new
     unless user_signed_in? && !current_user.reels.empty?
       flash[:notice] = "You must be signed in and have at least 1 reel"
-      redirect_to :root#error
+      redirect_to :root
     end
     @pre_upload_info = {}
     @video = Video.new
@@ -70,20 +69,19 @@ class VideosController < ApplicationController
 
   private
 
-    #logout user if Google session is expired
-    def check_valid_session
-      unless current_user && !current_user.token_expired?
-        sign_out(current_user)
-        flash.keep[:notice]="Your session has expired."
-        render :json => [], :status => :unauthorized 
-      end
+  #logout user if Google session is expired
+  def check_valid_session
+    unless current_user && !current_user.token_expired?
+      sign_out(current_user)
+      flash.keep[:notice]="Your session has expired."
+      render :json => [], :status => :unauthorized 
     end
+  end
 
-    #Check for upload params needed by the YouTube client and app video model
-    def check_valid_params
-      unless params[:title] !='' && params[:description] !='' && params[:media][:reel_id] 
-        render json: {error_type: 'Missing params.', status: :unprocessable_entity}
-      end
+  #Check for upload params needed by the YouTube client and app video model
+  def check_valid_params
+    unless params[:title] !='' && params[:description] !='' && params[:media][:reel_id] 
+      render json: {error_type: 'Missing params.', status: :unprocessable_entity}
     end
-
+  end
 end
