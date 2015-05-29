@@ -43,7 +43,8 @@ $(document).ready(function() {
     var media_limit = 0;
 
     //Loop through getReelImages and append to img_html
-    for (r = 0; r < reel.images.length; r++) {
+    for (r = reel.images.length-1; r >= 0; r--) {
+
       //Prevent more than 4 items in teaser
       if (media_limit == 4) {
         break;
@@ -55,7 +56,7 @@ $(document).ready(function() {
     }
 
     //Loop thorugh getReelVideos and append to vid_html
-    for (v = 0; v < reel.videos.length; v++) {
+    for (v = reel.videos.length-1; v >= 0; v--) {
       //Prevent more than 4 items in teaser
       if (media_limit == 4) {
         break;

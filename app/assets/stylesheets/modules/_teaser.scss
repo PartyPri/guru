@@ -59,3 +59,14 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .teaser {
+    padding: 10px 0px;
+    text-align: center;
+
+    li.teaser-media {
+      margin: 0;
+    }
+  }
+}
