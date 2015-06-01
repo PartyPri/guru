@@ -45,4 +45,5 @@
         /             %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
         /         %p= truncate(reel.description, length: 125)
         - @reels.each do |reel|
-          =render :partial => 'shared/teaser', :locals => {:reel => reel}
+          -if reel.media.length > 2
+            =render :partial => 'shared/teaser', :locals => {:reel => reel}
