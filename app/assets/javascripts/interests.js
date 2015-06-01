@@ -16,18 +16,21 @@ $(document).ready(function() {
       data: data,
       dataType: 'json',
       success: function(response) {
-        console.log(response)
 
         //Reset content of #reels div
         $(".content-container#reels").html("");
 
-        //For each object in AJAX response, call getReelInfo function
-        //Append HTML from getReelInfo function to page
+        //For each object in AJAX response with more than 2 media objects
+        //Get info for that reel through getReelInfo
+        //Append HTML from getReelInfo to page
         for (i = 0; i < response.length; i++) {
-          var reels = getReelInfo(response, i);
-          $(".content-container#reels").append(reels);
-        };
+          var media_count = response[i].images.length + response[i].videos.length;
 
+          if (media_count > 2) {
+            var reels = getReelInfo(response, i);
+            $(".content-container#reels").append(reels);
+          }
+        };
       }
     });
   });
@@ -38,6 +41,7 @@ $(document).ready(function() {
     var name = reel.name;
     var description = reel.description
     var id = reel.id
+    var media_count = reel.images.length + reel.videos.length;
     var img_html = " ";
     var vid_html = " ";
     var media_limit = 0;
