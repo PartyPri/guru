@@ -1,7 +1,7 @@
 =render :layout => 'shared/form_layout' do
   .row
     .col-xs-12.text-center#new-media
-      %h1 Upload Media
+      %h1 Add Media to Reel
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3
       = form_tag '', id: 'media_pre_upload' do
@@ -12,9 +12,6 @@
         #upload-token-path{"data-upload-token-path" => "#{get_upload_token_path}"}
         #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
         #root-path{"data-root-path" => "#{ root_path }"}
-        .form-group
-          %label{for: "description"} Caption:
-          = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter a caption here...', class: "form-control"
       = form_tag '', id: 'media_upload', multipart: true do
         #upload_fields
           = hidden_field_tag :token, '', id: :token
@@ -22,7 +19,10 @@
             Select Media
             = file_field_tag :file, required: true, id: :file, class: "upload", "data-print" => "#emp-image-print"
           %p.text-center#emp-image-print.m-top-10
+        .form-group
+          %label{for: "description"} Enter a caption:
+          = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter a caption here...', class: "form-control"
       %hr.m-y-20
       .text-center
-        %button.btn.btn-info#submit_pre_upload_form.w-100 Upload
+        %button.btn.btn-info#submit_pre_upload_form.w-100 Save
       = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."

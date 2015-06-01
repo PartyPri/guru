@@ -1,7 +1,7 @@
 =render :layout => 'shared/form_layout' do
   .row
     .col-xs-12.text-center
-      %h1 Add Video 
+      %h1 Add YouTube Video to Reel 
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3
       = form_tag :video_add do  
@@ -10,13 +10,13 @@
           .select-style#reel_select
             = collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
         .form-group
+          %label{for: "video_url"} Youtube URL:
+          %input{required: true, id: "video-url", placeholder: 'Enter the youtube URL here...', class: "form-control"} 
+          = hidden_field_tag :uid
+        .form-group
           %label{for: "title"} Title:
           %input{required: true, :name => "title", placeholder: 'Enter your video title here...', class: "form-control"} 
         .form-group
           %label{for: "description"} Description:
           %textarea{:name => "description", :cols => "30", :rows => "3", class: "form-control"}
-        .form-group
-          %label{for: "video_url"} Youtube URL:
-          %input{required: true, id: "video-url", placeholder: 'Enter the youtube URL here...', class: "form-control"} 
-          = hidden_field_tag :uid
-        = submit_tag "Submit", class: "button btn btn-primary w-100", id: "add-video"
+        = submit_tag "Save", class: "button btn btn-info w-100", id: "add-video"
