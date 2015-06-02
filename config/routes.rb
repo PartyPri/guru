@@ -12,7 +12,6 @@ Guru::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
   resources :reels
   resources :images
-  resources :videos
   resources :articles
   resources :claim_users, :only => [:new, :create]
   resources :events do
@@ -22,6 +21,8 @@ Guru::Application.routes.draw do
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
+
+  resources :videos
   
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 
