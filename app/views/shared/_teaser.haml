@@ -35,7 +35,7 @@
       - interest = reel.interests
       - length = interest.length
       - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-      %ul.list-inline.interests
+      %ul.list-inline.interests.pull-left
         - interest.each_with_index do |interest, x|
           - if x+1 != length
             %li
@@ -44,3 +44,6 @@
           - else
             %li
               = interest.name
+      %i.arrow-right.pull-right
+      %h4.view-all.pull-right VIEW ALL
+
