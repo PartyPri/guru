@@ -12,6 +12,15 @@
   margin-bottom: 0px;
   font-family: $base-font-family;
   font-size: 1.125rem;
+  position: fixed;
+}
+
+.navbar-toggle {
+  padding: 9px 0;
+}
+
+.navbar-toggle .icon-bar {
+  background: $lt-turq;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -51,5 +60,15 @@
   .navbar-new-button:hover, .navbar-new-button:focus {
     background: $red !important;
   }
+}
+
+@media (max-width: 400px) {
+  .navbar-brand {
+    padding: 20px 15px;
+
+    img {
+      height: 18px;
+    }
+  } 
 }
 
