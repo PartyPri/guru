@@ -18,6 +18,10 @@
     width: 150px;
     margin-top: -20px;
   }
+
+  ul li.active a {
+    color: $lt-turq;
+  }
 }
 
 .teaser.bio:hover {

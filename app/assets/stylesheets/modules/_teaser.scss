@@ -26,18 +26,33 @@
   }
 
   .interests {
-    margin-top: 4px;
+    margin-top: 0;
     margin-bottom: 0px;
     font-size: $base-font-size * 0.9375;
     color: $med-gray;
   }
 
   li.teaser-media {
-    width: 200px;
+    width: 207px;
     height: 150px;
-    margin-right: 20px;
+    margin-right: 10px;
     @include background-image;
     @include border-radius(10px);
+  }
+
+  .arrow-right {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 11px;
+    border-color: transparent transparent transparent $lt-turq;
+    margin-top: 2px;
+  }
+
+  .view-all {
+    color: $lt-turq;
+    margin-right: 10px;
+    font-size: 14px;
   }
 }
 
@@ -47,6 +62,20 @@
 
 .teaser:hover {
   border: 1px solid $lt-turq;
+}
+
+.teaser.new-reel {
+  border: dashed $med-gray 2px;
+  text-align: center;
+  padding: 30px 0;
+
+  img {
+    margin-bottom: 10px;
+  }
+}
+
+.teaser.new-reel:hover {
+  border-color: $lt-turq;
 }
 
 @media (max-width: 990px) {
