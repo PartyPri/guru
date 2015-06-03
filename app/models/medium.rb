@@ -1,5 +1,6 @@
 class Medium < ActiveRecord::Base
-  attr_accessible :description,
+  attr_accessible :id,
+                  :description,
                   :project_id,
                   :created_at,
                   :updated_at,

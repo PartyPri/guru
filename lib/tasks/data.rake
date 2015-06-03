@@ -1,17 +1,18 @@
 namespace :data do
   task migrate_media: :environment do
 
+    Image.all.each do |i|
+      # include id for images so s3 association holds
+      image_hash = i.attributes
+      m = Medium.new(image_hash)
+      m.type = "Image"
+      m.save!
+    end
+
     Video.all.each do |v|
       video_hash = v.attributes.except("id")
       m = Medium.new(video_hash)
       m.type = "Video"
-      m.save!
-    end
-
-    Image.all.each do |i|
-      image_hash = i.attributes.except("id")
-      m = Medium.new(image_hash)
-      m.type = "Image"
       m.save!
     end
 
