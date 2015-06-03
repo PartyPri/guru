@@ -19,9 +19,9 @@
     .row-fluid
       .content-container
         %ul.list-inline
-          %li
+          %li.active
             %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} 
-              %span #{@reels.count} Reels
+              %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
           %li.divider
           %li
             %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
