@@ -13,14 +13,16 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <% if current_user.reels.length > 0 %>
-          <a href="/videos/new" class="navbar-toggle">
-            <%= image_tag "lt-turq_add.svg", height: "30px" %>
+        <% if user_signed_in? %>
+          <% if current_user.reels.length > 0 %>
+            <a href="/videos/new" class="navbar-toggle">
+              <%= image_tag "lt-turq_add.svg", height: "30px" %>
+            </a>
+          <% end %>
+          <a href="/reels/new" class="navbar-toggle visible-xs">
+            <%= image_tag "red_reel.svg", height: "30px" %>
           </a>
         <% end %>
-        <a href="/reels/new" class="navbar-toggle visible-xs">
-          <%= image_tag "red_reel.svg", height: "30px" %>
-        </a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
