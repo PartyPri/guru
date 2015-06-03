@@ -1,6 +1,12 @@
 .grid-container
   .row-fluid.grid
     %ul.list-inline
+      %li.m-bottom-20
+        - if current_user && current_user.id == @user.id
+          = link_to new_video_path(reel: @reel) do
+            .new-grid-item
+              =image_tag "lt-turq_add.svg", height: 40
+              %h4 Add Media
       - @images.reverse.each do |img|
         %li.m-bottom-20
           %a.magnific{:href => img.photo.url, :title => img.description}
