@@ -4,11 +4,10 @@
   %meta{ property: "og:url", content: "<%=user_url(@user)%>" } 
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
-
+= render 'shared/nav'
 .page
   .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
     .page-hero
-      = render 'shared/nav'
       %a#user-tab
         .page-info
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
