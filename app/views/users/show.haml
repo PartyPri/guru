@@ -43,7 +43,7 @@
             - if current_user && current_user.id == @user.id
               = link_to new_reel_path do
                 .teaser.new-reel
-                  =image_tag "turq_reel.svg", height: 40
-                  %h4.c-turq Create reel
+                  =image_tag "lt-turq_reel.svg", height: 40
+                  %h4.c-lt-turq New reel
             - @reels.each do |reel|
               =render :partial => 'shared/teaser', :locals => {:reel => reel}
