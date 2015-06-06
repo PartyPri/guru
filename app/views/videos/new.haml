@@ -4,25 +4,36 @@
       %h1 Add Media to Reel
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3
-      = form_tag '', id: 'media_pre_upload' do
+      = form_for :video, :url => {:controller => 'videos', :action => 'create'} do |f|
         .form-group
-          %label{for: "reel_select"} Select a reel:
+          %label Select a reel:
           .select-style#reel_select
-            = collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :selected => params[:reel], required: true)
-        #upload-token-path{"data-upload-token-path" => "#{get_upload_token_path}"}
-        #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
-        #root-path{"data-root-path" => "#{ root_path }"}
-      = form_tag '', id: 'media_upload', multipart: true do
-        #upload_fields
-          = hidden_field_tag :token, '', id: :token
-          %button.btn.btn-default.file-upload
-            Select Media
-            = file_field_tag :file, required: true, id: :file, class: "upload", "data-print" => "#emp-image-print"
-          %p.text-center#emp-image-print.m-top-10
-        .form-group
-          %label{for: "description"} Enter a caption:
-          = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter a caption here...', class: "form-control"
-      %hr.m-y-20
-      .text-center
-        %button.btn.btn-info#submit_pre_upload_form.w-100 Save
-      = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
+            = f.collection_select(:reel_id, current_user.reels.all, :id, :name, :selected => params[:reel], required: true)
+          %label Select Media
+          = f.file_field :file, required: true, class: "upload"
+          %label Enter a caption:
+          = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control"
+          = f.submit 'Save', class: 'btn btn-info w-100'
+
+      / = form_tag '', id: 'media_pre_upload' do
+      /   .form-group
+      /     %label{for: "reel_select"} Select a reel:
+      /     .select-style#reel_select
+      /       = collection_select(:media, :reel_id, current_user.reels.all, :id, :name, :selected => params[:reel], required: true)
+      /   #upload-token-path{"data-upload-token-path" => "#{get_upload_token_path}"}
+      /   #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
+      /   #root-path{"data-root-path" => "#{ root_path }"}
+      / = form_tag '', id: 'media_upload', multipart: true do
+      /   #upload_fields
+      /     = hidden_field_tag :token, '', id: :token
+      /     %button.btn.btn-default.file-upload
+      /       Select Media
+      /       = file_field_tag :file, required: true, id: :file, class: "upload", "data-print" => "#emp-image-print"
+      /     %p.text-center#emp-image-print.m-top-10
+      /   .form-group
+      /     %label{for: "description"} Enter a caption:
+      /     = text_area_tag :description, @pre_upload_info[:description], required: true, id: :description, placeholder: 'Enter a caption here...', class: "form-control"
+      / %hr.m-y-20
+      / .text-center
+      /   %button.btn.btn-info#submit_pre_upload_form.w-100 Save
+      / = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
