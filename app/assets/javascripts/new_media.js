@@ -20,15 +20,6 @@ $(document).ready(function() {
     }
   });
 
-  var validate_and_upload = function(media_upload, submit_button) {
-    if(($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
-      upload_video(media_upload, submit_button);
-    }
-    else {
-      alert("Please fill out all form fields");
-    }
-  }
-
   var upload_video = function(media_upload, submit_button) { 
     media_upload.submit();
   }
@@ -38,22 +29,20 @@ $(document).ready(function() {
     media_upload.attr('action', image_upload_url).submit();
   }
 
-  //Add hidden copies of the pre_media_form fields to the media_upload form. NOTE: these fields are separated in a separate form
-  //originalaly in order to create the YouTube upload token in the case of a video upload. See above.
-  // var combine_upload_forms = function() {
-  //   var pre_media_form_groups = $("#media_pre_upload").children(".form-group").clone();
-  //   pre_media_form_groups.children().removeAttr('required');
-  //   pre_media_form_groups.hide();
-  //   $("#upload_fields").prepend(pre_media_form_groups);
-  //   $("#upload_fields #description").val($("#description").val()); //The description val, mysteriously, isn't copied.
-  //   $("#upload_fields #media_reel_id").val($("#media_reel_id").val())
-  // }
-
   var getFileExtension = function(filename) {
     var a = filename.split(".");
     if( a.length === 1 || ( a[0] === "" && a.length === 2 ) ) {
         return "";
     }
     return a.pop();
+  }
+
+  var validate_and_upload = function(media_upload, submit_button) {
+    if(($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
+      upload_video(media_upload, submit_button);
+    }
+    else {
+      alert("Please fill out all form fields");
+    }
   }
 });
