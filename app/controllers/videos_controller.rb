@@ -12,22 +12,22 @@ class VideosController < ApplicationController
   end
 
   def create
-    @video = Video.new(title: 'Test', description: params[:video][:description], reel_id: params[:video][:reel_id])
+    @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
+    @reel = Reel.find(params[:video][:reel_id])
+
+    if @reel.videos.length == 0
+      @video.title = "#{@reel.name} - 1"
+    else
+      @video.title = "#{@reel.name} - #{@reel.videos.length + 1}"
+    end
 
     if @video.save
 
-      Yt.configure do |config|
-        config.client_id = '587130802745-t6vrap8o2bn99shbrbaahj627k49tj28.apps.googleusercontent.com'
-        config.client_secret = 'GHAYDc_B1uC6NRMT-uCxgbtM'
-      end
-
       file = Yt::Account.new access_token: current_user.token
-      file.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: 'Test', description: 'Test description', category: 'Entertainment'
+      file.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
 
-      @video.uid = file.id
-      @video.save!
       flash[:success] = 'Your video has been uploaded!'
-      redirect_to root_url
+      redirect_to @reel
     else
       flash[:error] = 'Something went wrong'
       render :new
