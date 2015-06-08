@@ -12,11 +12,11 @@ class VideosController < ApplicationController
   end
 
   def create
-    check_valid_session
+    check_valid_session and return
     account = Yt::Account.new access_token: current_user.token
 
     if !account.channel.public?
-      flash[:error] = 'Your channel is not public! <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn it on, and then retry your upload.'.html_safe
+      flash[:error] = 'Your channel is not public! <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn it on, and then try your upload again.'.html_safe
       render :new
     else
       @reel = Reel.find(params[:video][:reel_id])
@@ -60,7 +60,8 @@ class VideosController < ApplicationController
     unless current_user && !current_user.token_expired?
       sign_out(current_user)
       flash.keep[:notice]="Your session has expired."
-      render :json => [], :status => :unauthorized 
+      redirect_to :root
+      return true
     end
   end
 end

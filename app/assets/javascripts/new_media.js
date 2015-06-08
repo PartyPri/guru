@@ -21,6 +21,7 @@ $(document).ready(function() {
   });
 
   var upload_video = function(media_upload, submit_button) { 
+    $('.preloader').show();
     media_upload.submit();
   }
 
