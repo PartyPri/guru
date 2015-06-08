@@ -5,7 +5,7 @@ class Video < ActiveRecord::Base
   belongs_to :reel
 
   #Validations
-  validates_presence_of :reel_id, :title, :description, :uid
+  validates_presence_of :reel_id, :description
 
   acts_as_taggable
 end
