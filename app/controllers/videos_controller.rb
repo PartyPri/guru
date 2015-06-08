@@ -16,7 +16,7 @@ class VideosController < ApplicationController
     account = Yt::Account.new access_token: current_user.token
 
     if !account.channel.public?
-      flash[:error] = 'Your channel is not public! <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn it on, and then try your upload again.'.html_safe
+      flash[:error] = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
       render :new
     else
       @reel = Reel.find(params[:video][:reel_id])
