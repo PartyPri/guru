@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 #Youtube
+gem 'yt', '~> 0.24.3'
 gem 'youtube_it'
 gem 'youtube_id', '~> 0.0.3'
 
