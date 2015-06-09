@@ -2,9 +2,9 @@
   - form_id = "registration-form"
 - else
   - form_id = "registration-form-nopayment"
+= render 'shared/nav'
 .container
-  = render 'shared/light_nav'
-  .container.registration
+  .container.registration.form-layout
     .register-form
       - if @event.id == 1
         =image_tag "Evrystep_Flyer.jpg", :width => "100%", style: "margin-bottom: 20px;"

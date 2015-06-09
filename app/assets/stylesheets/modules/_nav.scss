@@ -1,5 +1,10 @@
-.nav > li > a {
-  color: #fff;
+nav { 
+  background-color: #fff;
+  border: solid 1px transparent;
+  @include transition(all 0.1s ease-in-out);
+  position: fixed;
+  width: 100%;
+  z-index: 5;
 }
 
 .nav.light-nav > li > a {
@@ -12,12 +17,16 @@
   }
 }
 
-// Give background color on toggle
-nav { 
-  background-color: transparent;
-  @include transition(all 0.1s ease-in-out);
+.main-menu, .explore {
+  color: $lt-turq;
+  font-weight: 600;
 }
-nav.toggled { background-color: rgba(0,0,0,0.75); }
+
+.nav-link, .nav-link:hover {
+  color: $drk-gray;
+  font-weight: 200;
+  font-size: 16px;
+}
 
 .footer {
   position: absolute;
@@ -39,10 +48,10 @@ nav.toggled { background-color: rgba(0,0,0,0.75); }
   }
 }
 
-@media (min-width: 768px) and (max-width: 993px) {
-  nav {
-    ul {
-      font-size: 12px;
+@media (max-width: 767px) {
+  .nav {
+    .nav-link {
+      display: none;
     }
   }
 }

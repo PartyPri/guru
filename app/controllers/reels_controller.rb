@@ -29,8 +29,8 @@ class ReelsController < ApplicationController
   def new
     unless user_signed_in?
       redirect_to :root
+      flash[:notice] = "You must be signed in to create a reel."
     end
-    render 'new.haml'
     @reel = Reel.new
   end
 
