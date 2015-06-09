@@ -22,7 +22,7 @@ nav {
   font-weight: 600;
 }
 
-.nav-link {
+.nav-link, .nav-link:hover {
   color: $drk-gray;
   font-weight: 200;
   font-size: 16px;
