@@ -1,7 +1,8 @@
 require 'spec_helper'
 
-describe InterestsController, :type => :controller do 
-  FactoryGirl.create(:interest) 
+describe InterestsController, type: :controller do 
+  
+  let!(:interest) {create(:interest) }
   
   describe "interests #show" do
     it 'finds an interest to show' do
@@ -16,5 +17,4 @@ describe InterestsController, :type => :controller do
       expect(response).to redirect_to :root
     end
   end
-
 end
