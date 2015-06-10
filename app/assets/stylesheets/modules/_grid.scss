@@ -14,6 +14,11 @@
     padding-left: 30px;
   }
 
+  li {
+    vertical-align: top;
+    padding: 0 10px 0 0 !important;
+  }
+
   img, iframe {
     width: 100%;
   }
@@ -43,6 +48,25 @@
   }
 }
 
+.new-grid-item {
+  padding: 115px 0;
+  position: relative;
+  height: 300px;
+  width: 350px;
+  text-align: center;
+  border: dashed 2px $med-gray;
+  @include border-radius(10px);
+
+  h4 {
+    color: $lt-turq;
+    margin-top: 10px;
+  }
+}
+
+.new-grid-item:hover {
+  border-color: $lt-turq;
+}
+
 @media (max-width: 1140px) {
   .grid-container {
     width: 770px;
@@ -62,10 +86,10 @@
 
 @media (max-width: 400px) {
   .grid ul li {
-    padding: 0;
+    padding: 0 !important;
   }
   
-  .grid-item {
+  .grid-item, .new-grid-item {
     width: 300px;
   }
 }
