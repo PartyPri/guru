@@ -6,9 +6,9 @@
   %meta{ property: "og:description", content: reel_description }
 - media = @images.zip(@videos).flatten.compact
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
+= render 'shared/nav'
 .reel-page
   .container
-    = render 'shared/light_nav'
     .hero
       .container
         %h1.text-center.m-bottom-10= @reel.name

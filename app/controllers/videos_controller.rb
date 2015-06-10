@@ -11,45 +11,31 @@ class VideosController < ApplicationController
     @video = Video.new
   end
 
-  #Before uploading a video to YouTube, first send user's title, description, and category through the 
-  #YouTube client and retrieve an upload token.
-  def get_upload_token
+  def create
+    check_valid_session and return
+    account = Yt::Account.new access_token: current_user.token
 
-    @reel = Reel.find(params[:media][:reel_id])
-    @reel_name = @reel.name
-
-    if Video.where(reel_id: @reel).blank?
-      @video_id = 1 
+    if !account.channel.public?
+      flash[:error] = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
+      render :new
     else
-      @video_obj = Video.where(reel_id: @reel).last  
-      @video_id = @video_obj.id - 1 
+      @reel = Reel.find(params[:video][:reel_id])
+      @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
+  
+      if @video.save
+        @video.title = "#{@reel.name} - #{@reel.videos.length}"
+
+        file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
+        @video.uid = file.id
+        @video.save!
+
+        flash[:success] = 'Your video has been uploaded!'
+        redirect_to @reel
+      else
+        flash[:error] = 'Something went wrong'
+        render :new
+      end
     end
-
-    temp_params = { title: "#{@reel_name} - #{@video_id}", description: params[:description], category: 'Entertainment', keywords: [] }
-
-
-    #save the reel on the session for use in get_video_uid
-    session[:current_reel_id] = params[:media][:reel_id]
-    youtube_client = YouTubeIt::OAuth2Client.new(client_access_token: current_user.token,
-                                          dev_key: ENV['GOOGLE_APP_ID'], 
-                                          client_id: ENV['GOOGLE_CLIENT_ID'],
-                                          client_secret: ENV["GOOGLE_CLIENT_SECRET"])
- 
-    upload_info = youtube_client.upload_token(temp_params, get_video_uid_url)  
-    render json: {token: upload_info[:token], url: upload_info[:url]}
-  end
-
-  #The redirect URL the YouTube client posts to after a video upload. This function saves the video data into the app database.
-  def get_video_uid
-    video_uid = params[:id]
-    v = Reel.find(session[:current_reel_id]).videos.build(uid: video_uid)
-    youtube = YouTubeIt::OAuth2Client.new(dev_key: ENV['GOOGLE_DEV_KEY'])
-    yt_video = youtube.video_by(video_uid)
-    v.title = yt_video.title
-    v.description = yt_video.description
-    v.save
-    flash[:notice] = 'Thanks for uploading your video!'
-    redirect_to reel_path(session[:current_reel_id])
   end
 
   def youtube
@@ -74,14 +60,8 @@ class VideosController < ApplicationController
     unless current_user && !current_user.token_expired?
       sign_out(current_user)
       flash.keep[:notice]="Your session has expired."
-      render :json => [], :status => :unauthorized 
-    end
-  end
-
-  #Check for upload params needed by the YouTube client and app video model
-  def check_valid_params
-    unless params[:title] !='' && params[:description] !='' && params[:media][:reel_id] 
-      render json: {error_type: 'Missing params.', status: :unprocessable_entity}
+      redirect_to :root
+      return true
     end
   end
 end

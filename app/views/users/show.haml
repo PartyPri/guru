@@ -4,11 +4,10 @@
   %meta{ property: "og:url", content: "<%=user_url(@user)%>" } 
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
-
+= render 'shared/nav'
 .page
   .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
     .page-hero
-      = render 'shared/nav'
       %a#user-tab
         .page-info
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
@@ -19,18 +18,15 @@
     .row-fluid
       .content-container
         %ul.list-inline
-          %li
-            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} Reels
+          %li.active
+            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} 
+              %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
           %li.divider
           %li
             %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
         - if current_user.present?
           - if @user.id == current_user.id
             = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
-            .btn.btn-primary.edit-profile
-              %span.m-right-5
-                = image_tag "reel.svg", height: "18px"
-              = link_to "New Reel", new_reel_path
         - else
           .btn.btn-default.edit-profile Follow
   .page-content
@@ -43,5 +39,10 @@
       .content-container.tab-pane.active#work{role: "tabpanel"}
         .tab-content
           .tab-pane.active#reels{role: "tabpanel"}
+            - if current_user && current_user.id == @user.id
+              = link_to new_reel_path do
+                .teaser.new-reel
+                  =image_tag "lt-turq_reel.svg", height: 40
+                  %h4.c-lt-turq New reel
             - @reels.each do |reel|
               =render :partial => 'shared/teaser', :locals => {:reel => reel}
