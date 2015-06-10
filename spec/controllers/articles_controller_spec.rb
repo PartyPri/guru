@@ -4,7 +4,7 @@ describe ArticlesController, :type => :controller do
 
   describe "POST #create" do
     it 'should create an article' do
-      article = FactoryGirl.create(:article)
+      article = FactoryGirl.build(:article)
       post :create, post: article
       expect(response.status).to eq(302)
     end
