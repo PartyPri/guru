@@ -1,0 +1,41 @@
+.select-style {
+    color: $turq;
+    width: 100%;
+    background: transparent;
+}
+
+.select-style select {
+    height: 40px;
+    padding: 18px 20px;
+    width: 100%;
+    border: 1px solid $turq;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+.bootstrap-select {
+    width: 100% !important;
+
+    .dropdown-toggle {
+        padding: 0 10px;
+        height: 40px;
+        @include border-radius(5px);
+    }
+
+    .dropdown-menu.open, .dropdown-menu.inner {
+        background: #fff;
+    }
+
+    li a {
+        color: $drk-gray;
+    }
+
+    li:hover a {
+        color: $turq;
+    }
+}
