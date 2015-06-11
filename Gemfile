@@ -63,6 +63,7 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do
