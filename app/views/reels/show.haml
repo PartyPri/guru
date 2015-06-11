@@ -31,9 +31,9 @@
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
-        / .col-md-1
-        /   .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
-        .col-md-4.links
+        .col-md-2.links
+          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+        .col-md-2.links
           - if current_user && current_user.id == @user.id        
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 
