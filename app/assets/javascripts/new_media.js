@@ -27,7 +27,14 @@ $(document).ready(function() {
 
   var upload_image = function(media_upload) {
     var image_upload_url = $('#image-upload-url').data("image-upload-url");
-    media_upload.attr('action', image_upload_url).submit();
+
+    if(($("#video_description").val() != "") && ($("#video_reel_id").val() != "")) {
+      media_upload.attr('action', image_upload_url).submit();
+    }
+
+    else {
+      alert("Please fill out all form fields");
+    }    
   }
 
   var getFileExtension = function(filename) {
@@ -39,7 +46,7 @@ $(document).ready(function() {
   }
 
   var validate_and_upload = function(media_upload, submit_button) {
-    if(($("#description").val() != "") && ($("#media_reel_id").val() != "")) {
+    if(($("#video_description").val() != "") && ($("#video_reel_id").val() != "")) {
       upload_video(media_upload, submit_button);
     }
     else {

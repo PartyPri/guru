@@ -38,20 +38,21 @@
             = builder.label :description, "Change description"
             = builder.text_field :description, class: "form-control"
             <br><br>
-        .form-group
-          = f.label :tag_list, "Tags (separated by commas)"
-          = f.text_field :tag_list
+        / .form-group
+        /   = f.label :tag_list, "Tags (separated by commas)"
+        /   = f.text_field :tag_list
         %hr.m-y-20
         .text-center
           = f.submit "Save Changes", class: "button btn btn-primary w-100"       
-.container.p-y-40
-%div{style: "background-color: #f3f3f3; border-radius: 10px; margin: 0 auto; padding: 50px; width: 80%;"}
-  .row
-    .col-xs-12.text-center#account-settings
-      %h4 Delete Reel
-  .row.p-top-20
-    .col-xs-12.col-md-6.col-md-offset-3.text-center
-      %span You will not be able to access any media in your reel once it's deleted.
-      %hr.m-y-20
-        .text-center
-          = button_to "Delete Reel", reel_path(@reel), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button btn btn-default w-100"
+.container          
+  .container
+    .form
+      .row
+        .col-xs-12.text-center#account-settings
+          %h4 Delete Reel
+      .row.p-top-20
+        .col-xs-12.col-md-6.col-md-offset-3.text-center
+          %span You will not be able to access any media in your reel once it's deleted.
+          %hr.m-y-20
+            .text-center
+              = button_to "Delete Reel", reel_path(@reel), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button btn btn-default w-100"
