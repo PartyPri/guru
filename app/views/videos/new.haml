@@ -7,12 +7,11 @@
       = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload'} do |f|
         .form-group
           %label Select a reel:
-          .select-style#reel_select
-            = f.collection_select(:reel_id, current_user.reels.all, :id, :name, :selected => params[:reel], required: true)
+          #reel_select
+            = f.collection_select(:reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
         .form-group
-          %button.btn.btn-default.file-upload 
-            Select Media 
-            = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print"
+          = f.label :file, 'Select Media', class: "btn btn-default file-upload"
+          = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'
           %p.text-center#emp-image-print.m-top-10
         .form-group
           %label Enter a caption:

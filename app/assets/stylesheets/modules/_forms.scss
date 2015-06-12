@@ -2,27 +2,6 @@
   display: none;
 }
 
-.select-style {
-    color: $turq;
-    width: 100%;
-    overflow: hidden;
-    background: transparent;
-}
-
-.select-style select {
-    height: 40px;
-    padding: 18px 20px;
-    width: 100%;
-    border: 1px solid $turq;
-    box-shadow: none;
-    background: transparent;
-    background-image: none;
-}
-
-.select-style select:focus {
-    outline: none;
-}
-
 .file-upload {
   position: relative;
   overflow: hidden;
