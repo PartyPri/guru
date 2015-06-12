@@ -5,7 +5,7 @@
         - if current_user && current_user.id == @user.id
           = link_to new_video_path(reel: @reel) do
             .new-grid-item
-              =image_tag "lt-turq_add.svg", height: 40
+              =image_tag "lt-turq_add.png", style: 'width: 50px'
               %h4 Add Media
       - @reel.media.reverse.each do |medium|
         - if medium.is_a? Image
