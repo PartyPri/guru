@@ -63,7 +63,16 @@
   border-top: 1px solid $gray;
 }
 
+@media (max-width: 1200px) {
+
+  .navbar > .container .navbar-brand {
+    margin-left: 0;
+  }
+
+}
+
 @media (max-width: 767px) {
+
   .navbar-header a, .navbar-header button {
     margin-top: 0;
   }
