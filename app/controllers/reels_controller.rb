@@ -1,5 +1,7 @@
 class ReelsController < ApplicationController
 
+  impressionist :actions=>[:show]
+
   def index
     interest_id = params[:interest_id]
 
