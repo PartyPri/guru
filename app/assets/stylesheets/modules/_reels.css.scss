@@ -61,21 +61,27 @@
   padding-top: 40px;
 }
 
+.views {
+  text-align: center;
+  margin-top: 10px 0;
+}
+
 .fb-share-button {
   text-align: right;
-  padding-top: 8px;
+  margin: 10px 0;
 }
 
 @media (max-width: 991px) {
   .reel-page {
-    .link-bar {
-      .col-md-2 {
-        text-align: left;
-        padding-left: 0;
+    .link-bar, .link-bar .links {
+      text-align: center;
+
+      .views {
+        margin-top: 15px;
       }
 
       .fb-share-button {
-        margin: 10px 0;
+        margin: 15px;
       }
     }
   }
@@ -84,14 +90,11 @@
 @media (max-width: 450px) {
   .reel-page {
     .hero {
-      h4 {
-        width: 90%;
-      }
-
       .container {
         width: 100%;
       }
     }
+    
     .edit-reel {
       position: relative;
       width: 100%;

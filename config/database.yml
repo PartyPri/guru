@@ -4,8 +4,8 @@ development:
   encoding: unicode
   database: guru_development
   pool: 5
-  username:
-  password:
+  username: 
+  password: 
 
 test:
   host: localhost
@@ -13,5 +13,5 @@ test:
   encoding: unicode
   database: guru_test
   pool: 5
-  username:
-  password:
+  username: 
+  password: 

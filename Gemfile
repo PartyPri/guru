@@ -51,6 +51,9 @@ gem 'stripe'
 #Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
 
+#Views
+gem 'impressionist'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end

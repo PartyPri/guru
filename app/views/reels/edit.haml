@@ -10,7 +10,7 @@
           = f.text_field :name, class: "form-control"
         .form-group
           %label{for: "description"} Description:
-          = f.text_area :description, class: "form-control"
+          = f.text_area :description, class: "form-control", rows: 3
         .form-group
           %label{for: "interests"} Interests:
           %span.help-block Choose the interests the best describe your reel.
@@ -38,9 +38,9 @@
             = builder.label :description, "Change description"
             = builder.text_field :description, class: "form-control"
             <br><br>
-        .form-group
-          = f.label :tag_list, "Tags (separated by commas)"
-          = f.text_field :tag_list
+        / .form-group
+        /   = f.label :tag_list, "Tags (separated by commas)"
+        /   = f.text_field :tag_list
         %hr.m-y-20
         .text-center
           = f.submit "Save Changes", class: "button btn btn-primary w-100"       

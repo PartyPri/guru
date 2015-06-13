@@ -1,15 +1,5 @@
 .row.text-center
-  .col-xs-12
-    %h1 Featured Reels
+  %h1.c-lt-turq.m-bottom-20 Featured Reels
 - Reel.featured.each do |reel|
-  .row.p-top-20
-    .col-xs-12
-    %h3= reel.name
-    %ul.list-inline
-      - reel.interests.each do |interest|
-        %li
-          = link_to(interest.name, "/interests/#{interest.id}")
-  .row.p-top-20.text-center
-    .col-xs-12
-      %div.reel-carousel
-        = render partial: 'shared/reel', locals: { reel: reel }
+  =render :partial => 'shared/teaser', :locals => {:reel => reel}
+  
