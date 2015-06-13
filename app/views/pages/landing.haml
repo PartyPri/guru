@@ -20,8 +20,8 @@
 /= render 'shared/tag_nav'
 .container
   = render 'shared/what_is_evrystep'
-  - if Reel.where(:featured => true).any?
-    = render 'shared/featured_reels'
+  / - if Reel.where(:featured => true).any?
+  /   = render 'shared/featured_reels'
 = render 'shared/interests_grid'
 =render 'shared/featured_event'
 /%hr.sm-p-top-40.sm-p-bottom-0
