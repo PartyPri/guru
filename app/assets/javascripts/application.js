@@ -30,6 +30,7 @@
 //= require bootstrap-select
 //= require select
 //= interests
+//= require edit-modal
 //= require jquery-ui
 //= require_tree .
 //

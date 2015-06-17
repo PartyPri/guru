@@ -1,0 +1,14 @@
+#edit-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      #modal-edit-fields
+        = form_for @reel, :html => { :method => :put, :multipart => true } do |f| 
+          = f.fields_for :images do |builder|
+            .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              = image_tag(builder.object.photo.url(:medium))
+              = builder.check_box :_destroy
+              = builder.label :_destroy, "Remove image"
+              <br>
+              = builder.label :description, "Change caption"
+              = builder.text_field :description, class: "form-control"
+          = f.submit "Save Changes", class: "button btn btn-primary w-100"

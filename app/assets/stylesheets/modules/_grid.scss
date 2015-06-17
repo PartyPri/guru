@@ -17,6 +17,11 @@
   li {
     vertical-align: top;
     padding: 0 10px 0 0 !important;
+    position: relative;
+  }
+
+  li:hover .media-edit {
+    display: block;
   }
 
   img, iframe {
@@ -65,6 +70,15 @@
 
 .new-grid-item:hover {
   border-color: $lt-turq;
+}
+
+.media-edit {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  z-index: 5;
+  color: $turq;
+  display: none;
 }
 
 @media (max-width: 1140px) {

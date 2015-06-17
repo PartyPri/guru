@@ -10,6 +10,7 @@
       - @reel.media.reverse.each do |medium|
         - if medium.is_a? Image
           %li.m-bottom-20
+            %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"} Edit
             %a.magnific{:href => medium.photo.url, :title => medium.description}
               .grid-item{:style => "background-image: url(#{medium.photo.url});"}
                 - if medium.description.present?
