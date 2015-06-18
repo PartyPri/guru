@@ -30,3 +30,6 @@ logfile
 
 # Ignore server generated assets
 /public/system/*
+
+# Ignore simplecov report
+coverage
