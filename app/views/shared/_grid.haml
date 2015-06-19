@@ -20,6 +20,7 @@
                 %img{src: medium.photo.url, :style => "display: none"}
         - else
           %li.m-bottom-20
+            %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"} Edit
             %a.magnific.mfp-iframe{:href => "https://www.youtube.com/watch?v=#{medium.uid}", :title => medium.description}
               .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
                 =image_tag "video_arrow_right.png"

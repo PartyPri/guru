@@ -1,0 +1,46 @@
+#edit-modal {
+  .modal-dialog {
+    width: 700px;
+  }
+
+  .modal-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  textarea {
+    width: 90%;
+  }
+
+  img {
+    height: 175px;
+  }
+
+  .row {
+    margin-bottom: 10px;
+  }
+
+  .col-xs-2 {
+    text-align: center;
+  }
+
+  .btn-save {
+    background: #377bb5;
+    color: #fff;
+    @include border-radius(3px);
+    border: none;
+    padding: 5px 10px;
+  }
+
+  .btn-cancel {
+    background: #fff;
+    border: solid #cdcdcd 1px;
+    padding: 5px 8px;
+    margin-right: 5px;
+    @include border-radius(3px);
+  }
+}
+
+.modal-header {
+  text-align: center;
+}
