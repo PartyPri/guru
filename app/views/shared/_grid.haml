@@ -10,20 +10,26 @@
       - @reel.media.reverse.each do |medium|
         - if medium.is_a? Image
           %li.m-bottom-20
-            %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"} Edit
-            %a.magnific{:href => medium.photo.url, :title => medium.description}
+            -if current_user && current_user.id == @user.id
+              %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+            %a.magnific{:href => "#popup"}
               .grid-item{:style => "background-image: url(#{medium.photo.url});"}
                 - if medium.description.present?
                   .caption
                     %p= medium.description
                 // Need to include image for Magnific popup
-                %img{src: medium.photo.url, :style => "display: none"}
+            #popup.mfp-hide
+              %img{src: medium.photo.url}
+              %p.pull-left= medium.description
+              -if current_user && current_user.id == @user.id
+                %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
         - else
           %li.m-bottom-20
-            %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"} Edit
+            %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             %a.magnific.mfp-iframe{:href => "https://www.youtube.com/watch?v=#{medium.uid}", :title => medium.description}
               .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
                 =image_tag "video_arrow_right.png"
                 .caption
                   %p= medium.description
                 %img{src: "http://img.youtube.com/vi/#{medium.uid}/0.jpg", :style => "display: none"}
+            

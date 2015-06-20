@@ -1,5 +1,32 @@
-.mfp-img {
+#popup {
+  display: inline-block;
+  text-align: left;
+}
+
+#popup img {
+  display: block;
   min-width: 400px;
+  margin-bottom: 10px;
+}
+
+#popup p {
+  float: left;
+  display: block;
+  color: #fff;
+  position: relative;
+}
+
+#popup .media-edit {
+  display: none;
+  color: #fff;
+  position: relative;
+  right: 0;
+  top: 0;
+  float: right;
+}
+
+.mfp-container .mfp-content {
+  text-align: center;
 }
 
 button.mfp-close:hover {
@@ -7,7 +34,14 @@ button.mfp-close:hover {
 }
 
 @media (max-width: 400px) {
-  .mfp-img {
-    min-width: 300px;
+
+  #popup {
+    .media-edit {
+      display: block;
+    }
+
+    img {
+      min-width: 300px;
+    }
   }
 }

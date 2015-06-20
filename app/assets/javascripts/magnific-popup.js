@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $('.magnific').magnificPopup({
-    type:'image',
+    type:'inline',
 
     gallery: {
       enabled: true

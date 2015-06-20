@@ -16,6 +16,10 @@
     height: 175px;
   }
 
+  label {
+    margin-left: 20px;
+  }
+
   .row {
     margin-bottom: 10px;
   }
@@ -43,4 +47,32 @@
 
 .modal-header {
   text-align: center;
+}
+
+@media (max-width: 400px) {
+
+  #edit-modal {
+
+    .modal-dialog {
+      width: 320px;
+      margin: 0 auto;
+    }
+
+    .row {
+      text-align: center;
+    }
+
+    textarea {
+      margin: 0 auto;
+    }
+
+    label {
+      margin: 0;
+    }
+
+    .btn-save, .btn-cancel {
+      margin: 10px 0 0 0;
+      width: 100%;
+    }
+  }
 }
