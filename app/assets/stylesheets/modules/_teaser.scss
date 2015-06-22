@@ -81,9 +81,11 @@
 @media (max-width: 990px) {
 
   .teaser {
+    text-align: center;
+
     li.teaser-media {
-      width: 300px;
-      height: 250px;
+      width: 90%;
+      height: 350px;
       margin-right: 6px;
     }
   }
@@ -92,10 +94,17 @@
 @media (max-width: 400px) {
   .teaser {
     padding: 10px 0px;
-    text-align: center;
+    width: 90%;
+    margin: 0 auto 30px auto;
+
+    .name, .views {
+      float: none !important;
+      text-align: center;
+    }
 
     li.teaser-media {
       margin: 0;
+      height: 250px;
     }
   }
 }

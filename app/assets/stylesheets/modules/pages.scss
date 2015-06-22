@@ -24,27 +24,23 @@
     padding: 30px 0;
     min-height: 665px;
   }
+}
 
-  .content-container {
-    width: 956px;
-    margin: 0 auto;
-  }
+.content-container {
+  width: 956px;
+  margin: 0 auto;
 }
 
 @media (max-width: 990px) {
-  .page {
-    .content-container {
-      width: 700px;
-    }
+  .content-container {
+    width: 700px;
   }
 }
 
 @media (max-width: 700px) {
-  .page {
-    .content-container {
-      width: 100%;
-      text-align: center;
-    }
+  .content-container {
+    width: 100%;
+    text-align: center;
   }
 }
 

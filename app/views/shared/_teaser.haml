@@ -1,7 +1,7 @@
 %a{href: "/reels/#{reel.id}"}
   .teaser
-    %h2= reel.name
-    / %h4.pull-right #{reel.impressionist_count} views 
+    %h2.name.pull-left= reel.name
+    %h4.views.pull-right #{reel.impressionist_count} views 
     / = link_to user_path(reel.user) do
     /   .avatar{:style => "background-image: url(#{@user.avatar.url});"}
     /   %h5= reel.user.first_name + " " + reel.user.last_name
@@ -28,7 +28,7 @@
           %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
         - else # Video
           %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-    %p= truncate(reel.description, length: 120)
+    %p= truncate(reel.description, length: 80)
     .row-fluid
       /.col-xs-12
       / .tags

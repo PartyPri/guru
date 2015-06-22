@@ -31,7 +31,7 @@
   position: relative;
   background-size: 100%;
   background-size: cover;
-  background-position: 50% 50%;
+  background-position: 50% 30%;
   background-repeat: no-repeat no-repeat;
   margin-top: 50px;
 }
@@ -73,7 +73,7 @@
 
 @media (min-width:768px) {
   .hero-text { font-size: 4.5rem; }
-  .hero-content { padding: 100px 0px; }
+  .hero-content { padding: 150px 0px; }
 }
 
 @media (max-width: 550px) {
