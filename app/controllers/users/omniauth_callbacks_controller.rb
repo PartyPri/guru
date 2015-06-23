@@ -5,6 +5,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
 
       @claim_token = request.env['omniauth.params']['claim_token']
+      @create_reel = request.env['omniauth.params']['create_reel']
 
       if @claim_token
         @claim_user = User.find_by_claim_token(@claim_token)
@@ -13,8 +14,15 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
 
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-      sign_in_and_redirect @user, :event => :authentication
+      unless @create_reel.nil?
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
+        sign_in @user, :event => :authentication
+        redirect_to "/reels/new"
+      else
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
+        sign_in_and_redirect @user, :event => :authentication
+      end
+
     else
       session["devise.google_data"] = request.env["omniauth.auth"]
       redirect_to new_user_registration_url
