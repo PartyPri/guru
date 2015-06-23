@@ -1,5 +1,7 @@
-.featured-reels.content-container
-  %h1.c-lt-turq.m-bottom-20.text-center Featured Reels
-  - Reel.featured.each do |reel|
-    =render :partial => 'shared/teaser', :locals => {:reel => reel}
+.bgc-lt-gray.p-y-20
+  .container.how-it-works-cont-padding
+    .row.text-center
+      %h1.m-bottom-40 Featured Reels
+    - Reel.featured.each do |reel|
+      =render :partial => 'shared/teaser', :locals => {:reel => reel}
   
