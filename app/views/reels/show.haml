@@ -32,7 +32,7 @@
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
         .col-md-4.views
-          %h4 #{@reel.impressionist_count} views
+          %h4.p-top-10 #{@reel.impressionist_count} views
         .col-md-2.links
           .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
         .col-md-2.links
