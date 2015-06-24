@@ -1,6 +1,6 @@
+= render 'shared/nav'
 .hero-image.landing
   .hero
-    = render 'shared/nav'
     .container.hero-content
       .row
         .col-xs-12.c-white
@@ -18,10 +18,10 @@
             /= link_to event.name, new_event_registration_path(event.id)
     .hero-caption Photography by RandmVision | B-Boy Bailrok
 /= render 'shared/tag_nav'
-/ .container.cont-padding
-/   = render 'shared/featured_reels'
 .container
   = render 'shared/what_is_evrystep'
+- if Reel.where(:featured => true).any?
+  = render 'shared/featured_reels'
 = render 'shared/interests_grid'
 =render 'shared/featured_event'
 /%hr.sm-p-top-40.sm-p-bottom-0

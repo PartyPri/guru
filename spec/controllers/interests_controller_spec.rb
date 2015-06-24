@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe InterestsController, :type => :controller do 
+describe InterestsController, type: :controller do
 
-  let!(:interest){create(:interest)}
-  
+  let!(:interest) {create(:interest) }
+
   describe "interests #show" do
     it 'finds an interest to show' do
       gotten_interest = Interest.where(name: 'Waacking')

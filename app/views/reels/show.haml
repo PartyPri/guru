@@ -6,9 +6,9 @@
   %meta{ property: "og:description", content: reel_description }
 - media = @images.zip(@videos).flatten.compact
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
+= render 'shared/nav'
 .reel-page
   .container
-    = render 'shared/light_nav'
     .hero
       .container
         %h1.text-center.m-bottom-10= @reel.name
@@ -27,17 +27,16 @@
   .link-bar
     .container
       .row-fluid
-        .col-md-8.user
+        .col-md-4.user
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
-        / .col-md-1
-        /   .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
-        .col-md-4.links
-          - if current_user && current_user.id == @user.id
-            = link_to new_video_path(reel: @reel), class: 'btn btn-primary edit-reel' do #prepopulate reel info
-              = image_tag "add.svg", height: "16px"
-              %span MEDIA         
+        .col-md-4.views
+          %h4.p-top-10 #{@reel.impressionist_count} views
+        .col-md-2.links
+          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+        .col-md-2.links
+          - if current_user && current_user.id == @user.id        
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 
   .reel

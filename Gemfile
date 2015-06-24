@@ -20,6 +20,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 #Youtube
+gem 'yt', '~> 0.24.3'
 gem 'youtube_it'
 gem 'youtube_id', '~> 0.0.3'
 
@@ -50,6 +51,9 @@ gem 'stripe'
 #Tagging
 gem 'acts-as-taggable-on', '~> 3.4'
 
+#Views
+gem 'impressionist'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
@@ -62,6 +66,7 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec-rails'
+  gem 'simplecov', require: false
 end
 
 group :development, :test do

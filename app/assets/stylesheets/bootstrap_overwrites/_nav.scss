@@ -6,12 +6,25 @@
 
 .navbar-nav > li > a {
   line-height: 30px;
+  padding-top: 8px;
+  padding-bottom: 5px;
 }
 
 .navbar {
   margin-bottom: 0px;
   font-family: $base-font-family;
   font-size: 1.125rem;
+  position: fixed;
+  height: 50px;
+  @include box-shadow(0px, 1px, 2px, 0px, rgba(0,0,0,0.22));
+}
+
+.navbar-toggle {
+  padding: 9px 0;
+}
+
+.navbar-toggle .icon-bar {
+  background: $lt-turq;
 }
 
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
@@ -19,8 +32,12 @@
   border-color: transparent;
 }
 
-.dropdown-menu > li > a, .dropdown-menu > li > a {
-  color: white;
+.nav img {
+  vertical-align: top;
+}
+
+.dropdown-menu > li > a {
+  color: #fff
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
@@ -37,19 +54,35 @@
   background-color: rgba(0,0,0,0.75);
 }
 
+.navbar-brand {
+  padding: 12px 5px;
+}
+
 .footer {
   width: 100%;
   border-top: 1px solid $gray;
 }
 
-.nav {
-  .navbar-new-button {
-    margin-top: 13px;
-    padding: 5px 20px;
+@media (max-width: 1200px) {
+
+  .navbar > .container .navbar-brand {
+    margin-left: 0;
   }
 
-  .navbar-new-button:hover, .navbar-new-button:focus {
-    background: $red !important;
+}
+
+@media (max-width: 767px) {
+
+  .navbar-header a, .navbar-header button {
+    margin-top: 0;
+  }
+
+  .navbar-collapse.in .dropdown .dropdown-menu a {
+    color: $drk-gray;
+  }
+
+  .navbar-collapse.in .dropdown .dropdown-menu a:hover {
+    color: $turq;
   }
 }
 

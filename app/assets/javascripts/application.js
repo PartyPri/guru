@@ -27,6 +27,8 @@
 //= require input
 //= require magnific-popup.min
 //= require tabs
+//= require bootstrap-select
+//= require select
 //= interests
 //= require jquery-ui
 //= require_tree .

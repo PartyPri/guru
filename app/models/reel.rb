@@ -1,5 +1,6 @@
 class Reel < ActiveRecord::Base
   attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id, :tag_list, :description
+  is_impressionable
 
   belongs_to :user
   has_many :reel_interests, :dependent => :destroy

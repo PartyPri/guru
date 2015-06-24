@@ -1,4 +1,5 @@
 .reel-page {
+  margin-top: 50px;
 
   .hero {
     padding: 30px 0 30px;
@@ -57,14 +58,30 @@
 .reel {
   background: #e9e9e9;
   min-height: 645px;
-  padding-top: 40px;
+  padding: 40px 0;
+}
+
+.views {
+  text-align: center;
+  margin-top: 10px 0;
+}
+
+.fb-share-button {
+  text-align: right;
+  margin: 10px 0;
 }
 
 @media (max-width: 991px) {
   .reel-page {
-    .link-bar {
-      .col-md-2 {
-        text-align: left;
+    .link-bar, .link-bar .links {
+      text-align: center;
+
+      .views {
+        margin-top: 15px;
+      }
+
+      .fb-share-button {
+        margin: 15px;
       }
     }
   }
@@ -73,14 +90,11 @@
 @media (max-width: 450px) {
   .reel-page {
     .hero {
-      h4 {
-        width: 90%;
-      }
-
       .container {
         width: 100%;
       }
     }
+    
     .edit-reel {
       position: relative;
       width: 100%;

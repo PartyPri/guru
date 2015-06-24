@@ -18,6 +18,12 @@
   <% end %>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript">Stripe.setPublishableKey("<%=ENV['STRIPE_PUBLISHABLE_KEY']%>");</script>
+  <!-- Heap Analytics -->
+  <script type="text/javascript">
+    window.heap=window.heap||[],heap.load=function(t,e){window.heap.appid=t,window.heap.config=e;var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"===document.location.protocol?"https:":"http:")+"//cdn.heapanalytics.com/js/heap-"+t+".js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(a,n);for(var o=function(t){return function(){heap.push([t].concat(Array.prototype.slice.call(arguments,0)))}},p=["clearEventProperties","identify","setEventProperties","track","unsetEventProperty"],c=0;c<p.length;c++)heap[p[c]]=o(p[c])};
+    heap.load("3107286711");
+  </script>
+  <!-- End Heap Analytics -->
 </head>
 <body>
   <!-- Google Tag Manager -->
@@ -34,7 +40,7 @@
   <div class="wrapper">
     <%= render "shared/flash_messages" %>
     <!-- pad for height of footer -->
-    <div style="padding-bottom: 39px;">
+    <div style="padding-bottom: 39px; overflow: auto">
       <%= yield %>
     </div>
     <%= render "shared/footer" %>
