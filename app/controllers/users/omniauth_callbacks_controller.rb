@@ -20,7 +20,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         redirect_to "/reels/new"
       else
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-        sign_in_and_redirect @user, :event => :authentication
+        sign_in @user, :event => :authentication
+        redirect_to user_path(@user)
       end
 
     else
