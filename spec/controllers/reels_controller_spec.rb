@@ -22,7 +22,6 @@ describe ReelsController, :type => :controller do
   describe "GET #show" do
 
     it 'should find a reel' do
-      # reel.save
       found_reel = Reel.where(name: 'Foo Reel')
       expect(found_reel).to exist
     end
