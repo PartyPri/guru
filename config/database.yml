@@ -4,8 +4,8 @@ development:
   encoding: unicode
   database: guru_development
   pool: 5
-  username: 
-  password: 
+  username: postgres
+  password: Evrystepg0lden
 
 test:
   host: localhost
