@@ -41,5 +41,5 @@ Guru::Application.configure do
   config.assets.prefix = "/assets_dev"
 
   #Tell Paperclip where to look for ImageMagick
-  Paperclip.options[:command_path] = "C:/Program Files/ImageMagick-6.9.1-Q16"
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
