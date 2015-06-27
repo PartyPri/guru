@@ -67,6 +67,13 @@
   border-color: $lt-turq;
 }
 
+.sortable-placeholder {
+  height: 300px;
+  width: 350px;
+  border: dashed 2px $med-gray;
+  @include border-radius(10px);
+}
+
 @media (max-width: 1140px) {
   .grid-container {
     width: 770px;

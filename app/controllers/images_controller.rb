@@ -7,7 +7,6 @@ class ImagesController < ApplicationController
                          title: params[:video][:reel_id],
                          description: params[:video][:description],
                          photo: params[:video][:file] )
-      debugger  
       if @image.save
         redirect_to reel_path(@reel)
         flash[:notice] = "Image added!"
