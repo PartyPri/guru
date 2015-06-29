@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :description, :bio, :cover_photo, :avatar, :location, :interest_ids,
-    :uid, :provider, :token, :refresh_token, :expires_at, :claim_token
+    :uid, :provider, :token, :refresh_token, :expires_at, :claim_token, :claim_email
 
   # Associations
 

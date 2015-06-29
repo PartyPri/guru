@@ -3,7 +3,6 @@ class ClaimUsersController < ApplicationController
   end
 
   def create
-    @claim_users = params[:claim_users]
     @email = params[:claim_users][:email]
     @user = User.find_by_email(@email)
     @token = @user.claim_token
