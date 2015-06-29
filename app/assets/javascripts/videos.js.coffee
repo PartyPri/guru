@@ -1,4 +1,4 @@
 jQuery ->
 	$('#reeldrag').sortable({
-	items: "> li:not(.m-bottom-20#exclude)",
+	items: "> li:not(#exclude)",
 	placeholder: "sortable-placeholder"});

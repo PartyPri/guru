@@ -1,7 +1,7 @@
 .grid-container
-  .row-fluid.grid
-    %ul.list-inline#reeldrag
-      %li.m-bottom-20#exclude
+  .row-fluid.clearfix.grid
+    %ul#reeldrag
+      %li#exclude
         - if current_user && current_user.id == @user.id
           = link_to new_video_path(reel: @reel) do
             .new-grid-item
