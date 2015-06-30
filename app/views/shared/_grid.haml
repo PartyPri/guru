@@ -1,8 +1,8 @@
 .grid-container
   .row-fluid.grid
     %ul.list-inline
-      %li.m-bottom-20
-        - if current_user && current_user.id == @user.id
+      - if current_user && current_user.id == @user.id
+        %li.m-bottom-20
           = link_to new_video_path(reel: @reel) do
             .new-grid-item
               =image_tag "lt-turq_add.png", style: 'width: 50px'
