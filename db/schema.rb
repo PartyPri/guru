@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150610214314) do
+ActiveRecord::Schema.define(:version => 20150629230804) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -257,6 +257,7 @@ ActiveRecord::Schema.define(:version => 20150610214314) do
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
     t.string   "claim_token"
+    t.string   "claim_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

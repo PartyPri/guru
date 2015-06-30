@@ -6,6 +6,6 @@
   <body>
     <h1>Your Evrystep profile is live!</h1>
     <p>Please click here to claim your account and start uploading more content!</p>
-    <%= link_to "Claim your Account!", "http://localhost:3000/auth/google_oauth2?claim_token=#{@token}" %>
+    <%= link_to "Claim your Account!", "http://localhost:3000/users/auth/google_oauth2?claim_token=#{@token}" %>
   </body>
 </html>

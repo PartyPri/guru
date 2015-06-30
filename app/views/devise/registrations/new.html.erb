@@ -51,6 +51,7 @@
       </div>
     </div>
 
+    <%= f.hidden_field :claim_token, value: "#{SecureRandom.hex}" %>
     <div class="form-actions">
       <%= f.submit "Sign up", :class => 'btn btn-info btn-lg' %>
     </div>

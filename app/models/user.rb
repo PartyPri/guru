@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
 
   # Methods
 
+  #Update claim user attributes
+  def update_claim_attributes(token, first_name, last_name)
+    self.claim_token = token
+    self.first_name = first_name
+    self.last_name = last_name
+    self.save!
+  end
+
   #Google Authentication
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
