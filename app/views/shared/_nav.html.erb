@@ -18,9 +18,15 @@
             <%= image_tag "lt-turq_add.png", height: "30px" %>
           </a>
         <% end %>
-        <a href="/reels/new" class="navbar-toggle visible-xs">
-          <%= image_tag "red_reel.png", height: "30px" %>
-        </a>
+        <% unless user_signed_in? %>
+          <a href="/users/auth/google_oauth2?create_reel=true" class="navbar-toggle visible-xs">
+            <%= image_tag "red_reel.png", height: "30px" %>
+          </a>
+        <% else %>
+          <a href="/reels/new" class="navbar-toggle visible-xs">
+            <%= image_tag "red_reel.png", height: "30px" %>
+          </a>
+        <% end %>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -40,10 +46,17 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="/reels/new" class="nav-link">
-              <%= image_tag "red_reel.png", height: "30px" %>
-              CREATE REEL
-            </a>
+            <% unless user_signed_in? %>
+              <a href="/users/auth/google_oauth2?create_reel=true" class="nav-link">
+                <%= image_tag "red_reel.png", height: "30px" %>
+                CREATE REEL
+              </a>
+            <% else %>
+              <a href="/reels/new" class="nav-link">
+                <%= image_tag "red_reel.png", height: "30px" %>
+                CREATE REEL
+              </a>
+            <% end %>
           </li>
           <li>
             <% if user_signed_in? && current_user.reels.length > 0 %>
