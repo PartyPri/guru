@@ -25,7 +25,7 @@
 //= require video_url
 //= require inputmask
 //= require input
-//= require magnific-popup.min
+//= require lightGallery
 //= require tabs
 //= require bootstrap-select
 //= require select
