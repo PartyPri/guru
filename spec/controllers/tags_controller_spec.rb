@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Api::TagsController, type: :controller do
   describe "index" do
     context "on success" do
-      before(:each) do
+      before do
         ['waacking', 'watersports', 'painting'].each do |tag|
           ActsAsTaggableOn::Tag.new(name: tag).save
         end
