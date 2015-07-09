@@ -1,11 +1,5 @@
-class Video < ActiveRecord::Base
-  attr_accessible :description, :project_id, :uid, :reel_id, :title
+class Video < Medium
+  attr_accessible :description, :project_id, :uid
 
-  #Associations
-  belongs_to :reel
-
-  #Validations
-  validates_presence_of :reel_id, :description
-
-  acts_as_taggable
+  validates_presence_of :description
 end
