@@ -56,7 +56,7 @@ class ReelsController < ApplicationController
 
     unless current_user && current_user == @reel.user
       redirect_to :root
-      flash[:notice] = "You do not have permission to view that page"
+      flash[:notice] = "You do not have permission to view that page."
     end
   end
 

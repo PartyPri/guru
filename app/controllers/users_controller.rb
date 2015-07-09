@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       render 'edit_profile.haml'
     else
       redirect_to :root
-      flash[:notice] = "You do not have permission to view that page"
+      flash[:notice] = "You do not have permission to view that page."
     end
   end
 
