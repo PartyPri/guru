@@ -13,8 +13,7 @@
             %a.magnific{:href => medium.photo.url, :title => medium.description}
               .grid-item{:style => "background-image: url(#{medium.photo.url});"}
                 - if medium.description.present?
-                  .caption
-                    %p= medium.description
+                  .caption= medium.description.truncate(50)
                 // Need to include image for Magnific popup
                 %img{src: medium.photo.url, :style => "display: none"}
         - else
@@ -22,6 +21,5 @@
             %a.magnific.mfp-iframe{:href => "https://www.youtube.com/watch?v=#{medium.uid}", :title => medium.description}
               .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
                 =image_tag "video_arrow_right.png"
-                .caption
-                  %p= medium.description
+                .caption= medium.description.truncate(50)
                 %img{src: "http://img.youtube.com/vi/#{medium.uid}/0.jpg", :style => "display: none"}
