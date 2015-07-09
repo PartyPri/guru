@@ -1,35 +1,29 @@
 .grid-container
   .row-fluid.grid
-    %ul.list-inline
-      %li.m-bottom-20
-        - if current_user && current_user.id == @user.id
+    %ul.list-inline#lightgallery
+      - if current_user && current_user.id == @user.id
+        %li.m-bottom-20
           = link_to new_video_path(reel: @reel) do
             .new-grid-item
               =image_tag "lt-turq_add.png", style: 'width: 50px'
               %h4 Add Media
       - @reel.media.reverse.each do |medium|
         - if medium.is_a? Image
-          %li.m-bottom-20
+          %li.m-bottom-20{"data-src" => "#{medium.photo.url}"}
             -if current_user && current_user.id == @user.id
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            %a.magnific{:href => "#popup"}
-              .grid-item{:style => "background-image: url(#{medium.photo.url});"}
-                - if medium.description.present?
-                  .caption
-                    %p= medium.description
-                // Need to include image for Magnific popup
-            #popup.mfp-hide
-              %img{src: medium.photo.url}
-              %p.pull-left= medium.description
-              -if current_user && current_user.id == @user.id
-                %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-        - else
-          %li.m-bottom-20
-            %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            %a.magnific.mfp-iframe{:href => "https://www.youtube.com/watch?v=#{medium.uid}", :title => medium.description}
-              .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
-                =image_tag "video_arrow_right.png"
+            .grid-item{:style => "background-image: url(#{medium.photo.url});"}
+              - if medium.description.present?
                 .caption
                   %p= medium.description
-                %img{src: "http://img.youtube.com/vi/#{medium.uid}/0.jpg", :style => "display: none"}
-            
+              %img{src: "#{medium.photo.url}", style: "display: none"}
+        - else
+          %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}"}
+            -if current_user && current_user.id == @user.id
+              %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+            .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
+              =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
+              =image_tag "video_arrow_right.png"
+              .caption
+                %p= medium.description
+

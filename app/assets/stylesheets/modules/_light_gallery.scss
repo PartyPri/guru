@@ -1,0 +1,8 @@
+#lg-outer #lg-gallery .thumb-cont .thumb > img {
+  height: 100%; 
+  width: 100%;
+}
+
+#lg-outer #lg-gallery .thumb-cont .thumb-inner .thumb:nth-child(1) {
+  display: none;
+}
