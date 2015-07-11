@@ -71,4 +71,11 @@ class ReelsController < ApplicationController
     @reel.destroy
     redirect_to current_user
   end
+
+  def sort
+    params[:reel].each_with_index do |id, index|
+      Reel.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
+  end
 end

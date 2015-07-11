@@ -21,7 +21,7 @@
               %br
       .row
         %label{for: "media"} Drag to Reorder:
-        %ul.list-inline.form-group.edit-grid.clearfix
+        %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           = f.fields_for :images do |builder|
             %li
               .edit-item{:style => "background-image: url(#{builder.object.photo.url})"}

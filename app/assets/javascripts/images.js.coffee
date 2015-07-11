@@ -1,4 +1,6 @@
 jQuery ->
 	$('#reeldrag').sortable({
-	items: "> li:not(#exclude)",
-	placeholder: "sortable-placeholder"});
+	placeholder: "sortable-placeholder",
+	update: -> 
+		$.post($(this).data('update-url'), $(this).sortable('serialize'))
+	});
