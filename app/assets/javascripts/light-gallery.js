@@ -1,4 +1,11 @@
 $(document).ready(function() {
-  $('#lightgallery').lightGallery();
-  $('#ignore').lightGallery().destroy();
+  var gallery = $('#lightgallery').lightGallery();
+
+  $('.media-edit').click(function() {
+    gallery.destroy();
+  });
+
+  $('.new-grid-item').click(function() {
+    gallery.destroy();
+  });
 });
