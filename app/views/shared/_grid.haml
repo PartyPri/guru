@@ -14,8 +14,7 @@
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             .grid-item{:style => "background-image: url(#{medium.photo.url});"}
               - if medium.description.present?
-                .caption
-                  %p= medium.description
+                .caption= medium.description.truncate(50)
               %img{src: "#{medium.photo.url}", style: "display: none"}
         - else
           %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}"}
@@ -24,6 +23,4 @@
             .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
               =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
               =image_tag "video_arrow_right.png"
-              .caption
-                %p= medium.description
-
+              .caption= medium.description.truncate(50)
