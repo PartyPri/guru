@@ -22,15 +22,15 @@
       .row
         %label{for: "media"} Drag to Reorder:
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
-          @media.each do |medium|
-            - if medium.is_a?(Image)
+          - @reel.media.each do |medium|
+            - if medium.is_a? Image
               = f.fields_for :images do |builder|
-                %li
+                = content_tag_for :li, medium do
                   .edit-item{:style => "background-image: url(#{builder.object.photo.url})"}
                   / = image_tag(builder.object.photo.url(:medium))
-            - elsif medium.is_a?(Video)
+            - else
               = f.fields_for :videos do |builder|
-                %li
+                = content_tag_for :li, medium do
                   .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{builder.object.uid}/0.jpg)"}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
