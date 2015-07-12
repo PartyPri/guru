@@ -54,6 +54,11 @@ class ReelsController < ApplicationController
   def edit
     @reel = Reel.find(params[:id])
     @media = @reel.media
+
+    unless current_user && current_user == @reel.user
+      redirect_to :root
+      flash[:notice] = "You do not have permission to view that page."
+    end
   end
 
   def update
