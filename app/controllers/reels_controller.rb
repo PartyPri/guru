@@ -53,6 +53,7 @@ class ReelsController < ApplicationController
 
   def edit
     @reel = Reel.find(params[:id])
+    @media = @reel.media
   end
 
   def update
