@@ -1,0 +1,39 @@
+#edit-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      = form_for @reel, :html => { :method => :put, :multipart => true } do |f| 
+        .modal-header
+          %h4 Edit This Image
+        .modal-body
+          = f.fields_for :images do |builder|
+            .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              .row
+                .col-sm-2
+                .col-sm-10
+                  = image_tag(builder.object.photo.url(:medium))
+              .row
+                .col-sm-2
+                  = builder.label :description, "Caption"
+                .col-sm-10
+                  = builder.text_area :description, class: "form-control", rows: 2
+              .modal-footer
+                = builder.check_box :_destroy, class: "pull-left"
+                %span.pull-left.m-x-15 Delete Image?
+                = f.submit "Save Changes", class: "btn-save pull-right"
+                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
+          = f.fields_for :videos do |builder|
+            .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              .row
+                .col-sm-2
+                .col-sm-10
+                  %iframe.youtube-player{type: "text/html", width: "263", height: "175", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
+              .row
+                .col-sm-2
+                  = builder.label :description, "Caption"
+                .col-sm-10
+                  = builder.text_area :description, class: "form-control", rows: 2
+              .modal-footer
+                = builder.check_box :_destroy, class: "pull-left"
+                %span.pull-left.m-x-15 Delete Image?
+                = f.submit "Save Changes", class: "btn-save pull-right"
+                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
