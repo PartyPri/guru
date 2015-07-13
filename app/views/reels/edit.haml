@@ -22,16 +22,20 @@
       .row
         %label{for: "media"} Drag to Reorder:
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
-          - @reel.media.each do |medium|
-            - if medium.is_a? Image
-              = f.fields_for :images do |builder|
-                = content_tag_for :li, medium do
+          - order = []
+          - @reel.media.order("position").each do |medium|
+            = content_tag_for :li, medium do
+              - order << medium.id
+              - if medium.is_a? Image
+                = f.fields_for :images do |builder|
+                  / %li
                   .edit-item{:style => "background-image: url(#{builder.object.photo.url})"}
                   / = image_tag(builder.object.photo.url(:medium))
-            - else
-              = f.fields_for :videos do |builder|
-                = content_tag_for :li, medium do
+              - elsif medium.is_a? Video
+                = f.fields_for :videos do |builder|
+                  / %li
                   .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{builder.object.uid}/0.jpg)"}
+          %input{name: "reel[order_ids][]", type: "hidden", value: order}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
         /   = f.text_field :tag_list

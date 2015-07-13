@@ -1,5 +1,6 @@
 class Reel < ActiveRecord::Base
-  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id, :tag_list, :description
+  attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :user_id, :tag_list, :description, :order_ids
+  attr_accessor :order_ids
   is_impressionable
 
   belongs_to :user

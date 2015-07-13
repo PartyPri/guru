@@ -11,7 +11,7 @@ Guru::Application.routes.draw do
   resources :interests
   resources :users, :only => [:show, :edit, :update]
   resources :reels do
-    collection { post :sort}
+    collection { post :sort }
   end
   resources :images
   resources :articles

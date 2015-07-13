@@ -38,7 +38,7 @@ class ReelsController < ApplicationController
 
   def create
     if user_signed_in?
-      @reel = Reel.new(params[:reel])  
+      @reel = Reel.new(params[:reel])
       @reel.user = current_user
       if @reel.save
         redirect_to @reel
@@ -78,9 +78,7 @@ class ReelsController < ApplicationController
   end
 
   def sort
-    params[:reel].each_with_index do |id, index|
-      Reel.update_all({position: index+1}, {id: id})
-    end
+    params[:reel][:order_ids]
     render nothing: true
   end
 end
