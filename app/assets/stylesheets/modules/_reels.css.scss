@@ -66,8 +66,9 @@
   margin-top: 10px 0;
 }
 
-.fb-share-button {
+.share {
   text-align: right;
+  vertical-align: middle; 
   margin: 10px 0;
 }
 
@@ -75,13 +76,14 @@
   .reel-page {
     .link-bar, .link-bar .links {
       text-align: center;
+      margin-top: 15px;
 
       .views {
         margin-top: 15px;
       }
 
-      .fb-share-button {
-        margin: 15px;
+      .share {
+        margin: 0 15px;
       }
     }
   }
