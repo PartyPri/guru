@@ -54,6 +54,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 #Views
 gem 'impressionist'
 
+#Sortable
+gem 'acts_as_list'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end

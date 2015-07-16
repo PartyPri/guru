@@ -78,7 +78,9 @@ class ReelsController < ApplicationController
   end
 
   def sort
-    params[:reel][:order_ids]
+    params[:medium].each_with_index do |id, index|
+      Medium.update_all({position: index+1}, {id: id})
+    end
     render nothing: true
   end
 end

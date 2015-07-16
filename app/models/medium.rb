@@ -6,4 +6,5 @@ class Medium < ActiveRecord::Base
   validates_presence_of :reel_id
 
   acts_as_taggable
+  acts_as_list
 end
