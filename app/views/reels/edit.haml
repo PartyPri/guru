@@ -24,17 +24,14 @@
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           - order = []
           - @reel.media.order("position").each do |medium|
-            = content_tag_for :li, medium do
-              - order << medium.id
-              - if medium.is_a? Image
-                = f.fields_for :images do |builder|
-                  / %li
-                  .edit-item{:style => "background-image: url(#{builder.object.photo.url})"}
-                  / = image_tag(builder.object.photo.url(:medium))
-              - elsif medium.is_a? Video
-                = f.fields_for :videos do |builder|
-                  / %li
-                  .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{builder.object.uid}/0.jpg)"}
+            - order << medium.id
+            - if medium.is_a? Image
+              %li
+                .edit-item{:style => "background-image: url(#{medium.photo.url})"}
+                / = image_tag(builder.object.photo.url(:medium))
+            - elsif medium.is_a? Video
+              %li
+                .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
           %input{name: "reel[order_ids][]", type: "hidden", value: order}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
