@@ -15,6 +15,14 @@ module ApplicationHelper
     end
   end
 
+  def reel_image
+    if @reel.images.any?
+      @reel.images.last.photo
+    else
+      @user.avatar
+    end
+  end
+
   def user_image
     @user.avatar ? @user.avatar.url : "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
   end
