@@ -26,11 +26,10 @@
             - if medium.is_a? Image
               %li{class: "medium", id: "medium_#{medium.id}"}
                 .edit-item{:style => "background-image: url(#{medium.photo.url})"}
-                / = image_tag(builder.object.photo.url(:medium))
+                / = image_tag(medium.photo.url(:medium))
             - elsif medium.is_a? Video
               %li{class: "medium", id: "medium_#{medium.id}"}
                 .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-          %input{name: "media_order[]", type: "hidden"}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
         /   = f.text_field :tag_list
