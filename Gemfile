@@ -1,5 +1,4 @@
 source 'http://rubygems.org'
-ruby "2.1.1"
 
 #General
 gem 'rails', '3.2.12'
@@ -10,6 +9,7 @@ gem 'sass', '~> 3.3'
 gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', "< 3.0.0"
 gem 'jquery-ui-sass-rails'
+gem 'coffee-script-source', '1.8.0'
 
 #Database
 gem 'pg'
@@ -53,6 +53,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 #Views
 gem 'impressionist'
+
+#Sortable
+gem 'acts_as_list'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'

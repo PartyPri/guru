@@ -10,7 +10,9 @@ Guru::Application.routes.draw do
   resources :email_contacts, only: :create
   resources :interests
   resources :users, :only => [:show, :edit, :update]
-  resources :reels
+  resources :reels do
+    collection { post :sort }
+  end
   resources :images
   resources :articles
   resources :claim_users, :only => [:new, :create]
