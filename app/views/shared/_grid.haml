@@ -1,5 +1,5 @@
 .grid-container
-  .row-fluid.grid
+  .row-fluid.grid.clearfix
     %ul.list-inline#lightgallery
       - if current_user && current_user.id == @user.id
         %li.m-bottom-20
@@ -7,7 +7,7 @@
             .new-grid-item
               =image_tag "lt-turq_add.png", style: 'width: 50px'
               %h4 Add Media
-      - @reel.media.reverse.each do |medium|
+      - @media.each do |medium|
         - if medium.is_a? Image
           %li.m-bottom-20{"data-src" => "#{medium.photo.url}"}
             -if current_user && current_user.id == @user.id

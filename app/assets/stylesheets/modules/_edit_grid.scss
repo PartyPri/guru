@@ -1,0 +1,24 @@
+.edit-grid {
+  padding: 30px 15px;
+  background: #fff;
+  text-align: center;
+
+  li {
+    float: left;
+    width: 25%;
+    height: 200px;
+    margin-bottom: 15px;
+    padding-left: 0;
+    vertical-align: top;
+
+    .edit-item {
+      height: 100%;
+      @include background-image;
+      @include border-radius(10px);
+    }
+  }
+
+  li:hover {
+    cursor: url(move_arrows.png), auto;
+  }
+}
