@@ -12,11 +12,14 @@
 
   ul {
     padding-left: 30px;
+    list-style-type: none;
   }
 
   li {
     vertical-align: top;
-    padding: 0 10px 0 0 !important;
+    margin: 0 15px 20px 0;
+    padding: 0;
+    float: left;
     position: relative;
   }
 
@@ -74,6 +77,14 @@
   border-color: $lt-turq;
 }
 
+
+.sortable-placeholder {
+  height: 300px;
+  width: 350px;
+  border: dashed 2px $med-gray;
+  @include border-radius(10px);
+}
+
 .media-edit {
   position: absolute;
   right: 25px;
@@ -93,7 +104,6 @@
 @media (max-width: 767px) {
   .grid-container {
     width: 100%;
-    text-align: center;
 
     ul {
       padding: 0;
@@ -101,12 +111,15 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 729px) {
   .grid ul li {
     padding: 0 !important;
+    float: none;
+
   }
   
   .grid-item, .new-grid-item {
     width: 300px;
+    margin: 0 auto;
   }
 }

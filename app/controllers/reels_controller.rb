@@ -26,6 +26,7 @@ class ReelsController < ApplicationController
     @images = @reel.images
     @videos = @reel.videos
     @user = @reel.user
+    @media = @reel.media.order("position")
   end
 
   def new
@@ -38,7 +39,7 @@ class ReelsController < ApplicationController
 
   def create
     if user_signed_in?
-      @reel = Reel.new(params[:reel])  
+      @reel = Reel.new(params[:reel])
       @reel.user = current_user
       if @reel.save
         redirect_to @reel
@@ -53,6 +54,7 @@ class ReelsController < ApplicationController
 
   def edit
     @reel = Reel.find(params[:id])
+    @media = @reel.media.order("position")
 
     unless current_user && current_user == @reel.user
       redirect_to :root
@@ -75,5 +77,12 @@ class ReelsController < ApplicationController
     @reel = Reel.find(params[:id])
     @reel.destroy
     redirect_to current_user
+  end
+
+  def sort
+    params[:medium].each_with_index do |id, index|
+      Medium.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
   end
 end
