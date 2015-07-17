@@ -22,7 +22,7 @@
       .row
         %label{for: "media"} Drag to Reorder:
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
-          - @reel.media.order("position").each do |medium|
+          - @media.each do |medium|
             - if medium.is_a? Image
               %li{class: "medium", id: "medium_#{medium.id}"}
                 .edit-item{:style => "background-image: url(#{medium.photo.url})"}

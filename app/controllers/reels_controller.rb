@@ -26,6 +26,7 @@ class ReelsController < ApplicationController
     @images = @reel.images
     @videos = @reel.videos
     @user = @reel.user
+    @media = @reel.media.order("position")
   end
 
   def new
@@ -53,6 +54,7 @@ class ReelsController < ApplicationController
 
   def edit
     @reel = Reel.find(params[:id])
+    @media = @reel.media.order("position")
 
     unless current_user && current_user == @reel.user
       redirect_to :root
