@@ -23,6 +23,18 @@ module ApplicationHelper
     end
   end
 
+  def last_reel_medium
+    if @reel.media.any?
+      if @reel.media.last.is_a? Image 
+        @reel.media.last.photo
+      else
+        "http://www.youtube.com/v/#{@reel.media.last.uid}"
+      end
+    else
+      @user.avatar
+    end
+  end
+
   def user_image
     @user.avatar ? @user.avatar.url : "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
   end
@@ -32,12 +44,10 @@ module ApplicationHelper
   end
 
   def reel_description
-    if !@reel.images.empty?
-      @reel.images.first.description
-    elsif !@reel.videos.empty?
-      @reel.videos.first.description
-    else
+    if @reel.description.empty?
       "What do you rep?"
+    else
+      @reel.description
     end
   end
   
