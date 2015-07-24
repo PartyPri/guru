@@ -78,14 +78,6 @@
   border-color: $lt-turq;
 }
 
-
-.sortable-placeholder {
-  height: 300px;
-  width: 350px;
-  border: dashed 2px $med-gray;
-  @include border-radius(10px);
-}
-
 .media-edit {
   position: absolute;
   right: 25px;
