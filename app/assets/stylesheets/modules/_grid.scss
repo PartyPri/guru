@@ -96,6 +96,11 @@
   font-size: 24px;
 }
 
+.media-edit.twitter-share-button {
+  position: absolute !important;
+  left: 10px;
+}
+
 @media (max-width: 1140px) {
   .grid-container {
     width: 770px;

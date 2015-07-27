@@ -9,16 +9,18 @@
               %h4 Add Media
       - @media.each do |medium|
         - if medium.is_a? Image
-          %li.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>"}
+          %li.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
             -if current_user && current_user.id == @user.id
+              %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             .grid-item{:style => "background-image: url(#{medium.photo.url});"}
               - if medium.description.present?
                 .caption= medium.description.truncate(50)
               %img{src: "#{medium.photo.url}", style: "display: none"}
         - else
-          %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>"}
+          %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
             -if current_user && current_user.id == @user.id
+              %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
               =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
