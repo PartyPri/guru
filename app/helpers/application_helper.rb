@@ -26,7 +26,7 @@ module ApplicationHelper
   def last_reel_medium
     if @reel.media.any?
       if @reel.media.last.is_a? Image 
-        @reel.media.last.photo
+        "#{root_url}#{@reel.images.last.photo}"
       else
         "http://www.youtube.com/v/#{@reel.media.last.uid}"
       end
