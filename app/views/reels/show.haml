@@ -1,7 +1,9 @@
 - content_for :head do
   %meta{ property: "og:title", content: @reel.name }
   %meta{ property: "og:type", content: "website" } 
-  %meta{ property: "og:url", content: reel_url(@reel) } 
+  %meta{ property: "og:url", content: reel_url(@reel) }
+  - if @reel.media.last.is_a? Video
+    %meta{property: "og:image", content: "http://img.youtube.com/vi/#{@reel.media.last.uid}/0.jpg" }
   %meta{ property: "og:#{@reel.media.last.type.downcase}", content: last_reel_medium }
   %meta{ property: "og:description", content: reel_description }
   %meta{ name: "twitter:card", content: "summary_large_image" }
@@ -42,7 +44,7 @@
         .col-md-4.views
           %h4.p-top-10 #{@reel.impressionist_count} views
         .col-md-2.links
-          .share.fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+          .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
           %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
         .col-md-2.links
           - if current_user && current_user.id == @user.id        
