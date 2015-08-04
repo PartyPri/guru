@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :reels
   has_many :images, through: :reels
   has_many :videos, through: :reels
-  has_many :articles, through: :reels
+  has_many :stories, through: :reels
 
   has_many :followerships, dependent: :destroy
   has_many :followers, through: :followerships

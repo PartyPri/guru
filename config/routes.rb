@@ -14,7 +14,7 @@ Guru::Application.routes.draw do
     collection { post :sort }
   end
   resources :images
-  resources :articles
+  resources :stories
   resources :claim_users, :only => [:new, :create]
   #resources :events do
   #  resources :registrations, :only => [:create, :new]
