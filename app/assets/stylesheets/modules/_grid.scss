@@ -12,11 +12,20 @@
 
   ul {
     padding-left: 30px;
+    list-style-type: none;
+    text-align: center;
   }
 
   li {
     vertical-align: top;
-    padding: 0 10px 0 0 !important;
+    margin: 0 15px 20px 0;
+    padding: 0;
+    float: left;
+    position: relative;
+  }
+
+  li:hover .media-edit {
+    display: block;
   }
 
   img, iframe {
@@ -24,14 +33,16 @@
   }
 
   .caption {
-    padding: 5px 30px;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
     color: #fff;
     background-color:rgba(0, 0, 0, 0.4);
   }
 }
 
 .grid-item {
-  padding-top: 260px;
   position: relative;
   overflow: hidden;
   height: 300px;
@@ -67,6 +78,21 @@
   border-color: $lt-turq;
 }
 
+.media-edit {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+  z-index: 5;
+  color: $turq;
+  display: none;
+  font-size: 24px;
+}
+
+.media-edit.twitter-share-button {
+  position: absolute !important;
+  left: 10px;
+}
+
 @media (max-width: 1140px) {
   .grid-container {
     width: 770px;
@@ -76,7 +102,6 @@
 @media (max-width: 767px) {
   .grid-container {
     width: 100%;
-    text-align: center;
 
     ul {
       padding: 0;
@@ -84,12 +109,16 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 729px) {
   .grid ul li {
     padding: 0 !important;
+    margin: 0 0 20px;
+    float: none;
+
   }
   
   .grid-item, .new-grid-item {
     width: 300px;
+    margin: 0 auto;
   }
 }

@@ -1,9 +1,5 @@
-class Article < ActiveRecord::Base
-  attr_accessible :body, :title, :reel_id
+class Article < Medium
+  attr_accessible :body
 
-  # Associations
-  belongs_to :reel
-
-  # Validations
-  validates_presence_of :body, :title, :reel_id
+  validates_presence_of :body, :title
 end

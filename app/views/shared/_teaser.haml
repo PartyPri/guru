@@ -23,7 +23,7 @@
         /       %li
         /         = interest.name
     %ul.list-inline.media-list
-      - reel.media.reverse.take(4).each do |medium|
+      - reel.media.order("position").take(4).each do |medium|
         - if medium.is_a? Image
           %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
         - else # Video

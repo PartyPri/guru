@@ -1,0 +1,52 @@
+.edit-grid {
+  padding: 30px 15px;
+  background: #fff;
+  text-align: center;
+
+  li {
+    float: left;
+    width: 25%;
+    height: 200px;
+    margin-bottom: 15px;
+    padding-left: 0;
+    vertical-align: top;
+
+    .edit-item {
+      height: 100%;
+      @include background-image;
+      @include border-radius(10px);
+    }
+  }
+
+  li:hover {
+    cursor: url(move_arrows.png), auto;
+  }
+}
+
+.sortable-placeholder {
+  height: 200px;
+  width: 350px;
+  border: dashed 2px $med-gray;
+  @include border-radius(10px);
+}
+
+@media (max-width: 769px) {
+  .edit-grid {
+    li {
+      width: 50%;
+    }
+  }
+
+  .sortable-placeholder {
+    padding: 22% 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .edit-grid {
+    li {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}

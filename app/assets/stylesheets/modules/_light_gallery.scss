@@ -1,0 +1,38 @@
+#lg-outer #lg-gallery .thumb-cont .thumb > img {
+  height: 100%; 
+  width: 100%;
+}
+
+#lg-outer #lg-gallery .thumb-cont .thumb:nth-child(1) {
+  display: none !important;
+}
+
+#lg-slider .lg-slide img {
+  min-width: 400px;
+  max-width: 400px;
+}
+
+#lg-gallery .custom-html {
+  top: initial;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 10px;
+  white-space: pre-wrap;
+  text-align: center;
+  background: none;
+}
+
+@media (max-width: 400px) {
+  .media-edit {
+    display: block;
+  }
+
+  #lg-slider .lg-slide img {
+    min-width: 300px;
+    max-width: 300px;
+  } 
+
+  #lg-gallery .custom-html {
+    width: 300px;
+  }
+}

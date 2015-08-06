@@ -1,4 +1,4 @@
-- reel.media.each do |medium|
+- reel.media.order("position").each do |medium|
   - if medium.is_a? Image
     %div.m-20
       %a

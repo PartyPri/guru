@@ -1,49 +1,41 @@
 =render :layout => 'shared/form_layout' do
-  .row
+  .row-fluid
     .col-xs-12.text-center#new-media
       %h1 Edit Reel
-  .row.p-top-40
-    .col-xs-12.col-md-6.col-md-offset-3
-      = form_for @reel, :html => { :method => :put, :multipart => true } do |f|
-        .form-group
-          %label{for: "name"} Name:
-          = f.text_field :name, class: "form-control"
-        .form-group
-          %label{for: "description"} Description:
-          = f.text_area :description, class: "form-control", rows: 3
-        .form-group
-          %label{for: "interests"} Interests:
-          %span.help-block Choose the interests the best describe your reel.
-          - Interest.all.each do |interest|
-            = hidden_field_tag "reel[interest_ids][]", nil
-            = check_box_tag "reel[interest_ids][]", interest.id, @reel.interest_ids.include?(interest.id)
-            = interest.name
-            %br
-        .form-group
-          %label{for: "media"} Media:
-          <br><br>
-          = f.fields_for :images do |builder|
-            = image_tag(builder.object.photo.url(:medium))
-            = builder.check_box :_destroy
-            = builder.label :_destroy, "Remove image"
-            <br>
-            = builder.label :description, "Change caption"
-            = builder.text_field :description, class: "form-control"
-            <br><br>
-          = f.fields_for :videos do |builder|
-            %iframe.youtube-player{type: "text/html", width: "450", height: "296", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
-            = builder.check_box :_destroy
-            = builder.label :_destroy, "Remove video"
-            <br>
-            = builder.label :description, "Change description"
-            = builder.text_field :description, class: "form-control"
-            <br><br>
+    = form_for @reel, :html => { :method => :put, :multipart => true } do |f|
+      .row.p-top-40
+        .col-xs-12.col-md-6.col-md-offset-3
+          .form-group
+            %label{for: "name"} Name:
+            = f.text_field :name, class: "form-control"
+          .form-group
+            %label{for: "description"} Description:
+            = f.text_area :description, class: "form-control", rows: 3
+          .form-group
+            %label{for: "interests"} Interests:
+            %span.help-block Choose the interests the best describe your reel.
+            - Interest.all.each do |interest|
+              = hidden_field_tag "reel[interest_ids][]", nil
+              = check_box_tag "reel[interest_ids][]", interest.id, @reel.interest_ids.include?(interest.id)
+              = interest.name
+              %br
+      .row-fluid
+        %label{for: "media"} Drag to Reorder:
+        %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
+          - @media.each do |medium|
+            - if medium.is_a? Image
+              %li{class: "medium", id: "medium_#{medium.id}"}
+                .edit-item{:style => "background-image: url(#{medium.photo.url})"}
+                / = image_tag(medium.photo.url(:medium))
+            - elsif medium.is_a? Video
+              %li{class: "medium", id: "medium_#{medium.id}"}
+                .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
         /   = f.text_field :tag_list
         %hr.m-y-20
         .text-center
-          = f.submit "Save Changes", class: "button btn btn-primary w-100"       
+          = f.submit "Save Changes", class: "button btn btn-primary w-100", id: "sort_reel"       
 .container          
   .container
     .form

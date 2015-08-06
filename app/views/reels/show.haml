@@ -1,12 +1,22 @@
 - content_for :head do
   %meta{ property: "og:title", content: @reel.name }
   %meta{ property: "og:type", content: "website" } 
-  %meta{ property: "og:url", content: reel_url(@reel) } 
-  %meta{ property: "og:image", content: user_image }
+  %meta{ property: "og:url", content: reel_url(@reel) }
+  - if @reel.media.last.is_a? Video
+    %meta{property: "og:image", content: "http://img.youtube.com/vi/#{@reel.media.last.uid}/0.jpg" }
+  %meta{ property: "og:#{@reel.media.last.type.downcase}", content: last_reel_medium }
   %meta{ property: "og:description", content: reel_description }
+  %meta{ name: "twitter:card", content: "summary_large_image" }
+  %meta{ name: "twitter:site", content: "@Evrystep" }
+  %meta{ name: "twitter:title", content: "Evrystep Reel" }
+  %meta{ name: "twitter:description", content: reel_description }
+  %meta{ name: "twitter:image", content: reel_image }
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 - media = @images.zip(@videos).flatten.compact
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
 = render 'shared/nav'
+-if current_user && current_user.id == @user.id
+  = render 'shared/modal_edit'
 .reel-page
   .container
     .hero
@@ -34,7 +44,8 @@
         .col-md-4.views
           %h4.p-top-10 #{@reel.impressionist_count} views
         .col-md-2.links
-          .fb-share-button{"data-href" => share_object('reel'), "data-layout" => "button"}
+          .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
+          %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
         .col-md-2.links
           - if current_user && current_user.id == @user.id        
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
