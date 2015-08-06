@@ -13,7 +13,11 @@ Guru::Application.routes.draw do
   resources :reels do
     collection { post :sort }
   end
-  resources :images
+  resources :images do
+    member do
+      put "like", to: "images#upvote"
+    end
+  end
   resources :articles
   resources :claim_users, :only => [:new, :create]
   #resources :events do
@@ -24,7 +28,11 @@ Guru::Application.routes.draw do
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
 
-  resources :videos
+  resources :videos do
+    member do
+      put "like", to: "videos#upvote"
+    end
+  end
   
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 

@@ -26,3 +26,11 @@
               =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
               =image_tag "video_arrow_right.png"
               .caption= medium.description.truncate(50)
+
+  -@media.each do |medium|
+    - if medium.is_a? Image
+      = link_to "upvote image", like_image_path(medium), method: :put, remote: true, class: "vote"
+      %div{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+    - else
+      = link_to "upvote video", like_video_path(medium), method: :put, remote: true, class: "vote"
+      %div{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
