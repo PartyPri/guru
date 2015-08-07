@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
     :first_name, :last_name, :description, :bio, :cover_photo, :avatar, :location, :interest_ids,
-    :uid, :provider, :token, :refresh_token, :expires_at, :claim_token
+    :uid, :provider, :token, :refresh_token, :expires_at, :claim_token, :claim_email
 
   # Associations
 
@@ -44,6 +44,16 @@ class User < ActiveRecord::Base
   do_not_validate_attachment_file_type :cover_photo
 
   # Methods
+
+  #Update claim user attributes
+  def update_claim_attributes(token, claim_user)
+    self.claim_token = token
+    self.first_name = claim_user.first_name
+    self.last_name = claim_user.last_name
+    self.cover_photo = claim_user.cover_photo
+    self.reels = claim_user.reels
+    self.save!
+  end
 
   #Google Authentication
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
