@@ -10,7 +10,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       if @claim_token
         @claim_user = User.find_by_claim_token(@claim_token)
         if @claim_user
-          @user.update_attribute(:claim_token, @claim_token)
+          @user.update_claim_attributes(@claim_token, @claim_user)
         end
       end
 
