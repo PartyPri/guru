@@ -27,7 +27,7 @@
               =image_tag "video_arrow_right.png"
               .caption= medium.description.truncate(50)
         - if medium.is_a? Story
-          %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'>#{medium.body}</div>", "data-share-id" => "#{medium.id}"}
+          %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover'>#{medium.title}</div>#{medium.body}</div>", "data-share-id" => "#{medium.id}"}
             -if current_user && current_user.id == @user.id
               %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
