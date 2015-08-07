@@ -4,7 +4,9 @@
   %meta{ property: "og:url", content: reel_url(@reel) }
   - if @reel.media.last.is_a? Video
     %meta{property: "og:image", content: "http://img.youtube.com/vi/#{@reel.media.last.uid}/0.jpg" }
-  %meta{ property: "og:#{@reel.media.last.type.downcase}", content: last_reel_medium }
+    %meta{property: "og:video", content: "http://www.youtube.com/v/#{@reel.media.last.uid}"}
+  - else
+    %meta{property: "og:image", content: URI.join(request.url, @reel.images.last.photo.url)}
   %meta{ property: "og:description", content: reel_description }
   %meta{ name: "twitter:card", content: "summary_large_image" }
   %meta{ name: "twitter:site", content: "@Evrystep" }
