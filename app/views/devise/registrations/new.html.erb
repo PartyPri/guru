@@ -7,18 +7,19 @@
     <div style="text-align: center" class="h2 no-top-margin">Sign up for evrystep!</div>
 
     <div class="form-group">  
-      <div class="col-sm-2">
-      </div>
-      <div class="col-sm-10">
-        <span class="help-block"><span class="glyphicon glyphicon-lock"></span> Evrystep respects your privacy and will not misuse or sell your personal information.</span>
-      </div> 
-    </div>
-
-    <div class="form-group">  
       <div class="controls">
         <%= f.label :email, "Email *", :class => 'col-sm-2 h4 control-label' %>
         <div class="col-sm-10">
           <%= f.email_field :email, :autofocus => true, :class => 'form-control input-lg' %>
+        </div>
+      </div>  
+    </div>
+
+    <div class="form-group">  
+      <div class="controls">
+        <%= f.label :claim_email, "Claim Email *", :class => 'col-sm-2 h4 control-label' %>
+        <div class="col-sm-10">
+          <%= f.email_field :claim_email, :class => 'form-control input-lg' %>
         </div>
       </div>  
     </div>
@@ -50,57 +51,7 @@
       </div>
     </div>
 
-    <div class="form-group">  
-      <div class="controls">
-        <%= f.label :location, "Location", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :location, :class => 'form-control input-lg', :placeholder => 'City, State' %>
-        </div>
-      </div>  
-    </div>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label "Profile picture", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.file_field :avatar %>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">  
-      <div class="controls">
-        <%= f.label :description, "Personal tagline", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%= f.text_field :description, :class => 'form-control input-lg', :placeholder => 'short description of you for your profile' %>
-        </div>
-      </div>  
-    </div>
-
-    <div class="form-group">
-      <div class="controls">
-        <%= f.label "Your interests", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <% Interest.all.each do |interest| %>
-            <%= hidden_field_tag "user[interest_ids][]", nil %>
-            <%= check_box_tag "user[interest_ids][]", interest.id %>
-            <!-- TODO Add label_tag for better UI - see Rails Cast 17 -->
-            <%= interest.name %><br>
-          <% end %>
-          <span class="help-block">Choose your favorite interests to follow. These will show up on your profile.</span>
-        </div>
-      </div>
-    </div>
-
-<!--     <div class="form-group">
-      <div class="controls">
-        <%#= f.label :password_confirmation, "Confirm password", :class => 'col-sm-2 h4 control-label' %>
-        <div class="col-sm-10">
-          <%#= f.password_field :password_confirmation, :class => 'form-control input-lg' %>
-        </div>
-      </div>
-    </div> -->
-
+    <%= f.hidden_field :claim_token, value: "#{SecureRandom.hex}" %>
     <div class="form-actions">
       <%= f.submit "Sign up", :class => 'btn btn-info btn-lg' %>
     </div>

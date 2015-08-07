@@ -258,6 +258,7 @@ ActiveRecord::Schema.define(:version => 20150712032441) do
     t.integer  "cover_photo_file_size"
     t.datetime "cover_photo_updated_at"
     t.string   "claim_token"
+    t.string   "claim_email"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
