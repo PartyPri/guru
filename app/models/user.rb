@@ -46,10 +46,12 @@ class User < ActiveRecord::Base
   # Methods
 
   #Update claim user attributes
-  def update_claim_attributes(token, first_name, last_name)
+  def update_claim_attributes(token, claim_user)
     self.claim_token = token
-    self.first_name = first_name
-    self.last_name = last_name
+    self.first_name = claim_user.first_name
+    self.last_name = claim_user.last_name
+    self.cover_photo = claim_user.cover_photo
+    self.reels = claim_user.reels
     self.save!
   end
 
