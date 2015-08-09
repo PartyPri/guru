@@ -10,6 +10,7 @@ class Interest < ActiveRecord::Base
 
   has_many :images, through: :reels
   has_many :videos, through: :reels
+  has_many :stories, through: :reels
 
   #Attachments
   has_attached_file :cover_photo, styles: { large: "1000x400#" }
