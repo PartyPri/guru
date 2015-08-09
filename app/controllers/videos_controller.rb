@@ -44,8 +44,9 @@ class VideosController < ApplicationController
 
   def create_youtube_video
     @video = Video.new(:uid => params[:uid], :description => params[:description], :reel_id => params[:video][:reel_id], :title => params[:title])
+    @reel = Reel.find(params[:video][:reel_id])
     if @video.save
-      redirect_to :root
+      redirect_to @reel
       flash[:success] = "Video successfully added!"
     else
       render 'youtube'
