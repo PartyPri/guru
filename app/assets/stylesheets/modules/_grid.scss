@@ -13,6 +13,7 @@
   ul {
     padding-left: 30px;
     list-style-type: none;
+    text-align: center;
   }
 
   li {
@@ -77,22 +78,19 @@
   border-color: $lt-turq;
 }
 
-
-.sortable-placeholder {
-  height: 300px;
-  width: 350px;
-  border: dashed 2px $med-gray;
-  @include border-radius(10px);
-}
-
 .media-edit {
   position: absolute;
   right: 25px;
   top: 10px;
-  z-index: 5;
+  z-index: 1;
   color: $turq;
   display: none;
   font-size: 24px;
+}
+
+.media-edit.twitter-share-button {
+  position: absolute !important;
+  left: 10px;
 }
 
 @media (max-width: 1140px) {
@@ -114,6 +112,7 @@
 @media (max-width: 729px) {
   .grid ul li {
     padding: 0 !important;
+    margin: 0 0 20px;
     float: none;
 
   }
