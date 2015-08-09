@@ -15,9 +15,9 @@ FactoryGirl.define do
     user
   end
 
-  factory :story do
-    title "Story test title"
-    body "Story test body"
+  factory :article do
+    title "Article test title"
+    body "Article test body"
     reel
   end
 end
