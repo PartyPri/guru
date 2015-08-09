@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150804001620) do
+ActiveRecord::Schema.define(:version => 20150712032441) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20150804001620) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "articles", :force => true do |t|
+    t.text     "title"
+    t.text     "body"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "reel_id"
+    t.integer  "user_id"
+    t.integer  "interest_id"
+  end
 
   create_table "email_contacts", :force => true do |t|
     t.string   "email"
@@ -187,16 +197,6 @@ ActiveRecord::Schema.define(:version => 20150804001620) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "availability_confirmation"
-  end
-
-  create_table "stories", :force => true do |t|
-    t.text     "title"
-    t.text     "body"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "reel_id"
-    t.integer  "user_id"
-    t.integer  "interest_id"
   end
 
   create_table "taggings", :force => true do |t|

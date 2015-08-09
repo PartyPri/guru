@@ -32,6 +32,5 @@
 //= interests
 //= require edit-modal
 //= require jquery-ui
-//= require ckeditor/init
 //= require_tree .
 //

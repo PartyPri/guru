@@ -57,9 +57,6 @@ gem 'impressionist'
 #Sortable
 gem 'acts_as_list'
 
-#CKEditor
-gem 'ckeditor'
-
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
