@@ -48,7 +48,7 @@ class VideosController < ApplicationController
       redirect_to :root
       flash[:success] = "Video successfully added!"
     else
-      render 'new'
+      render 'youtube'
       flash[:error] = "Something went wrong"
     end
   end
