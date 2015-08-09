@@ -49,7 +49,7 @@ class VideosController < ApplicationController
       flash[:success] = "Video successfully added!"
     else
       render 'youtube'
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Uh oh, something went wrong."
     end
   end
 
