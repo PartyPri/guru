@@ -7,4 +7,5 @@ class Medium < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_list scope: :reel, add_new_at: :top
+  acts_as_commentable
 end

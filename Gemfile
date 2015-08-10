@@ -57,6 +57,9 @@ gem 'impressionist'
 #Sortable
 gem 'acts_as_list'
 
+#Comments
+gem 'acts_as_commentable_with_threading', '1.2.0'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end

@@ -20,6 +20,8 @@ Guru::Application.routes.draw do
   #  resources :registrations, :only => [:create, :new]
   #end
 
+  resources :comments, :only => [:create, :destroy]
+
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid

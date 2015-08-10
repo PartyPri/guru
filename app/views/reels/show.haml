@@ -55,3 +55,10 @@
 
   .reel
     = render 'shared/grid'
+
+%h2 Comments
+- @media.each do |medium|
+  .h5
+    Comment on Media #{medium.id}
+  = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+  = render :partial => 'comments/comment', :collection => medium.comment_threads.order('created_at desc'), :as => :comment
