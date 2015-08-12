@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150804001620) do
+ActiveRecord::Schema.define(:version => 20150811232334) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -192,11 +192,15 @@ ActiveRecord::Schema.define(:version => 20150804001620) do
   create_table "stories", :force => true do |t|
     t.text     "title"
     t.text     "body"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
     t.integer  "reel_id"
     t.integer  "user_id"
     t.integer  "interest_id"
+    t.string   "cover_photo_file_name"
+    t.string   "cover_photo_content_type"
+    t.integer  "cover_photo_file_size"
+    t.datetime "cover_photo_updated_at"
   end
 
   create_table "taggings", :force => true do |t|

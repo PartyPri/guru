@@ -31,5 +31,5 @@
             -if current_user && current_user.id == @user.id
               %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            .grid-item.story
+            .grid-item.story{:style => "background-image: url(#{medium.cover_photo.url});"}
               %h4= medium.title
