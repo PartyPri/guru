@@ -11,7 +11,6 @@ class StoriesController < ApplicationController
   def create
     if user_signed_in?
       @story = Story.new(params[:story])
-      @story.cover_photo = params[:story][:cover_photo]
 
       if @story.save
         redirect_to @story.reel

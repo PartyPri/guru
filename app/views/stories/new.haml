@@ -11,7 +11,7 @@
             = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, prompt: 'Please select reel', required: true)
         .form-group
           %label{for: "cover"} Cover Photo:
-          = f.file_field :cover_photo
+          = f.file_field :photo
         .form-group
           %label{for: "title"} Title:
           = f.text_field :title, placeholder: 'Your story\'s title', class: "form-control"
