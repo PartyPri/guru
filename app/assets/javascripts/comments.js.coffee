@@ -9,7 +9,9 @@ jQuery ->
         .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('');
-      $(xhr.responseText).hide().insertAfter($(this)).show('slow')
+      #$(data.comments).hide().insertAfter($(this)).show('fast')
+      #$(data.comments).hide().insertAfter($(this)).show('slow')
+      #$(this).after(data.comments)
 
   $(document)
     .on "ajax:beforeSend", ".comment", ->
