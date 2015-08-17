@@ -4,7 +4,6 @@ class StoriesController < ApplicationController
     unless user_signed_in?
       redirect_to :root#error
     end
-    render 'new.haml'
     @story = Story.new
   end
 

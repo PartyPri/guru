@@ -7,6 +7,6 @@ class Story < Medium
 
   do_not_validate_attachment_file_type :photo
 
-  validates_presence_of :body, :title
+  validates_presence_of :body, :title, :message => "Please fill out this field"
 
 end
