@@ -47,12 +47,16 @@ class User < ActiveRecord::Base
 
   #Update claim user attributes
   def update_claim_attributes(token, claim_user)
-    self.claim_token = token
     self.first_name = claim_user.first_name
     self.last_name = claim_user.last_name
     self.cover_photo = claim_user.cover_photo
-    self.reels = claim_user.reels
+    self.avatar = claim_user.avatar
+    if claim_user.reels.any?
+      self.reels = claim_user.reels
+    end
+
     self.save!
+    claim_user.destroy
   end
 
   #Google Authentication
