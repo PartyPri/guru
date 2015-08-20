@@ -19,4 +19,13 @@ class CommentsController < ApplicationController
       render :js => "alert('error deleting comment');"
     end
   end
+
+  def reply
+    @comment = Comment.find(params[:id])
+    @obj = Medium.find(@comment.commentable_id)
+    @div_id = "comment-#{@comment.id}"
+    respond_to do |format|
+      format.js
+    end
+  end
 end

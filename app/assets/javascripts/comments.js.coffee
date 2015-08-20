@@ -9,14 +9,12 @@ jQuery ->
         .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('');
-      #$(data.comments).hide().insertAfter($(this)).show('fast')
-      #$(data.comments).hide().insertAfter($(this)).show('slow')
-      #$(this).after(data.comments)
+      $(data.comments).hide().insertAfter($(this)).show('fast')
 
   $(document)
-    .on "ajax:beforeSend", ".comment", ->
-      $(this).fadeTo('fast', 0.5)
-    .on "ajax:success", ".comment", ->
-      $(this).hide('fast')
-    .on "ajax:error", ".comment", ->
-      $(this).fadeTo('fast', 1)
+    .on "ajax:beforeSend", "#delete_comment", ->
+      $(this.parentElement).fadeTo('fast', 0.5)
+    .on "ajax:success", "#delete_comment", ->
+      $(this.parentElement).hide('fast')
+    .on "ajax:error", "#delete_comment", ->
+      $(this.parentElement).fadeTo('fast', 1)
