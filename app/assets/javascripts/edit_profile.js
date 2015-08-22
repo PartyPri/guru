@@ -19,6 +19,7 @@ function readURL(input) {
       $('#profile_image_viewer').Jcrop({
         keySupport: false,
         aspectRatio: 1,
+        boxWidth: $(".edit_user").width() - 5,
         onSelect: setSelectionToCanvas
       });
     };
