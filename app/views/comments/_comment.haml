@@ -5,4 +5,6 @@
 		= comment.user.first_name
 		%small= comment.updated_at
 	%p= comment.body
-	%p= link_to "Reply", comment_reply_path(comment), :method => :get, :remote => true, :id => "reply_comment"
+	%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true
+%div.replies{ :id => "replies-#{comment.id}" }
+	= render :partial => 'comments/reply_comment', :collection => comment.descendants.order('created_at desc'), :as => :comment

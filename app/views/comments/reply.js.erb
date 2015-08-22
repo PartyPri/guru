@@ -1,1 +1,1 @@
-$("<%= j render(:partial => 'reply', :locals => { :comment => Comment.build_from(@obj, current_user.id, "") }) %>").insertAfter($('#<%= @div_id %>')).show('fast');
+$("<%= j render(:partial => 'reply', :locals => { :comment => Comment.build_from(@obj, current_user.id, ""), :parent_comment => @comment }) %>").insertAfter($('#<%= @div_id %>')).show('fast');

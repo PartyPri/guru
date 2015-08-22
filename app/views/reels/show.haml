@@ -61,4 +61,4 @@
   .h5
     Comment on Media #{medium.id}
   = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-  = render :partial => 'comments/comment', :collection => medium.comment_threads.order('created_at desc'), :as => :comment
+  = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment

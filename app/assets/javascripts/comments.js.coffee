@@ -14,7 +14,17 @@ jQuery ->
   $(document)
     .on "ajax:beforeSend", "#delete_comment", ->
       $(this.parentElement).fadeTo('fast', 0.5)
-    .on "ajax:success", "#delete_comment", ->
+    .on "ajax:success", "#delete_comment", (evt, data, status, xhr) ->
       $(this.parentElement).hide('fast')
+      $("#replies-#{data.id}").hide('fast')
     .on "ajax:error", "#delete_comment", ->
       $(this.parentElement).fadeTo('fast', 1)
+
+    .on "ajax:beforeSend", ".reply-form", (evt, xhr, settings) ->
+      $(this).find('textarea')
+        .addClass('uneditable-input')
+        .attr('disabled', 'disabled');
+    .on "ajax:success", ".reply-form", (evt, data, status, xhr) ->
+      $(data.comments).appendTo(data.division).show('fast')
+      $(data.division).show()
+      $(this).hide('fast', -> $(this).remove())
