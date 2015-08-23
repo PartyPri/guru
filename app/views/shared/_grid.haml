@@ -11,7 +11,7 @@
         - if medium.is_a? Image
           %li.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
             -if current_user && current_user.id == @user.id
-              %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
+              %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             .grid-item{:style => "background-image: url(#{medium.photo.url});"}
               - if medium.description.present?
@@ -20,7 +20,7 @@
         - if medium.is_a? Video
           %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
             -if current_user && current_user.id == @user.id
-              %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
+              %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
               =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
@@ -30,7 +30,7 @@
           - if medium.photo.present?
             %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover-photo' style='background-image: url(#{medium.photo.url})'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
               -if current_user && current_user.id == @user.id
-                %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
+                %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
                 %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
               .grid-item.story{:style => "background-image: url(#{medium.photo.url});"}
                 .story-overlay
@@ -39,7 +39,7 @@
           -else
             %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content no-photo'><div class='story-cover'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
               -if current_user && current_user.id == @user.id
-                %a.media-edit.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
+                %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
                 %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
               .grid-item.story.no-photo{:style => "background-image: url(#{medium.photo.url});"}
                 %h4= medium.title

@@ -25,6 +25,8 @@ Guru::Application.routes.draw do
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
 
   resources :videos
+
+  get '/pages/select_media', to: 'pages#select_media'
   
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 
