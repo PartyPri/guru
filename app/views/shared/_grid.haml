@@ -3,7 +3,7 @@
     %ul.list-inline#lightgallery
       - if current_user && current_user.id == @user.id
         %li.m-bottom-20
-          = link_to new_video_path(reel: @reel) do
+          = link_to pages_select_media_path(reel: @reel) do
             .new-grid-item
               =image_tag "lt-turq_add.png", style: 'width: 50px'
               %h4 Add Media
@@ -32,7 +32,7 @@
               -if current_user && current_user.id == @user.id
                 %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
                 %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-              .grid-item.story{:style => "background-image: url(#{medium.photo.url});"}
+              .grid-item.story{:style => "background-image: url(#{medium.photo.url}); background-size: cover;"}
                 .story-overlay
                   %h4= medium.title
                   %p= raw(truncate(medium.body, length: 300))
