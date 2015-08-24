@@ -41,7 +41,7 @@
     .container
       .row-fluid
         .col-md-4.user
-          = link_to user_path(@reel.user) do
+          = link_to user_path(@user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
         .col-md-4.views
@@ -61,4 +61,4 @@
   .h5
     Comment on Media #{medium.id}
   = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-  = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment
+  = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }

@@ -3,4 +3,4 @@
 		= f.text_area :body, :input_html => { :rows => "2" }, :label => false
 		= f.text_field :commentable_id, :as => :hidden, :value => comment.commentable_id
 		= f.text_field :commentable_type, :as => :hidden, :value => comment.commentable_type
-		= f.submit "Talk!", :class => "btn btn-primary", :disable_with => "Submitting…"
+		= f.submit "Talk!", :class => "comment_submit", :disable_with => "Submitting…"

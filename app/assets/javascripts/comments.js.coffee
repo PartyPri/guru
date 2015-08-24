@@ -9,6 +9,7 @@ jQuery ->
         .removeClass('uneditable-input')
         .removeAttr('disabled', 'disabled')
         .val('');
+      $('.comment_submit').removeAttr('disabled').attr('value', 'Talk!')
       $(data.comments).hide().insertAfter($(this)).show('fast')
 
   $(document)
@@ -25,6 +26,5 @@ jQuery ->
         .addClass('uneditable-input')
         .attr('disabled', 'disabled');
     .on "ajax:success", ".reply-form", (evt, data, status, xhr) ->
-      $(data.comments).appendTo(data.division).show('fast')
-      $(data.division).show()
+      $(data.division).show().append(data.comments).show('slow')
       $(this).hide('fast', -> $(this).remove())

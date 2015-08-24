@@ -25,9 +25,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @div = "#replies-#{@comment.id}"
     if @comment.destroy
-      render :json => @comment, :division => @div, :status => :ok
+      render :json => @comment, :status => :ok
     else
       render :js => "alert('error deleting comment');"
     end
