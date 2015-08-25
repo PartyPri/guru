@@ -5,3 +5,4 @@
 		= f.text_field :commentable_type, :as => :hidden, :value => comment.commentable_type
 		= f.text_field :p_comment, :as => :hidden, :value => parent_comment.id
 		= f.submit "Reply!", :class => "btn btn-primary", :disable_with => "Submitting…"
+	= button_tag 'Cancel', :id => "cancel_button", :remote => true

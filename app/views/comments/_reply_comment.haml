@@ -7,4 +7,7 @@
 			= comment.user.first_name
 			%small= comment.updated_at
 		%p= comment.body
-		%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true
+		- if !current_user
+			%p= link_to "Reply", :redirect_to => new_user_registration_url
+		- else
+			%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true

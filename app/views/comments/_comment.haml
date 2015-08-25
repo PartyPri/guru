@@ -6,7 +6,10 @@
 		= comment.user.first_name
 		%small= comment.updated_at
 	%p= comment.body
-	%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true
+	- if !current_user
+		%p= link_to "Reply", :redirect_to => new_user_registration_url
+	- else
+		%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true
 %div.replies{ :id => "replies-#{comment.id}" }
 	- if !comment.descendants.empty?
 		= render :partial => 'comments/reply_comment', :collection => comment.descendants.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }

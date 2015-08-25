@@ -19,16 +19,19 @@ class CommentsController < ApplicationController
         render :json => { :comments => render_to_string( :partial => "comments/comment", :locals => { :comment => @comment }) }, :layout => false, :status => :created
       end
     else
-      render :js => "alert('error saving comment');"
+      render :js => "alert('error saving comment');", :status => :error
     end
   end
 
   def destroy
     @comment = Comment.find(params[:id])
+    @replies = @comment.self_and_descendants.all.collect(&:id)
+    @children = Array.new
+    @replies.each { |x| @children << "#comment-#{x}" }
     if @comment.destroy
-      render :json => @comment, :status => :ok
+      render :json => { :self_and_replies => @children }, :status => :ok
     else
-      render :js => "alert('error deleting comment');"
+      render :js => "alert('error deleting comment');", :status => :error
     end
   end
 
