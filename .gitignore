@@ -34,7 +34,5 @@ logfile
 # Ignore simplecov report
 coverage
 
-
 # Ignore Paperclip Spoof Fix
-# Ignore windows paperclip fix
 /config/initializers/paperclip_media_type_spoof_detector_override.rb
