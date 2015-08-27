@@ -6,7 +6,7 @@
     - if @reel.media.last.is_a? Video
       %meta{property: "og:image", content: "http://img.youtube.com/vi/#{@reel.media.last.uid}/0.jpg" }
       %meta{property: "og:video", content: "http://www.youtube.com/v/#{@reel.media.last.uid}"}
-    - else
+    - elsif @reel.media.last.is_a? Image
       %meta{property: "og:image", content: URI.join(request.url, @reel.images.last.photo.url)}
   %meta{ property: "og:description", content: reel_description }
   %meta{ name: "twitter:card", content: "summary_large_image" }
