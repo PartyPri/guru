@@ -4,13 +4,13 @@ class StoriesController < ApplicationController
     unless user_signed_in?
       redirect_to :root#error
     end
-    render 'new.haml'
     @story = Story.new
   end
 
   def create
     if user_signed_in?
       @story = Story.new(params[:story])
+
       if @story.save
         redirect_to @story.reel
       else

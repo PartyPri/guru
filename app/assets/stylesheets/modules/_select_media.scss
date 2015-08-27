@@ -1,0 +1,17 @@
+.select-media {
+  border: solid $turq 1px;
+  display: block;
+  padding: 25px 0;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 28px;
+
+  img {
+    width: 60px;
+    margin-right: 10px;
+  }
+}
+
+#reel-select {
+  margin-bottom: 30px;
+}

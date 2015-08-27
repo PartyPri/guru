@@ -39,6 +39,16 @@
                 = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
           = f.fields_for :stories do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              -if builder.object.photo.present?
+                .row
+                  .col-sm-2
+                  .col-sm-10
+                    =image_tag builder.object.photo.url, style: "width: 200px; height: 200px;"
+              .row
+                .col-sm-2
+                  = builder.label :photo, "Photo"
+                .col-sm-10
+                  = builder.file_field :photo
               .row
                 .col-sm-2
                   = builder.label :title, "Title"
