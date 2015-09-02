@@ -1,16 +1,17 @@
 =render :layout => 'shared/form_layout' do
   .row
     .col-xs-12.text-center#new-reel
-      %h1 Create Reel
+      %h1 Create a Reel
+      %h5 Reels are where you save and organize your media. You can create reels for different things you do, like tap dancing or sketching a new character.
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3
       = form_for :reel, url: reels_path, :html => { :multipart => true } do |f|
         .form-group
           %label{for: "name"} Name:
-          = f.text_field :name, :placeholder => 'Name your reel', class: "form-control"
+          = f.text_field :name, :placeholder => 'Like "tap dance" or "comic sketches"', class: "form-control"
         .form-group
           %label{for: "description"} Description:
-          = f.text_area :description, :placeholder => 'Describe your reel', class: "form-control", rows: 3
+          = f.text_area :description, :placeholder => 'What\'s your reel about?', class: "form-control", rows: 3
         .form-group
           %label{for: "interests"} Interests:
           %span.help-block Choose the interests the best describe your reel.
