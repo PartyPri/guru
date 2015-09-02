@@ -14,9 +14,6 @@
           %input{required: true, id: "video-url", placeholder: 'Enter the youtube URL here...', class: "form-control"} 
           = hidden_field_tag :uid
         .form-group
-          %label{for: "title"} Title:
-          %input{required: true, :name => "title", placeholder: 'Enter your video title here...', class: "form-control"} 
-        .form-group
           %label{for: "description"} Description:
-          %textarea{:name => "description", :cols => "30", :rows => "3", class: "form-control"}
+          %textarea{:name => "description", :cols => "30", :rows => "3", class: "form-control", required: true}
         = submit_tag "Save", class: "button btn btn-info w-100", id: "add-video"
