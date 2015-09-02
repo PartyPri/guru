@@ -13,7 +13,7 @@
             -if current_user && current_user.id == @user.id
               %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
               %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            .grid-item{:style => "background-image: url(#{medium.photo.url});"}
+            .grid-item{:style => "background-image: url(#{medium.photo.url(:medium)});"}
               - if medium.description.present?
                 .caption= medium.description.truncate(50)
               %img{src: "#{medium.photo.url}", style: "display: none"}
@@ -32,7 +32,7 @@
               -if current_user && current_user.id == @user.id
                 %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
                 %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-              .grid-item.story{:style => "background-image: url(#{medium.photo.url}); background-size: cover;"}
+              .grid-item.story{:style => "background-image: url(#{medium.photo.url(:medium)}); background-size: cover;"}
                 .story-overlay
                   %h4= medium.title
                   %p= raw(truncate(medium.body, length: 300))
@@ -41,6 +41,6 @@
               -if current_user && current_user.id == @user.id
                 %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
                 %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-              .grid-item.story.no-photo{:style => "background-image: url(#{medium.photo.url});"}
+              .grid-item.story.no-photo
                 %h4= medium.title
                 %p= raw(truncate(medium.body, length: 300))
