@@ -66,5 +66,10 @@ module Guru
     # The line below autoloads lib files. I added this when creating custom_failure.rb to change
     # the default devise route from the sign_in page to a landing page.
     config.autoload_paths += %W(#{config.root}/lib)
+
+    # To make CKEditor work on Heroku
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
   end
 end
