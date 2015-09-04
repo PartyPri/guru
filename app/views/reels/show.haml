@@ -40,16 +40,16 @@
   .link-bar
     .container
       .row-fluid
-        .col-md-4.user
+        .col-md-5.user
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5= @user.first_name + " " + @user.last_name
-        .col-md-4.views
-          %h4.p-top-10 #{@reel.impressionist_count} views
-        .col-md-2.links
-          .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
-          %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
-        .col-md-2.links
+        .col-md-5.views
+          %h4.p-top-10.pull-left #{@reel.impressionist_count} views
+          .links
+            .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
+            %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
+        .col-md-2.edit
           - if current_user && current_user.id == @user.id        
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 

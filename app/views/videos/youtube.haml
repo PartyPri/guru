@@ -7,8 +7,8 @@
       = form_tag :video_add do  
         .form-group
           %label{for: "reel_select"} Select a reel:
-          .select-style#reel_select
-            = collection_select(:video, :reel_id, current_user.reels.all, :id, :name, :prompt => 'Please select reel', required: true)
+          #reel_select
+            = collection_select(:video, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
         .form-group
           %label{for: "video_url"} Youtube URL:
           %input{required: true, id: "video-url", placeholder: 'Enter the youtube URL here...', class: "form-control"} 
