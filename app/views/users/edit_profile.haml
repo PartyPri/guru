@@ -32,7 +32,7 @@
           %img{ id: "profile_image_viewer", src: "", alt: "your image" }
           %br
           %canvas{ id: "cropped_image_canvas"}
-        .form-group
+        .form-group.edit-cover
           %label{for: "cover_photo"} Cover Picture:
           - if @user.cover_photo.exists?
             <br>
