@@ -38,6 +38,7 @@
     margin-right: 10px;
     @include background-image;
     @include border-radius(10px);
+    position: relative;
   }
 
   .arrow-right {

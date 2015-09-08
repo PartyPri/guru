@@ -37,3 +37,30 @@
                 %span.pull-left.m-x-15 Delete Video?
                 = f.submit "Save Changes", class: "btn-save pull-right"
                 = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
+          = f.fields_for :stories do |builder|
+            .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              -if builder.object.photo.present?
+                .row
+                  .col-sm-2
+                  .col-sm-10
+                    =image_tag builder.object.photo.url, style: "width: 200px; height: 200px;"
+              .row
+                .col-sm-2
+                  = builder.label :photo, "Photo"
+                .col-sm-10
+                  = builder.file_field :photo
+              .row
+                .col-sm-2
+                  = builder.label :title, "Title"
+                .col-sm-10
+                  = builder.text_field :title, class: "form-control"
+              .row
+                .col-sm-2
+                  = builder.label :body, "Story"
+                .col-sm-10
+                  = builder.cktext_area :body, class: "form-control", rows: 10, :ckeditor => {:uiColor => '#e5fcfb', :width => "90%"}
+              .modal-footer
+                = builder.check_box :_destroy, class: "pull-left"
+                %span.pull-left.m-x-15 Delete Story?
+                = f.submit "Save Changes", class: "btn-save pull-right"
+                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"

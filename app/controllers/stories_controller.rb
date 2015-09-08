@@ -1,18 +1,18 @@
-class ArticlesController < ApplicationController
+class StoriesController < ApplicationController
 
   def new
     unless user_signed_in?
       redirect_to :root#error
     end
-    render 'new.haml'
-    @article = Article.new
+    @story = Story.new
   end
 
   def create
     if user_signed_in?
-      @article = Article.new(params[:article])
-      if @article.save
-        redirect_to @article.reel
+      @story = Story.new(params[:story])
+
+      if @story.save
+        redirect_to @story.reel
       else
         render "new"
       end
@@ -22,15 +22,19 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def show
+    @story = Story.find(params[:id])
+  end
+
   def edit
-    @article = Article.find(params[:id])
+    @story = Story.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])  
-    if @article.update_attributes( params[:article] )
+    @story = Story.find(params[:id])  
+    if @story.update_attributes( params[:story] )
       flash[:notice] = "Your story has been updated!"
-      redirect_to @article.reel
+      redirect_to @story.reel
     else
       flash[:notice] = "Woops! Your changes couldn't be saved."
       render 'edit'
@@ -38,8 +42,8 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    @article = Article.find(params[:id])
-    @article.destroy
+    @story = Story.find(params[:id])
+    @story.destroy
     redirect_to current_user
   end
 end

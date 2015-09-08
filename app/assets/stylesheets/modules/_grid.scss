@@ -88,9 +88,10 @@
   font-size: 24px;
 }
 
-.media-edit.twitter-share-button {
+.twitter-share-button {
   position: absolute !important;
   left: 10px;
+  @extend .media-edit;
 }
 
 @media (max-width: 1140px) {
