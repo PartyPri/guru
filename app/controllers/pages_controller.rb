@@ -10,4 +10,9 @@ class PagesController < ApplicationController
   def about
   end
 
+  def select_media
+    @reels = current_user.reels.all
+    @params = params[:reel]
+  end
+
 end

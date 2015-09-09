@@ -35,7 +35,7 @@
       padding: 0;
     }
 
-    .links {
+    .edit, .links {
       text-align: right;
 
       span {
@@ -46,6 +46,12 @@
     h5 {
       display: inline;
       vertical-align: middle;
+    }
+
+    .share, .twitter-share-button {
+      text-align: right;
+      vertical-align: middle; 
+      margin: 10px 0;
     }
   }
 
@@ -64,26 +70,38 @@
 .views {
   text-align: center;
   margin-top: 10px 0;
+  padding-left: 50px;
 }
 
-.share {
-  text-align: right;
-  vertical-align: middle; 
-  margin: 10px 0;
+@media (max-width: 1200px) {
+  .views {
+    padding-left: 35px;
+  }
 }
 
 @media (max-width: 991px) {
   .reel-page {
     .link-bar, .link-bar .links {
       text-align: center;
-      margin-top: 15px;
 
       .views {
         margin-top: 15px;
+        float: none;
+        display: inline-block;
+        padding-left: 15px;
       }
 
       .share {
         margin: 0 15px;
+      }
+      
+      .links {
+        display: inline-block;
+      }
+
+      .edit {
+        text-align: center;
+        margin: 10px 0;
       }
     }
   }

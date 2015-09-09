@@ -1,6 +1,12 @@
 .grid-container {
   width: 1140px;
   margin: 0 auto;
+
+  .twitter-share-button {
+    position: absolute !important;
+    left: 10px;
+    @extend .media-edit;
+  }
 }
 
 .grid {
@@ -86,11 +92,6 @@
   color: $turq;
   display: none;
   font-size: 24px;
-}
-
-.media-edit.twitter-share-button {
-  position: absolute !important;
-  left: 10px;
 }
 
 @media (max-width: 1140px) {

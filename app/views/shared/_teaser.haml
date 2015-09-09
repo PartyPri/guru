@@ -26,8 +26,12 @@
       - reel.media.order("position").take(4).each do |medium|
         - if medium.is_a? Image
           %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
-        - else # Video
+        - elsif medium.is_a? Video
           %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
+        - elsif medium.is_a? Story
+          %li.teaser-media.teaser-story{:style => "background-image: url(#{medium.photo.url})"}
+            .story-overlay
+              %h4= medium.title
     %p= truncate(reel.description, length: 80)
     .row-fluid
       /.col-xs-12
