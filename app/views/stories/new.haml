@@ -8,7 +8,7 @@
         .form-group
           %label{for: "reel_select"} Select reel:
           .select-style#reel_select
-            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, required: true, :selected => params[:reel])
+            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
         .form-group
           %label{for: "cover"} Add cover photo:
           = f.file_field :photo
