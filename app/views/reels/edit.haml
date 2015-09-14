@@ -21,6 +21,9 @@
               %br
       .row-fluid
         %label{for: "media"} Drag to Reorder:
+        %script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
+        %script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
+        %script{:src => "/app/assets/javascripts/jquery.ui.touch-punch.min.js"}
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           - @media.each do |medium|
             - if medium.is_a? Image
