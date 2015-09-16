@@ -32,6 +32,7 @@
 //= interests
 //= require edit-modal
 //= require jquery-ui
+//= require jquery.ui.touch-punch.min
 //= require ckeditor/init
 //= require_tree .
 //
