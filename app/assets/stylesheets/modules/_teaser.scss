@@ -1,28 +1,23 @@
 .teaser {
-  padding: 10px 40px;
+  padding: 10px 0px;
+  display: block;
   background: #fff;
   border: 1px solid transparent;
   margin-bottom: 30px;
-  overflow: hidden;
-  color: $drk-gray;
   @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
   @include border-radius(3px);
 
-  h1, p {
-    color: #000;
-  }
-
-  ul {
+  .media-list {
+    min-height: 150px;
     margin: 6px 0;
 
     li:nth-child(4) {
       margin: 0;
     }
-
   }
 
-  ul.media-list {
-    min-height: 150px;
+  .teaser-body, .teaser-head{
+    padding: 0 40px;
   }
 
   .interests {
@@ -41,28 +36,20 @@
     position: relative;
   }
 
-  .arrow-right {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 6px 0 6px 11px;
-    border-color: transparent transparent transparent $lt-turq;
-    margin-top: 2px;
-  }
-
   .view-all {
     color: $lt-turq;
-    margin-right: 10px;
-    font-size: 14px;
+    font-size: 12px;
+    margin-top: 7px;
+    margin-bottom: 0;
   }
-}
-
-.teaser.bio {
-  min-height: 300px;
 }
 
 .teaser:hover {
   border: 1px solid $lt-turq;
+}
+
+.teaser.bio {
+  min-height: 300px;
 }
 
 .teaser.new-reel {
@@ -77,6 +64,36 @@
 
 .teaser.new-reel:hover {
   border-color: $lt-turq;
+}
+
+.teaser-head {
+  .user-info {
+    width: 150px;
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  .avatar {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    display: inline-block !important;
+    vertical-align: middle;
+    @include background-image;
+    @include border-radius(100%);
+    margin-right: 5px;
+  }  
+}
+
+.teaser-footer {
+  border-top: solid $lt-gray 2px;
+  padding: 10px 40px;
+
+  img {
+    height: 25px;
+  }
 }
 
 @media (max-width: 990px) {
