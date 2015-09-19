@@ -9,6 +9,10 @@ $(document).ready(function() {
     gallery.destroy();
   });
 
+  $('.media-share').click(function() {
+    gallery.destroy();
+  });
+
   $('.new-grid-item').click(function() {
     gallery.destroy();
   });

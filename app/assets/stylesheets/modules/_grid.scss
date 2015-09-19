@@ -16,13 +16,13 @@
   @include border-radius(4px);
   @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
 
-  ul {
+  ul.grid-list {
     padding-left: 30px;
     list-style-type: none;
     text-align: center;
   }
 
-  li {
+  li.media{
     vertical-align: top;
     margin: 0 15px 20px 0;
     padding: 0;
@@ -41,7 +41,7 @@
   .caption {
     padding: 10px 20px;
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     width: 100%;
     color: #fff;
     background-color:rgba(0, 0, 0, 0.4);
@@ -56,8 +56,9 @@
   text-align: center;
   @include background-image;
   @include border-radius(10px);
+  border-bottom: 1px solid $med-gray;
 
-  img {
+  img.icon {
     height: 40px;
     width: 40px;
     position: absolute;
@@ -92,6 +93,32 @@
   color: $turq;
   display: none;
   font-size: 24px;
+}
+
+.grid-item-footer {
+  border-left: 1px solid $med-gray;
+  border-right: 1px solid $med-gray;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+
+  img {
+    width: 25px;
+  }  
+}
+
+#share-modal {
+  text-align: center;
+
+  .social-list {
+    margin: 15px 0;
+
+    li {
+      margin-right: 20px;
+    }
+  }
 }
 
 @media (max-width: 1140px) {
