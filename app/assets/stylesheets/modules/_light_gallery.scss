@@ -11,9 +11,9 @@
   display: none !important;
 }
 
-#lg-slider .lg-slide img {
+#lg-gallery #lg-slider .lg-slide img {
   min-width: 400px;
-  max-width: 400px;
+  max-width: 80%;
 }
 
 #lg-gallery .custom-html {
@@ -24,6 +24,22 @@
   white-space: pre-wrap;
   text-align: center;
   background: none;
+}
+
+#lg-gallery #lg-action {
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  margin-left: 0;
+}
+
+#lg-next {
+  float: right;
+}
+
+#lg-gallery .cl-thumb {
+  display: none !important;
 }
 
 @media (max-width: 400px) {

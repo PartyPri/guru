@@ -1,6 +1,6 @@
 .grid-container
   .row-fluid.grid.clearfix
-    %ul.grid-list.list-inline#lightgallery
+    %ul.grid-list.list-inline#lightgallery.clearfix
       - if current_user && current_user.id == @user.id
         %li.media.m-bottom-20
           = link_to pages_select_media_path(reel: @reel) do
