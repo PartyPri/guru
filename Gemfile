@@ -60,6 +60,9 @@ gem 'acts_as_list'
 #CKEditor
 gem 'ckeditor'
 
+#Like Button
+gem 'acts_as_votable'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
