@@ -33,5 +33,6 @@
 //= require edit-modal
 //= require jquery-ui
 //= require ckeditor/init
+//= require share_modal
 //= require_tree .
 //

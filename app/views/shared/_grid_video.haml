@@ -6,7 +6,7 @@
     .grid-item-footer
       %ul.list-inline
         %li
-          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal"}
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
             =image_tag('share_icon.png')
         %li
           = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do

@@ -1,4 +1,4 @@
-%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
+%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div><div class='modal-comments'></div>", "data-share-id" => "#{medium.id}"}
   -if current_user && current_user.id == @user.id
     / %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
   .grid-item{:style => "background-image: url(#{medium.photo.url(:medium)});"}
@@ -7,7 +7,7 @@
     .grid-item-footer
       %ul.list-inline
         %li
-          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal"}
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
             =image_tag('share_icon.png')
         %li
           = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do

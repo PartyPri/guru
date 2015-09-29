@@ -24,6 +24,7 @@
   white-space: pre-wrap;
   text-align: center;
   background: none;
+  position: relative;
 }
 
 #lg-gallery #lg-action {
@@ -42,6 +43,16 @@
   display: none !important;
 }
 
+/*===== Comments =====*/
+.modal-comments {
+  background: #fff;
+  padding: 15px 30px;
+  @include border-radius(5px);
+  margin: 10px auto;
+  width: 500px;
+}
+
+/*===== LightGallery Media Queries =====*/
 @media (max-width: 400px) {
 
   #lg-slider .lg-slide img {
