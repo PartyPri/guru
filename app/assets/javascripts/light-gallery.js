@@ -5,7 +5,7 @@ $(document).ready(function() {
 
   var gallery = startLightGallery(url_params, share_url);
 
-  $('.media-edit').click(function() {
+  $('.footer-link').click(function() {
     gallery.destroy();
   });
 

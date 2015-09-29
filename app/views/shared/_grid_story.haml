@@ -1,0 +1,37 @@
+- if medium.photo.present?
+  %li.media.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover-photo' style='background-image: url(#{medium.photo.url})'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
+    .grid-item.story{:style => "background-image: url(#{medium.photo.url(:medium)}); background-size: cover;"}
+      .story-overlay
+        %h4= medium.title
+        %p= raw(truncate(medium.body, length: 300))
+      .grid-item-footer
+        %ul.list-inline
+          %li
+            %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal"}
+              =image_tag('share_icon.png')
+          %li
+            =image_tag('props_icon.png')
+          %li
+            =image_tag('comment_icon.png')
+          -if current_user && current_user.id == @user.id
+            %li
+              %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                =image_tag('pencil_icon.png')
+-else
+  %li.media.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content no-photo'><div class='story-cover'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
+    .grid-item.story.no-photo
+      %h4= medium.title
+      %p= raw(truncate(medium.body, length: 300))
+      .grid-item-footer
+        %ul.list-inline
+          %li
+            %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal"}
+              =image_tag('share_icon.png')
+          %li
+            =image_tag('props_icon.png')
+          %li
+            =image_tag('comment_icon.png')
+          -if current_user && current_user.id == @user.id
+            %li
+              %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                =image_tag('pencil_icon.png')

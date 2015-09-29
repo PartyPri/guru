@@ -1,12 +1,6 @@
 .grid-container {
   width: 1140px;
   margin: 0 auto;
-
-  .twitter-share-button {
-    position: absolute !important;
-    left: 10px;
-    @extend .media-edit;
-  }
 }
 
 .grid {
@@ -28,10 +22,6 @@
     padding: 0;
     float: left;
     position: relative;
-  }
-
-  li:hover .media-edit {
-    display: block;
   }
 
   img, iframe {
@@ -83,16 +73,6 @@
 
 .new-grid-item:hover {
   border-color: $lt-turq;
-}
-
-.media-edit {
-  position: absolute;
-  right: 25px;
-  top: 10px;
-  z-index: 1;
-  color: $turq;
-  display: none;
-  font-size: 24px;
 }
 
 .grid-item-footer {

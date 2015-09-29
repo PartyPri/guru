@@ -1,0 +1,22 @@
+%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
+  -if current_user && current_user.id == @user.id
+    / %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
+  .grid-item{:style => "background-image: url(#{medium.photo.url(:medium)});"}
+    - if medium.description.present?
+      .caption= medium.description.truncate(50)
+    .grid-item-footer
+      %ul.list-inline
+        %li
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal"}
+            =image_tag('share_icon.png')
+        %li
+          = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+            =image_tag('props_icon.png')
+          %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+        %li
+          =image_tag('comment_icon.png')
+        -if current_user && current_user.id == @user.id
+          %li
+            %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+              =image_tag('pencil_icon.png')
+    %img{src: "#{medium.photo.url}", style: "display: none"}
