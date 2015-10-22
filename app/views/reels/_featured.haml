@@ -23,7 +23,8 @@
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
             %h5
               = @user.first_name + " " + @user.last_name + " | "
-              %span.featured-tag featured!
+          .glyphicon.glyphicon-star
+          %span.featured-tag featured!
         .col-md-5.views
           %h4.p-top-10.pull-left #{@reel.impressionist_count} views
           .links

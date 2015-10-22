@@ -22,6 +22,12 @@
 
 .featured-tag {
   color: $red;
+  vertical-align: middle;
+}
+
+.glyphicon.glyphicon-star {
+  color: $red;
+  vertical-align: middle;
 }
 
 @media (max-width: 400px) {
