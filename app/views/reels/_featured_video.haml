@@ -1,0 +1,6 @@
+.grid-container.featured-video-container
+  .row-fluid.grid.clearfix
+    %h1 About this featured artist
+    %p= @user.bio
+    %iframe{src: "http://www.youtube.com/embed/#{@featured_video.first.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
+
