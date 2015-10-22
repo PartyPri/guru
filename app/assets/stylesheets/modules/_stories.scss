@@ -15,7 +15,6 @@ ul {
 }
 
 .story-overlay {
-  height: 100%;
   background: rgba(0,0,0,.38);
 
   h4, p {
@@ -35,7 +34,7 @@ ul {
   padding: 45px 15px 0 15px;
 }
 
-#lg-gallery .custom-html.story-content {
+.custom-html.story-content {
   background: #e5fcfb;
   height: 100%;
   width: 700px;
@@ -49,7 +48,7 @@ ul {
     font-size: 16px;
   }
 }
-#lg-gallery .custom-html.story-content.no-photo {
+.custom-html.story-content.no-photo {
   padding-top: 30px;
 
   .story-cover {
@@ -68,8 +67,12 @@ ul {
 .story-cover-photo {
   @extend .story-cover;
   @include background-image;
-  height: 40%;
-  padding-top: 40%;
+  height: 400px;
+  padding-top: 300px;
+}
+
+.story-inner {
+  height: 1000px;
 }
 
 .story-body {

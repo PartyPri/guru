@@ -31,7 +31,7 @@
   .caption {
     padding: 10px 20px;
     position: absolute;
-    bottom: 25px;
+    bottom: 0px;
     width: 100%;
     color: #fff;
     background-color:rgba(0, 0, 0, 0.4);
@@ -39,14 +39,17 @@
 }
 
 .grid-item {
-  position: relative;
   overflow: hidden;
-  height: 300px;
+  @include border-radius(10px);
+  border-bottom: 1px solid $med-gray;
+}
+
+.grid-item-body {
+  position: relative;
+  height: 273px;
   width: 350px;
   text-align: center;
   @include background-image;
-  @include border-radius(10px);
-  border-bottom: 1px solid $med-gray;
 
   img.icon {
     height: 40px;
@@ -78,15 +81,15 @@
 .grid-item-footer {
   border-left: 1px solid $med-gray;
   border-right: 1px solid $med-gray;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
+  background: #fff; 
+}
 
+.grid-actions {
+  text-align: center;
+  
   img {
     width: 25px;
-  }  
+  } 
 }
 
 #share-modal {
@@ -125,7 +128,7 @@
 
   }
   
-  .grid-item, .new-grid-item {
+  .grid-item-body, .new-grid-item {
     width: 300px;
     margin: 0 auto;
   }

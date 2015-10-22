@@ -1,11 +1,11 @@
-%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div><div class='modal-comments'></div>", "data-share-id" => "#{medium.id}"}
-  -if current_user && current_user.id == @user.id
-    / %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
-  .grid-item{:style => "background-image: url(#{medium.photo.url(:medium)});"}
-    - if medium.description.present?
-      .caption= medium.description.truncate(50)
+%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div><div class='modal-comments'></div>", "data-share-id" => "#{medium.id}"} 
+  .grid-item
+    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+      .grid-item-body{:style => "background-image: url(#{medium.photo.url(:medium)});"}
+        - if medium.description.present?
+          .caption= medium.description.truncate(50)
     .grid-item-footer
-      %ul.list-inline
+      %ul.list-inline.grid-actions
         %li
           %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
             =image_tag('share_icon.png')
@@ -19,4 +19,27 @@
           %li
             %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
               =image_tag('pencil_icon.png')
-    %img{src: "#{medium.photo.url}", style: "display: none"}
+  .modal-inner{id: "media-#{medium.id}", style: "display: none;"}
+    %ul.grid-actions.list-inline
+      %li
+        = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+          =image_tag('props_icon.png')
+        %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+      %li
+        =image_tag('comment_icon.png')
+      -if current_user && current_user.id == @user.id
+        %li
+          %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+            =image_tag('pencil_icon.png')
+    =image_tag((medium.photo.url), class: "grid-modal-image")
+    - if current_user
+      .row-fluid.m-top-20.clearfix
+        .col-md-1
+          .avatar{style: "background-image:url(#{current_user.avatar.url})"}
+        .col-md-11.p-top-10
+          .comment-content
+            %h5= current_user.first_name
+            = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+    - else
+      = render :partial => 'comments/form_login'
+    = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }

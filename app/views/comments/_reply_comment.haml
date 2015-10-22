@@ -1,13 +1,17 @@
-%div.comment{ :id => "comment-#{comment.id}" }
-	.container.how-it-works-cont-padding
-		%hr
-		- if current_user && current_user.id == comment.user_id || current_user && current_user.id == reel_user
-			= link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close', :id => "delete_comment"
-		%h4
-			= comment.user.first_name
-			%small= comment.updated_at
-		%p= comment.body
-		- if !current_user
-			%p= link_to "Reply", :redirect_to => new_user_registration_url
-		- else
-			%p= link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true
+.comment{ :id => "comment-#{comment.id}" }
+  .col-md-1
+    .avatar{style: "background-image:url(#{comment.user.avatar.url})"}
+  .col-md-11.p-top-10
+    .comment-content
+      - if current_user && current_user.id == comment.user_id || current_user && current_user.id == reel_user
+        = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close', :id => "delete_comment"
+      %h5
+        = "#{comment.user.first_name}"
+        %span.dot= "&middot; ".html_safe
+        %span.time-ago= "#{time_ago_in_words(comment.updated_at)} ago"
+      %p= comment.body
+      - if !current_user
+        = link_to "Reply", :redirect_to => new_user_registration_url, class: "reply"
+      - else
+        = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"
+

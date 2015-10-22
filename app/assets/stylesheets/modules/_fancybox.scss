@@ -1,0 +1,88 @@
+.fancybox-overlay {
+  .fancybox-next span, .fancybox-prev span {
+    visibility: visible;
+  }
+
+  .fancybox-wrap {
+    top: 20px !important;
+  }
+
+  .fancybox-skin{
+    padding-top: 5px !important;
+  }
+
+  .fancybox-next span {
+    right: -80px;
+  }
+
+  .fancybox-prev span {
+    left: -80px;
+  }
+
+  .fancybox-nav {
+    width: 0px;
+  }
+}
+
+.modal-inner {
+  .grid-modal-image {
+    width: 100%;
+  }
+
+  .grid-actions {
+    margin-bottom: 5px;
+  }
+
+  .avatar {
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    @include background-image;
+    @include border-radius(100%);
+    margin-right: 5px;
+  }  
+}
+
+.comment-form, .reply-form {
+
+  .btn {
+    padding: 5px 20px;
+  }
+
+  textarea {
+    border: none;
+    background: #e6e6e6;
+    display: block;
+    width: 100%;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+  }
+}
+
+.comment {
+  clear: both;
+
+  span.time-ago {
+    color: $med-gray;
+  }
+
+  .reply {
+    color: $turq;
+  }
+}
+
+.replies {
+  padding-left: 5%;
+}
+
+.reply-form {
+  width: 90%;
+  float: right;
+
+  .reply-btn {
+    margin-bottom: 5px;
+    width: 100px;
+  }
+}

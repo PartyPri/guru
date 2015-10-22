@@ -56,13 +56,3 @@
 
   .reel
     = render 'shared/grid'
-
-/ %h2 Comments
-/ - @media.each do |medium|
-/   .h5
-/     Comment on Media #{medium.id}
-/     - if current_user
-/       = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-/     - else
-/       = render :partial => 'comments/form_login'
-/     = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
