@@ -20,7 +20,7 @@
 = render 'shared/nav'
 -if current_user && current_user.id == @user.id
   = render 'shared/modal_edit'
--if @user.featured_artist?
+-if @reel.featured?
   = render 'featured'
 - else
   .reel-page
