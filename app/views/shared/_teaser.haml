@@ -1,6 +1,10 @@
 %a{href: "/reels/#{reel.id}"}
   .teaser
-    %h2.name.pull-left= reel.name
+    %h2.name.pull-left.m-right-20= reel.name
+    - if reel.featured?
+      .m-top-5.pull-left
+        .glyphicon.glyphicon-star
+        %span.featured-tag featured reel!
     %h5.p-top-10.views.pull-right #{reel.impressionist_count} views 
     / = link_to user_path(reel.user) do
     /   .avatar{:style => "background-image: url(#{@user.avatar.url});"}

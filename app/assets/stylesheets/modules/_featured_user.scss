@@ -21,6 +21,10 @@
   }
 }
 
+.profile-featured-tag {
+  position: absolute;
+}
+
 .featured-tag {
   color: $red;
   vertical-align: middle;
@@ -29,6 +33,14 @@
 .glyphicon.glyphicon-star {
   color: $red;
   vertical-align: middle;
+}
+
+@media (max-width: 585px) {
+  .profile-featured-tag {
+    float: none !important;
+    position: relative;
+    margin-bottom: 10px;
+  }
 }
 
 @media (max-width: 400px) {

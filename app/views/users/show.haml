@@ -17,6 +17,10 @@
   .tabs
     .row-fluid
       .content-container
+        .pull-left.profile-featured-tag
+          - if @user.featured_artist?
+            .glyphicon.glyphicon-star
+            %span.featured-tag featured artist!
         %ul.list-inline
           %li.active
             %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} 
