@@ -20,38 +20,41 @@
 = render 'shared/nav'
 -if current_user && current_user.id == @user.id
   = render 'shared/modal_edit'
-.reel-page
-  .container
-    .hero
-      .container
-        %h1.text-center.m-bottom-10= @reel.name
-        %h4= @reel.description  
-        - interest = @reel.interests
-        - length = interest.length
-        %ul.list-inline.m-bottom-10.interests
-          - interest.each_with_index do |interest, x|
-            - if x+1 != length
-              %li
-                = link_to(interest.name, "/interests/#{interest.id}")
-              %li.divider
-            - else
-              %li
-                = link_to(interest.name, "/interests/#{interest.id}")
-  .link-bar
+-if @reel.featured?
+  = render 'featured'
+- else
+  .reel-page
     .container
-      .row-fluid
-        .col-md-5.user
-          = link_to user_path(@reel.user) do
-            .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-            %h5= @user.first_name + " " + @user.last_name
-        .col-md-5.views
-          %h4.p-top-10.pull-left #{@reel.impressionist_count} views
-          .links
-            .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
-            %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
-        .col-md-2.edit
-          - if current_user && current_user.id == @user.id        
-            = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+      .hero
+        .container
+          %h1.text-center.m-bottom-10= @reel.name
+          %h4= @reel.description  
+          - interest = @reel.interests
+          - length = interest.length
+          %ul.list-inline.m-bottom-10.interests
+            - interest.each_with_index do |interest, x|
+              - if x+1 != length
+                %li
+                  = link_to(interest.name, "/interests/#{interest.id}")
+                %li.divider
+              - else
+                %li
+                  = link_to(interest.name, "/interests/#{interest.id}")
+    .link-bar
+      .container
+        .row-fluid
+          .col-md-5.user
+            = link_to user_path(@reel.user) do
+              .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+              %h5= @user.first_name + " " + @user.last_name
+          .col-md-5.views
+            %h4.p-top-10.pull-left #{@reel.impressionist_count} views
+            .links
+              .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
+              %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
+          .col-md-2.edit
+            - if current_user && current_user.id == @user.id        
+              = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 
-  .reel
-    = render 'shared/grid'
+    .reel
+      = render 'shared/grid'
