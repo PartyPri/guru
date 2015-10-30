@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150902020619) do
+ActiveRecord::Schema.define(:version => 20151022011208) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20150902020619) do
     t.text     "body"
     t.string   "type"
     t.integer  "position"
+    t.boolean  "featured_medium"
   end
 
   create_table "reel_interests", :force => true do |t|
@@ -264,6 +265,7 @@ ActiveRecord::Schema.define(:version => 20150902020619) do
     t.string   "claim_token"
     t.string   "claim_email"
     t.boolean  "claim_user"
+    t.boolean  "featured_artist"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
