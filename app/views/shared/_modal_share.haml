@@ -7,7 +7,8 @@
         %h4 Select one:
         %ul.list-inline.social-list
           %li
-            =image_tag('icon-facebook.png')
+            %a.modal-share-button.modal-facebook-share{:href => "#", target: "_blank"}
+              =image_tag('icon-facebook.png')
           %li
             %a.modal-share-button.modal-twitter-share{:href => "#"}
               =image_tag('icon-twitter.png')

@@ -1,6 +1,6 @@
-%li.media.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div><div class='modal-comments'></div>", "data-share-id" => "#{medium.id}"} 
+%li.media.m-bottom-20
   .grid-item
-    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
       .grid-item-body{:style => "background-image: url(#{medium.photo.url(:medium)});"}
         - if medium.description.present?
           .caption= medium.description.truncate(50)
@@ -11,25 +11,27 @@
             =image_tag('share_icon.png')
         %li
           = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-            =image_tag('props_icon.png')
+            %span.action-props
           %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
         %li
-          =image_tag('comment_icon.png')
+          %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+            =image_tag('comment_icon.png')
         -if current_user && current_user.id == @user.id
           %li
             %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
               =image_tag('pencil_icon.png')
-  .modal-inner{id: "media-#{medium.id}", style: "display: none;"}
+  .modal-inner{id: "media-#{medium.id}", style: "display: none;", "data-src" => "#{medium.photo.url}", "data-share-id" => "#{medium.id}"}
     %ul.grid-actions.list-inline
+      %li
+        %a.media-share.footer-link.close-fancybox{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+          =image_tag('share_icon.png')
       %li
         = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
           =image_tag('props_icon.png')
         %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-      %li
-        =image_tag('comment_icon.png')
       -if current_user && current_user.id == @user.id
         %li
-          %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+          %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             =image_tag('pencil_icon.png')
     =image_tag((medium.photo.url), class: "grid-modal-image")
     - if current_user

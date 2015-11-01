@@ -1,6 +1,6 @@
 %li.media.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
   .grid-item
-    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
       .grid-item-body{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
         =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
         =image_tag "video_arrow_right.png", class: "icon"
@@ -12,10 +12,11 @@
               =image_tag('share_icon.png')
           %li
             = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
-              =image_tag('props_icon.png')
+              %span.action-props
             %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
           %li
-            =image_tag('comment_icon.png')
+            %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+              =image_tag('comment_icon.png')
           -if current_user && current_user.id == @user.id
             %li
               %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
@@ -23,16 +24,17 @@
   .modal-inner{id: "media-#{medium.id}", style: "display: none;"}
     %ul.grid-actions.list-inline
       %li
+        %a.media-share.footer-link.close-fancybox{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+          =image_tag('share_icon.png')
+      %li
         = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
           =image_tag('props_icon.png')
         %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-      %li
-        =image_tag('comment_icon.png')
       -if current_user && current_user.id == @user.id
         %li
-          %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+          %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             =image_tag('pencil_icon.png')
-    %iframe{src: 'http://www.youtube.com/embed/#{medium.uid}', width: '100%', height: '400px', frameborder: "0"}
+    %iframe{src: "http://www.youtube.com/embed/#{medium.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0", width: "100%", height: "400px"}
     - if current_user
       .row-fluid.m-top-20.clearfix
         .col-md-1

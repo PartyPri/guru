@@ -1,7 +1,7 @@
 - if medium.photo.present?
   %li.media.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover-photo' style='background-image: url(#{medium.photo.url})'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
     .grid-item.story{:style => "background-image: url(#{medium.photo.url(:medium)}); background-size: cover;"}
-      %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+      %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
         .story-overlay.grid-item-body
           %h4= medium.title
           %p= raw(truncate(medium.body, length: 300))
@@ -11,9 +11,10 @@
           %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
             =image_tag('share_icon.png')
           %li
-            =image_tag('props_icon.png')
+            %span.action-props
           %li
-            =image_tag('comment_icon.png')
+            %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+              =image_tag('comment_icon.png')
           -if current_user && current_user.id == @user.id
             %li
               %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
@@ -21,14 +22,15 @@
     .modal-inner.story-inner{id: "media-#{medium.id}", style: "display: none;"}
       %ul.grid-actions.list-inline
         %li
+          %a.media-share.footer-link.close-fancybox{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+            =image_tag('share_icon.png')
+        %li
           = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
             =image_tag('props_icon.png')
           %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-        %li
-          =image_tag('comment_icon.png')
         -if current_user && current_user.id == @user.id
           %li
-            %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+            %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
               =image_tag('pencil_icon.png')
       .custom-html.story-content
         .story-cover-photo{style: "background-image: url(#{medium.photo.url})"}

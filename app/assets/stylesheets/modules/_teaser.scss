@@ -20,6 +20,10 @@
     padding: 0 40px;
   }
 
+  .teaser-body p {
+    text-align: left;
+  }
+
   .interests {
     margin-top: 0;
     margin-bottom: 0px;
@@ -68,7 +72,8 @@
 
 .teaser-head {
   .user-info {
-    width: 350px;
+    width: 300px;
+    text-align: left;
 
     p {
       font-size: 12px;
