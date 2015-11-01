@@ -1,47 +1,16 @@
 .grid-container
   .row-fluid.grid.clearfix
-    %ul.list-inline#lightgallery
+    %ul.grid-list.list-inline#lightgallery.clearfix
       - if current_user && current_user.id == @user.id
-        %li.m-bottom-20
+        %li.media.m-bottom-20
           = link_to pages_select_media_path(reel: @reel) do
             .new-grid-item
-              =image_tag "lt-turq_add.png", style: 'width: 50px'
+              .icon=image_tag "lt-turq_add.png", style: 'width: 50px'
               %h4 Add Media
       - @media.each do |medium|
-        - unless medium.featured_medium?
-          - if medium.is_a? Image
-            %li.m-bottom-20{"data-src" => "#{medium.photo.url}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
-              -if current_user && current_user.id == @user.id
-                %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
-                %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-              .grid-item{:style => "background-image: url(#{medium.photo.url(:medium)});"}
-                - if medium.description.present?
-                  .caption= medium.description.truncate(50)
-                %img{src: "#{medium.photo.url}", style: "display: none"}
-          - if medium.is_a? Video
-            %li.m-bottom-20{"data-src" => "https://www.youtube.com/watch?v=#{medium.uid}", "data-sub-html" => "<div class='custom-html'>#{medium.description}</div>", "data-share-id" => "#{medium.id}"}
-              -if current_user && current_user.id == @user.id
-                %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
-                %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-              .grid-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
-                =image_tag "http://img.youtube.com/vi/#{medium.uid}/0.jpg", style: "display: none;"
-                =image_tag "video_arrow_right.png"
-                .caption= medium.description.truncate(50)
-          - if medium.is_a? Story
-            - if medium.photo.present?
-              %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover-photo' style='background-image: url(#{medium.photo.url})'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
-                -if current_user && current_user.id == @user.id
-                  %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
-                  %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-                .grid-item.story{:style => "background-image: url(#{medium.photo.url(:medium)}); background-size: cover;"}
-                  .story-overlay
-                    %h4= medium.title
-                    %p= raw(truncate(medium.body, length: 300))
-            -else
-              %li.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content no-photo'><div class='story-cover'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
-                -if current_user && current_user.id == @user.id
-                  %a.twitter-share-button{href: "https://twitter.com/intent/tweet?url=http%3A%2F%2Fwww.evrystep.com%2Freels%2F#{@reel.id}%3Fmedia%3D#{medium.id}"} Tweet
-                  %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-                .grid-item.story.no-photo
-                  %h4= medium.title
-                  %p= raw(truncate(medium.body, length: 300))
+        - if medium.is_a? Image
+          = render 'shared/grid_image', medium: medium
+        - if medium.is_a? Video
+          = render 'shared/grid_video', medium: medium
+        - if medium.is_a? Story
+          = render 'shared/grid_story', medium: medium

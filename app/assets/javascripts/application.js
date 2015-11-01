@@ -25,7 +25,8 @@
 //= require video_url
 //= require inputmask
 //= require input
-//= require lightGallery
+//= require fancybox
+//= require fancyboxPack
 //= require tabs
 //= require bootstrap-select
 //= require select
@@ -33,5 +34,6 @@
 //= require edit-modal
 //= require jquery-ui
 //= require ckeditor/init
+//= require share_modal
 //= require_tree .
 //

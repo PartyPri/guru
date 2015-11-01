@@ -1,0 +1,47 @@
+%li.media.m-bottom-20
+  .grid-item
+    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
+      .grid-item-body{:style => "background-image: url(#{medium.photo.url(:medium)});"}
+        - if medium.description.present?
+          .caption= medium.description.truncate(50)
+    .grid-item-footer
+      %ul.list-inline.grid-actions
+        %li
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+            =image_tag('share_icon.png')
+        %li
+          = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+            %span.action-props
+          %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+        %li
+          %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+            =image_tag('comment_icon.png')
+        -if current_user && current_user.id == @user.id
+          %li
+            %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+              =image_tag('pencil_icon.png')
+  .modal-inner{id: "media-#{medium.id}", style: "display: none;", "data-src" => "#{medium.photo.url}", "data-share-id" => "#{medium.id}"}
+    %ul.grid-actions.list-inline
+      %li
+        %a.media-share.footer-link.close-fancybox{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+          =image_tag('share_icon.png')
+      %li
+        = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+          =image_tag('props_icon.png')
+        %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+      -if current_user && current_user.id == @user.id
+        %li
+          %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+            =image_tag('pencil_icon.png')
+    =image_tag((medium.photo.url), class: "grid-modal-image")
+    - if current_user
+      .row-fluid.m-top-20.clearfix
+        .col-md-1
+          .avatar{style: "background-image:url(#{current_user.avatar.url})"}
+        .col-md-11.p-top-10
+          .comment-content
+            %h5= current_user.first_name
+            = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+    - else
+      = render :partial => 'comments/form_login'
+    = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }

@@ -18,6 +18,7 @@
 - media = @images.zip(@videos).flatten.compact
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
 = render 'shared/nav'
+= render 'shared/modal_share'
 -if current_user && current_user.id == @user.id
   = render 'shared/modal_edit'
 -if @reel.featured?

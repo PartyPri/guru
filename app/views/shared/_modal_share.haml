@@ -1,0 +1,14 @@
+#share-modal.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %h4 Share Media
+      .modal-body
+        %h4 Select one:
+        %ul.list-inline.social-list
+          %li
+            %a.modal-share-button.modal-facebook-share{:href => "#", target: "_blank"}
+              =image_tag('icon-facebook.png')
+          %li
+            %a.modal-share-button.modal-twitter-share{:href => "#"}
+              =image_tag('icon-twitter.png')
