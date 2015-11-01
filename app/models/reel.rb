@@ -1,5 +1,6 @@
 class Reel < ActiveRecord::Base
   attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :stories_attributes, :user_id, :tag_list, :description
+  before_save :assign_featured_artist
 
   is_impressionable
 
@@ -19,4 +20,12 @@ class Reel < ActiveRecord::Base
   scope :by_user_id, lambda{|user_id| { conditions: { user_id: user_id } } }
 
   acts_as_taggable
+
+  private
+    def assign_featured_artist
+      if self.featured?
+        self.user.featured_artist = true
+        self.user.save!
+      end
+    end
 end

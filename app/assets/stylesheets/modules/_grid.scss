@@ -3,6 +3,10 @@
   margin: 0 auto;
 }
 
+.featured-video-container:hover .media-edit {
+  display: block;
+}
+
 .grid {
   background: #fff;
   padding: 20px 0;

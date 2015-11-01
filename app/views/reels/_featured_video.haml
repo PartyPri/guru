@@ -1,0 +1,8 @@
+.grid-container.featured-video-container
+  .row-fluid.grid.clearfix
+    -if @featured_video.any?
+      %a.media-edit.glyphicon.glyphicon-pencil{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{@featured_video.first.id}"}
+      //%h1 About this featured artist
+      %h3.featured-caption.text-center= @featured_video.first.description
+      %iframe{src: "http://www.youtube.com/embed/#{@featured_video.first.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
+

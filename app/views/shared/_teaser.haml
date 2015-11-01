@@ -4,6 +4,10 @@
       .avatar.pull-left{:style => "background-image: url(#{reel.user.avatar.url});"}
       %h4= reel.name
       %p= "#{reel.user.first_name} #{reel.user.last_name}"
+    - if reel.featured?
+      .m-top-5.pull-left
+        .glyphicon.glyphicon-star
+        %span.featured-tag featured!
     .view-all.pull-right
       %p.view-all VIEW ALL >
   .teaser-body
