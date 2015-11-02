@@ -58,7 +58,7 @@ gem 'impressionist'
 gem 'acts_as_list'
 
 #CKEditor
-gem 'ckeditor'
+gem 'ckeditor', github: 'galetahub/ckeditor'
 
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
