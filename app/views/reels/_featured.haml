@@ -35,5 +35,6 @@
             = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
 
   .reel
-    = render 'featured_video'
+    -if @featured_video.any?
+      = render 'featured_video'
     = render 'shared/grid'
