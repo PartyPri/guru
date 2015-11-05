@@ -17,14 +17,13 @@
   ul.grid-list {
     padding-left: 30px;
     list-style-type: none;
-    text-align: center;
+    text-align: left;
   }
 
   li.media{
     vertical-align: top;
     margin: 0 15px 20px 0;
     padding: 0;
-    float: left;
     position: relative;
   }
 
@@ -147,5 +146,13 @@
   .grid-item-body, .new-grid-item {
     width: 300px;
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 635px) {
+  .grid {
+    ul.grid-list {
+      text-align: center;
+    }
   }
 }
