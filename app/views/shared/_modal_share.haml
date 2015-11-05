@@ -3,6 +3,8 @@
     .modal-content
       .modal-header
         %h4 Share Media
+        %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+          %span{"aria-hidden" => "true"} &times;
       .modal-body
         %h4 Select one:
         %ul.list-inline.social-list

@@ -12,10 +12,15 @@
         %li
           = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
             %span.action-props
-          %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+            - if medium.score < 1
+              %span{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+            - else
+              %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
         %li
           %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
             =image_tag('comment_icon.png')
+            - if medium.comment_threads.count > 0
+              %span.comments-count= medium.comment_threads.count
         -if current_user && current_user.id == @user.id
           %li
             %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
@@ -27,8 +32,11 @@
           =image_tag('share_icon.png')
       %li
         = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-          =image_tag('props_icon.png')
-        %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+          %span.action-props
+          - if medium.score < 1
+            %span{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+          - else
+            %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
       -if current_user && current_user.id == @user.id
         %li
           %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}

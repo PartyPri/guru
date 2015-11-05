@@ -96,6 +96,8 @@
     background-repeat: no-repeat;
     background-position: center center;
     padding: 13px;
+    vertical-align: middle;
+    display: inline-block;
   }
 
   .action-props.active {
@@ -117,6 +119,10 @@
       margin-right: 20px;
     }
   }
+}
+
+span.votes-count {
+  vertical-align: middle;
 }
 
 @media (max-width: 1140px) {

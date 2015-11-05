@@ -15,6 +15,8 @@
           %li
             %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
               =image_tag('comment_icon.png')
+              - if medium.comment_threads.count > 0
+                %span.comments-count= medium.comment_threads.count
           -if current_user && current_user.id == @user.id
             %li
               %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
