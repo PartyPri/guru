@@ -24,6 +24,7 @@
 //= require inputmask
 //= require input
 //= require lightGallery
+//= require slick.min
 //= require tabs
 //= require bootstrap-select
 //= require select
