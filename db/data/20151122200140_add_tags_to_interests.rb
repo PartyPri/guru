@@ -3,6 +3,18 @@ require "csv"
 class AddTagsToInterests < SeedMigration::Migration
   CSV = CSV.read("db/data/csvs/tags_by_interest_20151122.csv")
 
+=begin
+  The data structure that comes back from reading the CSV is an array of arrays like the following:
+
+  [
+    [row1col1, row1col2, row1col3],
+    [row2col1, row2col2, row2col3],
+    [row3col1, row3col2, row3col3],
+  ]
+
+  This code iterates through the main array to get each row, then the sub-arrays to get each column
+=end
+
   attr_reader :action
 
   def up
