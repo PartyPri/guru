@@ -60,6 +60,9 @@ gem 'acts_as_list'
 #CKEditor
 gem 'ckeditor', github: 'galetahub/ckeditor'
 
+#Data Seeding
+gem 'seed_migration'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
