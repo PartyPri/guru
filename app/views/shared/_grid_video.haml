@@ -12,11 +12,14 @@
               =image_tag('share_icon.png')
           %li
             = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
-              %span.action-props
-            - if medium.score < 1
-              %span{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-            - else
-              %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+              - if current_user && current_user.voted_on?(medium)
+                %span.action-props-on
+              - else
+                %span.action-props-off
+              - if medium.score < 1
+                %span{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+              - else
+                %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
           %li
             %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
               =image_tag('comment_icon.png')
@@ -33,7 +36,10 @@
           =image_tag('share_icon.png')
       %li
         = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-          %span.action-props
+          - if current_user && current_user.voted_on?(medium)
+            %span.action-props-on
+          - else
+            %span.action-props-off
           - if medium.score < 1
             %span{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
           - else

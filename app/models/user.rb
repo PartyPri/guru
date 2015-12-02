@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :registrations
   has_many :events, through: :registrations, uniq: true
 
+  acts_as_voter
+
   # Attachments
   
   has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png"

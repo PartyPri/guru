@@ -5,6 +5,7 @@
 
 .featured-video-container:hover .media-edit {
   display: block;
+  margin-right: 20px;
 }
 
 .grid {
@@ -90,8 +91,18 @@
 .grid-actions {
   text-align: center;
 
-  .action-props {
+  .action-props-off {
     background-image: url(props_icon.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 13px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+
+  .action-props-on {
+    background-image: url(props_icon_turq.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center center;
