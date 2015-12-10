@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151022011208) do
+ActiveRecord::Schema.define(:version => 20151122195432) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -188,6 +188,12 @@ ActiveRecord::Schema.define(:version => 20151022011208) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "availability_confirmation"
+  end
+
+  create_table "seed_migration_data_migrations", :force => true do |t|
+    t.string   "version"
+    t.integer  "runtime"
+    t.datetime "migrated_on"
   end
 
   create_table "stories", :force => true do |t|
