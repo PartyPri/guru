@@ -1,59 +1,34 @@
-# encoding: UTF-8
-# This file is auto-generated from the current content of the database. Instead
-# of editing this file, please use the migrations feature of Seed Migration to
-# incrementally modify your database, and then regenerate this seed file.
-#
-# If you need to create the database on another system, you should be using
-# db:seed, not running all the migrations from scratch. The latter is a flawed
-# and unsustainable approach (the more migrations you'll amass, the slower
-# it'll run and the greater likelihood for issues).
-#
-# It's strongly recommended to check this file into your version control system.
+require 'faker'
+ 
+10.times do
+  User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: Faker::Lorem.characters(10),
+    description: Faker::Lorem.sentence
+  )
+ end
 
-ActiveRecord::Base.transaction do
+ users = User.all
 
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Rerum excepturi odit necessitatibus ex aliquid et.", "email"=>"beulah.waelchi@lindgren.name", "encrypted_password"=>"$2a$10$5JYos2ZSLhwJ4Dn8Sv50aezMPnZ8veyY19Db4IKDQcbzCcmFf1CaG", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Alec", "id"=>1, "last_name"=>"Fadel", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Recusandae eveniet officiis dolore neque ut.", "email"=>"johnny.torphy@brekke.net", "encrypted_password"=>"$2a$10$dMoT5z26czDPQHer0CktP.HCZ022qFH5LvxJHYEP3cgwpn5btEmKS", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Toni", "id"=>2, "last_name"=>"Torp", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Aut non omnis soluta mollitia quis quo ut expedita.", "email"=>"elyse@collinsmueller.info", "encrypted_password"=>"$2a$10$3i9Ao6AQSrpgTId.6G.eQ.WlsjJa5WbIsVid/yL49g6zR.tqq46RS", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Royal", "id"=>3, "last_name"=>"Spencer", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Voluptas magnam ea voluptatem porro et illo eos.", "email"=>"rocky.pagac@ko.com", "encrypted_password"=>"$2a$10$E8CV0rqNTpWCUa8dSPxHset8reOhueBDQ.RmRNlMi8GpYdB7gDsju", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Lilyan", "id"=>4, "last_name"=>"Koepp", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Odio deserunt doloribus natus harum est pariatur rerum.", "email"=>"alden.robel@hayeskutch.name", "encrypted_password"=>"$2a$10$MkrLS5tQAig/sbXTtkk2ce6zkOCcfK8AV.0ERlDDq6zLZJ/7kZUgu", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Jaquelin", "id"=>5, "last_name"=>"Kuphal", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:39Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Consequatur ipsam qui quidem et provident repudiandae.", "email"=>"gillian@cristbeatty.info", "encrypted_password"=>"$2a$10$lRewX9qIkBr01VpcNE2BzuKVsbG.C1/U70qDCGgvjDSgIERQkXRiq", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Troy", "id"=>6, "last_name"=>"Will", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:39Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Quasi consectetur facere animi qui totam.", "email"=>"timothy.heathcote@prosacco.net", "encrypted_password"=>"$2a$10$JDr.XdirurcAR2ZHiNGOdOuIF/kXwDKtkiDMFlrv6zvrOpuUrtGDi", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Mossie", "id"=>7, "last_name"=>"Senger", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Facilis vitae non distinctio.", "email"=>"brant.weinat@nolan.net", "encrypted_password"=>"$2a$10$eEhDIK38rlyETGx2hPAITObcEW33xVyd0R.Jne3e2F5NkzPOW4V/e", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Axel", "id"=>8, "last_name"=>"Hessel", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Tempora enim qui deleniti id tempore modi laudantium explicabo.", "email"=>"emmie@kovacek.org", "encrypted_password"=>"$2a$10$nUatVKQ4br2VfGOf4C7gUubNvROsKgJPqT2FFokyhapI5io2tTqrq", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Tony", "id"=>9, "last_name"=>"Collins", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  User.create({"avatar_content_type"=>nil, "avatar_file_name"=>nil, "avatar_file_size"=>nil, "avatar_updated_at"=>nil, "bio"=>nil, "categories"=>nil, "claim_email"=>nil, "claim_token"=>nil, "claim_user"=>nil, "cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "current_sign_in_at"=>nil, "current_sign_in_ip"=>nil, "description"=>"Ut voluptas ullam minima voluptatem deleniti eum dolore.", "email"=>"trever.connelly@bergnaum.net", "encrypted_password"=>"$2a$10$TF96O4gd44HjWLd8MeMXnOmCN.sKXc5VnG2hmN4aAFX/AXcZsCeu2", "expires_at"=>nil, "featured_artist"=>nil, "first_name"=>"Rossie", "id"=>10, "last_name"=>"Brekke", "last_sign_in_at"=>nil, "last_sign_in_ip"=>nil, "location"=>nil, "provider"=>nil, "remember_created_at"=>nil, "reset_password_sent_at"=>nil, "reset_password_token"=>nil, "sign_in_count"=>0, "token"=>nil, "uid"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  ActiveRecord::Base.connection.reset_pk_sequence!('users')
-
-  Interest.create({"cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "description"=>"Ratione consequatur ut ad excepturi iusto dolor explicabo.", "history"=>nil, "id"=>1, "name"=>"deserunt", "quote_author"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  Interest.create({"cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "description"=>"Expedita quia temporibus unde autem.", "history"=>nil, "id"=>2, "name"=>"odit", "quote_author"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  Interest.create({"cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "description"=>"Praesentium natus est at officiis hic iste ab in.", "history"=>nil, "id"=>3, "name"=>"molestiae", "quote_author"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  Interest.create({"cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "description"=>"Et expedita voluptas voluptatem eligendi quod.", "history"=>nil, "id"=>4, "name"=>"nemo", "quote_author"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  Interest.create({"cover_photo_content_type"=>nil, "cover_photo_file_name"=>nil, "cover_photo_file_size"=>nil, "cover_photo_updated_at"=>nil, "created_at"=>"2015-11-10T07:19:40Z", "description"=>"Velit et ullam iure est voluptas.", "history"=>nil, "id"=>5, "name"=>"qui", "quote_author"=>nil, "updated_at"=>"2015-11-10T07:19:40Z"}, :without_protection => true)
-
-  ActiveRecord::Base.connection.reset_pk_sequence!('interests')
-
-  UserInterest.create({"created_at"=>"2015-11-10T07:19:40Z", "id"=>1, "interest_id"=>4, "updated_at"=>"2015-11-10T07:19:40Z", "user_id"=>1}, :without_protection => true)
-
-  UserInterest.create({"created_at"=>"2015-11-10T07:19:40Z", "id"=>2, "interest_id"=>2, "updated_at"=>"2015-11-10T07:19:40Z", "user_id"=>1}, :without_protection => true)
-
-  UserInterest.create({"created_at"=>"2015-11-10T07:19:40Z", "id"=>3, "interest_id"=>5, "updated_at"=>"2015-11-10T07:19:40Z", "user_id"=>1}, :without_protection => true)
-
-  UserInterest.create({"created_at"=>"2015-11-10T07:19:40Z", "id"=>4, "interest_id"=>3, "updated_at"=>"2015-11-10T07:19:40Z", "user_id"=>1}, :without_protection => true)
-  ActiveRecord::Base.connection.reset_pk_sequence!('user_interests')
+5.times do
+  Interest.create!(
+    name: Faker::Lorem.word,
+    description: Faker::Lorem.sentence
+  )
 end
 
-SeedMigration::Migrator.bootstrap(20151122200140)
+interests = Interest.all
+
+5.times do
+  UserInterest.create(user_id: User.first.id, interest_id: interests.sample.id)
+end
+
+user_interests = UserInterest.all
+
+interests = Interest.all
+
+puts "Created #{users.count} Users"
+puts "Created #{interests.count} Interests"
+puts "Created #{user_interests.count} UserInterests"
