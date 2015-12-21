@@ -20,4 +20,8 @@ FactoryGirl.define do
     body "Story test body"
     reel
   end
+
+  factory :medium do
+    title "I'm a Medium"
+  end
 end

@@ -75,6 +75,9 @@ end
 group :test do
   gem 'factory_girl'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'timecop'
   gem 'simplecov', require: false
 end
 
