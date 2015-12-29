@@ -19,8 +19,8 @@
         .user-page-info
           - if @user.featured_artist?
             .pull-left.featured-profile-tag
-              %i.fa.fa-certificate
-              %i.fa.fa-star
+              -# %i.fa.fa-certificate
+              -# %i.fa.fa-star
               %span.featured-tag Featured!
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
           %h2.user-name-header
@@ -74,15 +74,8 @@
             - if current_user && current_user.id == @user.id
               .teaser.new-reel
                 = link_to new_reel_path do
-                  .reel-teaser-empty
-                    .empty-big-circle
-                      %h4
-                        %i.fa.fa-plus-circle
-                        Add new reel
-                      -# .small-circle-container
-                      -#   .empty-small-circle
-                      -#   .empty-small-circle
-                      -#   .empty-small-circle
+                  %i.fa.fa-plus-circle
+                  Add new reel
                   //=image_tag "lt-turq_reel.svg", height: 40
 
             - @reels.each do |reel|

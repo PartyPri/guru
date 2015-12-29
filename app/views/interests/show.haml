@@ -1,5 +1,5 @@
 = render 'shared/nav'
-.reel-page
+.reel-page.reel-page-explore
   .container
     .hero
       .content-container
@@ -17,19 +17,19 @@
             %ul.dropdown-menu
               - interest.each do |interest|
                 %li= link_to interest.name, "/interests/#{interest.id}"
-.page
-  .tabs.m-top-20
-    .row-fluid
-      .content-container
-        %ul.list-inline
-          %li.active
-            %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-        - unless @tags.length < 1
-          %select#tag-select.select-style.selectpicker{:name => "tags"}
-            %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
-            - @tags.each do |tag|
-              %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
+    .tabs.m-top-20
+      .row-fluid
+        .content-container
+          %ul.list-inline
+            %li.active
+              %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+          - unless @tags.length < 1
+            %select#tag-select.select-style.selectpicker{:name => "tags"}
+              %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
+              - @tags.each do |tag|
+                %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
 
+.page
   .page-content
     .tab-content
       .content-container.tab-pane.active#reels{role: "tabpanel"}
@@ -58,3 +58,21 @@
         - @reels.each do |reel|
           -if reel.media.length > 2
             =render :partial => 'shared/teaser', :locals => {:reel => reel}
+      .jumbotron.text-center
+        %h2
+          Feeling Inspired? Share Your Passion!
+        %small
+          Stories, videos, images. Anything goes. It's easy & fun!
+        %br
+        = link_to new_reel_path do
+          .teaser
+            %i.fa.fa-plus
+            %br
+            Create a reel
+      .container.text-center.reel-cta-footer
+        %h3
+          Discover reels from more passion topics
+        - interest = Interest.all
+        %ul.list-inline
+          - interest.each do |interest|
+            %li= link_to interest.name, "/interests/#{interest.id}"

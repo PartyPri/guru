@@ -2,8 +2,8 @@
   %a{href: "/reels/#{reel.id}"}
     - if reel.featured?
       .featured-teaser-reel-tag
-        %i.fa.fa-certificate
-        %i.fa.fa-star
+        -# %i.fa.fa-certificate
+        -# %i.fa.fa-star
         %span.featured-tag Featured!
     / = link_to user_path(reel.user) do
     /   .avatar{:style => "background-image: url(#{@user.avatar.url});"}
@@ -21,7 +21,7 @@
               %p= truncate(medium.title, length: 15)
     %br
     .reel-teaser-info
-      %h3.name= truncate(reel.name, length: 23)
+      %h3.name= truncate(reel.name, length: 35)
       .row-fluid
         /.col-xs-12
         / .tags
@@ -41,6 +41,11 @@
         /%i.arrow-right.pull-right
         /%h4.view-all.pull-right VIEW ALL
       /%br
+      %h5
+        = reel.user.first_name
+        = reel.user.last_name
+        |
+        = reel.updated_at
       %p= truncate(reel.description, length: 100)
       %br
       %h5

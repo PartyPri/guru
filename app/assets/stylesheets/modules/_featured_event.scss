@@ -40,18 +40,22 @@
 }
 
 .featured-tag {
+  background-image: url("featured-banner.png");
+  background-size: cover;
   position:absolute;
-  padding:1px 10px;
-  background-color: darken($red, 5%);
+  padding: 22px 19px;
+  //background-color: darken($red, 5%);
   color: $white;
-  margin-left: -37px;
-  &:before{
-    @extend %featured-banner-wings;
-    margin-left: -20px;
-  }
-  &:after{
-    @extend %featured-banner-wings;
-  }
+  margin: 127px -105px;
+  background: transparent url("featured-banner.png") no-repeat scroll center center / 132px auto;
+  width: 116px;
+  // &:before{
+  //   @extend %featured-banner-wings;
+  //   margin-left: -20px;
+  // }
+  // &:after{
+  //   @extend %featured-banner-wings;
+  // }
 }
 
 @media (max-width: 768px) {
