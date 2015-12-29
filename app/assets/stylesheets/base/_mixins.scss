@@ -16,3 +16,81 @@
   -moz-box-shadow: $top $left $blur $spread $color;
   box-shadow: $top $left $blur $spread $color;
 }
+
+@mixin drop-shadow-1 {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+@mixin drop-shadow-2 {
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+}
+
+@mixin edit-button {
+  vertical-align: middle;
+  padding: 2px 10px;
+  border: 1px solid lighten($lt-red, 10%);
+  @include border-radius(10px);
+  font-family: $base-font-family;
+  color: lighten($lt-red, 10%);
+  font-size: $base-font-size;
+  &:hover {
+    color: $white;
+    background-color: $red;
+  }
+}
+
+%base-featured-tag {
+  color: darken($red, 5%);
+  position: absolute;
+  i {
+    position:absolute;
+  }
+  .fa-star{
+    color: $white;
+    font-size: $base-font-size*1.4;
+    margin: -20px 0;
+  }
+  .fa-certificate{
+    font-size: $base-font-size*3;
+    margin: -30px -10px;
+  }
+}
+
+@mixin base-share-button {
+  height: 120px;
+  cursor: pointer;
+  color: $white;
+  font-size: $base-font-size*1.25;
+  .share-line{
+    background-color: $lt-turq;
+    height: 5px;
+    width: 220%;
+    position: absolute;
+    margin-top: 57px;
+    margin-left: -195%;
+  }
+  .share-triangle {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -19px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right:10px solid $lt-turq;
+    z-index: 1;
+  }
+  .share-circle {
+    position: absolute;
+    margin-left: -10px;
+    background-color: $lt-turq;
+    height: 120px;
+    width: 120px;
+    line-height: 118px;
+    @include border-radius(100%);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    &:active{
+      box-shadow: none;
+    }
+  }
+}

@@ -1,35 +1,66 @@
 - content_for :head do
   %meta{ property: "og:title", content: "<%=@user.first_name%> <%=@user.last_name%>" }
-  %meta{ property: "og:type", content: "website" } 
-  %meta{ property: "og:url", content: "<%=user_url(@user)%>" } 
+  %meta{ property: "og:type", content: "website" }
+  %meta{ property: "og:url", content: "<%=user_url(@user)%>" }
   %meta{ property: "og:image", content:"<%=user_image%>" }
   %meta{ property: "og:description", content: "<%=user_description%>" }
 = render 'shared/nav'
 .page
-  .hero-image{style: "background-image: url(#{@user.cover_photo.url(:large)});"}
-    .page-hero
-      %a#user-tab
-        .page-info
+  -# .hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
+  -#   .page-hero
+  -#     .page-info
+  -#       .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+  -#       %h1=@user.first_name + " " + @user.last_name
+  -#       %h4.m-top-1= @user.description
+  -#       %h4.m-top-5= @user.location
+  .content-container.user-page-header
+    .row
+      .col-sm-4
+        .user-page-info
+          - if @user.featured_artist?
+            .pull-left.featured-profile-tag
+              %i.fa.fa-certificate
+              %i.fa.fa-star
+              %span.featured-tag Featured!
           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-          %h1=@user.first_name + " " + @user.last_name
+          %h2.user-name-header
+            =@user.first_name + " " + @user.last_name
+            - if current_user && current_user.id == @user.id
+              = link_to edit_profile_path do
+                %i.fa.fa-pencil-square
           %h4.m-top-1= @user.description
-          %h4.m-top-5= @user.location
+          %h2.m-top-5
+            - if @user.location.present?
+              %i.fa.fa-map-marker
+              %span= @user.location
+      .col-sm-4.user-about-me
+        %h2 About me
+        %p.user-bio-container
+          = @user.bio
+      .user-hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
   .tabs
     .row-fluid
       .content-container
-        .pull-left.profile-featured-tag
-          - if @user.featured_artist?
-            .glyphicon.glyphicon-star
-            %span.featured-tag featured artist!
-        %ul.list-inline
+        %ul.list-inline.user-profile-tabs
           %li.active
-            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"} 
+            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
               %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
-          %li.divider
+          .tab-seperator
           %li
             %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
-        - if current_user && current_user.id == @user.id 
-          = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
+        -# .pull-left.profile-featured-tag
+        -#   - if @user.featured_artist?
+        -#     .glyphicon.glyphicon-star
+        -#     %span.featured-tag featured artist!
+        -# %ul.list-inline
+        -#   %li.active
+        -#     %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
+        -#       %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
+        -#   %li.divider
+        -#   %li
+        -#     %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
+        -# - if current_user && current_user.id == @user.id
+        -#   = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
   .page-content
     .tab-content
       .container.tab-pane#bio{role: "tabpanel"}
@@ -41,9 +72,18 @@
         .tab-content
           .tab-pane.active#reels{role: "tabpanel"}
             - if current_user && current_user.id == @user.id
-              = link_to new_reel_path do
-                .teaser.new-reel
-                  =image_tag "lt-turq_reel.svg", height: 40
-                  %h4.c-lt-turq New reel
+              .teaser.new-reel
+                = link_to new_reel_path do
+                  .reel-teaser-empty
+                    .empty-big-circle
+                      %h4
+                        %i.fa.fa-plus-circle
+                        Add new reel
+                      -# .small-circle-container
+                      -#   .empty-small-circle
+                      -#   .empty-small-circle
+                      -#   .empty-small-circle
+                  //=image_tag "lt-turq_reel.svg", height: 40
+
             - @reels.each do |reel|
               =render :partial => 'shared/teaser', :locals => {:reel => reel}

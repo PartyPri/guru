@@ -29,6 +29,31 @@
   }
 }
 
+%featured-banner-wings {
+  content: "";
+  position: absolute;
+  background-color: $lt-red;
+  margin-top: 5px;
+  height: 20px;
+  width: 20px;
+  z-index:-1;
+}
+
+.featured-tag {
+  position:absolute;
+  padding:1px 10px;
+  background-color: darken($red, 5%);
+  color: $white;
+  margin-left: -37px;
+  &:before{
+    @extend %featured-banner-wings;
+    margin-left: -20px;
+  }
+  &:after{
+    @extend %featured-banner-wings;
+  }
+}
+
 @media (max-width: 768px) {
   .featured-event {
     .info {

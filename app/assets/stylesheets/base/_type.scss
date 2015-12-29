@@ -1,5 +1,6 @@
 body {
   font-size: $base-font-size;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: $base-line-height;
   font-family: $base-font-family;
@@ -10,7 +11,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.25em;
   margin: 0;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
-  font-family: $header-font-family
+  font-family: $header-font-family;
 }
 
 @media (min-width: 768px) {

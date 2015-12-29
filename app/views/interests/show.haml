@@ -2,16 +2,27 @@
 .reel-page
   .container
     .hero
-      .container
-        =link_to @interest do
-          %h1.text-center.m-bottom-10= @interest.name
-        %h4= @interest.description 
+      .content-container
+        /%h1.reel-name-header.m-bottom-10= @interest.name
+        -# =link_to @interest do
+        -#   %h1.text-center.m-bottom-10= @interest.name
+        -# %h4= @interest.description
+        %h3
+          Explore the imagination behind
+          .dropdown.header-explore
+            %a.dropdown-toggle.explore{"data-toggle" => "dropdown", :href => "#"}
+              =@interest.name
+              %b.caret.m-left-5
+            - interest = Interest.all
+            %ul.dropdown-menu
+              - interest.each do |interest|
+                %li= link_to interest.name, "/interests/#{interest.id}"
 .page
-  .tabs
+  .tabs.m-top-20
     .row-fluid
       .content-container
         %ul.list-inline
-          %li
+          %li.active
             %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
         - unless @tags.length < 1
           %select#tag-select.select-style.selectpicker{:name => "tags"}

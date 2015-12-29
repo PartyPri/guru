@@ -1,18 +1,85 @@
 .reel-page {
   margin-top: 50px;
-
-  .hero {
-    padding: 30px 0 30px;
-    background: #fff;
-    text-align: center;
-
-    .container {
-      width: 75%;
+  .reel-breadcrumbs{
+    padding: 5px 0 0 35px;
+    font-weight: bold;
+    color: $drk-gray;
+    a {
+      color: $lt-gray;
+      &:hover {
+        color: $turq;
+      }
     }
   }
-
-  .interests a {
-    color: $med-gray;
+  .reel-artist-name{
+    display: block;
+    a{
+      color: darken($lt-gray, 10%);
+      &:hover {
+        color: $turq;
+      }
+    }
+  }
+  .hero {
+    height: 150px;
+    color: $gray;
+    padding: 70px 0px 0 10px;
+    background: #fff;
+    //.container {
+    //  width: 75%;
+    //}
+    .reel-name-header{
+      font-family: $special-font-family;
+      color: $med-gray;
+      a {
+        @include edit-button;
+      }
+    }
+    .reel-description {
+      line-height: $base-line-height*1.2;
+      color: $lt-gray;
+      margin-bottom: 0;
+    }
+    p{
+      height: 88px;
+      overflow: scroll;
+    }
+  }
+  .interests {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: $base-font-size * 0.6375;
+    .interest-tags{
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 20px;
+      background-color: #9CB4EF;
+      a {
+        color: $white;
+      }
+    }
+  }
+  .avatar-container {
+    padding-left: 30px;
+    .share-button {
+      //defined in mixins.scss
+      @include base-share-button;
+      .share-line{
+        left: 0px;
+      }
+    }
+  }
+  .share-button-mobile {
+    display: none;
+  }
+  .avatar {
+    height: 90px;
+    width: 90px;
+    margin: 10px 0 10px 5px;
+    display: inline-block !important;
+    vertical-align: middle;
+    @include background-image;
+    @include border-radius(100%);
   }
 
   .link-bar {
@@ -20,16 +87,6 @@
     padding: 5px 0;
     position: relative;
     @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
-
-    .avatar {
-      height: 40px;
-      width: 40px;
-      margin: 0;
-      display: inline-block !important;
-      vertical-align: middle;
-      @include background-image;
-      @include border-radius(100%);
-    }
 
     .user, .links {
       padding: 0;
@@ -50,7 +107,7 @@
 
     .share, .twitter-share-button {
       text-align: right;
-      vertical-align: middle; 
+      vertical-align: middle;
       margin: 10px 0;
     }
   }
@@ -58,6 +115,7 @@
   .edit-reel {
     padding: 5px 20px;
     margin-top: 2px;
+    @include border-radius(20px);
   }
 }
 
@@ -65,6 +123,15 @@
   background: #e9e9e9;
   min-height: 645px;
   padding: 40px 0;
+}
+
+.featured-reel-header {
+  margin-top: 51px;
+}
+.featured-reel-tag {
+  @extend %base-featured-tag;
+  margin: -20px 47px;
+  z-index: 1;
 }
 
 .views {
@@ -81,9 +148,16 @@
 
 @media (max-width: 991px) {
   .reel-page {
+    .avatar-container {
+      padding-left: 0;
+      .share-button {
+        .share-line {
+          left: -20px;
+        }
+      }
+    }
     .link-bar, .link-bar .links {
       text-align: center;
-
       .views {
         margin-top: 15px;
         float: none;
@@ -94,7 +168,7 @@
       .share {
         margin: 0 15px;
       }
-      
+
       .links {
         display: inline-block;
       }
@@ -107,14 +181,56 @@
   }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
+  .featured-reel-tag {
+    margin: -20px 46.5%;
+  }
   .reel-page {
+    .reel-breadcrumbs{
+      padding: 0;
+    }
+    .reel-artist-name{
+      display: none;
+    }
+    .reel-name-header{
+      text-align: center;
+    }
+    .share-button-mobile {
+      display: block;
+      @include base-share-button;
+      margin: 10px 0 10px 43%;
+      .share-line {
+        left: 100%;
+      }
+      .share-triangle-right {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 108px;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left:10px solid $lt-turq;
+        z-index: 1;
+      }
+    }
+    .avatar-container {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .featured-reel-tag {
+    margin-left: 44.5%;
+  }
+  .reel-page {
+    .share-button-mobile {
+      margin-left: 36%;
+    }
     .hero {
       .container {
         width: 100%;
       }
     }
-    
     .edit-reel {
       position: relative;
       width: 100%;

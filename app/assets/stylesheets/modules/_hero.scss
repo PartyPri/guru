@@ -1,37 +1,15 @@
-.page-hero {
-  height: 475px;
-  background-color: rgba(0, 0, 0, 0.22);
 
-  .page-info {
-    margin: 0 auto;
-    color: #fff;
-    bottom: 0;
-    position: absolute;
-    text-align: center;
-    width: 100%;
-    padding-bottom: 30px;   
-  }
 
-  .avatar {
-    border: solid #fff 2px;
-    height: 80px;
-    width: 80px;
-    margin-bottom: 8px;
-    @include background-image;
-    @include border-radius(100%);
-  }
-
-  .avatar, .info {
-    display: inline-block;
-  }
-}
+// .page-hero {
+//   height: 400px;
+//   background-color: rgba(0, 0, 0, 0.22);
+// }
 
 .hero-image {
   width: 100%;
   position: relative;
   background-size: 100%;
-  background-size: cover;
-  background-position: 50% 30%;
+  background-position: cover;
   background-repeat: no-repeat no-repeat;
   margin-top: 50px;
 }

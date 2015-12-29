@@ -1,58 +1,49 @@
-%a{href: "/reels/#{reel.id}"}
-  .teaser
-    %h2.name.pull-left.m-right-20= reel.name
+.teaser
+  %a{href: "/reels/#{reel.id}"}
     - if reel.featured?
-      .m-top-5.pull-left
-        .glyphicon.glyphicon-star
-        %span.featured-tag featured!
-    %h5.p-top-10.views.pull-right #{reel.impressionist_count} views 
+      .featured-teaser-reel-tag
+        %i.fa.fa-certificate
+        %i.fa.fa-star
+        %span.featured-tag Featured!
     / = link_to user_path(reel.user) do
     /   .avatar{:style => "background-image: url(#{@user.avatar.url});"}
     /   %h5= reel.user.first_name + " " + reel.user.last_name
-    .container
-      .row-fluid
-        /.col-xs-12
-        / .tags
-        /   =reel.tag_list.join(", ")
-        / - interest = reel.interests
-        / - length = interest.length
-        / - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-        / %ul.list-inline.interests
-        /   - interest.each_with_index do |interest, x|
-        /     - if x+1 != length
-        /       %li
-        /         = interest.name
-        /       %li.divider
-        /     - else
-        /       %li
-        /         = interest.name
-    %ul.list-inline.media-list
-      - reel.media.order("position").take(4).each do |medium|
+    /.container
+    %ul.media-list
+      - reel.media.order("position").take(1).each do |medium|
         - if medium.is_a? Image
           %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
         - elsif medium.is_a? Video
           %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
         - elsif medium.is_a? Story
           %li.teaser-media.teaser-story{:style => "background-image: url(#{medium.photo.url})"}
-            .story-overlay
-              %h4= medium.title
-    %p= truncate(reel.description, length: 80)
-    .row-fluid
-      /.col-xs-12
-      / .tags
-      /   =reel.tag_list.join(", ")
-      - interest = reel.interests
-      - length = interest.length
-      - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
-      %ul.list-inline.interests.pull-left
-        - interest.each_with_index do |interest, x|
-          - if x+1 != length
-            %li
-              = interest.name
-            %li.divider
-          - else
-            %li
-              = interest.name
-      %i.arrow-right.pull-right
-      %h4.view-all.pull-right VIEW ALL
-
+            .story-overlay-teaser
+              %p= truncate(medium.title, length: 15)
+    %br
+    .reel-teaser-info
+      %h3.name= truncate(reel.name, length: 23)
+      .row-fluid
+        /.col-xs-12
+        / .tags
+        /   =reel.tag_list.join(", ")
+        -# - interest = reel.interests
+        -# - length = interest.length
+        -# - media = (reel.images + reel.videos).sort{|a,b| b.updated_at <=> a.updated_at }
+        -# %ul.list-inline.interests.pull-left
+        -#   - interest.each_with_index do |interest, x|
+        -#     - if x+1 != length
+        -#       %li.interest-tags
+        -#         = interest.name
+        -#       /%li.divider
+        -#     - else
+        -#       %li.interest-tags
+        -#         = interest.name
+        /%i.arrow-right.pull-right
+        /%h4.view-all.pull-right VIEW ALL
+      /%br
+      %p= truncate(reel.description, length: 100)
+      %br
+      %h5
+        %i.fa.fa-eye
+        #{reel.impressionist_count} views
+    %hr

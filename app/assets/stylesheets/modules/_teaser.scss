@@ -1,44 +1,85 @@
 .teaser {
-  padding: 10px 40px;
-  background: #fff;
-  border: 1px solid transparent;
+  // padding: 10px 40px;
+  // background: #fff;
+  // border: 1px solid transparent
+  // overflow: hidden;
   margin-bottom: 30px;
-  overflow: hidden;
+  margin-left: 15px;
   color: $drk-gray;
-  @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
-  @include border-radius(3px);
-
-  h1, p {
-    color: #000;
-  }
-
-  ul {
-    margin: 6px 0;
-
-    li:nth-child(4) {
-      margin: 0;
-    }
-
-  }
-
+  display: inline-block;
+  width: 300px;
+  vertical-align: top;
+  // @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
+  // @include border-radius(3px);
+  // h1, p {
+  //   color: $drk-gray;
+  // }
+  // ul {
+  //   margin: 6px 0;
+  //   li:nth-child(4) {
+  //     margin: 0;
+  //   }
+  // }
   ul.media-list {
-    min-height: 150px;
+    height: 250px;
+  //   min-height: 150px;
+  //   padding-top: 40px;
   }
-
+  p{
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+  hr{ border: 0; height: 1px; background: $lt-gray; background-image: linear-gradient(to right, #ccc, $lt-gray, #ccc); }
+  .name {
+    color: $drk-gray;
+    font-weight: 700;
+    size: $base-font-size*1.1;
+  }
+  .container{
+    padding: 0;
+  }
+  .reel-teaser-info {
+    vertical-align: bottom;
+    color: $lt-gray;
+    p{
+      height: 84px;
+    }
+  }
   .interests {
-    margin-top: 0;
+    margin-top: 5px;
     margin-bottom: 0px;
-    font-size: $base-font-size * 0.9375;
-    color: $med-gray;
+    font-size: $base-font-size * 0.6375;
+    color: $white;
+    .interest-tags{
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 20px;
+      background-color: #9CB4EF;
+    }
   }
-
   li.teaser-media {
-    width: 207px;
-    height: 150px;
+    width: 75px;
+    height: 75px;
     margin-right: 10px;
     @include background-image;
-    @include border-radius(10px);
+    @include border-radius(100px);
     position: relative;
+    &:first-child {
+      float: left;
+      width: 250px;
+      height: 250px;
+      @include border-radius(200px);
+      @include drop-shadow-1;
+
+    }
+    &:not(:first-child) {
+      margin-top: 10px;
+      margin-left: 200px;
+	    @include drop-shadow-1;
+    }
+    &:nth-child(3){
+      margin-left: 220px;
+    }
   }
 
   .arrow-right {
@@ -49,7 +90,6 @@
     border-color: transparent transparent transparent $lt-turq;
     margin-top: 2px;
   }
-
   .view-all {
     color: $lt-turq;
     margin-right: 10px;
@@ -57,55 +97,105 @@
   }
 }
 
+.featured-teaser-reel-tag {
+  @extend %base-featured-tag;
+  margin-left: 113px;
+  z-index: 1;
+}
+
 .teaser.bio {
   min-height: 300px;
 }
 
-.teaser:hover {
-  border: 1px solid $lt-turq;
-}
+// .teaser:hover {
+//   border: 1px solid $lt-turq;
+// }
 
 .teaser.new-reel {
-  border: dashed $med-gray 2px;
+  vertical-align: top;
+  margin-top: 10px;
   text-align: center;
-  padding: 30px 0;
-
-  img {
-    margin-bottom: 10px;
-  }
+  //border: dashed $med-gray 2px;
+  // padding: 30px 0;
+  // img {
+  //   margin-bottom: 10px;
+  // }
 }
 
 .teaser.new-reel:hover {
   border-color: $lt-turq;
 }
 
-@media (max-width: 990px) {
-
-  .teaser {
-    text-align: center;
-
-    li.teaser-media {
-      width: 90%;
-      height: 350px;
-      margin-right: 6px;
+.reel-teaser-empty {
+  .empty-big-circle{
+    // position: absolute;
+    // margin-top: -354px;
+    float: left;
+    background-color: $turq;
+    width: 250px;
+    height: 250px;
+    @include border-radius(200px);
+    @include drop-shadow-1;
+    h4{
+      position: absolute;
+      margin-top: 110px;
+      margin-left: 40px;
+      color: $white;
+    }
+  }
+  .small-circle-container{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    margin-left: 200px;
+  }
+  .empty-small-circle{
+    background-color: $turq;
+    width: 75px;
+    height: 75px;
+    margin-bottom: 10px;
+    @include border-radius(100px);
+    @include drop-shadow-1;
+    &:nth-child(2){
+      margin-left: 20px;
     }
   }
 }
 
-@media (max-width: 400px) {
-  .teaser {
-    padding: 10px 0px;
-    width: 90%;
-    margin: 0 auto 30px auto;
-
-    .name, .views {
-      float: none !important;
-      text-align: center;
-    }
-
-    li.teaser-media {
-      margin: 0;
-      height: 250px;
+@media (max-width:990px) {
+  .teaser{
+    .reel-teaser-info{
+      text-align: left;
     }
   }
 }
+
+// @media (max-width: 990px) {
+//
+//   .teaser {
+//     text-align: center;
+//     li.teaser-media {
+//       width: 90%;
+//       height: 350px;
+//       margin-right: 6px;
+//     }
+//   }
+// }
+
+// @media (max-width: 400px) {
+//   .teaser {
+//     padding: 10px 0px;
+//     width: 90%;
+//     margin: 0 auto 30px auto;
+//
+//     .name, .views {
+//       float: none !important;
+//       text-align: center;
+//     }
+//
+//     li.teaser-media {
+//       margin: 0;
+//       height: 250px;
+//     }
+//   }
+// }

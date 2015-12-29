@@ -25,18 +25,38 @@
   padding: 0px 20px;
 }
 
-.profile-featured-tag {
-  position: absolute;
-}
-
-.featured-tag {
-  color: $red;
-  vertical-align: middle;
+.featured-profile-tag {
+  @extend %base-featured-tag;
+  margin-left: 143px;
 }
 
 .glyphicon.glyphicon-star {
   color: $red;
   vertical-align: middle;
+}
+
+@media (max-width: 990px) {
+  .featured-profile-tag{
+    margin-left: 45%;
+  }
+}
+
+@media (max-width: 900px) {
+  .featured-profile-tag{
+    margin-left: 47%;
+  }
+}
+
+@media (max-width: 767px) {
+  .featured-profile-tag{
+    margin-left: 22.5%;
+  }
+}
+
+@media (max-width: 650px) {
+  .featured-profile-tag{
+    margin-left: 46%;
+  }
 }
 
 @media (max-width: 585px) {
@@ -45,6 +65,15 @@
     position: relative;
     margin-bottom: 10px;
   }
+  .featured-profile-tag{
+    margin-left: 45.5%;
+  }
+}
+
+@media (max-width: 500px) {
+  .featured-profile-tag{
+    margin-left: 44.5%;
+  }
 }
 
 @media (max-width: 400px) {
@@ -52,5 +81,8 @@
     iframe {
       width: 90%;
     }
+  }
+  .featured-profile-tag{
+    margin-left: 43%;
   }
 }

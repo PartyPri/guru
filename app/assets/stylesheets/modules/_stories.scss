@@ -1,19 +1,24 @@
 ul {
   .teaser-story {
-    background: #e5fcfb;
+    background-color: $med-gray;
     padding: 0;
-    overflow: auto;
-
-    h4 {
+    p {
+      padding-top: 10px;
       position: absolute;
       width: 100%;
       text-align: center;
-      top: 40%;
-      color: #fff;
+      color: $white;
     }
   }
 }
-
+.story-overlay-teaser {
+  height: 100%;
+  @include border-radius(100%);
+  background: rgba(0,0,0,.38);
+  h4, p {
+    color: #fff;
+  }
+}
 .story-overlay {
   height: 100%;
   background: rgba(0,0,0,.38);
