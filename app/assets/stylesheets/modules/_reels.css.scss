@@ -43,12 +43,15 @@
   .hero {
     height: 150px;
     color: $gray;
-    padding: 70px 0px 0 10px;
+    padding: 17px 0px 0 10px;
     background-color: transparent;
     //background: #fff;
     //.container {
     //  width: 75%;
     //}
+    h3 {
+      margin-top: 55px;
+    }
     a.explore {
       text-decoration: underline;
       color: $drk-gray;
@@ -86,9 +89,14 @@
   }
   .avatar-container {
     padding-left: 30px;
+    background: url("profile-image-border.png") no-repeat;
+    background-size: 106px;
+    background-position: 27px 5px;
+    width: 135px;
     .share-button {
       //defined in mixins.scss
       @include base-share-button;
+      margin-top: 10px;
       .share-line{
         left: 0px;
       }
@@ -161,6 +169,9 @@
     @extend %base-featured-tag;
     margin: -170px 87px;
     z-index: 1;
+  }
+  .reel-artist-name{
+    margin-top: 0;
   }
 }
 

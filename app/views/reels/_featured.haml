@@ -28,7 +28,7 @@
               %i.fa.fa-pencil-square
               Edit
             / = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-        %h3.reel-artist-name
+        %h4.reel-artist-name
           = link_to "by " + @user.first_name + " " + @user.last_name, user_path(@reel.user)
         .share-button-mobile
           .share-line

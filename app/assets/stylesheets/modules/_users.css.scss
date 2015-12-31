@@ -73,6 +73,18 @@ $header-height: 400px;
       width: 130px;
       @include background-image;
       @include border-radius(100%);
+      &:before {
+        content: "";
+        position: absolute;
+        background: url("profile-image-border.png") no-repeat;
+        background-size: 149px;
+        background-position: -1px 1px;
+        height: 150px;
+        width: 173px;
+        z-index: -1;
+        margin-left: -10px;
+        margin-top: -10px;
+      }
     }
     .user-name-header{
       a {

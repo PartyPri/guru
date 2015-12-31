@@ -45,7 +45,8 @@
         = reel.user.first_name
         = reel.user.last_name
         |
-        = reel.updated_at
+        = time_ago_in_words(reel.updated_at)
+        ago
       %p= truncate(reel.description, length: 100)
       %br
       %h5
