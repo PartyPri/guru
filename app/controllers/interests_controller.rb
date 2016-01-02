@@ -1,14 +1,10 @@
 class InterestsController < ApplicationController
   def show
-    @interest = Interest.where(id: params[:id]).first
+    @interest = Interest.find_by_id(params[:id])
+    return redirect_to :root unless @interest
 
-    if @interest.blank?
-      redirect_to :root
-    else
-      @interest = Interest.find(params[:id])
-      @tags = @interest.reels.tag_counts
-      @followers = @interest.users
-      @reels = @interest.reels.order("updated_at desc")
-    end
+    @tags = @interest.reels.tag_counts
+    @followers = @interest.users
+    @reels = @interest.reels.where("media_count > 2").order("media_last_added_at desc")
   end
 end

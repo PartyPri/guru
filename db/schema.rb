@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151022011208) do
+ActiveRecord::Schema.define(:version => 20151221005619) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -172,11 +172,13 @@ ActiveRecord::Schema.define(:version => 20151022011208) do
 
   create_table "reels", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "user_id"
     t.boolean  "featured"
     t.text     "description"
+    t.integer  "media_count",         :default => 0
+    t.datetime "media_last_added_at"
   end
 
   create_table "registrations", :force => true do |t|
@@ -188,6 +190,12 @@ ActiveRecord::Schema.define(:version => 20151022011208) do
     t.integer  "user_id"
     t.integer  "event_id"
     t.boolean  "availability_confirmation"
+  end
+
+  create_table "seed_migration_data_migrations", :force => true do |t|
+    t.string   "version"
+    t.integer  "runtime"
+    t.datetime "migrated_on"
   end
 
   create_table "stories", :force => true do |t|

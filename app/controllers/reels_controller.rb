@@ -1,4 +1,5 @@
 class ReelsController < ApplicationController
+  before_filter :set_interests, only: [:new, :edit]
 
   impressionist :actions=>[:show]
 
@@ -85,5 +86,11 @@ class ReelsController < ApplicationController
       Medium.update_all({position: index+1}, {id: id})
     end
     render nothing: true
+  end
+
+  private
+
+  def set_interests
+    @interests = Interest.includes(:tags)
   end
 end

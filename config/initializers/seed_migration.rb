@@ -1,0 +1,3 @@
+SeedMigration.register User
+SeedMigration.register Interest
+SeedMigration.register UserInterest
