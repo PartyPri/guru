@@ -367,6 +367,3 @@ DEPENDENCIES
   youtube_id (~> 0.0.3)
   youtube_it
   yt (~> 0.24.3)
-
-BUNDLED WITH
-   1.10.6

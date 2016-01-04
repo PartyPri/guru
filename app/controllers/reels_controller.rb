@@ -3,6 +3,7 @@ class ReelsController < ApplicationController
 
   impressionist :actions=>[:show]
 
+
   def index
     interest_id = params[:interest_id]
 
@@ -18,7 +19,7 @@ class ReelsController < ApplicationController
       tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
     end
 
-    render json: tagged_reels, include: { images: {methods: :photo}, videos: {}, stories: {} }
+    render :json => tagged_reels, :include => { :user => {:only => [:first_name, :last_name]}, images: {methods: :photo}, videos: {}, stories: {}, impressions: {} }
   end
 
   def show
@@ -65,7 +66,7 @@ class ReelsController < ApplicationController
   end
 
   def update
-    @reel = Reel.find(params[:id])  
+    @reel = Reel.find(params[:id])
     if @reel.update_attributes( params[:reel] )
       flash[:notice] = "Your reel's been updated!"
       redirect_to @reel

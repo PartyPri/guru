@@ -1,4 +1,5 @@
 = render 'shared/nav'
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js'
 .reel-page.reel-page-explore
   .container
     .hero
@@ -17,17 +18,22 @@
             %ul.dropdown-menu
               - interest.each do |interest|
                 %li= link_to interest.name, "/interests/#{interest.id}"
+          - unless @tags.length < 1
+            %ul.list-inline.m-bottom-10.interests
+              - @tags.each do |tag|
+                %li.interest-tags.tag-select{:value => "#{tag.name}"}
+                  = tag.name
     .tabs.m-top-20
       .row-fluid
         .content-container
-          %ul.list-inline
-            %li.active
-              %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-          - unless @tags.length < 1
-            %select#tag-select.select-style.selectpicker{:name => "tags"}
-              %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
-              - @tags.each do |tag|
-                %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
+          -# %ul.list-inline
+          -#   %li.active
+          -#     %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
+          -# - unless @tags.length < 1
+          -#   %select#tag-select.select-style.selectpicker{:name => "tags"}
+          -#     %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
+          -#     - @tags.each do |tag|
+          -#       %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
 
 .page
   .page-content
