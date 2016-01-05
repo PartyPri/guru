@@ -1,6 +1,11 @@
 require "spec_helper"
 
 describe Reel do
+
+  describe 'Associations' do
+    it { should have_many(:credits) }
+  end
+
   describe '#update_media_added!' do
     subject { create(:reel) }
     let(:now) { Time.now }

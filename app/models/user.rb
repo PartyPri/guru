@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
 
   # Access
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
     :first_name, :last_name, :description, :bio, :cover_photo, :avatar, :location, :interest_ids,
     :uid, :provider, :token, :refresh_token, :expires_at, :claim_token, :claim_email
 
@@ -30,12 +30,13 @@ class User < ActiveRecord::Base
 
   has_many :registrations
   has_many :events, through: :registrations, uniq: true
+  has_many :credits, through: :reels
 
   # Attachments
-  
+
   has_attached_file :avatar, :styles => {:small => "140x140#", :medium => "250x250#"}, :default_url => "http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png"
   has_attached_file :cover_photo, :styles => {:medium => "500x200#", :large => "1000x400#"}, :default_url => "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
-  
+
   # Validations
 
   validates_presence_of :first_name, :last_name#, :location, :description
@@ -63,12 +64,12 @@ class User < ActiveRecord::Base
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
     data = access_token.info
     user = User.where(:email => data["email"]).first
-    
+
     if user
-      user.update_attributes(token: access_token.credentials.token, 
+      user.update_attributes(token: access_token.credentials.token,
         expires_at: Time.at(access_token.credentials.expires_at))
     else
-      user = User.create(first_name: data["first_name"], 
+      user = User.create(first_name: data["first_name"],
         last_name: data["last_name"],
         email: data["email"],
         password: Devise.friendly_token[0,20],
