@@ -1,0 +1,11 @@
+%h1= "Add Credit to #{@reel.name}"
+= form_for [@reel, @credit] do |f|
+  = render 'shared/error_messages', :object => f.object
+  = f.label :credit_receiver_email
+  = f.text_field :credit_receiver_email
+  %br
+  = f.label :role
+  = f.text_field :role
+  %br
+  = f.submit :add
+

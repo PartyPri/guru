@@ -1,0 +1,4 @@
+%h1= "Credits for #{@reel.name}"
+%ul
+  - @credits.each do |credit|
+    %li= "#{credit.role}: #{credit.credit_receiver_email}"

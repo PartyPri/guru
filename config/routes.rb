@@ -12,6 +12,7 @@ Guru::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
   resources :reels do
     collection { post :sort }
+    resources :credits, except: [:show, :edit, :update]
   end
   resources :images
   resources :stories
@@ -27,7 +28,7 @@ Guru::Application.routes.draw do
   resources :videos
 
   get '/pages/select_media', to: 'pages#select_media'
-  
+
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 
   get 'about', to: 'pages#about', as: 'about'
