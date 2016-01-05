@@ -18,7 +18,7 @@
         - elsif medium.is_a? Story
           %li.teaser-media.teaser-story{:style => "background-image: url(#{medium.photo.url})"}
             .story-overlay-teaser
-              %p= truncate(medium.title, length: 15)
+              %h1= truncate(medium.title, length: 1, omission: '')
     %br
     .reel-teaser-info
       %h3.name= truncate(reel.name, length: 35)

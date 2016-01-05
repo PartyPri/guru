@@ -15,8 +15,11 @@ ul {
   height: 100%;
   @include border-radius(100%);
   background: rgba(0,0,0,.38);
-  h4, p {
-    color: #fff;
+  text-align: center;
+  h1, p {
+    color: $white;
+    font-size: $base-font-size*6.75;
+    font-family: $special-font-family;
   }
 }
 .story-overlay {

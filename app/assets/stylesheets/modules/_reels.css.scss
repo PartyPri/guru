@@ -1,7 +1,9 @@
 .reel-page {
   margin-top: 50px;
-  margin-bottom: 25px;
   @include box-shadow(0px, 1px, 2px, 0px, rgba(0,0,0,0.22));
+  .reel-header-container {
+    height: 335px;
+  }
   .tabs {
     padding: 15px 0;
     text-align: center;
@@ -32,6 +34,7 @@
     }
   }
   .reel-artist-name{
+    color: $lt-gray;
     display: block;
     a{
       color: darken($lt-gray, 10%);
@@ -56,6 +59,18 @@
       text-decoration: underline;
       color: $drk-gray;
     }
+    .reel-top-header{
+      color: $lt-gray;
+      .list-inline{
+        display: inline;
+        padding-left: 50px;
+        li.interest-tags {
+          a {
+            color: $lt-gray;
+          }
+        }
+      }
+    }
     .reel-name-header{
       font-family: $special-font-family;
       color: $med-gray;
@@ -69,7 +84,7 @@
       margin-bottom: 0;
     }
     p{
-      height: 88px;
+      height: 180px;
       overflow: scroll;
     }
   }
@@ -99,7 +114,8 @@
     .share-button {
       //defined in mixins.scss
       @include base-share-button;
-      margin-top: 10px;
+      margin-top: 0px;
+      margin-left: -20px;
       .share-line{
         left: 0px;
       }
@@ -167,14 +183,13 @@
 }
 
 .featured-reel-header {
-  margin-top: 51px;
   .featured-reel-tag {
     @extend %base-featured-tag;
     margin: -170px 87px;
     z-index: 1;
   }
   .reel-artist-name{
-    margin-top: 0;
+    margin-top: 10px;
   }
 }
 
@@ -194,7 +209,9 @@
   .reel-page {
     .avatar-container {
       padding-left: 0;
+      background-position: -2px 5px;
       .share-button {
+        margin-left: 10px;
         .share-line {
           left: -20px;
         }
@@ -249,7 +266,7 @@
       .share-triangle-right {
         position: absolute;
         margin-top: 50px;
-        margin-left: 108px;
+        margin-left: 68px;
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent;
         border-left:10px solid $lt-turq;

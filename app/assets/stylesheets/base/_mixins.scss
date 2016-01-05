@@ -83,10 +83,12 @@
   .share-circle {
     position: absolute;
     margin-left: -10px;
+    margin-top: 20px;
     background-color: $lt-turq;
-    height: 120px;
-    width: 120px;
-    line-height: 118px;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    font-size: $base-font-size;
     @include border-radius(100%);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
     &:active{

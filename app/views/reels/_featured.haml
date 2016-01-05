@@ -1,14 +1,22 @@
 .reel-page
-  .container
+  .container.reel-header-container
     .row.hero
-      .col-sm-12
-        %h5.reel-breadcrumbs
-          = link_to @user.first_name + " " + @user.last_name + " > ", user_path(@reel.user)
-          = @reel.name
+      -# .col-sm-12
+      -#   %h5.reel-breadcrumbs
+      -#     = link_to @user.first_name + " " + @user.last_name + " > ", user_path(@reel.user)
+      -#     = @reel.name
       .col-sm-2
         .avatar-container
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+          %br
+          %small.reel-artist-name
+            %i
+              by
+              %b
+                = link_to @user.first_name + " " + @user.last_name, user_path(@reel.user)
+          %small.reel-artist-name
+            = @user.description
           %br
           .share-button
             .share-line
@@ -17,6 +25,23 @@
               %i.fa.fa-share-alt
               Share!
       .col-sm-10.featured-reel-header
+        .reel-top-header.text-center
+          %i.fa.fa-map-marker
+          %span
+            = @user.location
+          - interest = @reel.interests
+          - length = interest.length
+          %ul.list-inline.m-bottom-10
+            %li
+              %i.fa.fa-tag
+            - interest.each_with_index do |interest, x|
+              - if x+1 != length
+                %li.interest-tags
+                  = link_to(interest.name, "/interests/#{interest.id}")
+                /%li.divider
+              - else
+                %li.interest-tags
+                  = link_to(interest.name, "/interests/#{interest.id}")
         .featured-reel-tag
           -# %i.fa.fa-certificate
           -# %i.fa.fa-star
@@ -28,8 +53,6 @@
               %i.fa.fa-pencil-square
               Edit
             / = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-        %h4.reel-artist-name
-          = link_to "by " + @user.first_name + " " + @user.last_name, user_path(@reel.user)
         .share-button-mobile
           .share-line
           .share-triangle
@@ -37,21 +60,13 @@
           .share-circle.text-center
             %i.fa.fa-share-alt
             Share!
+        %p.reel-description= @reel.description
         %h5.reel-description
           %i.fa.fa-eye
           #{@reel.impressionist_count} views
-        - interest = @reel.interests
-        - length = interest.length
-        %ul.list-inline.m-bottom-10.interests
-          - interest.each_with_index do |interest, x|
-            - if x+1 != length
-              %li.interest-tags
-                = link_to(interest.name, "/interests/#{interest.id}")
-              /%li.divider
-            - else
-              %li.interest-tags
-                = link_to(interest.name, "/interests/#{interest.id}")
-        %p.reel-description= @reel.description
+          &nbsp;
+          %i.fa.fa-film
+          #{@reel.media.count} media
 
 
   -# .link-bar
@@ -72,8 +87,6 @@
   -#       .col-md-2.edit
   -#         - if current_user && current_user.id == @user.id
   -#           = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-
-  .reel
-    -if @featured_video.any?
-      = render 'featured_video'
-    = render 'shared/grid'
+  -if @featured_video.any?
+    = render 'featured_video'
+  = render 'shared/timeline'
