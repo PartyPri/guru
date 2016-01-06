@@ -1,0 +1,112 @@
+.timeline-container {
+  .timeline-vertical-line {
+    position: absolute;
+    background: lighten($lt-gray, 40%) none repeat scroll 0% 0%;
+    margin-top: -10px;
+    margin-left: 45px;
+    height: 68%;
+    width: 4px;
+    z-index:-1;
+  }
+  .add-new-media-container{
+    padding: 20px 0;
+    background-color: white;
+    .add-new-media {
+      width: 70px;
+      height: 70px;
+      border-radius: 50px;
+      text-align: center;
+      border: 2px solid $lt-turq;
+      padding: 15px 0;
+      margin-left: 12px;
+      background-color: white;
+      font-size: $base-font-size*.8;
+      line-height: 18px;
+      a {
+        color: $turq;
+      }
+    }
+  }
+  .media-section {
+    .media-container {
+      margin: 20px 0;
+      .section-media {
+        background-color: white;
+      }
+    }
+    .section-description {
+      background-color: white;
+      padding: 20px;
+      p {
+        font-size: $base-font-size*.8;
+        color: $lt-gray;
+        margin-bottom: 0;
+      }
+      h4 {
+        clear: both;
+      }
+      .timeline-teaser{
+        float: left;
+        height: 50px;
+        width: 50px;
+        border-radius: 50px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        background-size: cover;
+        background-position: center center;
+      }
+      .media-edit {
+        display: block;
+        position: inherit;
+        right: 0;
+        top: 0;
+        font-size: $base-font-size;
+        color: lighten($lt-red, 10%);
+        &:hover, &:active {
+          color: $red;
+        }
+      }
+      .timeline-description {
+        clear: both;
+      }
+    }
+    .section-photo-container {
+      //background-color: darken($drk-gray, 10%);;
+      width: 100%;
+      //padding: 20px;
+    }
+    .section-photo {
+      max-width: 100%;
+      max-height: 600px;
+      //margin-left: auto;
+      //margin-right: auto;
+      display: block;
+    }
+  }
+  .video-section {
+
+  }
+}
+
+#timeline-bottom-teaser {
+  min-height: 100px;
+  border-radius: 50px;
+  background: url("popcorn.png");
+  background-color: white;
+  background-size: 70px;
+  background-repeat: no-repeat;
+  background-position: 10px 15px;
+  padding-top: 30px;
+}
+
+@media (max-width: 768px) {
+  .timeline-container {
+    margin-top: 220px;
+  }
+}
+
+@media (max-width: 450px) {
+  .timeline-container {
+    margin-top: 370px;
+  }
+}
