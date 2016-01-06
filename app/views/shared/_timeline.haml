@@ -70,26 +70,26 @@
                 Edit
             %p= medium.description
           .video-section.col-sm-9
-  %section.timeline-bottom
-    .row
-      .col-sm-12
-        .timeline-teaser#timeline-bottom-teaser.text-center
-          %h3
-            Like what you see? Here are more reels from
-            = @user.first_name + " " + @user.last_name + "."
-    .content-container.tab-pane.active#work
-      .tab-content
-        .tab-pane.active#reels
-          - @user.reels.each do |reel|
-            =render :partial => 'shared/teaser', :locals => {:reel => reel}
-          .jumbotron.bottom-jumbotron-cta.text-center
-            %h2
-              Feeling Inspired? Share Your Passion!
-            %small
-              Stories, videos, images. Anything goes. It's easy & fun!
-            %br
-            = link_to new_reel_path do
-              .teaser
-                %i.fa.fa-plus
-                %br
-                Create a reel
+%section.timeline-bottom.container
+  .row
+    .col-sm-12
+      .timeline-teaser#timeline-bottom-teaser.text-center
+        %h3
+          Like what you see? Here are more reels from
+          = @user.first_name + " " + @user.last_name + "."
+  .content-container.tab-pane.active#work
+    .tab-content
+      .tab-pane.active#reels
+        - @user.reels.each do |reel|
+          =render :partial => 'shared/teaser', :locals => {:reel => reel}
+        .jumbotron.bottom-jumbotron-cta.text-center
+          %h2
+            Feeling Inspired? Share Your Passion!
+          %small
+            Stories, videos, images. Anything goes. It's easy & fun!
+          %br
+          = link_to new_reel_path do
+            .teaser
+              %i.fa.fa-plus
+              %br
+              Create a reel
