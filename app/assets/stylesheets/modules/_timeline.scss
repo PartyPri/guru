@@ -138,10 +138,12 @@
     .media-section {
       .media-container {
         .section-media {
+          margin-left: 0px;
+          width: 100%;
+          padding: 10px 0;
           iframe {
-            position: relative;
-            margin-left: -50px;
-            width: 140%;
+            margin-left: -10px;
+            width: 110%;
             height: 200px;
           }
         }
