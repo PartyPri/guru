@@ -19,6 +19,8 @@ class ReelsController < ApplicationController
       tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
     end
 
+    # render json: tagged_reels, serializer: ReelSerializer
+
     render :json => tagged_reels, :include => { :user => {:only => [:first_name, :last_name]}, images: {methods: :photo}, videos: {}, stories: {}, impressions: {} }
   end
 

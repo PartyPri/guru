@@ -57,9 +57,9 @@
             .section-media.col-sm-9
               %p= raw(medium.body)
       -if medium.is_a? Video
-        .row
+        .row.media-container
           .section-description.col-sm-3
-            .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
+            .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
             %p= medium.created_at.strftime("%b %-d, %Y")
             %p
               %i.fa.fa-map-marker
@@ -69,7 +69,8 @@
                 %i.fa.fa-pencil-square-o
                 Edit
             %p= medium.description
-          .video-section.col-sm-9
+          .section-media.col-sm-9
+            %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
 %section.timeline-bottom.container
   .row
     .col-sm-12

@@ -5,7 +5,7 @@ $(document).ready(function() {
     $(this).css('background-color', '#5a82e4');
 
     //Get value of clicked tag
-    var tag = $(this).text();
+    var tag = $(this).text().trim();
 
     //Get Interest ID from URL
     var url = window.location.pathname;
@@ -84,7 +84,7 @@ $(document).ready(function() {
     //Loop thorugh getReelVideos and append to vid_html
     for (v = reel.videos.length-1; v >= 0; v--) {
       //Prevent more than 4 items in teaser
-      if (media_limit == 4) {
+      if (media_limit == 1) {
         break;
       }
 
@@ -96,10 +96,9 @@ $(document).ready(function() {
     //Build teaser div with reel information
     var html = "";
     if(reel.featured){
-      html = "<div class='teaser'><a href='/reels/"+ id +"'><div class='featured-teaser-reel-tag'><span class='featured-tag'>Featured!</span></div><ul class='media-list'>" + img_html + vid_html + "</ul><br /><div class='reel-teaser-info'><h3 class='name'>" + name + "</h3><h5>"+author+" | "+ updated_datetime +"</h5><p>" + description + "</p><br /><h5><i class='fa fa-eye'></i>&nbsp;" + view_count + "</h5></div></a></div>"
+      html = "<div class='teaser'><a href='/reels/"+ id +"'><div class='featured-teaser-reel-tag'><span class='featured-tag'>Featured!</span></div><ul class='media-list'>" + img_html + vid_html + "</ul><br /><div class='reel-teaser-info'><h3 class='name'>" + name + "</h3><h5>"+author+" | "+ updated_datetime +"</h5><p>" + description + "</p><br /><h5><i class='fa fa-eye'></i>&nbsp;" + view_count + "</h5></div><hr></hr></a></div>"
     }else{
-      html = "<div class='teaser'><a href='/reels/"+ id +"'><ul class='media-list'>" + img_html + vid_html + "</ul><br /><div class='reel-teaser-info'><h3 class='name'>" + name + "</h3><h5>"+author+" | "+updated_datetime+"</h5><p>" + description + "</p><br /><h5><i class='fa fa-eye'></i>&nbsp;" + view_count + "</h5></div></a></div>"
-      // html = "<div class='teaser'><a href='/reels/" + id + "'><h2>" + name + "</h2><ul class='list-inline'>" + img_html + vid_html + "</ul><p>" + description + "</p></a></div>"
+      html = "<div class='teaser'><a href='/reels/"+ id +"'><ul class='media-list'>" + img_html + vid_html + "</ul><br /><div class='reel-teaser-info'><h3 class='name'>" + name + "</h3><h5>"+author+" | "+updated_datetime+"</h5><p>" + description + "</p><br /><h5><i class='fa fa-eye'></i>&nbsp;" + view_count + "</h5></div><hr></hr></a></div>"
     }
 
     return html
