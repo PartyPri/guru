@@ -1,76 +1,68 @@
 .timeline-container.container
   .timeline-vertical-line
   - if current_user && current_user.id == @user.id
-    .add-new-media-container.m-bottom-20
-      .add-new-media
-        = link_to pages_select_media_path(reel: @reel) do
+    = link_to pages_select_media_path(reel: @reel) do
+      .add-new-media-container.m-bottom-20
+        .add-new-media
           %i.fa.fa-plus-circle
-          Add Media
+          Add to Reel
   %section.media-section
     - @media.each do |medium|
       - if medium.is_a? Image
         .row.media-container
-          .section-description.col-sm-3
+          .section-description.col-sm-6
             .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
             %p= medium.created_at.strftime("%b %-d, %Y")
-            %p
-              %i.fa.fa-map-marker
-              = medium.reel.user.location
             -if current_user && current_user.id == @user.id
               %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                 %i.fa.fa-pencil-square-o
                 Edit
             %p.timeline-description= medium.description
-          .section-media.col-sm-9
-            .section-photo-container
-              %img.section-photo{"src" => "#{medium.photo.url}"}
+          .row
+            .section-media.col-sm-11.col-sm-offset-1
+              .section-photo-container
+                %img.section-photo{"src" => "#{medium.photo.url}"}
       - if medium.is_a? Story
         - if medium.photo.present?
           .row.media-container
-            .section-description.col-sm-3
+            .section-description.col-sm-6
               .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
               %p= medium.created_at.strftime("%b %-d, %Y")
-              %p
-                %i.fa.fa-map-marker
-                = medium.reel.user.location
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
               %h4= medium.title
-            .section-media.col-sm-9
-              .section-photo-container
-                %img.section-photo{"src" => "#{medium.photo.url}"}
-              %p= raw(medium.body)
+            .row
+              .section-media.col-sm-11.col-sm-offset-1
+                .section-photo-container
+                  %img.section-photo{"src" => "#{medium.photo.url}"}
+                %p.story-container= raw(medium.body)
         - else
           .row.media-container
-            .section-description.col-sm-3
+            .section-description.col-sm-6
               %p= medium.created_at.strftime("%b %-d, %Y")
-              %p
-                %i.fa.fa-map-marker
-                = medium.reel.user.location
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
               %h4= medium.title
-            .section-media.col-sm-9
-              %p= raw(medium.body)
+            .row
+              .section-media.col-sm-11.col-sm-offset-1
+                %p.story-container= raw(medium.body)
       -if medium.is_a? Video
         .row.media-container
-          .section-description.col-sm-3
+          .section-description.col-sm-6
             .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
             %p= medium.created_at.strftime("%b %-d, %Y")
-            %p
-              %i.fa.fa-map-marker
-              = medium.reel.user.location
             -if current_user && current_user.id == @user.id
               %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                 %i.fa.fa-pencil-square-o
                 Edit
-            %p= medium.description
-          .section-media.col-sm-9
-            %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
+            %p.timeline-description= medium.description
+          .row
+            .section-media.col-sm-11.col-sm-offset-1
+              %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
 %section.timeline-bottom.container
   .row
     .col-sm-12

@@ -38,7 +38,7 @@
   .name {
     color: $drk-gray;
     font-weight: 700;
-    font-size: $base-font-size*1.1;
+    font-size: $base-font-size + 2;
     height: 40px;
   }
   .container{
@@ -49,11 +49,12 @@
     color: $lt-gray;
     h5{
       margin: 13px 0;
-      font-size: $base-font-size*.8;
+      font-size: $base-font-size;
+      color: darken($lt-gray, 10%);
     }
     p{
       height: 84px;
-      font-size: $base-font-size*.8;
+      font-size: $base-font-size;
     }
   }
   li.teaser-media {
@@ -103,8 +104,8 @@
   span.featured-tag {
     padding: 20px 24px;
     margin: 91px -107px;
-    background: transparent url("featured-banner.png") no-repeat scroll center center / 117px auto;
-    font-size: 15px;
+    background: transparent url("featured-banner.png") no-repeat scroll center center / 120px auto;
+    background-position: -3px 1px;
   }
 }
 

@@ -1,16 +1,19 @@
 .timeline-container {
+  position: relative;
+  transition: all 0.1s ease;
   .timeline-vertical-line {
     position: absolute;
     background: lighten($lt-gray, 40%) none repeat scroll 0% 0%;
     margin-top: -10px;
     margin-left: 45px;
-    height: 68%;
+    height: 100%;
     width: 4px;
     z-index:-1;
   }
   .add-new-media-container{
     padding: 20px 0;
     background-color: white;
+    color: $turq;
     .add-new-media {
       width: 70px;
       height: 70px;
@@ -20,11 +23,8 @@
       padding: 15px 0;
       margin-left: 12px;
       background-color: white;
-      font-size: $base-font-size*.8;
       line-height: 18px;
-      a {
-        color: $turq;
-      }
+
     }
   }
   .media-section {
@@ -42,13 +42,10 @@
       background-color: white;
       padding: 20px;
       p {
-        font-size: $base-font-size*.8;
         color: $lt-gray;
         margin-bottom: 0;
       }
-      h4 {
-        clear: both;
-      }
+
       .timeline-teaser{
         float: left;
         height: 50px;
@@ -70,8 +67,13 @@
           color: $red;
         }
       }
-      .timeline-description {
-        clear: both;
+    }
+    .section-media {
+      h4, .paragraph, .story-container {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        -ms-column-count: 3;
+        column-count: 3;
       }
     }
     .section-photo-container {
@@ -90,6 +92,10 @@
   .video-section {
 
   }
+}
+
+.timeline-bottom {
+  background-color: white;
 }
 
 #timeline-bottom-teaser {
@@ -118,13 +124,27 @@
   }
 }
 @media (max-width: 768px) {
-  .timeline-container {
-    margin-top: 220px;
-    .media-section {
-      .media-container {
-        .section-media {
-          iframe {
-            height: 320px;
+  .reel-page{
+    .timeline-container {
+      .add-new-media-container {
+        .add-new-media {
+          border-radius: 25px;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .media-section {
+        .media-container {
+          .section-media {
+            iframe {
+              height: 320px;
+            }
+            h4, .paragraph, .story-container {
+              -webkit-column-count: 2;
+              -moz-column-count: 2;
+              -ms-column-count: 2;
+              column-count: 2;
+            }
           }
         }
       }
@@ -132,22 +152,35 @@
   }
 }
 
-@media (max-width: 450px) {
-  .timeline-container {
-    margin-top: 370px;
-    .media-section {
-      .media-container {
-        .section-media {
-          margin-left: 0px;
-          width: 100%;
-          padding: 10px 0;
-          iframe {
-            margin-left: -10px;
-            width: 110%;
-            height: 200px;
+@media (max-width: 650px) {
+  .reel-page{
+    .timeline-container {
+      .media-section {
+        .media-container {
+          .section-media {
+            margin-left: 0px;
+            width: 100%;
+            padding: 10px 0;
+            iframe {
+              margin-left: -10px;
+              width: 110%;
+              height: 200px;
+            }
+            h4, .paragraph, .story-container {
+              padding: 0 30px;
+              -webkit-column-count: 1;
+              -moz-column-count: 1;
+              -ms-column-count: 1;
+              column-count: 1;
+            }
+            .section-photo {
+              margin-left: auto;
+              margin-right: auto;
+            }
           }
         }
       }
     }
   }
+
 }

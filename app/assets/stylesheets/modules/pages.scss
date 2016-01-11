@@ -35,6 +35,10 @@
   }
 }
 
+.interest-header {
+  padding: 30px 0;
+}
+
 .bottom-jumbotron-cta {
   background-image: url("starry-bg.jpg");
   background-repeat: no-repeat;
@@ -44,10 +48,10 @@
     margin-left: 65px;
     background-size: 160px;
     margin-top: 20px;
-    padding: 40px 14px 50px;
+    padding: 40px 24px 50px;
     text-align: left;
     .fa {
-      padding-left: 45px;
+      padding-left: 38px;
     }
   }
 }

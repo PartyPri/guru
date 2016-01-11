@@ -3,11 +3,7 @@
 .reel-page.reel-page-explore
   .container
     .hero
-      .content-container
-        /%h1.reel-name-header.m-bottom-10= @interest.name
-        -# =link_to @interest do
-        -#   %h1.text-center.m-bottom-10= @interest.name
-        -# %h4= @interest.description
+      .content-container.interest-header
         %h3
           Explore the imagination behind
           .dropdown.header-explore
@@ -23,52 +19,18 @@
               - @tags.each do |tag|
                 %li.interest-tags.tag-select{:value => "#{tag.name}"}
                   = tag.name
-    .tabs.m-top-20
-      .row-fluid
-        .content-container
-          -# %ul.list-inline
-          -#   %li.active
-          -#     %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-          -# - unless @tags.length < 1
-          -#   %select#tag-select.select-style.selectpicker{:name => "tags"}
-          -#     %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
-          -#     - @tags.each do |tag|
-          -#       %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
 
 .page
   .page-content
     .tab-content
       .content-container.tab-pane.active#reels{role: "tabpanel"}
-        / - @reels.each do |reel|
-        /   %a{href: "/reels/#{reel.id}"}
-        /     .teaser
-        /       %h2= reel.name
-        /       - interest = reel.interests
-        /       - length = interest.length
-        /       %ul.list-inline
-        /         - interest.each_with_index do |interest, x|
-        /           - if x+1 != length
-        /             %li
-        /               = link_to(interest.name, "/interests/#{interest.id}/about")
-        /             %li.divider
-        /           - else
-        /             %li
-        /               = link_to(interest.name, "/interests/#{interest.id}/about")
-        /       %ul.list-inline
-        /         - reel.media.take(4).each do |medium|
-        /           - if medium.is_a? Image
-        /             %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
-        /           - else # Video
-        /             %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-        /         %p= truncate(reel.description, length: 125)
         - @reels.each do |reel|
           -if reel.media.length > 2
             =render :partial => 'shared/teaser', :locals => {:reel => reel}
       .jumbotron.bottom-jumbotron-cta.text-center
         %h2
-          Feeling Inspired? Share Your Passion!
-        %small
-          Stories, videos, images. Anything goes. It's easy & fun!
+          Feeling Inspired? Share Your Passion!  
+        Stories, videos, images. Anything goes. It's easy & fun!
         %br
         = link_to new_reel_path do
           .teaser

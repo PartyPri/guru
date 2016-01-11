@@ -21,3 +21,15 @@ $(function() {
     autocomplete_url:'/api/tags'
   });
 });
+
+$(window).scroll(function() {
+  var scrollPos = $(this).scrollTop();
+  var scrollStick = $(".reel-header-container").outerHeight();
+  var stickyCta = $('.reel-sticky-cta-bg')
+  if ( scrollPos > scrollStick ){
+      stickyCta.addClass("stick");
+    }
+    else{
+      stickyCta.removeClass("stick");
+    }
+});

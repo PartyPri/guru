@@ -42,45 +42,36 @@
 %base-featured-tag {
   color: darken($red, 5%);
   position: absolute;
-  // i {
-  //   position:absolute;
-  // }
-  // .fa-star{
-  //   color: $white;
-  //   font-size: $base-font-size*1.4;
-  //   margin: -20px 0;
-  // }
-  // .fa-certificate{
-  //   font-size: $base-font-size*3;
-  //   margin: -30px -10px;
-  // }
 }
 
 @mixin base-share-button {
   height: 120px;
-  cursor: pointer;
   color: $white;
-  font-size: $base-font-size*1.25;
+  font-size: $base-font-size;
+  transition: all 0.1s ease;
   .share-line{
     background-color: $lt-turq;
     height: 5px;
-    width: 220%;
+    width: 610px;
     position: absolute;
     margin-top: 57px;
-    margin-left: -195%;
+    margin-left: -600px;
+    transition: all 0.1s ease;
   }
   .share-triangle {
     position: absolute;
     margin-top: 50px;
-    margin-left: -19px;
+    margin-left: -16px;
     width: 0;
     height: 0;
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
     border-right:10px solid $lt-turq;
     z-index: 1;
+    transition: all 0.1s ease;
   }
   .share-circle {
+    cursor: pointer;
     position: absolute;
     margin-left: -10px;
     margin-top: 20px;
@@ -91,6 +82,7 @@
     font-size: $base-font-size;
     @include border-radius(100%);
     box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.1s ease;
     &:active{
       box-shadow: none;
     }
