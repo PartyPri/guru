@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20151221005619) do
+ActiveRecord::Schema.define(:version => 20160105042843) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -64,6 +64,21 @@ ActiveRecord::Schema.define(:version => 20151221005619) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "credits", :force => true do |t|
+    t.integer  "reel_id"
+    t.integer  "reel_owner_id"
+    t.integer  "credit_receiver_id"
+    t.boolean  "accepted_invitation",   :default => false
+    t.string   "role"
+    t.string   "credit_receiver_email"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "credits", ["credit_receiver_id"], :name => "index_credits_on_credit_receiver_id"
+  add_index "credits", ["reel_id"], :name => "index_credits_on_reel_id"
+  add_index "credits", ["reel_owner_id"], :name => "index_credits_on_reel_owner_id"
 
   create_table "email_contacts", :force => true do |t|
     t.string   "email"

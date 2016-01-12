@@ -9,6 +9,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require "factory_girl"
 require "devise"
+require 'support/authentication_helper'
 
 FactoryGirl.find_definitions
 
@@ -47,4 +48,5 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
 
   config.include Devise::TestHelpers, :type => :controller
+  config.include AuthenticationHelper, :type => :controller
 end

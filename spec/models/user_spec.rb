@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe User do
+  context 'Associations' do
+    it { should have_many(:credits) }
+  end
+
   context "instance methods" do
     describe "token_expired?" do
       let (:user) {build(:user)}
