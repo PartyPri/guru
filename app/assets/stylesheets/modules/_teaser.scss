@@ -98,7 +98,7 @@
 }
 
 .featured-teaser-reel-tag {
-  @extend %base-featured-tag;
+  position: absolute;
   margin-left: 89px;
   z-index: 1;
   span.featured-tag {

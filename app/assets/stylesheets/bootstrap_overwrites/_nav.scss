@@ -13,9 +13,8 @@
 .navbar {
   margin-bottom: 0px;
   font-family: $base-font-family;
-  font-size: 1.125rem;
   position: fixed;
-  height: 50px;
+  height: 40px;
   @include box-shadow(0px, 1px, 2px, 0px, rgba(0,0,0,0.22));
 }
 
@@ -55,7 +54,9 @@
 }
 
 .navbar-brand {
-  padding: 12px 5px;
+  padding: 13px 5px;
+  font-size: $base-font-size+2;
+  font-weight: bold;
 }
 
 .footer {
@@ -85,4 +86,3 @@
     color: $turq;
   }
 }
-

@@ -6,48 +6,69 @@
   %meta{ property: "og:description", content: "<%=user_description%>" }
 = render 'shared/nav'
 .page
-  -# .hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
-  -#   .page-hero
-  -#     .page-info
-  -#       .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-  -#       %h1=@user.first_name + " " + @user.last_name
-  -#       %h4.m-top-1= @user.description
-  -#       %h4.m-top-5= @user.location
+  %nav.navbar#user-page-navbar
+    .container
+      .row
+        .navbar-header
+          %button.navbar-toggle.p-y-15.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#user-page-nav", "data-toggle" => "collapse", "type" => "button"}
+            %span.sr-only Toggle navigation
+            %i.fa.fa-bars
+
+        .navbar-collapse.collapse.navbar-ex1-collapse
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a.user-page-nav#user-reel-link{:href => "#reels"} Reels
+            %li
+              %a.user-page-nav#user-entourage-link{:href => "#entourage"} Entourage
+            %li
+              %a.user-page-nav#user-credits-reel-link{:href => "#credits"} Credits
+            %li
+              %a.user-page-nav#user-about-link{:href => "#about"} About
+            %li
+              %a#user-contact-link{:href => "#contact"} Contact
+  .user-hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
   .content-container.user-page-header
     .row
-      .col-sm-4
-        .user-page-info
-          - if @user.featured_artist?
-            .pull-left.featured-profile-tag
-              -# %i.fa.fa-certificate
-              -# %i.fa.fa-star
-              %span.featured-tag Featured!
-          .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-          %h2.user-name-header
+      -# .col-sm-4
+      -#   .user-page-info
+      -#     - if @user.featured_artist?
+      -#       .pull-left.featured-profile-tag
+      -#         -# %i.fa.fa-certificate
+      -#         -# %i.fa.fa-star
+      -#         %span.featured-tag Featured!
+      -#     .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+      -#     %h4.m-top-1= @user.description
+      -#     %h2.m-top-5
+      -#       - if @user.location.present?
+      -#         %i.fa.fa-map-marker
+      -#         %span= @user.location
+      .user-page-info
+        .user-name-header.m-bottom-10
+          %h3
             =@user.first_name + " " + @user.last_name
             - if current_user && current_user.id == @user.id
               = link_to edit_profile_path do
                 %i.fa.fa-pencil-square
-          %h4.m-top-1= @user.description
-          %h2.m-top-5
-            - if @user.location.present?
-              %i.fa.fa-map-marker
-              %span= @user.location
-      .col-sm-4.user-about-me
-        %h2 About me
-        %p.user-bio-container
-          = @user.bio
-      .user-hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
+        - if @user.featured_artist?
+          .featured-profile-tag
+            %span.featured-tag Featured!
+        .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+        .m-top-15
+          %i.m-top-1= @user.description
+        .m-top-5
+          - if @user.location.present?
+            %i.fa.fa-map-marker
+            %span= @user.location
   .tabs
     .row-fluid
       .content-container
-        %ul.list-inline.user-profile-tabs
-          %li.active
-            %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
-              %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
-          .tab-seperator
-          %li
-            %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
+        -# %ul.list-inline.user-profile-tabs
+        -#   %li.active
+        -#     %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
+        -#       %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
+        -#   .tab-seperator
+        -#   %li
+        -#     %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
         -# .pull-left.profile-featured-tag
         -#   - if @user.featured_artist?
         -#     .glyphicon.glyphicon-star
@@ -69,14 +90,20 @@
             .teaser.bio
               %p= @user.bio
       .content-container.tab-pane.active#work{role: "tabpanel"}
-        .tab-content
-          .tab-pane.active#reels{role: "tabpanel"}
+        .tab-content.row
+          .tab-pane.active.col-sm-10.col-sm-offset-2.user-page-content#reels{role: "tabpanel"}
             - if current_user && current_user.id == @user.id
               .teaser.new-reel
                 = link_to new_reel_path do
                   %i.fa.fa-plus-circle
                   Add new reel
                   //=image_tag "lt-turq_reel.svg", height: 40
-
             - @reels.each do |reel|
               =render :partial => 'shared/teaser', :locals => {:reel => reel}
+%section.content-container
+  .row
+    .col-sm-8.col-sm-offset-2.user-page-content
+      .user-about-me#about
+        %h2 About me
+        %p.user-bio-container
+          = @user.bio

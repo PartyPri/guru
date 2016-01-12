@@ -26,8 +26,10 @@
 }
 
 .featured-profile-tag {
-  @extend %base-featured-tag;
-  margin: -160px 193px;
+  position: relative;
+  span.featured-tag {
+    margin: 75px -23px;
+  }
 }
 
 .glyphicon.glyphicon-star {
@@ -36,9 +38,6 @@
 }
 
 @media (max-width: 990px) {
-  .featured-profile-tag{
-    margin-left: 60%;
-  }
 }
 
 @media (max-width: 900px) {

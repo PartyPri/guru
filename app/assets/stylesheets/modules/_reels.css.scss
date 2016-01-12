@@ -72,7 +72,7 @@
       }
     }
     .reel-description {
-      line-height: $base-line-height;
+      line-height: $base-line-height*1.5;
       color: $lt-gray;
       margin-bottom: 0;
     }
@@ -240,7 +240,7 @@
 }
 
 .featured-reel-tag {
-  @extend %base-featured-tag;
+  position: absolute;
   margin: -208px 87px;
   z-index: 1;
 }

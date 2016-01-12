@@ -39,11 +39,6 @@
   }
 }
 
-%base-featured-tag {
-  color: darken($red, 5%);
-  position: absolute;
-}
-
 @mixin base-share-button {
   height: 120px;
   color: $white;

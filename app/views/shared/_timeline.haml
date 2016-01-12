@@ -69,7 +69,8 @@
       .timeline-teaser#timeline-bottom-teaser.text-center
         %h3
           Like what you see? Here are more reels from
-          = @user.first_name + " " + @user.last_name + "."
+          = link_to user_path(@reel.user) do
+            = @user.first_name + " " + @user.last_name + "."
   .content-container.tab-pane.active#work
     .tab-content
       .tab-pane.active#reels
