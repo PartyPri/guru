@@ -4,18 +4,20 @@
     .container.hero-content
       .row
         .col-xs-12.c-white
-          %h1.hero-text.p-bottom-5 Showcase your passion.
-          %h4 Create beautiful portfolios to showcase what you do.
-          %h4 Discover inspiration, friends, and gigs!
+          %h1.hero-text.p-bottom-5 Cultivate your passions.
+          %h4 Join Evrystep to take your pursuits to the next level.
+          %h4 Document your passions, track progress, and forge meaningful relationships
+          %h4 around the things you do.
       .row.p-top-50
         .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
-          = form_for @email_contact, class: "form-inline" do |f|
-            = f.text_field :email, class: "input-lg launch-input", style: "vertical-align: middle", placeholder: "email"
-            = f.submit "Join launch list", class: "btn btn-primary btn-lg"
-            /- if Rails.env == 'development' && !user_signed_in?
-            /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
-            /= link_to "Register for Event", new_event_registration_path(@event)
-            /= link_to event.name, new_event_registration_path(event.id)
+          - unless user_signed_in?
+            = link_to "Sign up today", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
+            /<a href="/users/auth/google_oauth2?create_reel=true" class="navbar-toggle visible-xs">
+            /  = image_tag "red_reel.png", height: "30px" %>
+            /</a>
+          - else
+            = link_to "Start a reel", new_reel_path(@user), class: "btn btn-primary btn-large"
+
     .hero-caption Photography by Neil Yuzon | B-Boy Noi
 /= render 'shared/tag_nav'
 .container
@@ -25,4 +27,4 @@
 = render 'shared/interests_grid'
 /=render 'shared/featured_event'
 /%hr.sm-p-top-40.sm-p-bottom-0
-= render 'shared/how_it_works'
+/= render 'shared/how_it_works'
