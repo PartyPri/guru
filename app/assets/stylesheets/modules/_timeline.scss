@@ -14,6 +14,7 @@
     padding: 20px 0;
     background-color: white;
     color: $turq;
+    width: 100px;
     .add-new-media {
       width: 70px;
       height: 70px;
@@ -115,6 +116,7 @@
   .reel-page{
     .timeline-container {
       .add-new-media-container {
+        width: 100%;
         .add-new-media {
           border-radius: 25px;
           width: 100%;

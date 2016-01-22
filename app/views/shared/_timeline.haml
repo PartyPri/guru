@@ -1,29 +1,15 @@
-.timeline-container.container
-  .timeline-vertical-line
-  - if current_user && current_user.id == @user.id
-    = link_to pages_select_media_path(reel: @reel) do
-      .add-new-media-container.m-bottom-20
-        .add-new-media
-          %i.fa.fa-plus-circle
-          Add to Reel
-  %section.media-section
-    - @media.each do |medium|
-      - if medium.is_a? Image
-        .row.media-container
-          .section-description.col-sm-6
-            .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
-            %p= medium.created_at.strftime("%b %-d, %Y")
-            -if current_user && current_user.id == @user.id
-              %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-                %i.fa.fa-pencil-square-o
-                Edit
-            %p.timeline-description= medium.description
-          .row
-            .section-media.col-sm-11.col-sm-offset-1
-              .section-photo-container
-                %img.section-photo{"src" => "#{medium.photo.url}"}
-      - if medium.is_a? Story
-        - if medium.photo.present?
+%section#timeline
+  %section.timeline-container.container
+    .timeline-vertical-line
+    - if current_user && current_user.id == @user.id
+      = link_to pages_select_media_path(reel: @reel) do
+        .add-new-media-container.m-bottom-20
+          .add-new-media
+            %i.fa.fa-plus-circle
+            Add to Reel
+    %section.media-section
+      - @media.each do |medium|
+        - if medium.is_a? Image
           .row.media-container
             .section-description.col-sm-6
               .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
@@ -32,58 +18,73 @@
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
-              %h4= medium.title
+              %p.timeline-description= medium.description
             .row
               .section-media.col-sm-11.col-sm-offset-1
                 .section-photo-container
                   %img.section-photo{"src" => "#{medium.photo.url}"}
-                %p.story-container= raw(medium.body)
-        - else
+        - if medium.is_a? Story
+          - if medium.photo.present?
+            .row.media-container
+              .section-description.col-sm-6
+                .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
+                %p= medium.created_at.strftime("%b %-d, %Y")
+                -if current_user && current_user.id == @user.id
+                  %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                    %i.fa.fa-pencil-square-o
+                    Edit
+                %h4= medium.title
+              .row
+                .section-media.col-sm-11.col-sm-offset-1
+                  .section-photo-container
+                    %img.section-photo{"src" => "#{medium.photo.url}"}
+                  %p.story-container= raw(medium.body)
+          - else
+            .row.media-container
+              .section-description.col-sm-6
+                %p= medium.created_at.strftime("%b %-d, %Y")
+                -if current_user && current_user.id == @user.id
+                  %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                    %i.fa.fa-pencil-square-o
+                    Edit
+                %h4= medium.title
+              .row
+                .section-media.col-sm-11.col-sm-offset-1
+                  %p.story-container= raw(medium.body)
+        -if medium.is_a? Video
           .row.media-container
             .section-description.col-sm-6
+              .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
               %p= medium.created_at.strftime("%b %-d, %Y")
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
-              %h4= medium.title
+              %p.timeline-description= medium.description
             .row
               .section-media.col-sm-11.col-sm-offset-1
-                %p.story-container= raw(medium.body)
-      -if medium.is_a? Video
-        .row.media-container
-          .section-description.col-sm-6
-            .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg);"}
-            %p= medium.created_at.strftime("%b %-d, %Y")
-            -if current_user && current_user.id == @user.id
-              %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-                %i.fa.fa-pencil-square-o
-                Edit
-            %p.timeline-description= medium.description
-          .row
-            .section-media.col-sm-11.col-sm-offset-1
-              %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
-%section.timeline-bottom.container
-  .row
-    .col-sm-12
-      .timeline-teaser#timeline-bottom-teaser.text-center
-        %h3
-          Like what you see? Here are more reels from
-          = link_to user_path(@reel.user) do
-            = @user.first_name + " " + @user.last_name + "."
-  .content-container.tab-pane.active#work
-    .tab-content
-      .tab-pane.active#reels
-        - @user.reels.each do |reel|
-          =render :partial => 'shared/teaser', :locals => {:reel => reel}
-        .jumbotron.bottom-jumbotron-cta.text-center
-          %h2
-            Feeling Inspired? Share Your Passion!
-          %small
-            Stories, videos, images. Anything goes. It's easy & fun!
-          %br
-          = link_to new_reel_path do
-            .teaser
-              %i.fa.fa-plus
-              %br
-              Create a reel
+                %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
+  %section.timeline-bottom.container
+    .row
+      .col-sm-12
+        .timeline-teaser#timeline-bottom-teaser.text-center
+          %h3
+            Like what you see? Here are more reels from
+            = link_to user_path(@reel.user) do
+              = @user.first_name + " " + @user.last_name + "."
+    .content-container.tab-pane.active#work
+      .tab-content
+        .tab-pane.active#reels
+          - @user.reels.each do |reel|
+            =render :partial => 'shared/teaser', :locals => {:reel => reel}
+          .jumbotron.bottom-jumbotron-cta.text-center
+            %h2
+              Feeling Inspired? Share Your Passion!
+            %small
+              Stories, videos, images. Anything goes. It's easy & fun!
+            %br
+            = link_to new_reel_path do
+              .teaser
+                %i.fa.fa-plus
+                %br
+                Create a reel

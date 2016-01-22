@@ -211,9 +211,6 @@
   vertical-align: top;
   padding-top: 40px;
   transition: all 0.1s ease;
-  li:first-child{
-    border-bottom: solid $turq;
-  }
   li {
     min-width: 60px;
     text-align: center;
@@ -226,6 +223,26 @@
   .fa, p {
     cursor: pointer;
   }
+}
+
+.display-none{
+  display: none;
+}
+
+.reel-credit-list {
+  background-color: white;
+  padding: 30px;
+  border: solid lighten($lt-gray, 20%) 1px;
+  min-width: 300px;
+  font-size: $base-font-size;
+}
+
+li.reel-credit-item {
+  text-align: left;
+}
+
+.reel-credit-role {
+  border-bottom: solid lighten($lt-gray, 20%) 1px;
 }
 
 .reel-page-explore {

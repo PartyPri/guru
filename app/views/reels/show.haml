@@ -89,7 +89,7 @@
             #{@reel.media.count} media
           %p.reel-description= @reel.description
   .reel-sticky-cta-bg
-    .reel-sticky-cta.container
+    .reel-sticky-cta.container#reel-sticky-anchor
       .share-button
         .share-line
         .share-triangle
@@ -97,15 +97,24 @@
           %i.fa.fa-share-alt
           Share!
       %ul.list-inline.reel-view-options
-        %li
+        %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)"}
           %i.fa.fa-list
           %p Timeline
-        %li
+        %li.reel-view-item
           %i.fa.fa-th-large
           %p Grid
-        %li
-          %i.fa.fa-group
-          %p Credits
+        %li.reel-view-item.dropdown
+          .dropdown-toggle#credits{"type" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}
+            %i.fa.fa-group
+            %p Credits
+          %ul.reel-credit-list.dropdown-menu{"aria-labelledby" => "credits"}
+          
+            - @reel.credits.each do |credits|
+              %li.reel-credit-item
+                %p.reel-credit-role= credits.role.upcase
+                - @all_user.each do |user|
+                  -if user.id == credits.credit_receiver_id
+                    %strong= link_to user.first_name + " " + user.last_name, user_path(user)
   -# .link-bar
   -#   .container
   -#     .row-fluid
