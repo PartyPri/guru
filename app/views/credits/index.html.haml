@@ -1,4 +1,9 @@
 %h1= "Credits for #{@reel.name}"
+= link_to("Add Credit", new_reel_credit_path(@reel.id))
+
 %ul
   - @credits.each do |credit|
-    %li= "#{credit.role}: #{credit.credit_receiver_email}"
+    %li
+      %span= "#{credit.role}: #{credit.credit_receiver_email}"
+      -if user_validation_notice.nil?
+        = link_to("(delete)", reel_credit_path(@reel.id, credit.id), method: :delete)
