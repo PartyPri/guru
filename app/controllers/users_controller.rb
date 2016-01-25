@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       @reels          = @user.reels.order("updated_at desc")
       @followers      = @user.followers
       @followed_users = @user.followed_users
+      @entourage = @user.entourage
     end
   end
 
@@ -43,4 +44,3 @@ class UsersController < ApplicationController
     end
   end
 end
-

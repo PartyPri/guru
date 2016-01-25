@@ -19,6 +19,10 @@ class Credit < ActiveRecord::Base
 
   before_validation :add_default_role
 
+  scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
+  scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
+  scope :accepted, -> { where(invitation_status: 1) }
+
   private
 
   def add_default_role

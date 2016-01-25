@@ -15,7 +15,6 @@ class CreditsController < ApplicationController
 
   # TODO: remove when implemented fully
   def new
-    @credit = Credit.new
   end
 
   def create
