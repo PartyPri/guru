@@ -62,10 +62,6 @@ describe CreditsController, type: :controller do
           expect(response).to render_template(:new)
         end
 
-        it 'assigns the credit instance var' do
-          expect(assigns(:credit)).to be_a(Credit)
-        end
-
         it 'assigns the reel instance var' do
           expect(assigns(:reel)).to eq reel
         end
@@ -143,8 +139,8 @@ describe CreditsController, type: :controller do
             end
           end
 
-          it 'redirects to index' do
-            expect(subject).to redirect_to(:reel_credits)
+          it 'redirects to reel show' do
+            expect(subject).to redirect_to(reel_url(reel))
           end
 
           it 'has a correct flash notice' do
@@ -210,8 +206,8 @@ describe CreditsController, type: :controller do
               expect(Credit.find_by_id(credit.id)).to be_nil
             end
 
-            it 'redirects to index' do
-              expect(subject).to redirect_to(:reel_credits)
+            it 'redirects to reel show' do
+              expect(subject).to redirect_to(reel_url(reel))
             end
 
             it 'shows a deleted flash message' do
@@ -228,8 +224,8 @@ describe CreditsController, type: :controller do
               expect(Credit.find_by_id(credit.id)).not_to be_nil
             end
 
-            it 'redirects to index' do
-              expect(subject).to redirect_to(:reel_credits)
+            it 'redirects to reel show' do
+              expect(subject).to redirect_to(reel_url(reel))
             end
 
             it 'shows an error flash message' do
@@ -242,8 +238,8 @@ describe CreditsController, type: :controller do
         context 'when the credit is not found' do
           let(:credit) { create(:credit, reel_id: 0, reel_owner_id: reel_owner.id) }
 
-          it 'redirects to index' do
-            expect(subject).to redirect_to(:reel_credits)
+          it 'redirects to reel show' do
+            expect(subject).to redirect_to(reel_url(reel))
           end
 
           it 'has a not found flash message' do
