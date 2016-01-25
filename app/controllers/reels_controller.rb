@@ -23,12 +23,13 @@ class ReelsController < ApplicationController
 
   def show
     # TODO this should probably removed
-    @reel = Reel.includes(:images, :videos).find(params[:id])
+    @reel = Reel.includes(:images, :videos, :credits).find(params[:id])
     @images = @reel.images
     @videos = @reel.videos
     @user = @reel.user
     @media = @reel.media.order("position")
     @featured_video = @videos.where(featured_medium: true)
+    @credits = @reel.credits
   end
 
   def new
@@ -65,7 +66,7 @@ class ReelsController < ApplicationController
   end
 
   def update
-    @reel = Reel.find(params[:id])  
+    @reel = Reel.find(params[:id])
     if @reel.update_attributes( params[:reel] )
       flash[:notice] = "Your reel's been updated!"
       redirect_to @reel

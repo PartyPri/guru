@@ -1,6 +1,8 @@
 class Credit < ActiveRecord::Base
   include EnumHelper
 
+  DEFAULT_ROLE = "Fan"
+
   attr_accessible :invitation_status, :credit_receiver_email, :credit_receiver_id, :reel_id, :reel_owner_id, :role, :pending, :accepted, :rejected
 
   belongs_to :reel
@@ -14,4 +16,13 @@ class Credit < ActiveRecord::Base
   enum(:invitation_status, :pending, :accepted, :rejected)
 
   validates_presence_of :credit_receiver_email, :reel_id, :reel_owner_id, :role
+
+  before_validation :add_default_role
+
+  private
+
+  def add_default_role
+    return if role
+    self.role = DEFAULT_ROLE
+  end
 end
