@@ -1,6 +1,16 @@
 class CreditsController < ApplicationController
   before_filter :validate_user, except: [:index]
 
+  ADDED_NOTICE = "Credit added! Waiting for the credit receiver to accept"
+  DELETED_NOTICE = "Credit deleted"
+  NOT_FOUND_NOTICE = "Credit not found"
+
+  AUTH_NOTICE = "You must be signed in to perform this action"
+  PERMISSION_NOTICE = "You do not have permission to perform this action"
+  GENERAL_ERROR = "Oops! Something went wrong."
+
+  helper_method :user_validation_notice
+
   def index
     @reel = Reel.includes(:credits).find_by_id(params[:reel_id])
     @credits = reel.credits
@@ -23,10 +33,19 @@ class CreditsController < ApplicationController
     return render :new unless @credit.save
 
     flash[:notice] = "Credit added! Waiting for the credit receiver to accept"
-    redirect_to reel_path(reel) #reel_credits_path(reel.id)
+    redirect_to reel_credits_path(reel.id)
   end
 
   def destroy
+    credit = reel.credits.where(id: params[:id]).first
+    flash[:notice] = destroy_credit(credit)
+    redirect_to reel_credits_path(reel.id)
+  end
+
+  def destroy_credit(credit)
+    return NOT_FOUND_NOTICE if credit.nil?
+    return DELETED_NOTICE if credit.destroy
+    GENERAL_ERROR
   end
 
   def credit_receiver_email
@@ -42,15 +61,17 @@ class CreditsController < ApplicationController
   end
 
   def validate_user
-    return unless notice = user_validation_notice
-    flash[:notice] = notice
+    return unless user_validation_notice
+    flash[:notice] = user_validation_notice
     redirect_to :root
   end
 
+
   def user_validation_notice
-    notice = "You must be signed in to perform this action" unless user_signed_in?
-    return notice if notice
-    "You do not have permission to perform this action" unless reel
+    @user_validation_notice ||= begin
+      return AUTH_NOTICE unless user_signed_in?
+      PERMISSION_NOTICE unless reel
+    end
   end
 
   def reel

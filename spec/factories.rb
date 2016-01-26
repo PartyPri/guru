@@ -24,4 +24,11 @@ FactoryGirl.define do
   factory :medium do
     title "I'm a Medium"
   end
+
+  factory :credit do
+    role "Inspiration"
+    sequence(:credit_receiver_email) {|n| "test#{n}@example.com" }
+    reel_id 1
+    reel_owner_id 1
+  end
 end
