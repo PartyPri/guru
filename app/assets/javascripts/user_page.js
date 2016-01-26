@@ -4,6 +4,6 @@ $(document).ready(function() {
     return href;
   }).on('click', function() {
     var href = this.getAttribute('href');
-    $('html, body').animate({scrollTop: $(href).offset().top - 115}, 'slow');
+    $('html, body').animate({scrollTop: $(href).offset().top - 125}, 'slow');
   });
 });

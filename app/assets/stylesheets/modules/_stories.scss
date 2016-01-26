@@ -2,6 +2,7 @@ ul {
   .teaser-story {
     background-color: $med-gray;
     padding: 0;
+    background-po
     p {
       padding-top: 10px;
       position: absolute;
@@ -17,6 +18,7 @@ ul {
   background: rgba(0,0,0,.38);
   text-align: center;
   h1, p {
+    padding-top: 15px;
     color: $white;
     font-size: $base-font-size*6.75;
     font-family: $special-font-family;

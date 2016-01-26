@@ -14,7 +14,7 @@
         - if medium.is_a? Image
           %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
         - elsif medium.is_a? Video
-          %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
+          %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg); background-size: 180%;"}
         - elsif medium.is_a? Story
           %li.teaser-media.teaser-story{:style => "background-image: url(#{medium.photo.url})"}
             .story-overlay-teaser

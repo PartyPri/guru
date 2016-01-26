@@ -20,14 +20,11 @@
 = render 'shared/nav'
 -if current_user && current_user.id == @user.id
   = render 'shared/modal_edit'
+  = render 'shared/modal_add_credit'
 .reel-page
   .reel-header-container
     .container
       .row.hero
-        -# .col-sm-12
-        -#   %h5.reel-breadcrumbs
-        -#     = link_to @user.first_name + " " + @user.last_name + " > ", user_path(@reel.user)
-        -#     = @reel.name
         .col-sm-2
           .avatar-container
             = link_to user_path(@reel.user) do
@@ -73,7 +70,6 @@
               = link_to edit_reel_path(@reel) do
                 %i.fa.fa-pencil-square
                 Edit
-              /= link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
           .share-button-mobile
             .share-line
             .share-triangle
@@ -96,6 +92,9 @@
         .share-circle.text-center
           %i.fa.fa-share-alt
           Share!
+        #links
+          .link-item
+            %a.share.twitter-share-button{href: "https://twitter.com/share"}
       %ul.list-inline.reel-view-options
         %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)"}
           %i.fa.fa-list
@@ -108,13 +107,37 @@
             %i.fa.fa-group
             %p Credits
           %ul.reel-credit-list.dropdown-menu{"aria-labelledby" => "credits"}
-          
-            - @reel.credits.each do |credits|
-              %li.reel-credit-item
-                %p.reel-credit-role= credits.role.upcase
-                - @all_user.each do |user|
-                  -if user.id == credits.credit_receiver_id
-                    %strong= link_to user.first_name + " " + user.last_name, user_path(user)
+            - if current_user && current_user.id == @user.id
+              %a.add-credit-button{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
+                %i.fa.fa-plus-circle
+                Add Credit to the Reel
+            - if current_user && current_user.id != @user.id
+              - if @credits.length == 0
+                %p= '"' + @reel.name + '" has no credits yet.'
+            - @credits.each do |credit|
+              - if current_user && current_user.id == @user.id
+                - if credit.accepted_invitation == false
+                  %li.reel-credit-item.reel-credit-pending
+                    %p.reel-credit-role= credit.role.upcase
+                    - if credit.credit_receiver_id == nil
+                      %strong= credit.credit_receiver_email + " (pending)"
+                    - else
+                      - @all_user.each do |user|
+                        - if user.id == credit.credit_receiver_id
+                          = link_to user_path(user) do
+                            %img.credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
+                          %strong= link_to user.first_name + " " + user.last_name + " (pending)", user_path(user)
+              - if credit.accepted_invitation
+                %li.reel-credit-item
+                  %p.reel-credit-role= credit.role.upcase
+                  - if credit.credit_receiver_id == nil
+                    %strong= credit.credit_receiver_email
+                  - else
+                    - @all_user.each do |user|
+                      - if user.id == credit.credit_receiver_id
+                        = link_to user_path(user) do
+                          %img.credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
+                        %strong= link_to user.first_name + " " + user.last_name, user_path(user)
   -# .link-bar
   -#   .container
   -#     .row-fluid

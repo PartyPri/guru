@@ -15,6 +15,7 @@
   font-family: $base-font-family;
   position: fixed;
   height: 40px;
+  border-radius: 0;
   @include box-shadow(0px, 1px, 2px, 0px, rgba(0,0,0,0.22));
 }
 
@@ -61,7 +62,7 @@
 
 .footer {
   width: 100%;
-  border-top: 1px solid $gray;
+  border-top: 1px solid #CCC;
 }
 
 @media (max-width: 1200px) {

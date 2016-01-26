@@ -37,6 +37,15 @@ $(window).scroll(function() {
 
 //Reel page view options
 $(document).ready(function() {
+
+  //share button functions
+  setTimeout(function(){ $('#links').addClass('hidden'); }, 1000);
+
+  $('.share-circle').click(function() {
+    $('#links').toggleClass('hidden');
+  })
+
+  //viewing options
   $(".reel-view-item").on('click', function() {
     var ref = $(this).text().trim();
 
@@ -51,6 +60,5 @@ $(document).ready(function() {
     }else{
       console.log("you're not in the header");
     }
-
   });
 });

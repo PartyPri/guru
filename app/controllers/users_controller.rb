@@ -11,6 +11,9 @@ class UsersController < ApplicationController
       @reels          = @user.reels.order("updated_at desc")
       @followers      = @user.followers
       @followed_users = @user.followed_users
+      @all_user       = User.all
+      @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :accepted_invitation => true})
+      @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
     end
   end
 
@@ -43,4 +46,3 @@ class UsersController < ApplicationController
     end
   end
 end
-

@@ -17,16 +17,20 @@
         .navbar-collapse.collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a.user-page-nav#user-reel-link{:href => "#reels"} Reels
+              %a.user-page-nav#user-reel-link{:href => "#reels"}
+                Reels
+                %span.badge= @reels.length.to_s
             %li
               %a.user-page-nav#user-entourage-link{:href => "#entourage"} Entourage
             %li
-              %a.user-page-nav#user-credits-reel-link{:href => "#credits"} Credits
+              %a.user-page-nav#user-credits-reel-link{:href => "#credits"}
+                Credits
+                %span.badge= @credited_reels.length.to_s
             %li
               %a.user-page-nav#user-about-link{:href => "#about"} About
             %li
               %a#user-contact-link{:href => "#contact"} Contact
-  .user-hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
+  .user-hero-image{style: "background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, white 100%), url(#{@user.cover_photo.url(:medium)});"}
   .content-container.user-page-header
     .row
       -# .col-sm-4
@@ -43,25 +47,25 @@
       -#         %i.fa.fa-map-marker
       -#         %span= @user.location
       .user-page-info
-        .user-name-header.m-bottom-10
+        - if @user.featured_artist?
+          .featured-profile-tag
+            %span.featured-tag Featured!
+        .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+        .user-name-header.m-top-15
           %h3
             =@user.first_name + " " + @user.last_name
             - if current_user && current_user.id == @user.id
               = link_to edit_profile_path do
                 %i.fa.fa-pencil-square
-        - if @user.featured_artist?
-          .featured-profile-tag
-            %span.featured-tag Featured!
-        .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-        .m-top-15
+        .m-top-5
           %i.m-top-1= @user.description
         .m-top-5
           - if @user.location.present?
             %i.fa.fa-map-marker
             %span= @user.location
-  .tabs
-    .row-fluid
-      .content-container
+  -# .tabs
+  -#   .row-fluid
+  -#     .content-container
         -# %ul.list-inline.user-profile-tabs
         -#   %li.active
         -#     %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
@@ -84,11 +88,11 @@
         -#   = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
   .page-content
     .tab-content
-      .container.tab-pane#bio{role: "tabpanel"}
-        .row.text-center
-          .col-xs-12.col-sm-8.col-sm-offset-2
-            .teaser.bio
-              %p= @user.bio
+      -# .container.tab-pane#bio{role: "tabpanel"}
+      -#   .row.text-center
+      -#     .col-xs-12.col-sm-8.col-sm-offset-2
+      -#       .teaser.bio
+      -#         %p= @user.bio
       .content-container.tab-pane.active#work{role: "tabpanel"}
         .tab-content.row
           .tab-pane.active.col-sm-10.col-sm-offset-2.user-page-content#reels{role: "tabpanel"}
@@ -103,14 +107,67 @@
 %section.content-container
   .row
     .col-sm-8.col-sm-offset-2.user-page-content
+      .user-about-me#entourage
+        %h2= @user.first_name + "'s reels were influence by..."
+        %ul.user-entourage-list.row
+          - @reels.each do |reel|
+            - reel.credits.each do |credit|
+              - if credit.accepted_invitation
+                %li.user-entourage-item.col-sm-6
+                  - if credit.credit_receiver_id == nil
+                    %img.user-credit-avatar{:style => "background-image: url(http://s3.amazonaws.com/evrystep-assets/users/avatars/default/small/missing.png);"}
+                    %p= credit.credit_receiver_email
+                    %p
+                    %strong= credit.role + " in"
+                    %p.user-entourage-role= link_to reel.name, reel_path(reel)
+                  - else
+                    - @all_user.each do |user|
+                      - if user.id == credit.credit_receiver_id
+                        = link_to user_path(user) do
+                          %img.user-credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
+                        %strong= link_to user.first_name + " " + user.last_name, user_path(user)
+                        %p.user-entourage-role=  truncate(user.description, length: 26, omission: '...')
+                        %strong= credit.role + " in"
+                        %p.user-entourage-role= link_to reel.name, reel_path(reel)
+%section.content-container
+  .row
+    .col-sm-8.col-sm-offset-2.user-page-content
       .user-about-me#credits
-        %h2 Credits
-        %p
-          Credits
+        %h2= @user.first_name + " is credited in the following reels..."
+        %ul.user-entourage-list.row
+          - @credited_reels.each do |reel|
+            %li.user-entourage-item.col-sm-6
+              = link_to reel_path(reel) do
+                %ul.media-list.user-credit-avatar-container
+                  - reel.media.order("position").take(1).each do |medium|
+                    - if medium.is_a? Image
+                      %li.user-credit-avatar{:style => "background-image: url(#{medium.photo.url})"}
+                    - elsif medium.is_a? Video
+                      %li.user-credit-avatar{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg); background-size: 180%;"}
+                    - elsif medium.is_a? Story
+                      %li.user-credit-avatar.teaser-story{:style => "background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(#{medium.photo.url})"}
+                        %h1= truncate(medium.title, length: 1, omission: '')
+              - reel.credits.each do |credit|
+                - if @user.id == credit.credit_receiver_id
+                  %strong= credit.role
+              %p for...
+              %p.user-entourage-role= link_to reel.name, reel_path(reel)
+              %small= time_ago_in_words(reel.updated_at) + " ago"
+
+
 %section.content-container
   .row
     .col-sm-8.col-sm-offset-2.user-page-content
       .user-about-me#about
-        %h2 About me
+        %h2= "About " + @user.first_name + "..."
         %p.user-bio-container
           = @user.bio
+
+
+%section.content-container
+  .row
+    .col-sm-8.col-sm-offset-2.user-page-content
+      .user-about-me#contact
+        %h2= "Ways to contact " + @user.first_name + "..."
+        %a{:href => "mailto:" + @user.email }
+          %i.fa.fa-envelope

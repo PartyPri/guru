@@ -33,6 +33,7 @@ class ReelsController < ApplicationController
     @media = @reel.media.order("position")
     @featured_video = @videos.where(featured_medium: true)
     @all_user = User.all
+    @credits = @reel.credits
   end
 
   def new
