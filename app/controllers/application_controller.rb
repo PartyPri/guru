@@ -4,4 +4,9 @@ class ApplicationController < ActionController::Base
   GENERAL_ERROR = "Oops! Something went wrong."
 
   protect_from_forgery
+
+  def redirect_with_error(message)
+    flash[:notice] = message
+    redirect_to(:root)
+  end
 end
