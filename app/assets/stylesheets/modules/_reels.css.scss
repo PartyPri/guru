@@ -350,6 +350,10 @@ li.reel-credit-item {
   }
 }
 
+.credit-delete{
+  float: right;
+}
+
 .credit-avatar {
   height: 20px;
   width: 20px;
@@ -365,6 +369,9 @@ li.reel-credit-item {
   color: lighten($lt-gray, 10%);
   a {
     color: lighten($lt-gray, 10%);
+    &:hover {
+      color: $lt-turq;
+    }
   }
 }
 

@@ -33,13 +33,13 @@ class CreditsController < ApplicationController
     return render :new unless @credit.save
 
     flash[:notice] = "Credit added! Waiting for the credit receiver to accept"
-    redirect_to reel_credits_path(reel.id)
+    redirect_to reel_path(reel.id)
   end
 
   def destroy
     credit = reel.credits.where(id: params[:id]).first
     flash[:notice] = destroy_credit(credit)
-    redirect_to reel_credits_path(reel.id)
+    redirect_to reel_path(reel.id)
   end
 
   def destroy_credit(credit)
