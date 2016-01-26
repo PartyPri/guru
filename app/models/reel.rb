@@ -20,6 +20,8 @@ class Reel < ActiveRecord::Base
 
   scope :featured, -> { where(featured: true) }
   scope :by_user_id, lambda{|user_id| { conditions: { user_id: user_id } } }
+  scope :with_enough_media, -> { where("media_count > 2") }
+  scope :recently_added_media, -> { order("media_last_added_at desc") }
 
   acts_as_taggable
 

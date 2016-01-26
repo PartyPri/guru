@@ -23,7 +23,7 @@ class ReelsController < ApplicationController
 
   def show
     # TODO this should probably removed
-    @reel = Reel.includes(:images, :videos, :credits).find(params[:id])
+    @reel = Reel.includes(:images, :videos).find(params[:id])
     @images = @reel.images
     @videos = @reel.videos
     @user = @reel.user
