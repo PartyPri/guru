@@ -1,6 +1,8 @@
 class ReelsController < ApplicationController
   before_filter :set_interests, only: [:new, :edit]
 
+  NOT_FOUND_NOTICE = "Reel not found"
+
   impressionist :actions=>[:show]
 
   def index
@@ -22,20 +24,19 @@ class ReelsController < ApplicationController
   end
 
   def show
-    # TODO this should probably removed
-    @reel = Reel.includes(:images, :videos).find(params[:id])
+    @reel = Reel.includes(:images, :videos, :user).find_by_id(params[:id])
+    return redirect_with_error(NOT_FOUND_NOTICE) if @reel.nil?
+
     @images = @reel.images
     @videos = @reel.videos
     @user = @reel.user
     @media = @reel.media.order("position")
     @featured_video = @videos.where(featured_medium: true)
+    @credits = Credit.by_reel(params[:id]).accepted
   end
 
   def new
-    unless user_signed_in?
-      redirect_to :root
-      flash[:notice] = "You must be signed in to create a reel."
-    end
+    return redirect_with_error(AUTH_NOTICE) unless user_signed_in?
     @reel = Reel.new
   end
 
@@ -65,7 +66,7 @@ class ReelsController < ApplicationController
   end
 
   def update
-    @reel = Reel.find(params[:id])  
+    @reel = Reel.find(params[:id])
     if @reel.update_attributes( params[:reel] )
       flash[:notice] = "Your reel's been updated!"
       redirect_to @reel

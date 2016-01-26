@@ -5,19 +5,16 @@ class CreditsController < ApplicationController
   DELETED_NOTICE = "Credit deleted"
   NOT_FOUND_NOTICE = "Credit not found"
 
-  AUTH_NOTICE = "You must be signed in to perform this action"
-  PERMISSION_NOTICE = "You do not have permission to perform this action"
-  GENERAL_ERROR = "Oops! Something went wrong."
-
   helper_method :user_validation_notice
 
+  # TODO: remove when implemented fully
   def index
     @reel = Reel.includes(:credits).find_by_id(params[:reel_id])
     @credits = reel.credits
   end
 
+  # TODO: remove when implemented fully
   def new
-    @credit = Credit.new
   end
 
   def create
@@ -33,13 +30,13 @@ class CreditsController < ApplicationController
     return render :new unless @credit.save
 
     flash[:notice] = ADDED_NOTICE
-    redirect_to reel_credits_path(reel.id)
+    redirect_to reel_path(reel.id)
   end
 
   def destroy
     credit = reel.credits.where(id: params[:id]).first
     flash[:notice] = destroy_credit(credit)
-    redirect_to reel_credits_path(reel.id)
+    redirect_to reel_path(reel.id)
   end
 
   def destroy_credit(credit)
@@ -75,6 +72,6 @@ class CreditsController < ApplicationController
   end
 
   def reel
-    @reel ||= Reel.where(id: params[:reel_id], user_id: current_user.id).limit(1).first
+    @reel ||= Reel.where(id: params[:reel_id], user_id: current_user.id).first
   end
 end

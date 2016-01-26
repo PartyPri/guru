@@ -5,6 +5,6 @@ class InterestsController < ApplicationController
 
     @tags = @interest.reels.tag_counts
     @followers = @interest.users
-    @reels = @interest.reels.where("media_count > 2").order("media_last_added_at desc")
+    @reels = @interest.reels.with_enough_media.recently_added_media
   end
 end
