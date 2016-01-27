@@ -4,17 +4,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where( id: params[:id] ).first
-    if @user.blank?
-      redirect_to :root
-    else
-      @interests      = @user.interests
-      @reels          = @user.reels.order("updated_at desc")
-      @followers      = @user.followers
-      @followed_users = @user.followed_users
-      @all_user       = User.all
-      @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :accepted_invitation => true})
-      @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
-    end
+    return redirect_to :root if @user.blank?
+
+    @interests      = @user.interests
+    @reels          = @user.reels.recently_added_media
+    @entourage      = @user.entourage
+    @all_user       = User.all
+    @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :accepted_invitation => true})
+    @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
   end
 
   def edit

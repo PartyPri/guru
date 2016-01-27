@@ -35,9 +35,42 @@ describe ReelsController, :type => :controller do
   end
 
   describe "GET #show" do
-    it 'should find a reel' do
-      found_reel = Reel.where(name: 'Foo Reel')
-      expect(found_reel).to exist
+    context 'when a reel is found' do
+      let(:reel) { create(:reel) }
+      subject { get :show, id: reel.id }
+
+      it 'renders the show view' do
+        subject
+        expect(response).to render_template(:show)
+      end
+
+      it 'assigns the user instance var' do
+        subject
+        expect(assigns(:user)).to eq reel.user
+      end
+
+      context 'when the reel has credits' do
+        let(:credit) { create(:credit, invitation_status: 1) }
+        before { reel.credits << credit }
+
+        it 'assigns the credit instance var' do
+          subject
+          expect(assigns(:credits)).to eq [credit]
+        end
+      end
+    end
+
+    context "when a reel is not found" do
+      subject { get :show, id: 0 }
+
+      it 'redirect_to root' do
+        expect(subject).to redirect_to(:root)
+      end
+
+      it 'sets the correct flash notice' do
+        subject
+        expect(flash[:notice]).to eq described_class::NOT_FOUND_NOTICE
+      end
     end
   end
 

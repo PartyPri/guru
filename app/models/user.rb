@@ -93,4 +93,8 @@ class User < ActiveRecord::Base
       end
     }.delete_if {|x| x == nil}
   end
+
+  def entourage
+    Credit.by_reel_owner(id).accepted
+  end
 end
