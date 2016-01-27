@@ -21,7 +21,9 @@
                 Reels
                 %span.badge= @reels.length.to_s
             %li
-              %a.user-page-nav#user-entourage-link{:href => "#entourage"} Entourage
+              %a.user-page-nav#user-entourage-link{:href => "#entourage"}
+                Entourage
+                %span.badge= @entourage.length.to_s
             %li
               %a.user-page-nav#user-credits-reel-link{:href => "#credits"}
                 Credits
@@ -129,7 +131,7 @@
           %ul.user-entourage-list.row
             - @reels.each do |reel|
               - reel.credits.each do |credit|
-                - if credit.accepted_invitation
+                - if credit.invitation_status == 1
                   %li.user-entourage-item.col-sm-6
                     - if credit.credit_receiver_id == nil
                       %img.user-credit-avatar.blank-user

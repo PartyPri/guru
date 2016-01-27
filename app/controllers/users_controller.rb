@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @reels          = @user.reels.recently_added_media
     @entourage      = @user.entourage
     @all_user       = User.all
-    @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :accepted_invitation => true})
+    @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :invitation_status => 1})
     @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
   end
 

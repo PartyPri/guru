@@ -116,7 +116,7 @@
                 %p= '"' + @reel.name + '" has no credits yet.'
             - @credits.each do |credit|
               - if current_user && current_user.id == @user.id
-                - if credit.accepted_invitation == false
+                - if credit.invitation_status == 0
                   %li.reel-credit-item.reel-credit-pending
                     %p.reel-credit-role= credit.role.upcase
                     - if credit.credit_receiver_id == nil
@@ -133,7 +133,7 @@
                             = link_to user.first_name + " " + user.last_name + " (pending)", user_path(user)
                             = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                               %i.fa.fa-times-circle.credit-delete
-              - if credit.accepted_invitation
+              - if credit.invitation_status = 1
                 %li.reel-credit-item
                   %p.reel-credit-role= credit.role.upcase
                   - if credit.credit_receiver_id == nil
