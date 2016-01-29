@@ -6,8 +6,6 @@ module EnumHelper
       add_active_record_methods
     end
 
-    private
-
     def _enum_field
       @field
     end

@@ -4,9 +4,15 @@ class ApplicationController < ActionController::Base
   GENERAL_ERROR = "Oops! Something went wrong."
 
   protect_from_forgery
+  helper_method :owned_by_current_user?
 
   def redirect_with_error(message)
     flash[:notice] = message
     redirect_to(:root)
+  end
+
+  def owned_by_current_user?
+    return false unless user_signed_in?
+    @user == current_user
   end
 end

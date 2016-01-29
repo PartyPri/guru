@@ -108,51 +108,47 @@
             %i.fa.fa-group
             %p Credits
           %ul.reel-credit-list.dropdown-menu{"aria-labelledby" => "credits"}
-            - if current_user && current_user.id == @user.id
+            - if owned_by_current_user?
               %a.add-credit-button{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
                 %i.fa.fa-plus-circle
                 Add Credit to the Reel
-            - if current_user && current_user.id != @user.id
-              - if @credits.length == 0
-                %p= '"' + @reel.name + '" has no credits yet.'
+            - else
+              - if @credits.blank?
+                %p= "#{@reel.name} has no credits yet."
             - @credits.each do |credit|
-              - if current_user && current_user.id == @user.id
-                - if credit.invitation_status == 0
+              - if owned_by_current_user?
+                - if credit.pending?
                   %li.reel-credit-item.reel-credit-pending
                     %p.reel-credit-role= credit.role.upcase
-                    - if credit.credit_receiver_id == nil
+                    - if credit.receiver.nil?
                       %strong
                         = credit.credit_receiver_email + " (pending)"
                         = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                           %i.fa.fa-times-circle.credit-delete
                     - else
-                      - @all_user.each do |user|
-                        - if user.id == credit.credit_receiver_id
-                          = link_to user_path(user) do
-                            %img.credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
-                          %strong
-                            = link_to user.first_name + " " + user.last_name + " (pending)", user_path(user)
-                            = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
-                              %i.fa.fa-times-circle.credit-delete
-              - if credit.invitation_status = 1
+                      = link_to user_path(credit.receiver) do
+                        %img.credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                      %strong
+                        = link_to "#{credit.receiver.first_name} #{credit.receiver.last_name} (pending)", user_path(credit.receiver)
+                        = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                          %i.fa.fa-times-circle.credit-delete
+              - if credit.accepted?
                 %li.reel-credit-item
                   %p.reel-credit-role= credit.role.upcase
-                  - if credit.credit_receiver_id == nil
+                  - if credit.receiver.nil?
                     %strong
                       = credit.credit_receiver_email
                       - if current_user && current_user.id == @user.id
                         = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                           %i.fa.fa-times-circle.credit-delete
                   - else
-                    - @all_user.each do |user|
-                      - if user.id == credit.credit_receiver_id
-                        = link_to user_path(user) do
-                          %img.credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
-                        %strong
-                          = link_to user.first_name + " " + user.last_name, user_path(user)
-                          - if current_user && current_user.id == @user.id
-                            = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
-                              %i.fa.fa-times-circle.credit-delete
+                    = link_to user_path(credit.receiver) do
+                      %img.credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                    %strong
+                      = link_to "#{credit.receiver.first_name} #{credit.receiver.last_name}", user_path(credit.receiver)
+                      - if owned_by_current_user?
+                        = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                          %i.fa.fa-times-circle.credit-delete
   -# .link-bar
   -#   .container
   -#     .row-fluid
