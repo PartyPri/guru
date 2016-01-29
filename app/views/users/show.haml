@@ -80,7 +80,7 @@
       .content-container.tab-pane.active#work{role: "tabpanel"}
         .tab-content.row
           .tab-pane.active.col-sm-10.col-sm-offset-2.user-page-content#reels{role: "tabpanel"}
-            - if @reels.length == 0
+            - if @reels.blank?
               %ul
                 %li.empty-profile-reel
                 %li.empty-profile-reel
@@ -108,7 +108,7 @@
   .row
     .col-sm-8.col-sm-offset-2.user-page-content
       .user-about-me#entourage
-        - if @reels.length == 0
+        - if @reels.blank?
           %ul.empty-profile
             %li.empty-profile-avatar
             %li.empty-profile-avatar
@@ -127,27 +127,24 @@
             %li.empty-profile-avatar
             %li.empty-profile-avatar
         - else
-          %h2= @user.first_name + "'s reels were influence by..."
+          %h2= @user.first_name + "'s reels were influenced by..."
           %ul.user-entourage-list.row
-            - @reels.each do |reel|
-              - reel.credits.each do |credit|
-                - if credit.invitation_status == 1
-                  %li.user-entourage-item.col-sm-6
-                    - if credit.credit_receiver_id == nil
-                      %img.user-credit-avatar.blank-user
-                      %p= credit.credit_receiver_email
-                      %p
-                      %strong= credit.role + " in"
-                      %p.user-entourage-role= link_to reel.name, reel_path(reel)
-                    - else
-                      - @all_user.each do |user|
-                        - if user.id == credit.credit_receiver_id
-                          = link_to user_path(user) do
-                            %img.user-credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
-                          %strong= link_to user.first_name + " " + user.last_name, user_path(user)
-                          %p.user-entourage-role=  truncate(user.description, length: 26, omission: '...')
-                          %strong= credit.role + " in"
-                          %p.user-entourage-role= link_to reel.name, reel_path(reel)
+            - @entourage.each do |credit|
+              %li.user-entourage-item.col-sm-6
+                - if credit.receiver.nil?
+                  %img.user-credit-avatar.blank-user
+                  %p= credit.credit_receiver_email
+                  %p
+                  %strong= credit.role + " in"
+                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+                - else
+                  = link_to user_path(credit.receiver) do
+                    %img.user-credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                  %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
+                  %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
+                  %strong= credit.role + " in"
+                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+
 - if @credited_reels.length > 0
   %section.content-container
     .row
@@ -175,7 +172,7 @@
                 %small= time_ago_in_words(reel.updated_at) + " ago"
 
 
--if @user.bio.empty?
+-if @user.bio.blank?
   - if current_user && current_user.id == @user.id && @reels.length == 0
     %section.content-container
       .row

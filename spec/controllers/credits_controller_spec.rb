@@ -13,8 +13,10 @@ describe CreditsController, type: :controller do
     end
 
     it 'includes the credits' do
+      Bullet.enable = false
       expect(Reel).to receive(:includes).with(:credits).and_call_original
       get :index, reel_id: reel.id
+      Bullet.enable = true
     end
 
     context 'when the reel has credits' do
