@@ -39,7 +39,7 @@ Guru::Application.routes.draw do
       put "like", to: "videos#upvote"
     end
   end
-  
+
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 
   get 'about', to: 'pages#about', as: 'about'
