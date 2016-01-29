@@ -5,6 +5,6 @@ class InterestsController < ApplicationController
 
     @tags = @interest.reels.tag_counts
     @followers = @interest.users
-    @reels = @interest.reels.with_enough_media.recently_added_media
+    @reels = @interest.reels.includes(:media, :user).with_enough_media.recently_added_media
   end
 end
