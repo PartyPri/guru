@@ -143,7 +143,7 @@
                   %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
                   %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
                   %strong= credit.role + " in"
-                  %p.user-entourage-role= link_to reel.name, reel_path(credit.reel)
+                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
 
 - if @credited_reels.length > 0
   %section.content-container
