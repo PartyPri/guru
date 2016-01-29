@@ -26,10 +26,8 @@
           .media-comments-icon
             = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
               - if current_user && current_user.voted_on?(medium)
-                -# %span.action-props-on
                 %i.fa.fa-hand-peace-o.media-comments-icon-on
               - else
-                -# %span.action-props-off
                 %i.fa.fa-hand-peace-o
               - if medium.score < 1
                 .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score

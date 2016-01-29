@@ -99,10 +99,10 @@
           %i.fa.fa-share-alt
           Share!
       %ul.list-inline.reel-view-options
-        %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)"}
+        %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)", "data-target" => "#timeline", "data-toggle" => "tab"}
           %i.fa.fa-list
           %p Timeline
-        %li.reel-view-item
+        %li.reel-view-item{"data-target" => "#grid", "data-toggle" => "tab"}
           %i.fa.fa-th-large
           %p Grid
         %li.reel-view-item.dropdown
@@ -151,19 +151,8 @@
                       - if owned_by_current_user?
                         = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                           %i.fa.fa-times-circle.credit-delete
-  -# .link-bar
-  -#   .container
-  -#     .row-fluid
-  -#       .col-md-5.user
-  -#         = link_to user_path(@reel.user) do
-  -#           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-  -#           %h5= @user.first_name + " " + @user.last_name
-  -#       .col-md-5.views
-  -#         %h4.p-top-10.pull-left #{@reel.impressionist_count} views
-  -#         .links
-  -#           .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
-  -#           %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
-  -#       .col-md-2.edit
-  -#         - if current_user && current_user.id == @user.id
-  -#           = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
-  = render 'shared/timeline'
+  .tab-content
+    #timeline.tab-pane.active
+      = render 'shared/timeline'
+    #grid.tab-pane
+      = render 'shared/grid'

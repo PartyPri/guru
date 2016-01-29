@@ -33,7 +33,7 @@ ul {
 }
 
 .grid-item.story {
-  background: #e5fcfb;
+  background: lighten($lt-gray, 50%);
 
   .story-overlay {
     padding: 45px 15px 0 15px;
@@ -45,7 +45,7 @@ ul {
 }
 
 .custom-html.story-content {
-  background: #e5fcfb;
+  background: white;
   height: 100%;
   width: 100%;
   overflow-y: scroll;
