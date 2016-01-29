@@ -31,7 +31,7 @@ class StoriesController < ApplicationController
   end
 
   def update
-    @story = Story.find(params[:id])  
+    @story = Story.find(params[:id])
     if @story.update_attributes( params[:story] )
       flash[:notice] = "Your story has been updated!"
       redirect_to @story.reel
@@ -45,5 +45,16 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.destroy
     redirect_to current_user
+  end
+
+  def upvote
+    @story = Story.find(params[:id])
+    @story.upvote_by current_user
+
+    if request.xhr?
+      render json: { count: @story.score, id: params[:id] }
+    else
+      redirect_to current_user
+    end
   end
 end

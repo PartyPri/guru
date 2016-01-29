@@ -22,6 +22,7 @@ class Credit < ActiveRecord::Base
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
   scope :accepted, -> { where(invitation_status: 1) }
+  scope :by_receiver, ->(credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
 
   private
 

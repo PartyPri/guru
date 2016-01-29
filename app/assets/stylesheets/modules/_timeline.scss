@@ -122,7 +122,22 @@
     margin: 10px;
     border: solid $lt-gray 1.5px;
     cursor: pointer;
+    &:active {
+      background-color: $turq;
+    }
   }
+}
+
+.media-comments-icon-on {
+  background-color: $turq;
+}
+
+.engagement-badge {
+  font-size: $base-font-size;
+  color: white;
+  background-color: $red;
+  margin: -22px 33px;
+  position: absolute;
 }
 
 @media (max-width: 991px) {
