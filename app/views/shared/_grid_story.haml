@@ -4,7 +4,7 @@
       %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
         .story-overlay.grid-item-body
           %h4= medium.title
-          %p= raw(truncate(medium.body, length: 300))
+          %p= sanitize(truncate(medium.body, length: 300))
       .grid-item-footer
         %ul.list-inline.grid-actions
           %li
@@ -37,7 +37,7 @@
       .custom-html.story-content
         .story-cover-photo{style: "background-image: url(#{medium.photo.url})"}
           = medium.title
-        .story-body= raw(medium.body)
+        .story-body= sanitize(medium.body)
         - if current_user
           .row-fluid.m-top-20.clearfix
             .col-md-1
@@ -54,7 +54,7 @@
     %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
       .grid-item.story.no-photo.grid-item-body
         %h4= medium.title
-        %p= raw(truncate(medium.body, length: 300))
+        %p= sanitize(truncate(medium.body, length: 300))
       .grid-item-footer
         %ul.list-inline
           %li

@@ -38,12 +38,22 @@ $(window).scroll(function() {
 //Reel page view options
 $(document).ready(function() {
 
-  //share button functions
-  setTimeout(function(){ $('#links').addClass('hidden'); }, 1000);
-
+  //share button function
   $('.share-circle').click(function() {
-    $('#links').toggleClass('hidden');
+    $('.share-button').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+    $('#links').css({opacity: 0}).animate({opacity: 1.0, height: '30px'}, 400);
+  });
+  $('.share-button-mobile').click(function() {
+    $('.share-button-mobile').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+    $('.link-item-mobile').css('z-index', 0);
   })
+
+  //expanding comments
+  $('.comment-btn-expand').click(function(event) {
+    var commentId = event.target.id;
+    console.log(commentId);
+    $('#comments-id-' + commentId).toggleClass('hidden');
+  });
 
   //viewing options
   $(".reel-view-item").on('click', function() {

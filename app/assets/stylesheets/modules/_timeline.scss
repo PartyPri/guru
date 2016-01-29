@@ -16,8 +16,10 @@
 .add-new-media-container{
   padding: 20px 0;
   background-color: white;
-  color: $turq;
   width: 100px;
+  a {
+    color: $turq;
+  }
 }
 
 .add-new-media {
@@ -122,7 +124,8 @@
     margin: 10px;
     border: solid $lt-gray 1.5px;
     cursor: pointer;
-    &:active {
+    &:active,
+    &:hover {
       background-color: $turq;
     }
   }
@@ -138,6 +141,13 @@
   background-color: $red;
   margin: -22px 33px;
   position: absolute;
+}
+
+.media-comment-section {
+  background-color: lighten($lt-gray, 50%);
+  margin: 50px 0;
+  padding: 20px 20px 40px 20px;
+  min-height: 140px;
 }
 
 @media (max-width: 991px) {
@@ -162,6 +172,10 @@
     iframe {
       height: 320px;
     }
+  }
+  .media-comments-icon {
+    position: inherit;
+    margin: -20px 15px;
   }
 }
 

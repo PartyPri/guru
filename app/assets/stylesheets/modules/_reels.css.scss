@@ -1,7 +1,7 @@
 .reel-page {
   margin-top: 50px;
   .reel-header-container {
-    padding: 50px 50px 10px;
+    padding: 0 50px 10px;
     margin-bottom: 0;
     background-color: lighten($lt-gray, 50%);
     .hero {
@@ -154,19 +154,16 @@
 }
 
 #links {
-  margin-top: 51px;
-  margin-left: 70px;
+  margin-top: 48px;
+  margin-left: 18px;
   transition: transform 0.3 ease;
+  position: absolute;
 }
 
-
-
-.link-item {
-  display: block;
-  margin: 5px 10px;
-  &:first-child {
-    margin-left: 11.5px;
-  }
+.link-item-mobile {
+  margin: -90px 36%;
+  position: absolute;
+  z-index: -1;
 }
 
 .share-button {
@@ -268,17 +265,15 @@
     }
   }
   #links {
-    margin-top: 20px;
-    margin-left: 68px;
+    margin-top: 5px;
+    margin-left: 15px;
+    overflow: hidden;
+    height: 10px;
   }
 
   .link-item {
     display: block;
-    margin: 1px 10px;
     padding: 10px 0;
-    &:first-child {
-      margin-left: 11.5px;
-    }
   }
 }
 
@@ -331,6 +326,9 @@
   }
   &:active {
     background-color: darken($turq, 10%);
+  }
+  a {
+    color: white;
   }
 }
 
@@ -395,9 +393,13 @@ li.reel-credit-item {
 }
 
 .featured-reel-tag {
-  position: absolute;
-  margin: -208px 87px;
-  z-index: 1;
+  margin: 15px 0;
+  .featured-tag {
+    position: inherit;
+    width: 120px;
+    margin: 20px -5px;
+    padding: 24px 30px;
+  }
 }
 
 .views {
@@ -455,9 +457,6 @@ li.reel-credit-item {
       .reel-name-header{
         text-align: center;
       }
-    }
-    .featured-reel-tag {
-      margin: -205px 55%;
     }
     .reel-top-header {
       text-align: center;
@@ -533,10 +532,7 @@ li.reel-credit-item {
 @media (max-width: 450px) {
   .reel-page {
     .reel-header-container {
-      padding: 50px 0 10px;
-    }
-    .featured-reel-tag {
-      margin: -225px 60%;
+      padding: 0 0 10px;
     }
     .share-button-mobile {
       margin-left: 36%;

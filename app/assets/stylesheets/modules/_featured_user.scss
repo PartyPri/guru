@@ -37,44 +37,12 @@
   vertical-align: middle;
 }
 
-@media (max-width: 990px) {
-}
-
-@media (max-width: 900px) {
-  .featured-profile-tag{
-    margin-left: 62%;
-  }
-}
-
 @media (max-width: 767px) {
   .featured-profile-tag{
-    margin-left: 29.5%;
+    margin-left: -130px;
   }
   .teaser.new-reel{
     text-align: left;
-  }
-}
-
-@media (max-width: 650px) {
-  .featured-profile-tag{
-    margin-left: 61%;
-  }
-}
-
-@media (max-width: 585px) {
-  .profile-featured-tag {
-    float: none !important;
-    position: relative;
-    margin-bottom: 10px;
-  }
-  .featured-profile-tag{
-    margin-left: 55.5%;
-  }
-}
-
-@media (max-width: 500px) {
-  .featured-profile-tag{
-    margin-left: 59.5%;
   }
 }
 
@@ -83,8 +51,5 @@
     iframe {
       width: 90%;
     }
-  }
-  .featured-profile-tag{
-    margin-left: 57%;
   }
 }

@@ -10,7 +10,7 @@ jQuery ->
         .removeAttr('disabled', 'disabled')
         .val('');
       $('.comment_submit').removeAttr('disabled').attr('value', 'Talk!')
-      $(data.comments).hide().insertAfter($(this)).show('fast')
+      $(data.comments).hide().insertAfter($(this).parent()).show('fast')
 
   $(document)
     .on "ajax:beforeSend", "#delete_comment", ->

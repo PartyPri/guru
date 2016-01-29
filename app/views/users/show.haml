@@ -9,11 +9,6 @@
   %nav.navbar#user-page-navbar
     .container
       .row
-        .navbar-header
-          %button.navbar-toggle.p-y-15.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#user-page-nav", "data-toggle" => "collapse", "type" => "button"}
-            %span.sr-only Toggle navigation
-            %i.fa.fa-bars
-
         .navbar-collapse.collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav.navbar-right
             %li
@@ -41,17 +36,25 @@
             %span.featured-tag Featured!
         .avatar{:style => "background-image: url(#{@user.avatar.url});"}
         .user-name-header.m-top-15
-          %h3
-            =@user.first_name + " " + @user.last_name
+          %p.edit-profile
             - if current_user && current_user.id == @user.id
               = link_to edit_profile_path do
                 %i.fa.fa-pencil-square
+          %h3
+            - if current_user && current_user.id == @user.id
+              = link_to edit_profile_path do
+                =@user.first_name + " " + @user.last_name
+            - else
+              =@user.first_name + " " + @user.last_name
         .m-top-5
           %i.m-top-1= @user.description
         .m-top-5
           - if @user.location.present?
             %i.fa.fa-map-marker
             %span= @user.location
+    -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
+      = link_to edit_profile_path do
+        .pull-right.add-cover-image-btn.add-credit-button change cover photo
   -# .tabs
   -#   .row-fluid
   -#     .content-container
@@ -130,7 +133,7 @@
           %h2= @user.first_name + "'s reels were influenced by..."
           %ul.user-entourage-list.row
             - @entourage.each do |credit|
-              %li.user-entourage-item.col-sm-6
+              %li.user-entourage-item.col-xs-6
                 - if credit.receiver.nil?
                   %img.user-credit-avatar.blank-user
                   %p= credit.credit_receiver_email
@@ -153,7 +156,7 @@
           %h2= @user.first_name + " is credited in the following reels..."
           %ul.user-entourage-list.row
             - @user_credits.each do |credit|
-              %li.user-entourage-item.col-sm-6
+              %li.user-entourage-item.col-xs-6
                 = link_to reel_path(credit.reel) do
                   %ul.media-list.user-credit-avatar-container
                     - credit.reel.media.order("position").take(1).each do |medium|

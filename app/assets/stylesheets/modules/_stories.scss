@@ -16,7 +16,7 @@ ul {
   height: 100%;
   @include border-radius(100%);
   background: rgba(0,0,0,.38);
-  text-align: center;
+  padding: 0 35px;
   h1, p {
     padding-top: 15px;
     color: $white;
