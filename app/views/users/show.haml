@@ -35,7 +35,7 @@
           .featured-profile-tag
             %span.featured-tag Featured!
         .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-        .user-name-header.m-top-15
+        .user-name-header.m-top-25
           %p.edit-profile
             - if current_user && current_user.id == @user.id
               = link_to edit_profile_path do

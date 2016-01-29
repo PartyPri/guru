@@ -75,11 +75,10 @@
             .share-line
             .share-triangle
             .share-triangle-right
-            .share-circle.text-center
-              %i.fa.fa-share-alt
-              Share!
-          .link-item-mobile
-            %a.share.twitter-share-button{href: "https://twitter.com/share"}
+            %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}"}
+              .share-circle.text-center
+                %i.fa.fa-share-alt
+                Share!
           %h5.reel-description
             %i.fa.fa-eye
             #{@reel.impressionist_count} views
@@ -89,15 +88,13 @@
           %p.reel-description= @reel.description
   .reel-sticky-cta-bg
     .reel-sticky-cta.container#reel-sticky-anchor
-      #links
-        .link-item
-          %a.share.twitter-share-button{href: "https://twitter.com/share"}
       .share-button
         .share-line
         .share-triangle
-        .share-circle.text-center
-          %i.fa.fa-share-alt
-          Share!
+        %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}"}
+          .share-circle.text-center
+            %i.fa.fa-share-alt
+            Share!
       %ul.list-inline.reel-view-options
         %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)", "data-target" => "#timeline", "data-toggle" => "tab"}
           %i.fa.fa-list

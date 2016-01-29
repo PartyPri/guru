@@ -39,14 +39,14 @@ $(window).scroll(function() {
 $(document).ready(function() {
 
   //share button function
-  $('.share-circle').click(function() {
-    $('.share-button').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
-    $('#links').css({opacity: 0}).animate({opacity: 1.0, height: '30px'}, 400);
-  });
-  $('.share-button-mobile').click(function() {
-    $('.share-button-mobile').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
-    $('.link-item-mobile').css('z-index', 0);
-  })
+  // $('.share-circle').click(function() {
+  //   $('.share-button').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+  //   $('#links').css({opacity: 0}).animate({opacity: 1.0, height: '30px'}, 400);
+  // });
+  // $('.share-button-mobile').click(function() {
+  //   $('.share-button-mobile').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
+  //   $('.link-item-mobile').css('z-index', 0);
+  // })
 
   //expanding comments
   $('.comment-btn-expand').click(function(event) {
