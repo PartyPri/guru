@@ -12,7 +12,7 @@ describe ReelsController, :type => :controller do
   end
 
   describe 'GET #new' do
-    let(:interests) { create(:interest) }
+    let!(:interests) { create(:interest) }
     it 'assigns an interests instance var' do
       get :new
       expect(assigns(:interests)).to eq [interests]
@@ -20,7 +20,7 @@ describe ReelsController, :type => :controller do
   end
 
   describe 'GET #edit' do
-    let(:interests) { create(:interest) }
+    let!(:interests) { create(:interest) }
     it 'assigns an interests instance var' do
       get :edit, id: reel.id
       expect(assigns(:interests)).to eq [interests]
@@ -71,13 +71,6 @@ describe ReelsController, :type => :controller do
         subject
         expect(flash[:notice]).to eq described_class::NOT_FOUND_NOTICE
       end
-    end
-  end
-
-  describe 'set_interests' do
-    it 'includes tags in the query' do
-      expect(Interest).to receive(:includes).with(:tags)
-      controller.send(:set_interests)
     end
   end
 end

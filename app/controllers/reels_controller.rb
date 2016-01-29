@@ -27,7 +27,7 @@ class ReelsController < ApplicationController
   end
 
   def show
-    @reel = Reel.includes(:images, :videos, :user).find_by_id(params[:id])
+    @reel = Reel.includes(:user).find_by_id(params[:id])
     return redirect_with_error(NOT_FOUND_NOTICE) if @reel.nil?
 
     @images = @reel.images
@@ -97,6 +97,6 @@ class ReelsController < ApplicationController
   private
 
   def set_interests
-    @interests = Interest.includes(:tags)
+    @interests = Interest.all
   end
 end
