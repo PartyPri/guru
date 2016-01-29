@@ -1,0 +1,70 @@
+- if medium.photo.present?
+  %li.media.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content'><div class='story-cover-photo' style='background-image: url(#{medium.photo.url})'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
+    .grid-item.story{:style => "background-image: url(#{medium.photo.url(:medium)}); background-size: cover;"}
+      %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery", :id => "media-share-#{medium.id}"}
+        .story-overlay.grid-item-body
+          %h4= medium.title
+          %p= raw(truncate(medium.body, length: 300))
+      .grid-item-footer
+        %ul.list-inline.grid-actions
+          %li
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+            =image_tag('share_icon.png')
+          %li
+            %span.action-props
+          %li
+            %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+              =image_tag('comment_icon.png')
+              - if medium.comment_threads.count > 0
+                %span.comments-count= medium.comment_threads.count
+          -if current_user && current_user.id == @user.id
+            %li
+              %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                =image_tag('pencil_icon.png')
+    .modal-inner.story-inner{id: "media-#{medium.id}", style: "display: none;"}
+      %ul.grid-actions.list-inline
+        %li
+          %a.media-share.footer-link.close-fancybox{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+            =image_tag('share_icon.png')
+        %li
+          = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+            =image_tag('props_icon.png')
+          %span{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+        -if current_user && current_user.id == @user.id
+          %li
+            %a.footer-link.media-edit.close-fancybox{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+              =image_tag('pencil_icon.png')
+      .custom-html.story-content
+        .story-cover-photo{style: "background-image: url(#{medium.photo.url})"}
+          = medium.title
+        .story-body= raw(medium.body)
+        - if current_user
+          .row-fluid.m-top-20.clearfix
+            .col-md-1
+              .avatar{style: "background-image:url(#{current_user.avatar.url})"}
+            .col-md-11.p-top-10
+              .comment-content
+                %h5= current_user.first_name
+                = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+        - else
+          = render :partial => 'comments/form_login'
+        = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
+-else
+  %li.media.m-bottom-20{"data-sub-html" => "<div class='custom-html story-content no-photo'><div class='story-cover'>#{medium.title}</div><div class='story-body'>#{medium.body}</div></div>", "data-share-id" => "#{medium.id}"}
+    %a.fancybox{href: "#media-#{medium.id}", rel: "grid-gallery"}
+      .grid-item.story.no-photo.grid-item-body
+        %h4= medium.title
+        %p= raw(truncate(medium.body, length: 300))
+      .grid-item-footer
+        %ul.list-inline
+          %li
+          %a.media-share.footer-link{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-share-id" => "#{medium.id}", "data-reel-id" => "#{@reel.id}"}
+            =image_tag('share_icon.png')
+          %li
+            =image_tag('props_icon.png')
+          %li
+            =image_tag('comment_icon.png')
+          -if current_user && current_user.id == @user.id
+            %li
+              %a.footer-link.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+                =image_tag('pencil_icon.png')

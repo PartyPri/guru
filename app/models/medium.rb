@@ -14,4 +14,12 @@ class Medium < ActiveRecord::Base
     return unless reel
     reel.update_media_added!
   end
+
+  acts_as_votable
+
+  def score
+  	self.get_upvotes.size
+  end
+
+  acts_as_commentable
 end

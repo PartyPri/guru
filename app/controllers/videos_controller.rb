@@ -54,6 +54,17 @@ class VideosController < ApplicationController
     end
   end
 
+  def upvote
+    @video = Video.find(params[:id])
+    @video.upvote_by current_user
+
+    if request.xhr?
+      render json: { count: @video.score, id: params[:id] }
+    else
+      redirect_to current_user
+    end
+  end
+
   private
 
   #logout user if Google session is expired

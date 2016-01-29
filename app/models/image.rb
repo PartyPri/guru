@@ -6,4 +6,10 @@ class Image < Medium
                     path: ":rails_root/public/assets/posts/:id/:style/:basename.:extension"
 
   validates_attachment_content_type :photo, :content_type => /\Aimage/
+
+  acts_as_votable
+
+  def score
+  	self.get_upvotes.size
+  end
 end
