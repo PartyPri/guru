@@ -1,40 +1,95 @@
 .reel-page
-  .container
-    .hero
-      .container
-        %h1.text-center.m-bottom-10= @reel.name
-        %h4= @reel.description  
-        - interest = @reel.interests
-        - length = interest.length
-        %ul.list-inline.m-bottom-10.interests
-          - interest.each_with_index do |interest, x|
-            - if x+1 != length
-              %li
-                = link_to(interest.name, "/interests/#{interest.id}")
-              %li.divider
-            - else
-              %li
-                = link_to(interest.name, "/interests/#{interest.id}")
-  .link-bar
-    .container
-      .row-fluid
-        .col-md-5.user
+  .reel-header-container.jumbotron
+    .row.hero
+      -# .col-sm-12
+      -#   %h5.reel-breadcrumbs
+      -#     = link_to @user.first_name + " " + @user.last_name + " > ", user_path(@reel.user)
+      -#     = @reel.name
+      .col-sm-2
+        .avatar-container
           = link_to user_path(@reel.user) do
             .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-            %h5
-              = @user.first_name + " " + @user.last_name + " | "
-          .glyphicon.glyphicon-star
-          %span.featured-tag featured!
-        .col-md-5.views
-          %h4.p-top-10.pull-left #{@reel.impressionist_count} views
-          .links
-            .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
-            %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
-        .col-md-2.edit
-          - if current_user && current_user.id == @user.id        
-            = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+          %br
+          %small.reel-artist-name
+            %i
+              by
+              %b
+                = link_to @user.first_name + " " + @user.last_name, user_path(@reel.user)
+          %small.reel-artist-name
+            %i.fa.fa-info-circle
+            %span
+              = @user.description
+          %small.reel-artist-name
+            %i.fa.fa-map-marker
+            %span
+              = @user.location
+          %br
+      .col-sm-9.col-sm-offset-1.featured-reel-header
+        .reel-top-header
+          - interest = @reel.interests
+          - length = interest.length
+          %ul.list-inline.m-bottom-10
+            - interest.each_with_index do |interest, x|
+              - if x+1 != length
+                %li.interest-tags
+                  %i.fa.fa-tag
+                  %span
+                    = link_to(interest.name, "/interests/#{interest.id}")
+                /%li.divider
+              - else
+                %li.interest-tags
+                  %i.fa.fa-tag
+                  %span
+                    = link_to(interest.name, "/interests/#{interest.id}")
+        .featured-reel-tag
+          %span.featured-tag Featured!
+        %h3.reel-name-header.m-bottom-5
+          = @reel.name
+          - if current_user && current_user.id == @user.id
+            = link_to edit_reel_path(@reel) do
+              %i.fa.fa-pencil-square
+              Edit
+            / = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+        .share-button-mobile
+          .share-line
+          .share-triangle
+          .share-triangle-right
+          .share-circle.text-center
+            %i.fa.fa-share-alt
+            Share!
+        %h5.reel-description
+          %i.fa.fa-eye
+          #{@reel.impressionist_count} views
+          &nbsp;
+          %i.fa.fa-film
+          #{@reel.media.count} media
+        %p.reel-description= @reel.description
 
-  .reel
-    -if @featured_video.any?
-      = render 'featured_video'
-    = render 'shared/grid'
+  .reel-sticky-cta.container
+    .share-button
+      .share-line
+      .share-triangle
+      .share-circle.text-center
+        %i.fa.fa-share-alt
+        Share!
+  -# .link-bar
+  -#   .container
+  -#     .row-fluid
+  -#       .col-md-5.user
+  -#         = link_to user_path(@reel.user) do
+  -#           .avatar{:style => "background-image: url(#{@user.avatar.url});"}
+  -#           %h5
+  -#             = @user.first_name + " " + @user.last_name + " | "
+  -#         .glyphicon.glyphicon-star
+  -#         %span.featured-tag featured!
+  -#       .col-md-5.views
+  -#         %h4.p-top-10.pull-left #{@reel.impressionist_count} views
+  -#         .links
+  -#           .share.fb-share-button{"data-href" => reel_url(@reel), "data-layout" => "button"}
+  -#           %a.share.twitter-share-button{href: "https://twitter.com/share"} Tweet
+  -#       .col-md-2.edit
+  -#         - if current_user && current_user.id == @user.id
+  -#           = link_to "Edit Reel", edit_reel_path(@reel), class: "btn btn-default edit-reel"
+  -if @featured_video.any?
+    = render 'featured_video'
+  = render 'shared/timeline'

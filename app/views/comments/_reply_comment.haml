@@ -1,0 +1,18 @@
+.comment.p-top-10{ :id => "comment-#{comment.id}" }
+  .col-md-1
+    = link_to user_path(comment.user) do
+      .timeline-teaser{style: "background-image:url(#{comment.user.avatar.url})"}
+  .col-md-11
+    .comment-content
+      - if current_user && current_user.id == comment.user_id || current_user && current_user.id == reel_user
+        = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close', :id => "delete_comment"
+      = link_to user_path(comment.user) do
+        %b
+          = "#{comment.user.first_name} #{comment.user.last_name}"
+          %span.dot= "&middot; ".html_safe
+      %span.time-ago= "#{time_ago_in_words(comment.updated_at)} ago"
+      %p= comment.body
+      - if !current_user
+        = link_to "Reply", :redirect_to => new_user_registration_url, class: "reply"
+      - else
+        = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"

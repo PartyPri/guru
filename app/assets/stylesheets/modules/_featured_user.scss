@@ -25,13 +25,11 @@
   padding: 0px 20px;
 }
 
-.profile-featured-tag {
-  position: absolute;
-}
-
-.featured-tag {
-  color: $red;
-  vertical-align: middle;
+.featured-profile-tag {
+  position: relative;
+  span.featured-tag {
+    margin: 81px -23px;
+  }
 }
 
 .glyphicon.glyphicon-star {
@@ -39,11 +37,12 @@
   vertical-align: middle;
 }
 
-@media (max-width: 585px) {
-  .profile-featured-tag {
-    float: none !important;
-    position: relative;
-    margin-bottom: 10px;
+@media (max-width: 767px) {
+  .featured-profile-tag{
+    margin-left: -130px;
+  }
+  .teaser.new-reel{
+    text-align: left;
   }
 }
 

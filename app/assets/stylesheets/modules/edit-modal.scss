@@ -46,7 +46,13 @@
 }
 
 .modal-header {
-  text-align: center;
+  h4 {
+    display: inline;
+  }
+
+  .close {
+    color: $drk-gray;
+  }
 }
 
 @media (max-width: 400px) {

@@ -1,18 +1,101 @@
 .reel-page {
   margin-top: 50px;
-
-  .hero {
-    padding: 30px 0 30px;
-    background: #fff;
-    text-align: center;
-
-    .container {
-      width: 75%;
+  .reel-header-container {
+    padding: 0 50px 10px;
+    margin-bottom: 0;
+    background-color: lighten($lt-gray, 50%);
+    .hero {
+      height: auto;
     }
   }
-
-  .interests a {
-    color: $med-gray;
+  .reel-artist-name{
+    color: $lt-gray;
+    display: block;
+    a{
+      color: darken($lt-gray, 10%);
+      &:hover {
+        color: $turq;
+      }
+    }
+  }
+  .hero {
+    height: 150px;
+    color: $gray;
+    padding: 17px 0px 0 10px;
+    background-color: transparent;
+    a.explore {
+      text-decoration: underline;
+      color: $drk-gray;
+    }
+    .reel-top-header{
+      color: $lt-gray;
+      .list-inline{
+        display: inline;
+        li.interest-tags {
+          a {
+            color: $lt-gray;
+          }
+        }
+      }
+    }
+    .reel-name-header{
+      font-weight: bold;
+      color: $drk-gray;
+      a {
+        vertical-align: middle;
+        padding: 2px 10px;
+        border: 1px solid lighten($lt-red, 10%);
+        @include border-radius(10px);
+        font-family: $base-font-family;
+        color: lighten($lt-red, 10%);
+        font-size: $base-font-size;
+        &:hover {
+          color: $white;
+          background-color: $red;
+        }
+      }
+    }
+    .reel-description {
+      line-height: $base-line-height*1.5;
+      color: $lt-gray;
+      margin-bottom: 0;
+    }
+  }
+  .interests {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font-size: $base-font-size;
+    color: $white;
+    .interest-tags{
+      cursor: pointer;
+      color: $white;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 20px;
+      background-color: #9CB4EF;
+      a {
+        color: $white;
+      }
+    }
+  }
+  .avatar-container {
+    padding-left: 0;
+    margin-left: -10px;
+    background: url("profile-image-border.png") no-repeat;
+    background-size: 106px;
+    background-position: -2px 5px;
+  }
+  .share-button-mobile {
+    display: none;
+  }
+  .avatar {
+    height: 90px;
+    width: 90px;
+    margin: 10px 0 10px 5px;
+    display: inline-block !important;
+    vertical-align: middle;
+    @include background-image;
+    @include border-radius(100%);
   }
 
   .link-bar {
@@ -21,17 +104,7 @@
     position: relative;
     @include box-shadow(0px, 1px, 2px, 1px, rgba(0,0,0,0.22));
 
-    .avatar {
-      height: 40px;
-      width: 40px;
-      margin: 0;
-      display: inline-block !important;
-      vertical-align: middle;
-      @include background-image;
-      @include border-radius(100%);
-    }
-
-    .user, .links {
+    .user {
       padding: 0;
     }
 
@@ -50,7 +123,7 @@
 
     .share, .twitter-share-button {
       text-align: right;
-      vertical-align: middle; 
+      vertical-align: middle;
       margin: 10px 0;
     }
   }
@@ -58,13 +131,259 @@
   .edit-reel {
     padding: 5px 20px;
     margin-top: 2px;
+    @include border-radius(20px);
   }
+}
+
+#links {
+  margin-top: 48px;
+  margin-left: 18px;
+  transition: transform 0.3 ease;
+  position: absolute;
+}
+
+.link-item-mobile {
+  margin: -90px 36%;
+  position: absolute;
+  z-index: -1;
+}
+
+.share-button {
+  margin-top: 0px;
+  margin-left: 18px;
+  display: inline-block;
+  width: 40%;
+  height: 120px;
+  color: $white;
+  font-size: $base-font-size;
+  transition: all 0.1s ease;
+  a{
+    color: white;
+  }
+  .share-line{
+    background-color: $lt-turq;
+    height: 5px;
+    width: 610px;
+    position: absolute;
+    margin-top: 57px;
+    margin-left: -600px;
+    transition: all 0.1s ease;
+  }
+  .share-triangle {
+    position: absolute;
+    margin-top: 50px;
+    margin-left: -16px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right:10px solid $lt-turq;
+    z-index: 1;
+    transition: all 0.1s ease;
+  }
+  .share-circle {
+    cursor: pointer;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: 20px;
+    background-color: $lt-turq;
+    height: 80px;
+    width: 80px;
+    line-height: 80px;
+    font-size: $base-font-size;
+    @include border-radius(100%);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    transition: all 0.1s ease;
+  }
+}
+
+.reel-sticky-cta-bg {
+  background-color: white;
+  transition: all 0.1s ease;
+}
+
+.stick {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  z-index: 2;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
+  box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
+  .share-button {
+    height: 50px;
+    margin-top: -16px;
+    .share-line {
+      margin-top: 37px;
+    }
+    .share-triangle {
+      margin-top: 30px;
+      margin-left: 0;
+    }
+    .share-circle {
+      margin-left: 7px;
+      margin-top: 18px;
+      height: 45px;
+      width: 45px;
+      line-height: 44px;
+      .fa {
+        display: none;
+      }
+    }
+  }
+  .reel-view-options {
+    height: 50px;
+    padding-top: 7px;
+    li {
+      height: 43px;
+      .fa {
+        font-size: 20px;
+      }
+    }
+    .add-credit-button {
+      .fa {
+        font-size: 15px;
+      }
+    }
+  }
+  #links {
+    margin-top: 5px;
+    margin-left: 15px;
+    overflow: hidden;
+    height: 10px;
+  }
+
+  .link-item {
+    display: block;
+    padding: 10px 0;
+  }
+}
+
+.reel-view-options {
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 40px;
+  transition: all 0.1s ease;
+  li {
+    min-width: 60px;
+    text-align: center;
+    &:first-child {
+      padding-left: 6px;
+    }
+  }
+  .fa {
+    font-size: 30px;
+    transition: all 0.1s ease;
+  }
+  .fa, p {
+    cursor: pointer;
+  }
+  .add-credit-button {
+    .fa {
+      font-size: 15px;
+    }
+  }
+}
+
+.display-none{
+  display: none;
+}
+
+.reel-credit-list {
+  background-color: white;
+  padding: 30px;
+  border: solid lighten($lt-gray, 20%) 1px;
+  min-width: 300px;
+  font-size: $base-font-size;
+  max-height: 70vh;
+  overflow-y: scroll;
+}
+
+.add-credit-button {
+  background-color: $turq;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: white;
+  &:hover {
+    color: white;
+    background-color: lighten($lt-turq, 10%);
+  }
+  &:active {
+    background-color: darken($turq, 10%);
+  }
+  a {
+    color: white;
+  }
+}
+
+li.reel-credit-item {
+  margin: 30px 0;
+  text-align: left;
+  clear: both;
+  &:first-child {
+    margin: 0 0 30px 0;
+  }
+}
+
+.credit-delete{
+  float: right;
+}
+
+.credit-avatar {
+  height: 20px;
+  width: 20px;
+  float: left;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center center;
+  margin: 0 10px 0 -20px;
+  border: solid lighten($lt-gray, 10%) 1px;
+}
+
+.reel-credit-pending {
+  color: lighten($lt-gray, 10%);
+  a {
+    color: lighten($lt-gray, 10%);
+    &:hover {
+      color: $lt-turq;
+    }
+  }
+}
+
+.reel-credit-role {
+  border-bottom: solid lighten($lt-gray, 20%) 1px;
+}
+
+#add-credit-modal {
+  .modal-dialog {
+    width: 400px;
+    margin: 50px auto;
+  }
+  .btn-default {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+.reel-page-explore {
+  background-image: url(polybg-orange.png);
+  background-size: cover;
 }
 
 .reel {
   background: #e9e9e9;
   min-height: 645px;
   padding: 40px 0;
+}
+
+.featured-reel-tag {
+  margin: 15px 0;
+  .featured-tag {
+    position: inherit;
+    width: 120px;
+    margin: 20px -5px;
+    padding: 24px 30px;
+  }
 }
 
 .views {
@@ -81,9 +400,18 @@
 
 @media (max-width: 991px) {
   .reel-page {
+    .avatar-container {
+      padding-left: 0;
+      background-position: -2px 5px;
+      .share-button {
+        margin-left: 10px;
+        .share-line {
+          left: -20px;
+        }
+      }
+    }
     .link-bar, .link-bar .links {
       text-align: center;
-
       .views {
         margin-top: 15px;
         float: none;
@@ -94,9 +422,9 @@
       .share {
         margin: 0 15px;
       }
-      
+
       .links {
-        display: inline-block;
+        display: block;
       }
 
       .edit {
@@ -107,14 +435,100 @@
   }
 }
 
+@media (max-width: 768px) {
+  .reel-page {
+    .hero {
+      .reel-name-header{
+        text-align: center;
+      }
+    }
+    .reel-top-header {
+      text-align: center;
+    }
+    .reel-artist-name, .reel-sticky-cta{
+      display: none;
+    }
+    .share-button-mobile {
+      display: block;
+      margin: 0 0 0 45%;
+      height: 120px;
+      color: $white;
+      font-size: $base-font-size;
+      transition: all 0.1s ease;
+      a {
+        color: white;
+      }
+      .share-line{
+        background-color: $lt-turq;
+        height: 5px;
+        width: 610px;
+        position: absolute;
+        margin-top: 57px;
+        margin-left: -600px;
+        transition: all 0.1s ease;
+      }
+      .share-triangle {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: -16px;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right:10px solid $lt-turq;
+        z-index: 1;
+        transition: all 0.1s ease;
+      }
+      .share-circle {
+        cursor: pointer;
+        position: absolute;
+        margin-left: -10px;
+        margin-top: 20px;
+        background-color: $lt-turq;
+        height: 80px;
+        width: 80px;
+        line-height: 80px;
+        font-size: $base-font-size;
+        @include border-radius(100%);
+        box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+        transition: all 0.1s ease;
+        &:active{
+          box-shadow: none;
+        }
+      }
+      .share-line {
+        left: 80%;
+        width: 820px
+      }
+      .share-triangle-right {
+        position: absolute;
+        margin-top: 50px;
+        margin-left: 68px;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left:10px solid $lt-turq;
+        z-index: 1;
+      }
+    }
+    .avatar-container {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 450px) {
   .reel-page {
+    .reel-header-container {
+      padding: 0 0 10px;
+    }
+    .share-button-mobile {
+      margin-left: 36%;
+    }
     .hero {
       .container {
         width: 100%;
       }
     }
-    
     .edit-reel {
       position: relative;
       width: 100%;

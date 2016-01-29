@@ -29,6 +29,35 @@
   }
 }
 
+%featured-banner-wings {
+  content: "";
+  position: absolute;
+  background-color: $lt-red;
+  margin-top: 5px;
+  height: 20px;
+  width: 20px;
+  z-index:-1;
+}
+
+.featured-tag {
+  background-image: url("featured-banner.png");
+  background-size: cover;
+  position:absolute;
+  padding: 22px 27px;
+  //background-color: darken($red, 5%);
+  color: $white;
+  margin: 127px -105px;
+  background: transparent url("featured-banner.png") no-repeat scroll center center / 132px auto;
+  width: 116px;
+  // &:before{
+  //   @extend %featured-banner-wings;
+  //   margin-left: -20px;
+  // }
+  // &:after{
+  //   @extend %featured-banner-wings;
+  // }
+}
+
 @media (max-width: 768px) {
   .featured-event {
     .info {

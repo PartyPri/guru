@@ -22,4 +22,15 @@ class ImagesController < ApplicationController
     end
   end
 
+  def upvote
+    @image = Image.find(params[:id])
+    @image.upvote_by current_user
+    
+    if request.xhr?
+      render json: { count: @image.score, id: params[:id] }
+    else
+      redirect_to current_user
+    end
+  end
+
 end

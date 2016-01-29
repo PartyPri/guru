@@ -7,8 +7,9 @@ class UsersController < ApplicationController
     return redirect_to :root if @user.blank?
 
     @interests      = @user.interests
-    @reels          = @user.reels.recently_added_media
-    @entourage = @user.entourage
+    @reels          = Reel.includes(:user).where(user_id: @user.id).recently_added_media
+    @entourage      = Credit.includes(:receiver, :reel).accepted.by_reel_owner(@user.id)
+    @user_credits = Credit.includes(:reel).accepted.by_receiver(@user.id)
   end
 
   def edit

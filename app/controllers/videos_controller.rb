@@ -21,7 +21,7 @@ class VideosController < ApplicationController
     else
       @reel = Reel.find(params[:video][:reel_id])
       @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
-  
+
       if @video.save
         @video.title = "#{@reel.name} - #{@reel.videos.length}"
 
@@ -51,6 +51,17 @@ class VideosController < ApplicationController
     else
       render 'youtube'
       flash[:error] = "Uh oh, something went wrong."
+    end
+  end
+
+  def upvote
+    @video = Video.find(params[:id])
+    @video.upvote_by current_user
+
+    if request.xhr?
+      render json: { count: @video.score, id: params[:id] }
+    else
+      redirect_to current_user
     end
   end
 

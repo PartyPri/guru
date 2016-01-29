@@ -1,21 +1,30 @@
 ul {
   .teaser-story {
-    background: #e5fcfb;
+    background-color: $med-gray;
     padding: 0;
-    overflow: auto;
-
-    h4 {
+    background-po
+    p {
+      padding-top: 10px;
       position: absolute;
       width: 100%;
       text-align: center;
-      top: 40%;
-      color: #fff;
+      color: $white;
     }
   }
 }
-
-.story-overlay {
+.story-overlay-teaser {
   height: 100%;
+  @include border-radius(100%);
+  background: rgba(0,0,0,.38);
+  padding: 0 35px;
+  h1, p {
+    padding-top: 15px;
+    color: $white;
+    font-size: $base-font-size*6.75;
+    font-family: $special-font-family;
+  }
+}
+.story-overlay {
   background: rgba(0,0,0,.38);
 
   h4, p {
@@ -24,7 +33,7 @@ ul {
 }
 
 .grid-item.story {
-  background: #e5fcfb;
+  background: lighten($lt-gray, 50%);
 
   .story-overlay {
     padding: 45px 15px 0 15px;
@@ -35,10 +44,10 @@ ul {
   padding: 45px 15px 0 15px;
 }
 
-#lg-gallery .custom-html.story-content {
-  background: #e5fcfb;
+.custom-html.story-content {
+  background: white;
   height: 100%;
-  width: 700px;
+  width: 100%;
   overflow-y: scroll;
   top: 40px;
   color: #000;
@@ -49,7 +58,7 @@ ul {
     font-size: 16px;
   }
 }
-#lg-gallery .custom-html.story-content.no-photo {
+.custom-html.story-content.no-photo {
   padding-top: 30px;
 
   .story-cover {
@@ -68,8 +77,12 @@ ul {
 .story-cover-photo {
   @extend .story-cover;
   @include background-image;
-  height: 40%;
-  padding-top: 40%;
+  height: 400px;
+  padding-top: 300px;
+}
+
+.story-inner {
+  height: 1000px;
 }
 
 .story-body {

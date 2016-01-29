@@ -5,6 +5,7 @@ class ReelsController < ApplicationController
 
   impressionist :actions=>[:show]
 
+
   def index
     interest_id = params[:interest_id]
 
@@ -20,11 +21,13 @@ class ReelsController < ApplicationController
       tagged_reels = tagged_reels.by_user_id(params[:user_id].to_i)
     end
 
-    render json: tagged_reels, include: { images: {methods: :photo}, videos: {}, stories: {} }
+    # render json: tagged_reels, serializer: ReelSerializer
+
+    render :json => tagged_reels, :include => { :user => {:only => [:first_name, :last_name]}, images: {methods: :photo}, videos: {}, stories: {}, impressions: {} }
   end
 
   def show
-    @reel = Reel.includes(:images, :videos, :user).find_by_id(params[:id])
+    @reel = Reel.includes(:user).find_by_id(params[:id])
     return redirect_with_error(NOT_FOUND_NOTICE) if @reel.nil?
 
     @images = @reel.images
@@ -32,7 +35,8 @@ class ReelsController < ApplicationController
     @user = @reel.user
     @media = @reel.media.order("position")
     @featured_video = @videos.where(featured_medium: true)
-    @credits = Credit.by_reel(params[:id]).accepted
+    @all_user = User.all
+    @credits = Credit.includes(:receiver).by_reel(params[:id])
   end
 
   def new
@@ -92,6 +96,6 @@ class ReelsController < ApplicationController
   private
 
   def set_interests
-    @interests = Interest.includes(:tags)
+    @interests = Interest.all
   end
 end

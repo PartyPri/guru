@@ -16,3 +16,11 @@
   -moz-box-shadow: $top $left $blur $spread $color;
   box-shadow: $top $left $blur $spread $color;
 }
+
+@mixin drop-shadow-1 {
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+}
+
+@mixin drop-shadow-2 {
+  box-shadow: 0px 8px 17px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19);
+}

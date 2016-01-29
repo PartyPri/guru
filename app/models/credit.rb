@@ -6,6 +6,8 @@ class Credit < ActiveRecord::Base
   attr_accessible :invitation_status, :credit_receiver_email, :credit_receiver_id, :reel_id, :reel_owner_id, :role, :pending, :accepted, :rejected
 
   belongs_to :reel
+  belongs_to :owner, class_name: "User", foreign_key: :reel_owner_id
+  belongs_to :receiver, class_name: "User", foreign_key: :credit_receiver_id
 
   # The `enum` method here comes from the EnumHelper module. It gives you a few helper methods:
   #
@@ -21,7 +23,9 @@ class Credit < ActiveRecord::Base
 
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
+  scope :by_receiver, -> (credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
   scope :accepted, -> { where(invitation_status: 1) }
+  scope :by_receiver, ->(credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
 
   private
 

@@ -4,6 +4,8 @@
       = form_for @reel, :html => { :method => :put, :multipart => true } do |f| 
         .modal-header
           %h4 Edit Media
+          %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} &times;
         .modal-body
           = f.fields_for :images do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}

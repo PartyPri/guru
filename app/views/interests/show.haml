@@ -1,49 +1,46 @@
 = render 'shared/nav'
-.reel-page
+= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.4.3/jquery.timeago.min.js'
+.reel-page.reel-page-explore
   .container
     .hero
-      .container
-        =link_to @interest do
-          %h1.text-center.m-bottom-10= @interest.name
-        %h4= @interest.description 
-.page
-  .tabs
-    .row-fluid
-      .content-container
-        %ul.list-inline
-          %li
-            %a{href: "#work", role: "tab", "data-toggle" => "tab"} Reels
-        - unless @tags.length < 1
-          %select#tag-select.select-style.selectpicker{:name => "tags"}
-            %option{:value => "all", class: "tag-option", disabled: "disabled", selected: "true"} Select a tag
-            - @tags.each do |tag|
-              %option{:value => "#{tag.name}", class: "tag-option"}= tag.name
+      .content-container.interest-header
+        %h3
+          Explore the imagination behind
+          .dropdown.header-explore
+            %a.dropdown-toggle.explore{"data-toggle" => "dropdown", :href => "#"}
+              =@interest.name
+              %b.caret.m-left-5
+            - interest = Interest.all
+            %ul.dropdown-menu
+              - interest.each do |interest|
+                %li= link_to interest.name, "/interests/#{interest.id}"
+          - unless @tags.length < 1
+            %ul.list-inline.m-bottom-10.interests
+              - @tags.each do |tag|
+                %li.interest-tags.tag-select{:value => "#{tag.name}"}
+                  = tag.name
 
+.page
   .page-content
     .tab-content
       .content-container.tab-pane.active#reels{role: "tabpanel"}
-        / - @reels.each do |reel|
-        /   %a{href: "/reels/#{reel.id}"}
-        /     .teaser
-        /       %h2= reel.name
-        /       - interest = reel.interests
-        /       - length = interest.length
-        /       %ul.list-inline
-        /         - interest.each_with_index do |interest, x|
-        /           - if x+1 != length
-        /             %li
-        /               = link_to(interest.name, "/interests/#{interest.id}/about")
-        /             %li.divider
-        /           - else
-        /             %li
-        /               = link_to(interest.name, "/interests/#{interest.id}/about")
-        /       %ul.list-inline
-        /         - reel.media.take(4).each do |medium|
-        /           - if medium.is_a? Image
-        /             %li.teaser-media{:style => "background-image: url(#{medium.photo.url})"}
-        /           - else # Video
-        /             %li.teaser-media{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
-        /         %p= truncate(reel.description, length: 125)
         - @reels.each do |reel|
           -if reel.media.length > 2
             =render :partial => 'shared/teaser', :locals => {:reel => reel}
+      .jumbotron.bottom-jumbotron-cta.text-center
+        %h2
+          Feeling Inspired? Share Your Passion!  
+        Stories, videos, images. Anything goes. It's easy & fun!
+        %br
+        = link_to new_reel_path do
+          .teaser
+            %i.fa.fa-plus
+            %br
+            Create a reel
+      .container.text-center.reel-cta-footer
+        %h3
+          Discover reels from more passion topics
+        - interest = Interest.all
+        %ul.list-inline
+          - interest.each do |interest|
+            %li= link_to interest.name, "/interests/#{interest.id}"

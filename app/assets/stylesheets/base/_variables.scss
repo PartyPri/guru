@@ -1,30 +1,45 @@
 // Typography
 ///////////////////////////////////////////////////////////////////////////////
-$sans-serif:        'Open Sans', Arial, sans-serif;
+$sans-serif:        'Montserrat', Arial, sans-serif;
 $museo-sans:        'MuseoSans-500', Arial, sans-serif;
 $museo-sans-italic: 'MuseoSans-500Italic', Arial, sans-serif;
+$montserrat:        'Montserrat', Arial, sans-serif;
+$permanent-marker:  'Permanent Marker', cursive;
+$kaushan: 'Kaushan Script', cursive;;
 
 $base-font-family: $sans-serif;
-$header-font-family: $museo-sans;
+$header-font-family: $montserrat;
+$special-font-family: $kaushan;
 
 // Sizes
 ///////////////////////////////////////////////////////////////////////////////
-$base-font-size: 1rem;
-$base-line-height: $base-font-size * 1.3;
+$base-font-size: 12px;
+$base-line-height: $base-font-size * 1.5;
 $base-border-radius: 3px;
 
 // Colors
 ///////////////////////////////////////////////////////////////////////////////
 
-$white:    #fff;
-$red:      #ff3046;
-$turq:     #0fb3ad;
-$lt-turq:  #1cd9d2;
-$drk-gray: #2b3a35;
-$med-gray: #aaaaaa;
-$gray:     #cccccc;
-$lt-gray:  #f3f3f3;
+//$white:    #fff;
+//$red:      #ff3046;
+//$turq:     #0fb3ad;
+//$lt-turq:  #1cd9d2;
+// $drk-gray: #2b3a35;
+// $med-gray: #aaaaaa;
+// $gray:     #cccccc;
+// $lt-gray:  #f3f3f3;
 
+//New colors
+$white:    #FFF5F1;
+$lt-red:   #F64C73;
+$red:      #E6365F;
+$turq:     #10BBA7;
+$lt-turq:  #20D2BB;
+$drk-gray: #404040;
+$med-gray: #4C4767;
+$gray:     #5a5a5a;
+$lt-gray:  #737373;
+//$lt-gray:  #F3F3F3;
 
 // Success & Alert Colors - Borrowed from http://isabelcastillo.com/error-info-messages-css
 // These are not in the style guide as we haven't used them yet.
@@ -46,7 +61,7 @@ $evrystep-colors: (
   ('drk-gray',   $drk-gray),
   ('med-gray',   $med-gray),
   ('gray',       $gray),
-  ('lt-gray',    $lt-gray), 
+  ('lt-gray',    $lt-gray),
   ('lt-warning', $lt-warning),
   ('warning',    $warning),
   ('lt-success', $lt-success),

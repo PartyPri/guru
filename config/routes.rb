@@ -14,20 +14,31 @@ Guru::Application.routes.draw do
     collection { post :sort }
     resources :credits, except: [:show, :edit, :update]
   end
-  resources :images
   resources :stories
+  resources :images do
+    member do
+      put "like", to: "images#upvote"
+    end
+  end
   resources :claim_users, :only => [:new, :create]
   #resources :events do
   #  resources :registrations, :only => [:create, :new]
   #end
 
+  resources :comments, :only => [:create, :destroy] do
+    get :reply, on: :member
+  end
+
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
-
-  resources :videos
-
   get '/pages/select_media', to: 'pages#select_media'
+
+  resources :videos do
+    member do
+      put "like", to: "videos#upvote"
+    end
+  end
 
   get 'users/:id/edit_profile', to: 'users#edit_profile', as: 'edit_profile'
 

@@ -63,6 +63,12 @@ gem 'ckeditor', github: 'galetahub/ckeditor'
 #Data Seeding
 gem 'seed_migration'
 
+#Like Button
+gem 'acts_as_votable'
+
+#Comments
+gem 'acts_as_commentable_with_threading', '1.2.0'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
@@ -73,7 +79,6 @@ group :development do
 end
 
 group :test do
-  gem 'factory_girl'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
@@ -83,4 +88,6 @@ end
 
 group :development, :test do
   gem 'pry'
+  gem 'factory_girl'
+  gem "bullet"
 end
