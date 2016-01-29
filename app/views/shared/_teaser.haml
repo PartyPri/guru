@@ -2,13 +2,7 @@
   %a{href: "/reels/#{reel.id}"}
     - if reel.featured?
       .featured-teaser-reel-tag
-        -# %i.fa.fa-certificate
-        -# %i.fa.fa-star
         %span.featured-tag Featured!
-    / = link_to user_path(reel.user) do
-    /   .avatar{:style => "background-image: url(#{@user.avatar.url});"}
-    /   %h5= reel.user.first_name + " " + reel.user.last_name
-    /.container
     %ul.media-list
       - reel.media.order("position").take(1).each do |medium|
         - if medium.is_a? Image
@@ -22,12 +16,13 @@
     %br
     .reel-teaser-info
       %h3.name= truncate(reel.name, length: 35)
-      %h5
-        = reel.user.first_name
-        = reel.user.last_name
-        |
-        = time_ago_in_words(reel.updated_at)
-        ago
+      = link_to user_path(reel.user) do
+        %h5
+          = reel.user.first_name
+          = reel.user.last_name
+          |
+          = time_ago_in_words(reel.updated_at)
+          ago
       %p= truncate(reel.description, length: 100)
       %br
       %h5

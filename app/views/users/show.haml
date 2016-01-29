@@ -55,29 +55,6 @@
     -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
         .pull-right.add-cover-image-btn.add-credit-button change cover photo
-  -# .tabs
-  -#   .row-fluid
-  -#     .content-container
-        -# %ul.list-inline.user-profile-tabs
-        -#   %li.active
-        -#     %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
-        -#       %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
-        -#   .tab-seperator
-        -#   %li
-        -#     %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
-        -# .pull-left.profile-featured-tag
-        -#   - if @user.featured_artist?
-        -#     .glyphicon.glyphicon-star
-        -#     %span.featured-tag featured artist!
-        -# %ul.list-inline
-        -#   %li.active
-        -#     %a{href: "#work", role: "tab", "data-toggle" => "tab", id: "work-tab"}
-        -#       %span #{@reels.count} Reel#{'s' unless @reels.count == 1}
-        -#   %li.divider
-        -#   %li
-        -#     %a{href: "#bio", role: "tab", "data-toggle" => "tab", id: 'bio-tab'} Bio
-        -# - if current_user && current_user.id == @user.id
-        -#   = link_to "Edit Profile", edit_profile_path, class: "btn btn-default edit-profile"
   .page-content
     .tab-content
       .content-container.tab-pane.active#work{role: "tabpanel"}

@@ -3,5 +3,4 @@
     = f.text_area :body, :rows => 1, :label => false, :placeholder => "Add a comment..."
     = f.hidden_field :commentable_id, :as => :hidden, :value => comment.commentable_id
     = f.hidden_field :commentable_type, :as => :hidden, :value => comment.commentable_type
-    -# = button_tag 'Cancel', :type => 'reset', :class => "btn btn-default"
     = f.submit "Submit", :class => "btn btn-default", :disable_with => "Submitting…"

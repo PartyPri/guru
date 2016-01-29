@@ -20,6 +20,7 @@ $(document).ready(function() {
       data: data,
       dataType: 'json',
       success: function(response) {
+        console.log(response);
 
         //Reset content of #reels div
         $(".content-container#reels").html("");
@@ -35,9 +36,7 @@ $(document).ready(function() {
         //Get info for that reel through getReelInfo
         //Append HTML from getReelInfo to page
         for (i = 0; i < sorted_response.length; i++) {
-          var media_count = sorted_response[i].images.length + sorted_response[i].videos.length;
-
-          if (media_count > 2) {
+          if (sorted_response[i].media_count > 2) {
             var reels = getReelInfo(sorted_response, i);
             $(".content-container#reels").append(reels);
           }
