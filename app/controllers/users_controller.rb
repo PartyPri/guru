@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
 
   def show
-    @user = User.includes(:interests).where( id: params[:id] ).first
+    @user = User.where( id: params[:id] ).first
     return redirect_to :root if @user.blank?
 
     @interests      = @user.interests
