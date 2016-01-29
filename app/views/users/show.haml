@@ -27,7 +27,7 @@
             %li
               %a.user-page-nav#user-credits-reel-link{:href => "#credits"}
                 Credits
-                %span.badge= @credited_reels.length.to_s
+                %span.badge= @user_credits.length.to_s
             %li
               %a.user-page-nav#user-about-link{:href => "#about"} About
             %li
@@ -145,18 +145,18 @@
                   %strong= credit.role + " in"
                   %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
 
-- if @credited_reels.length > 0
+- if @user_credits.length > 0
   %section.content-container
     .row
       .col-sm-8.col-sm-offset-2.user-page-content
         .user-about-me#credits
           %h2= @user.first_name + " is credited in the following reels..."
           %ul.user-entourage-list.row
-            - @credited_reels.each do |reel|
+            - @user_credits.each do |credit|
               %li.user-entourage-item.col-sm-6
-                = link_to reel_path(reel) do
+                = link_to reel_path(credit.reel) do
                   %ul.media-list.user-credit-avatar-container
-                    - reel.media.order("position").take(1).each do |medium|
+                    - credit.reel.media.order("position").take(1).each do |medium|
                       - if medium.is_a? Image
                         %li.user-credit-avatar{:style => "background-image: url(#{medium.photo.url})"}
                       - elsif medium.is_a? Video
@@ -164,12 +164,10 @@
                       - elsif medium.is_a? Story
                         %li.user-credit-avatar.teaser-story{:style => "background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(#{medium.photo.url})"}
                           %h1= truncate(medium.title, length: 1, omission: '')
-                - reel.credits.each do |credit|
-                  - if @user.id == credit.credit_receiver_id
-                    %strong= credit.role
+                %strong= credit.role
                 %p for...
-                %p.user-entourage-role= link_to reel.name, reel_path(reel)
-                %small= time_ago_in_words(reel.updated_at) + " ago"
+                %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+                %small= time_ago_in_words(credit.reel.media_last_added_at) + " ago"
 
 
 -if @user.bio.blank?

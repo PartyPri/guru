@@ -9,10 +9,7 @@ class UsersController < ApplicationController
     @interests      = @user.interests
     @reels          = Reel.includes(:user).where(user_id: @user.id).recently_added_media
     @entourage      = Credit.includes(:receiver, :reel).accepted.by_reel_owner(@user.id)
-    @credited_reels = Credit.includes(:reel).accepted.by_receiver(@user.id).map(&:reel)
-#     @all_user       = User.all
-#     @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :invitation_status => 1})
-#     @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
+    @user_credits = Credit.includes(:reel).accepted.by_receiver(@user.id)
   end
 
   def edit
