@@ -131,7 +131,7 @@
           %ul.user-entourage-list.row
             - @entourage.each do |credit|
               %li.user-entourage-item.col-sm-6
-                - if credit.credit_receiver_id.nil?
+                - if credit.receiver.nil?
                   %img.user-credit-avatar.blank-user
                   %p= credit.credit_receiver_email
                   %p

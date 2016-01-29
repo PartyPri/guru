@@ -42,4 +42,10 @@ Guru::Application.configure do
 
   #Tell Paperclip where to look for ImageMagick
   Paperclip.options[:command_path] = "/usr/local/bin/"
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.add_footer = true
+  end
 end
