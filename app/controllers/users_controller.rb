@@ -7,10 +7,11 @@ class UsersController < ApplicationController
     return redirect_to :root if @user.blank?
 
     @interests      = @user.interests
-    @reels          = Reel.includes(:credits).where(user_id: @user.id).recently_added_media
+    @reels          = @user.reels.recently_added_media
     @entourage      = @user.entourage
     @all_user       = User.all
-    @credited_reels = Credit.includes(:reel).by_receiver(@user.id).accepted.map(&:reel)
+    @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :invitation_status => 1})
+    @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
   end
 
   def edit
