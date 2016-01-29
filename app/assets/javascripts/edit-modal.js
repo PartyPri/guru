@@ -11,6 +11,5 @@ $(document).ready(function() {
 
   $('#edit-modal').on('hide.bs.modal', function(e) {
     $('form.edit_reel').trigger("reset");
-    $('#lightgallery').lightGallery();
   });
 });
