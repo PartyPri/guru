@@ -3,15 +3,13 @@ class UsersController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
 
   def show
-    @user = User.where( id: params[:id] ).first
+    @user = User.includes(:interests).where( id: params[:id] ).first
     return redirect_to :root if @user.blank?
 
     @interests      = @user.interests
-    @reels          = @user.reels.recently_added_media
-    @entourage      = @user.entourage
-    @all_user       = User.all
-    @credited_in    = Credit.find(:all, :conditions => { :credit_receiver_id => @user.id, :invitation_status => 1})
-    @credited_reels = Reel.find(:all, :conditions => {:id => @credited_in.map(&:reel_id)})
+    @reels          = Reel.where(user_id: @user.id).recently_added_media
+    @entourage      = Credit.includes(:receiver, :reel).accepted.by_reel_owner(@user.id)
+    @credited_reels = Credit.includes(:receiver, :owner, reel: [:media]).accepted.by_receiver(@user.id)
   end
 
   def edit
