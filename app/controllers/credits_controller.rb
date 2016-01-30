@@ -5,18 +5,6 @@ class CreditsController < ApplicationController
   DELETED_NOTICE = "Credit deleted"
   NOT_FOUND_NOTICE = "Credit not found"
 
-  helper_method :user_validation_notice
-
-  # TODO: remove when implemented fully
-  def index
-    @reel = Reel.includes(:credits).find_by_id(params[:reel_id])
-    @credits = reel.credits
-  end
-
-  # TODO: remove when implemented fully
-  def new
-  end
-
   def create
     @credit = Credit.new(
       reel_id: reel.id,
@@ -62,7 +50,6 @@ class CreditsController < ApplicationController
     flash[:notice] = user_validation_notice
     redirect_to :root
   end
-
 
   def user_validation_notice
     @user_validation_notice ||= begin
