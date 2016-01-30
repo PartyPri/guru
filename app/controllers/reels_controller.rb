@@ -1,5 +1,6 @@
 class ReelsController < ApplicationController
   before_filter :set_interests, only: [:new, :edit]
+  before_filter :credit_invitation, only: [:show]
 
   NOT_FOUND_NOTICE = "Reel not found"
 
@@ -94,6 +95,12 @@ class ReelsController < ApplicationController
   end
 
   private
+
+  def credit_invitation
+    return unless params[:credit_invitation]
+    return unless user_signed_in?
+    @credit = Credit.includes(:owner).find_by_id(params[:credit_invitation])
+  end
 
   def set_interests
     @interests = Interest.all

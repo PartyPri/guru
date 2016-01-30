@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :owned_by_current_user?
 
-  def redirect_with_error(message)
+  def redirect_with_error(message, path = nil)
     flash[:notice] = message
-    redirect_to(:root)
+    redirect_to(path || :root)
   end
 
   def owned_by_current_user?

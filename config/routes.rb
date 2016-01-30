@@ -12,7 +12,12 @@ Guru::Application.routes.draw do
   resources :users, :only => [:show, :edit, :update]
   resources :reels do
     collection { post :sort }
-    resources :credits, except: [:show, :edit, :update]
+    resources :credits, except: [:show, :edit, :update] do
+      member do
+        put "accept", to: "credits#respond_to_invitation"
+        put "reject", to: "credits#respond_to_invitation"
+      end
+    end
   end
   resources :stories
   resources :images do

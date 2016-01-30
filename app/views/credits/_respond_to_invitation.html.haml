@@ -1,0 +1,10 @@
+- if params[:credit_invitation].present?
+  - if user_signed_in?
+    -if @credit.present?
+      - if @credit.accepted?
+      - elsif @credit.rejected?
+      - elsif @credit.pending?
+        %p= "Hello #{current_user.first_name},\n#{@credit.owner.first_name} would like to credit you with:"
+        %h4= @credit.role.upcase
+        = button_to("Accept", accept_reel_credit_path(@reel, @credit), method: :put)
+        = button_to("Reject", reject_reel_credit_path(@reel, @credit), method: :put)
