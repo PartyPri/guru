@@ -114,7 +114,7 @@
   margin: -110px 15px;
   display: block;
   font-size: $base-font-size*1.5;
-  i {
+  .fa {
     text-align: center;
     display: block;
     border-radius: 30px;
@@ -122,18 +122,24 @@
     width: 40px;
     padding: 10px;
     margin: 10px;
-    border: solid $lt-gray 1.5px;
     cursor: pointer;
+    border: solid $lt-gray 1.5px;
     &:active,
     &:hover {
       background-color: $turq;
+      color: white;
+      border: none;
     }
   }
 }
-
 .media-comments-icon-on {
   background-color: $turq;
+  color: white;
+  i {
+    border: none;
+  }
 }
+
 
 .engagement-badge {
   font-size: $base-font-size;
