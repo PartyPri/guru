@@ -14,9 +14,9 @@ class CreditsController < ApplicationController
       credit_receiver_email: credit_receiver_email
     )
 
-    # TODO: send email to credit_receiver
     return redirect_with_notice(GENERAL_ERROR) unless @credit.save
 
+    CreditInvitationMailer.send_invitation(credit_id: @credit.id).deliver
     redirect_with_notice(ADDED_NOTICE, reel_path(reel))
   end
 
