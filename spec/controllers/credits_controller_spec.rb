@@ -72,18 +72,6 @@ describe CreditsController, type: :controller do
             expect(flash[:notice]).to eq described_class::ADDED_NOTICE
           end
         end
-
-        context 'when params are missing' do
-          let(:addtl_params) { {credit: {}} }
-
-          it 'redirects to root' do
-            expect(subject).to redirect_to(:root)
-          end
-
-          it 'does not save a credit' do
-            expect { subject }.not_to change(Credit, :count)
-          end
-        end
       end
 
       context 'when the user is not the reel owner' do

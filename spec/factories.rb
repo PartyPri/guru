@@ -28,6 +28,7 @@ FactoryGirl.define do
   factory :credit do
     role "Inspiration"
     sequence(:credit_receiver_email) {|n| "test#{n}@example.com" }
+    credit_receiver_id 2
     reel_id 1
     reel_owner_id 1
   end
