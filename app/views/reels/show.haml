@@ -122,7 +122,7 @@
                     %p.reel-credit-role= credit.role.upcase
                     - if credit.receiver.nil?
                       %strong
-                        = credit.credit_receiver_email + " (pending)"
+                        = "#{credit.credit_receiver_email} (pending)"
                         = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                           %i.fa.fa-times-circle.credit-delete
                     - else
