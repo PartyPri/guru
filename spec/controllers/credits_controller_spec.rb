@@ -5,84 +5,6 @@ describe CreditsController, type: :controller do
   let(:reel_owner) { create(:user) }
   let(:credit_receiver) { create(:user) }
 
-  describe 'GET index' do
-
-    it 'assigns a reel instance var' do
-      get :index, reel_id: reel.id
-      expect(assigns(:reel)).to eq reel
-    end
-
-    it 'includes the credits' do
-      Bullet.enable = false
-      expect(Reel).to receive(:includes).with(:credits).and_call_original
-      get :index, reel_id: reel.id
-      Bullet.enable = true
-    end
-
-    context 'when the reel has credits' do
-      let(:credit_params) do
-        {
-          credit_receiver_email: credit_receiver.email,
-          reel_id: reel.id,
-          reel_owner_id: reel.user_id,
-          role: "inspiration"
-        }
-      end
-
-      let!(:credit) { Credit.create!(credit_params) }
-
-      it 'assigns a credits instance var' do
-        get :index, reel_id: reel.id
-        expect(assigns(:credits)).to eq [credit]
-      end
-    end
-  end
-
-  describe 'GET new' do
-    subject { get :new, reel_id: reel.id }
-
-    context 'when a user is not signed in' do
-      it 'redirects to root' do
-        expect(subject).to redirect_to(:root)
-      end
-
-      it 'sets a flash notice explaning the error' do
-        subject
-        expect(flash[:notice]).to eq described_class::AUTH_NOTICE
-      end
-    end
-
-    context 'when a user is signed in' do
-      context 'when the user is reel owner' do
-
-        before do
-          sign_in(reel_owner)
-          subject
-        end
-
-        it 'renders the new view' do
-          expect(response).to render_template(:new)
-        end
-
-        it 'assigns the reel instance var' do
-          expect(assigns(:reel)).to eq reel
-        end
-      end
-
-      context 'when the user is not the reel owner' do
-        before { sign_in(credit_receiver) }
-        it 'redirects to root' do
-          expect(subject).to redirect_to(:root)
-        end
-
-        it 'sets a flash notice explaning the error' do
-          subject
-          expect(flash[:notice]).to eq described_class::PERMISSION_NOTICE
-        end
-      end
-    end
-  end
-
   describe 'POST create' do
     subject { post :create, params }
     let(:params) { {reel_id: reel.id}.merge(addtl_params) }
@@ -154,9 +76,8 @@ describe CreditsController, type: :controller do
         context 'when params are missing' do
           let(:addtl_params) { {credit: {}} }
 
-          it 'renders new' do
-            subject
-            expect(response).to render_template(:new)
+          it 'redirects to root' do
+            expect(subject).to redirect_to(:root)
           end
 
           it 'does not save a credit' do
@@ -261,6 +182,67 @@ describe CreditsController, type: :controller do
           subject
           expect(flash[:notice]).to eq described_class::PERMISSION_NOTICE
         end
+      end
+    end
+  end
+
+  describe 'PUT respond_to_invitation' do
+    subject { put :respond_to_invitation, params }
+    let(:params) { {reel_id: reel.id, id: credit_id} }
+    let(:credit_id) { 0 }
+
+    context 'when a user is signed in' do
+      before { sign_in(credit_receiver) }
+
+      context 'when the credit is found' do
+        let(:credit) { create(:credit, reel_id: reel.id) }
+        let(:credit_id) { credit.id }
+
+        context 'when the credit saves successfully' do
+          it 'redirects to reel show' do
+            expect(subject).to redirect_to(reel_url(reel))
+          end
+
+          it 'shows the correct flash notice' do
+            subject
+            expect(flash[:notice]).to eq "Credit accepted"
+          end
+        end
+
+        context 'when the credit does not save successfully' do
+          before { allow_any_instance_of(Credit).to receive(:save) { false } }
+
+          it 'redirects to root' do
+            expect(subject).to redirect_to(reel_url(reel))
+          end
+
+          it 'shows the correct flash notice' do
+            subject
+            expect(flash[:notice]).to eq described_class::GENERAL_ERROR
+          end
+        end
+      end
+
+      context 'when the credit is not found' do
+        it 'redirects to reel show' do
+          expect(subject).to redirect_to(reel_url(reel))
+        end
+
+        it 'shows the correct flash notice' do
+          subject
+          expect(flash[:notice]).to eq described_class::NOT_FOUND_NOTICE
+        end
+      end
+    end
+
+    context 'when a user is not signed in' do
+      it 'redirects to reel show' do
+        expect(subject).to redirect_to(reel_url(reel))
+      end
+
+      it 'shows the correct flash notice' do
+        subject
+        expect(flash[:notice]).to eq described_class::AUTH_NOTICE
       end
     end
   end

@@ -35,6 +35,53 @@ describe ReelsController, :type => :controller do
   end
 
   describe "GET #show" do
+    context 'when there is a credit_invitation param' do
+      subject { get :show, params }
+      let(:reel) { create(:reel) }
+      let(:params) { {id: reel.id, credit_invitation: credit_id} }
+
+      context 'when there is a credit found' do
+        let(:credit) { create(:credit) }
+        let(:credit_id) { credit.id }
+        context 'when there is a user signed in' do
+          let(:credit_receiver) { create(:user) }
+          before { sign_in(credit_receiver) }
+
+          context 'when the credit is pending' do
+            before { credit.update_attributes(pending: true) }
+            it 'sets the credit instance var' do
+              subject
+              expect(assigns(:pending_credit)).to eq credit
+            end
+          end
+
+          context 'when the credit is not pending' do
+            before { credit.update_attributes(accepted: true) }
+
+            it 'does not set the credit instance var' do
+              subject
+              expect(assigns(:pending_credit)).to be_nil
+            end
+          end
+        end
+
+        context 'when there is not a user signed in' do
+          it 'does not set the credit instance var' do
+            subject
+            expect(assigns(:pending_credit)).to be_nil
+          end
+        end
+      end
+
+      context 'when the credit is not found' do
+        let(:credit_id) { 0 }
+        it 'does not set the credit instance var' do
+          subject
+          expect(assigns(:pending_credit)).to be_nil
+        end
+      end
+    end
+
     context 'when a reel is found' do
       let(:reel) { create(:reel) }
       subject { get :show, id: reel.id }
