@@ -1,5 +1,6 @@
 class ReelsController < ApplicationController
   before_filter :set_interests, only: [:new, :edit]
+  before_filter :credit_invitation, only: [:show]
 
   NOT_FOUND_NOTICE = "Reel not found"
 
@@ -28,7 +29,7 @@ class ReelsController < ApplicationController
 
   def show
     @reel = Reel.includes(:user).find_by_id(params[:id])
-    return redirect_with_error(NOT_FOUND_NOTICE) if @reel.nil?
+    return redirect_with_notice(NOT_FOUND_NOTICE) if @reel.nil?
 
     @images = @reel.images
     @videos = @reel.videos
@@ -40,7 +41,7 @@ class ReelsController < ApplicationController
   end
 
   def new
-    return redirect_with_error(AUTH_NOTICE) unless user_signed_in?
+    return redirect_with_notice(AUTH_NOTICE) unless user_signed_in?
     @reel = Reel.new
   end
 
@@ -94,6 +95,15 @@ class ReelsController < ApplicationController
   end
 
   private
+
+  def credit_invitation
+    return if params[:credit_invitation].nil?
+    return unless user_signed_in?
+    @pending_credit = Credit.includes(:owner)
+                    .pending
+                    .where(id: params[:credit_invitation])
+                    .first
+  end
 
   def set_interests
     @interests = Interest.all

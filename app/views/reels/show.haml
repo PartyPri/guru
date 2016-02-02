@@ -19,10 +19,11 @@
 %div#fb-root{"data-fb-app-id" => ENV['FACEBOOK_APP_ID']}
 = render 'shared/nav'
 = render 'shared/modal_share'
--if current_user && current_user.id == @user.id
+-if owned_by_current_user?
   = render 'shared/modal_edit'
   = render 'shared/modal_add_credit'
 .reel-page
+  = render partial: 'credits/respond_to_invitation'
   .reel-header-container
     .container
       .row.hero
