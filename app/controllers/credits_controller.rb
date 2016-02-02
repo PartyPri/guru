@@ -16,7 +16,7 @@ class CreditsController < ApplicationController
 
     return redirect_with_notice(GENERAL_ERROR) unless @credit.save
 
-    CreditInvitationMailer.send_invitation(credit_id: @credit.id).deliver
+    send_invitation
     redirect_with_notice(ADDED_NOTICE, reel_path(reel))
   end
 
@@ -51,6 +51,12 @@ class CreditsController < ApplicationController
       new_state = request.fullpath.split("/").last
       "#{new_state}ed".to_sym
     end
+  end
+
+  def send_invitation
+    CreditInvitationMailer.send_invitation(credit_id: @credit.id).deliver
+  rescue => e
+    Rails.logger.error(e)
   end
 
   def destroy_credit(credit)
