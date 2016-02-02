@@ -3,7 +3,7 @@ module EnumHelper
     def enum(field, *enum_options)
       @enum_map = to_map(enum_options)
       @field = field
-      add_active_record_methods
+      _add_active_record_methods
     end
 
     def _enum_field
@@ -24,38 +24,38 @@ module EnumHelper
       end
     end
 
-    def add_active_record_methods
-      add_field_method(_enum_field, _enum_map)
+    def _add_active_record_methods
+      _add_field_method(_enum_field, _enum_map)
       _enum_map_inverted.keys.each do |enum_state|
-        add_boolean(enum_state)
-        add_setter(enum_state)
+        _add_boolean(enum_state)
+        _add_setter(enum_state)
       end
     end
 
-    def add_field_method(field, map)
+    def _add_field_method(field, map)
       singleton_class.class_eval do
         define_method("#{field}_states") { map }
       end
     end
 
-    def add_boolean(enum_state)
+    def _add_boolean(enum_state)
       self.send(:define_method, "#{enum_state}?") do
-        field_value = self[self.class._enum_field]
+        field_value = self.send(self.class._enum_field)
         enum_value = self.class._enum_map_inverted[enum_state]
         field_value == enum_value
       end
     end
 
-    def add_setter(enum_state)
+    def _add_setter(enum_state)
       self.send(:define_method, "#{enum_state}=") do |value|
         raise TypeError.new("must be type TrueClass") unless value == true
         enum_value = self.class._enum_map_inverted[enum_state]
-        self[self.class._enum_field] = enum_value
+        self.send("#{self.class._enum_field}=", enum_value)
       end
     end
   end
 
   def self.included(receiver)
-    receiver.extend         ClassMethods
+    receiver.extend ClassMethods
   end
 end
