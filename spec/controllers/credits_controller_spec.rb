@@ -34,6 +34,7 @@ describe CreditsController, type: :controller do
             }
           end
           let(:saved_credit) { reel.reload.credits.last }
+          let(:mailer) { double(:mailer) }
 
           it 'saves a credit' do
             expect { subject }.to change(Credit, :count).by(1)
@@ -70,6 +71,21 @@ describe CreditsController, type: :controller do
           it 'has a correct flash notice' do
             subject
             expect(flash[:notice]).to eq described_class::ADDED_NOTICE
+          end
+
+          it 'delivers the invitation email' do
+            expect(CreditInvitationMailer).to receive(:send_invitation) {mailer}
+            expect(mailer).to receive(:deliver)
+            subject
+          end
+
+          context 'when the mailer errors' do
+            before { allow_any_instance_of(CreditInvitationMailer).to receive(:send_invitation) { raise_error } }
+
+            it 'logs the error' do
+              expect(Rails.logger).to receive(:error)
+              subject
+            end
           end
         end
       end
