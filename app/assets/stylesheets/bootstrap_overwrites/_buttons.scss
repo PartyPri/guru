@@ -1,8 +1,9 @@
 .btn {
-  border-radius: 2px;
+  border-radius: 10px;
   text-transform: uppercase;
   padding: 18px 20px;
   font-family: $sans-serif;
+  color: $gray;
   @include transition(all 0.1s ease-in-out);
   &:hover {
     @include transition(all 0.1s ease-in-out);

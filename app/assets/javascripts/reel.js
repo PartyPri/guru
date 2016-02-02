@@ -52,6 +52,20 @@ $(document).ready(function() {
     $('#comments-id-' + commentId).toggleClass('hidden');
   });
 
+  //if textarea empty hide submit button
+  var checkText = function(){
+    $(".new_comment").each(function(index){
+       if($(this).find("textarea").val().trim().length === 0){
+         $(this).find(".btn").hide();
+       }else{
+         $(this).find(".btn").show();
+       }
+     });
+   };
+
+  $(".fa-comment-o").click( checkText() );
+  $("textarea").keyup( function() { checkText(); });
+
   //viewing options
   $(".reel-view-item").on('click', function() {
     var ref = $(this).text().trim();

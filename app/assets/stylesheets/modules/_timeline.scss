@@ -153,10 +153,17 @@
   background-color: lighten($lt-gray, 50%);
   margin: 50px 0;
   padding: 20px 20px 40px 20px;
-  min-height: 140px;
+  min-height: 185px;
+
 }
 
 @media (max-width: 991px) {
+  .media-comment-section {
+    //reply box responsive sizing
+    .col-sm-10 {
+      padding-left: 0px;
+    }
+  }
   .section-media {
     margin-left: 10%;
     width: 90%;
@@ -165,7 +172,14 @@
     }
   }
 }
+
 @media (max-width: 768px) {
+  .media-comment-section {
+    //reply box responsive sizing
+    .col-sm-10 {
+      padding-left: 15px;
+    }
+  }
   .add-new-media-container {
     width: 100%;
   }
@@ -186,6 +200,12 @@
 }
 
 @media (max-width: 650px) {
+  .media-comment-section {
+    //reply box responsive sizing
+    .col-sm-10 {
+      padding-left: 15px;
+    }
+  }
   .section-media {
     margin-left: 0px;
     width: 100%;

@@ -18,8 +18,6 @@ class CommentsController < ApplicationController
       else
         render :json => { :comments => render_to_string( :partial => "comments/comment", :locals => { :comment => @comment }) }, :layout => false, :status => :created
       end
-    else
-      render :js => "alert('error saving comment');", :status => :error
     end
   end
 
