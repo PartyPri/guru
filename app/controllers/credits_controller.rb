@@ -1,21 +1,9 @@
 class CreditsController < ApplicationController
-  before_filter :validate_user, except: [:index]
+  before_filter :validate_user, except: [:index, :respond_to_invitation]
 
   ADDED_NOTICE = "Credit added! Waiting for the credit receiver to accept"
   DELETED_NOTICE = "Credit deleted"
   NOT_FOUND_NOTICE = "Credit not found"
-
-  helper_method :user_validation_notice
-
-  # TODO: remove when implemented fully
-  def index
-    @reel = Reel.includes(:credits).find_by_id(params[:reel_id])
-    @credits = reel.credits
-  end
-
-  # TODO: remove when implemented fully
-  def new
-  end
 
   def create
     @credit = Credit.new(
@@ -27,16 +15,42 @@ class CreditsController < ApplicationController
     )
 
     # TODO: send email to credit_receiver
-    return render :new unless @credit.save
+    return redirect_with_notice(GENERAL_ERROR) unless @credit.save
 
-    flash[:notice] = ADDED_NOTICE
-    redirect_to reel_path(reel.id)
+    redirect_with_notice(ADDED_NOTICE, reel_path(reel))
   end
 
   def destroy
     credit = reel.credits.where(id: params[:id]).first
     flash[:notice] = destroy_credit(credit)
     redirect_to reel_path(reel.id)
+  end
+
+  def respond_to_invitation
+    path = reel_path(params[:reel_id])
+
+    return redirect_with_notice(AUTH_NOTICE, path) unless user_signed_in?
+
+    credit = Credit.where(id: params[:id], reel_id: params[:reel_id]).first
+    return redirect_with_notice(NOT_FOUND_NOTICE, path) unless credit
+
+    credit.assign_attributes(
+      new_state => true,
+      credit_receiver_id: current_user.id,
+      credit_receiver_email: current_user.email
+    )
+    return redirect_with_notice("Credit #{new_state}", path) if credit.save
+
+    redirect_with_notice(GENERAL_ERROR, path)
+  end
+
+  private
+
+  def new_state
+    @new_state ||= begin
+      new_state = request.fullpath.split("/").last
+      "#{new_state}ed".to_sym
+    end
   end
 
   def destroy_credit(credit)
@@ -62,7 +76,6 @@ class CreditsController < ApplicationController
     flash[:notice] = user_validation_notice
     redirect_to :root
   end
-
 
   def user_validation_notice
     @user_validation_notice ||= begin
