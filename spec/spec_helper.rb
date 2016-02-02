@@ -50,6 +50,10 @@ RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.include AuthenticationHelper, :type => :controller
 
+  config.before(:each) do
+    allow_any_instance_of(Mail::Message).to receive(:deliver) { self }
+  end
+
 
   if Bullet.enable?
     config.before(:each) do

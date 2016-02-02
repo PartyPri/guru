@@ -1,7 +1,7 @@
 class CreditInvitationMailer < ActionMailer::Base
   default from: "Evrystep@evrystep.com"
 
-  class CreditInvitationMailerError < StandardError
+  class Error < StandardError
     def initialize(message)
       super(message)
     end
@@ -13,10 +13,13 @@ class CreditInvitationMailer < ActionMailer::Base
     mail(to: receiver_email, subject: subject)
   end
 
+  private
+
   def validate!
-    raise CreditInvitationMailerError.new("Receiver email cannot be blank") unless receiver_email
-    raise CreditInvitationMailerError.new("Owner cannot be blank") unless owner
-    raise CreditInvitationMailerError.new("Reel cannot be blank") unless reel
+    raise Error.new("Credit not found") unless credit
+    raise Error.new("Receiver email cannot be blank") unless receiver_email
+    raise Error.new("Owner cannot be blank") unless owner
+    raise Error.new("Reel cannot be blank") unless reel
   end
 
   def receiver_email

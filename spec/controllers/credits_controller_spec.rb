@@ -80,7 +80,7 @@ describe CreditsController, type: :controller do
           end
 
           context 'when the mailer errors' do
-            before { allow_any_instance_of(CreditInvitationMailer).to receive(:send_invitation) { raise_error } }
+            before { allow(CreditInvitationMailer).to receive(:send_invitation) { raise_error } }
 
             it 'logs the error' do
               expect(Rails.logger).to receive(:error)
