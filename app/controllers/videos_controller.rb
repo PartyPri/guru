@@ -13,28 +13,32 @@ class VideosController < ApplicationController
 
   def create
     check_valid_session and return
+
     account = Yt::Account.new access_token: current_user.token
 
-    if !account.channel.public?
+    begin
+      account.channel || account.channel.public?
+    rescue Yt::Errors::NoItems => msg
       flash[:error] = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
       render :new
+      return
+    end
+
+    @reel = Reel.find(params[:video][:reel_id])
+    @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
+
+    if @video.save
+      @video.title = "#{@reel.name} - #{@reel.videos.length}"
+
+      file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
+      @video.uid = file.id
+      @video.save!
+
+      flash[:success] = 'Your video has been uploaded!'
+      redirect_to @reel
     else
-      @reel = Reel.find(params[:video][:reel_id])
-      @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
-
-      if @video.save
-        @video.title = "#{@reel.name} - #{@reel.videos.length}"
-
-        file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
-        @video.uid = file.id
-        @video.save!
-
-        flash[:success] = 'Your video has been uploaded!'
-        redirect_to @reel
-      else
-        flash[:error] = 'Something went wrong'
-        render :new
-      end
+      flash[:error] = 'Something went wrong'
+      render :new
     end
   end
 
