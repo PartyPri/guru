@@ -15,17 +15,18 @@ class VideosController < ApplicationController
     check_valid_session and return
 
     account = Yt::Account.new access_token: current_user.token
+    youtube_error_flash_message = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
 
     begin
       account.channel
-    rescue Yt::Errors::NoItems => msg
-      flash[:error] = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
+    rescue Yt::Errors::NoItems
+      flash[:error] = youtube_error_flash_message
       render :new
       return
     end
 
     if !account.channel.try(:public?)
-      flash[:error] = 'Evrystep uses YouTube channels to handle videos. <a href="https://www.youtube.com/signin?next=/create_channel" target="_blank">Click here</a> to turn your channel on, and then try your upload again. You will only have to do this once'.html_safe
+      flash[:error] = youtube_error_flash_message
       render :new
       return
     end
