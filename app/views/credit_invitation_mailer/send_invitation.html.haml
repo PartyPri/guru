@@ -1,0 +1,4 @@
+%h1= "Hello #{@receiver.try(:first_name) || @credit.credit_receiver_email},"
+%p= "#{@owner.first_name} would like to credit you as a #{@credit.role} in their \"#{@reel.name}\" reel on Evrystep"
+%p
+  =link_to("Respond Here", "#{reel_url(@reel.id)}?credit_invitation=#{@credit.id}")
