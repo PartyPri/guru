@@ -31,6 +31,9 @@
               - elsif medium.is_a? Video
                 %li{class: "medium", id: "medium_#{medium.id}"}
                   .edit-item{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg)"}
+              - elsif medium.is_a? Story
+                %li{class: "medium", id: "medium_#{medium.id}"}
+                  .edit-item{:style => "background-image: url(#{medium.photo.url})"}
         / .form-group
         /   = f.label :tag_list, "Tags (separated by commas)"
         /   = f.text_field :tag_list
