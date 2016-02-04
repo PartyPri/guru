@@ -131,7 +131,7 @@ $header-height: 400px;
 
 .add-cover-image-btn {
   margin-top: 380px;
-
+  float: right;
 }
 
 .avatar, .info {
@@ -162,16 +162,21 @@ $header-height: 400px;
 
 #contact {
   margin-bottom: 250px;
-  .fa {
-    margin: 20px 0;
-    border-radius: 50px;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-    padding: 9px;
-    border: solid $lt-gray 2px;
-    color: $lt-gray;
-    font-size: $base-font-size*2;
+}
+
+.social-media-icons {
+  margin: 20px 0;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  padding: 11px 9px;
+  border: solid $lt-gray 2px;
+  color: $lt-gray;
+  font-size: $base-font-size*2;
+  &:hover {
+    color: $turq;
+    border: solid $turq 2px;
   }
 }
 
@@ -291,6 +296,10 @@ li.user-entourage-item {
 }
 
 @media (max-width: 767px) {
+  .add-cover-image-btn {
+    margin: 0 100px;
+    float: none;
+  }
   #contact {
     margin-top: 80px;
   }

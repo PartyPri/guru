@@ -1,2 +1,15 @@
+var checkText = function(){
+  $(".new_comment").each(function(index){
+     if($(this).find("textarea").val().trim().length === 0){
+       $(this).find(".btn").hide();
+     }else{
+       $(this).find(".btn").show();
+     }
+   });
+ };
+
 $('.reply-form').remove();
-$("<%= j render(:partial => 'reply', :locals => { :comment => Comment.build_from(@obj, current_user.id, ""), :parent_comment => @comment }) %>").insertAfter($('#<%= @div_id %>')).show('fast');
+$("<%= j render(:partial => 'reply', :locals => { :comment => Comment.build_from(@obj, current_user.id, ""), :parent_comment => @comment }) %>").insertAfter($('#<%= @div_id %>')).show('fast').autofocus;
+
+checkText();
+$("textarea").keyup( function() { checkText(); });

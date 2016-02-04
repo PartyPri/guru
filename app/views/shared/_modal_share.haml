@@ -2,15 +2,17 @@
   .modal-dialog
     .modal-content
       .modal-header
-        %h4 Share Media
+        %i.fa.fa-share-alt
+        Share!
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} &times;
       .modal-body
-        %h4 Select one:
+        %h2= @reel.name
+        %p Share on Facebook or Twitter!
         %ul.list-inline.social-list
           %li
             %a.modal-share-button.modal-facebook-share{:href => "#", target: "_blank"}
-              =image_tag('icon-facebook.png')
+              %i.fa.fa-facebook.social-media-icons
           %li
             %a.modal-share-button.modal-twitter-share{:href => "#"}
-              =image_tag('icon-twitter.png')
+              %i.fa.fa-twitter.social-media-icons

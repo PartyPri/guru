@@ -52,13 +52,14 @@
 .comment-form, .reply-form {
   margin-bottom: 20px;
   .btn {
-    margin-top: 10px;
+    float: right;
+    margin: 10px 5px;
     padding: 0 20px;
     border-radius: 20px;
   }
 
   textarea {
-    border: none;
+    border: solid lighten($lt-gray, 10%) 1px;
     background: white;
     display: block;
     width: 100%;
@@ -83,17 +84,18 @@
 }
 
 .reply-form {
-  width: 90%;
-  float: right;
+  margin-left: 10%;
 
   .reply-btn {
-    margin-bottom: 5px;
-    width: 100px;
+    min-width: 100px;
   }
 }
 
 @media (max-width: 768px) {
   .replies {
     padding-left: 5%;
+  }
+  .reply-form {
+    margin-left: 0;
   }
 }

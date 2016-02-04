@@ -44,7 +44,7 @@
                   .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
                   %b= current_user.first_name + " " + current_user.last_name
                   %small Now
-                .col-md-10
+                .col-sm-10
                   = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
             - else
               = render :partial => 'comments/form_login'
@@ -88,7 +88,7 @@
                     .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
                     %b= current_user.first_name + " " + current_user.last_name
                     %small Now
-                  .col-md-10
+                  .col-sm-10
                     = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
               - else
                 = render :partial => 'comments/form_login'
@@ -128,7 +128,7 @@
                     .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
                     %b= current_user.first_name + " " + current_user.last_name
                     %small Now
-                  .col-md-10
+                  .col-sm-10
                     = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
               - else
                 = render :partial => 'comments/form_login'
@@ -169,7 +169,7 @@
                   .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
                   %b= current_user.first_name + " " + current_user.last_name
                   %small Now
-                .col-md-10
+                .col-sm-10
                   = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
             - else
               = render :partial => 'comments/form_login'

@@ -38,22 +38,33 @@ $(window).scroll(function() {
 //Reel page view options
 $(document).ready(function() {
 
-  //share button function
-  // $('.share-circle').click(function() {
-  //   $('.share-button').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
-  //   $('#links').css({opacity: 0}).animate({opacity: 1.0, height: '30px'}, 400);
-  // });
-  // $('.share-button-mobile').click(function() {
-  //   $('.share-button-mobile').css({opacity: 1.0, visibility: "visible"}).animate({opacity: 0}, 200);
-  //   $('.link-item-mobile').css('z-index', 0);
-  // })
+  //like button on click
+  $('.fa-hand-peace-o').click(function() {
+    $(this).toggleClass('media-comments-icon-on');
+  });
+  $('.fa-comment-o').click(function() {
+    $(this).toggleClass('media-comments-icon-on');
+  });
 
   //expanding comments
   $('.comment-btn-expand').click(function(event) {
     var commentId = event.target.id;
-    console.log(commentId);
     $('#comments-id-' + commentId).toggleClass('hidden');
   });
+
+  //if textarea empty hide submit button
+  var checkText = function(){
+    $(".new_comment").each(function(index){
+       if($(this).find("textarea").val().trim().length === 0){
+         $(this).find(".btn").hide();
+       }else{
+         $(this).find(".btn").show();
+       }
+     });
+   };
+
+  $(".fa-comment-o").click( checkText() );
+  $("textarea").keyup( function() { checkText(); });
 
   //viewing options
   $(".reel-view-item").on('click', function() {
@@ -67,8 +78,6 @@ $(document).ready(function() {
     var scrollTo = $(".reel-header-container").outerHeight();
     if($(window).scrollTop() < scrollTo){
       $('html, body').animate({scrollTop: scrollTo + 1}, 'slow');
-    }else{
-      console.log("you're not in the header");
     }
   });
 });
