@@ -92,6 +92,7 @@ $(document).ready(function() {
       reelScroll();
     });
   });
+  //minimizing credit-invitation
   $(".credit-invitation-minimize").click(function () {
     if($(".credit-invitation-container").hasClass("minimize")){
       $(".credit-invitation-container").animate({ bottom: '0'}, "fast")

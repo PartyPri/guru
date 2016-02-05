@@ -10,7 +10,7 @@
           = f.text_field :first_name, class: "form-control"
         .form-group
           %label{for: "last_name"} Last name:
-          = f.text_field :last_name, class: "form-control" 
+          = f.text_field :last_name, class: "form-control"
         .form-group
           %label{for: "location"} Location:
           = f.text_field :location, class: "form-control"
@@ -25,7 +25,7 @@
             <br>
             =# @user.avatar_file_name
             <br><br>
-            %p Select a new profile picture 
+            %p Select a new profile picture
           - else
             %p Choose a profile picture
           = f.file_field :avatar
@@ -40,7 +40,7 @@
             <br>
             = @user.cover_photo_file_name
             <br><br>
-            %p Select a new cover picture 
+            %p Select a new cover picture
           - else
             %p Choose a cover picture
           = f.file_field :cover_photo
@@ -52,6 +52,6 @@
           = f.text_area :bio, class: "form-control"
         %hr.m-y-20
         .text-center
-          = f.submit "Save Changes", class: "button btn btn-info w-100"
+          = f.submit "Save Changes", class: "button btn btn-primary"
 = javascript_tag do
   window.evryStepUserId = "#{@user.id}";

@@ -44,7 +44,6 @@
       a {
         vertical-align: middle;
         padding: 2px 10px;
-        border: 1px solid lighten($lt-red, 10%);
         @include border-radius(10px);
         font-family: $base-font-family;
         color: lighten($lt-red, 10%);
@@ -271,6 +270,9 @@
       padding-left: 6px;
     }
   }
+  #credit-button-drop {
+    color: lighten($lt-gray, 10);
+  }
   .fa {
     font-size: 30px;
     transition: all 0.1s ease;
@@ -284,6 +286,8 @@
     }
   }
 }
+
+
 
 .display-none{
   display: none;
@@ -301,8 +305,8 @@
 
 .add-credit-button {
   background-color: $turq;
-  border-radius: 10px;
-  padding: 10px 20px;
+  border-radius: 20px;
+  padding: 5px 20px;
   color: white;
   &:hover {
     color: white;
@@ -510,10 +514,10 @@ li.reel-credit-item {
       }
       .share-line{
         background-color: $lt-turq;
-        height: 5px;
+        height: 2.5px;
         width: 610px;
         position: absolute;
-        margin-top: 57px;
+        margin-top: 59px;
         margin-left: -600px;
         transition: all 0.1s ease;
       }
@@ -564,9 +568,14 @@ li.reel-credit-item {
       display: none;
     }
   }
+  .credit-invitation-container {
+    width: 360px;
+    right: 10px;
+  }
 }
 
 @media (max-width: 450px) {
+
   .reel-page {
     .reel-header-container {
       padding: 0 0 10px;
@@ -585,6 +594,10 @@ li.reel-credit-item {
       padding: 10px 0;
       margin: 20px 0;
     }
+  }
+  .credit-invitation-container {
+    width: 100%;
+    right: 0;
   }
 }
 

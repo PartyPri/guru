@@ -12,7 +12,5 @@
           %span.dot= "&middot; ".html_safe
       %span.time-ago= "#{time_ago_in_words(comment.updated_at)} ago"
       %p= comment.body
-      - if !current_user
-        = link_to "Reply", :redirect_to => new_user_registration_url, class: "reply"
-      - else
+      - if current_user
         = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"

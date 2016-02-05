@@ -11,9 +11,7 @@
         - if current_user && current_user.id == comment.user_id || current_user && current_user.id == reel_user
           = link_to "×", comment_path(comment), :method => :delete, :remote => true, :confirm => "Are you sure you want to remove this comment?", :disable_with => "×", :class => 'close', :id => "delete_comment"
         %p= comment.body
-        - if !current_user
-          = link_to "Reply", :redirect_to => new_user_registration_url, class: "reply"
-        - else
+        - if current_user
           = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"
   .row-fluid.m-top-20.clearfix
     .replies.clearfix{ :id => "replies-#{comment.id}" }

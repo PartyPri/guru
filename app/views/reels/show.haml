@@ -101,8 +101,9 @@
       %ul.list-inline.reel-view-options.pull-right
         %li#credit-dropdown.reel-view-item.dropdown
           .dropdown-toggle#credits{"type" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}
-            %i.fa.fa-group
-            %p Credits
+            #credit-button-drop
+              %i.fa.fa-group
+              %p Credits
           %ul.reel-credit-list.pull-right.dropdown-menu{"aria-labelledby" => "credits"}
             - if owned_by_current_user?
               %a.add-credit-button{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
