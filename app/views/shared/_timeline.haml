@@ -11,48 +11,48 @@
       - @media.each do |medium|
         - if medium.is_a? Image
           .row.media-container
-            .section-description.col-sm-6
+            .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
               %p= medium.created_at.strftime("%b %-d, %Y")
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
-              %p.timeline-description= medium.description
-            .row
-              .section-media.col-sm-11.col-sm-offset-1
-                .section-photo-container
-                  %img.section-photo{"src" => "#{medium.photo.url}"}
-          .media-comments-icon
-            = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-              - if current_user && current_user.voted_on?(medium)
-                %i.fa.fa-hand-peace-o.media-comments-icon-on
-              - else
-                %i.fa.fa-hand-peace-o
-              - if medium.score < 1
-                .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-              - else
-                .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-            %a.comment-btn-expand{:id => "#{medium.id}"}
-              %i.fa.fa-comment-o{:id => "#{medium.id}"}
-              - if medium.comment_threads.count > 0
-                .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
-          .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
-            - if current_user
-              .row-fluid.m-top-20
-                .col-md-2
-                  .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-                  %b= current_user.first_name + " " + current_user.last_name
-                  %small Now
-                .col-sm-10
-                  = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-            - else
-              = render :partial => 'comments/form_login'
-            = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
+              %p.timeline-description= truncate(medium.description, length: 250)
+              .media-comments-icon
+                = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
+                  - if current_user && current_user.voted_on?(medium)
+                    %i.fa.fa-hand-peace-o.media-comments-icon-on
+                  - else
+                    %i.fa.fa-hand-peace-o
+                  - if medium.score < 1
+                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+                  - else
+                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+                %a.comment-btn-expand{:id => "#{medium.id}"}
+                  %i.fa.fa-comment-o{:id => "#{medium.id}"}
+                  - if medium.comment_threads.count > 0
+                    .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
+            .section-media.col-sm-10
+              .section-photo-container
+                %img.section-photo{"src" => "#{medium.photo.url}"}
+              .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
+                - if current_user
+                  .row-fluid.m-top-20
+                    .col-md-2
+                      .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
+                      %b= current_user.first_name + " " + current_user.last_name
+                      %small Now
+                    .col-sm-10
+                      = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+                - else
+                  = render :partial => 'comments/form_login'
+                = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
+
         - if medium.is_a? Story
           - if medium.photo.present?
             .row.media-container
-              .section-description.col-sm-6
+              .section-description.col-sm-2
                 .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
                 %p= medium.created_at.strftime("%b %-d, %Y")
                 -if current_user && current_user.id == @user.id
@@ -60,11 +60,10 @@
                     %i.fa.fa-pencil-square-o
                     Edit
                 %h4= medium.title
-              .row
-                .section-media.col-sm-11.col-sm-offset-1
-                  .section-photo-container
-                    %img.section-photo{"src" => "#{medium.photo.url}"}
-                  %p.story-container= sanitize(medium.body)
+              .section-media.col-sm-10
+                .section-photo-container
+                  %img.section-photo{"src" => "#{medium.photo.url}"}
+                %p.story-container= sanitize(medium.body)
             .media-comments-icon
               -# = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
               -#   - if current_user && current_user.voted_on?(medium)
@@ -95,16 +94,15 @@
               = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
           - else
             .row.media-container
-              .section-description.col-sm-6
+              .section-description.col-sm-2
                 %p= medium.created_at.strftime("%b %-d, %Y")
                 -if current_user && current_user.id == @user.id
                   %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                     %i.fa.fa-pencil-square-o
                     Edit
                 %h4= medium.title
-              .row
-                .section-media.col-sm-11.col-sm-offset-1
-                  %p.story-container= sanitize(medium.body)
+              .section-media.col-sm-10
+                %p.story-container= sanitize(medium.body)
             .media-comments-icon
               -# = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
               -#   - if current_user && current_user.voted_on?(medium)
@@ -135,17 +133,16 @@
               = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
         -if medium.is_a? Video
           .row.media-container
-            .section-description.col-sm-6
+            .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg); background-size: 180%;"}
               %p= medium.created_at.strftime("%b %-d, %Y")
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
                   %i.fa.fa-pencil-square-o
                   Edit
-              %p.timeline-description= medium.description
-            .row
-              .section-media.col-sm-11.col-sm-offset-1
-                %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
+              %p.timeline-description= truncate(medium.description, length: 250)
+            .section-media.col-sm-10
+              %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
           .media-comments-icon
             = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
               - if current_user && current_user.voted_on?(medium)

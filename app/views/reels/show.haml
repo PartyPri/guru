@@ -37,14 +37,16 @@
                 by
                 %b
                   = link_to @user.first_name + " " + @user.last_name, user_path(@reel.user)
-            %small.reel-artist-name
-              %i.fa.fa-info-circle
-              %span
-                = @user.description
-            %small.reel-artist-name
-              %i.fa.fa-map-marker
-              %span
-                = @user.location
+            - if @user.description.present?
+              %small.reel-artist-name
+                %i.fa.fa-info-circle
+                %span
+                  = @user.description
+            - if @user.location.present?
+              %small.reel-artist-name
+                %i.fa.fa-map-marker
+                %span
+                  = @user.location
             %br
         .col-sm-9.reel-header
           .reel-top-header
@@ -96,18 +98,12 @@
           .share-circle.text-center
             %i.fa.fa-share-alt
             Share!
-      %ul.list-inline.reel-view-options
-        %li.reel-view-item{:style => "border-bottom: medium solid rgb(16, 187, 167)", "data-target" => "#timeline", "data-toggle" => "tab"}
-          %i.fa.fa-list
-          %p Timeline
-        %li.reel-view-item{"data-target" => "#grid", "data-toggle" => "tab"}
-          %i.fa.fa-th-large
-          %p Grid
-        %li.reel-view-item.dropdown
+      %ul.list-inline.reel-view-options.pull-right
+        %li#credit-dropdown.reel-view-item.dropdown
           .dropdown-toggle#credits{"type" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}
             %i.fa.fa-group
             %p Credits
-          %ul.reel-credit-list.dropdown-menu{"aria-labelledby" => "credits"}
+          %ul.reel-credit-list.pull-right.dropdown-menu{"aria-labelledby" => "credits"}
             - if owned_by_current_user?
               %a.add-credit-button{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
                 %i.fa.fa-plus-circle
@@ -152,5 +148,3 @@
   .tab-content
     #timeline.tab-pane.active
       = render 'shared/timeline'
-    #grid.tab-pane
-      = render 'shared/grid'

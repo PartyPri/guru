@@ -36,7 +36,14 @@
 }
 
 .media-container {
-  margin: 50px 0 0 0;
+  margin: 80px 0 0 0;
+  &:first-child {
+    margin: 25px 0 0 0;
+    .section-photo-container {
+      padding: 0;
+      margin-top: -25px;
+    }
+  }
 }
 
 .section-media {
@@ -57,7 +64,6 @@
 }
 
 .timeline-teaser{
-  float: left;
   height: 50px;
   width: 50px;
   border-radius: 50px;
@@ -80,6 +86,7 @@
 
 .section-photo-container {
   width: 100%;
+  padding-top: 20px;
 }
 .section-photo {
   max-width: 100%;
@@ -108,10 +115,9 @@
 }
 
 .media-comments-icon {
-  position: absolute;
-  padding: 10px 0 ;
+  padding: 10px 0;
+  margin-left: -3px;
   background-color: white;
-  margin: -110px 15px;
   display: block;
   font-size: $base-font-size*1.5;
   .fa {
@@ -140,7 +146,6 @@
   }
 }
 
-
 .engagement-badge {
   font-size: $base-font-size;
   color: white;
@@ -151,7 +156,7 @@
 
 .media-comment-section {
   background-color: lighten($lt-gray, 50%);
-  margin: 50px 0;
+  margin: 0;
   padding: 20px 20px 40px 20px;
   min-height: 185px;
 

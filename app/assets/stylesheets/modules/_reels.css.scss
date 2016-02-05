@@ -392,6 +392,56 @@ li.reel-credit-item {
   padding-left: 50px;
 }
 
+.credit-invitation-container {
+  position: fixed;
+  right: 40px;
+  bottom: 0;
+  height: 375px;
+  width: 400px;
+  background-color: white;
+  z-index: 1;
+  border: solid $lt-gray 1px;
+}
+
+.credit-invitation-header {
+  background-color: lighten($lt-turq, 25);
+  color: $drk-gray;
+  padding: 10px 20px;
+  .btn {
+    margin: 0 10px;
+  }
+  .fa {
+    font-size: $base-font-size*2.1;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+.credit-invitation-body{
+  margin: 10px 0 0 0;
+  text-align: center;
+  padding: 20px;
+  p {
+    margin: 30px;
+  }
+}
+
+.credit-invitation-role {
+  padding: 30px;
+  margin-top: -20px;
+  background-image: url("starry-bg.jpg");
+  background-size: 265px 155px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.credit-invitation-footer {
+  margin-top: 0;
+  text-decoration: underline;
+  color: $turq;
+  cursor: pointer;
+}
+
 @media (max-width: 1200px) {
   .views {
     padding-left: 35px;

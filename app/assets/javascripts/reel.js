@@ -75,9 +75,34 @@ $(document).ready(function() {
     $(this).css('border-bottom', 'solid #10BBA7');
 
     //scroll down if in header
+    reelScroll();
+  });
+
+  function reelScroll(){
     var scrollTo = $(".reel-header-container").outerHeight();
     if($(window).scrollTop() < scrollTo){
       $('html, body').animate({scrollTop: scrollTo + 1}, 'slow');
+    }
+  }
+
+  //credit invitation handlers
+  $(".credit-invitation-footer").click(function(){
+    setTimeout(function() {
+      $('#credit-dropdown').addClass('open');
+      reelScroll();
+    });
+  });
+  $(".credit-invitation-minimize").click(function () {
+    if($(".credit-invitation-container").hasClass("minimize")){
+      $(".credit-invitation-container").animate({ bottom: '0'}, "fast")
+      $(".credit-invitation-minimize").toggleClass("fa-caret-up");
+      $(".credit-invitation-minimize").toggleClass("fa-caret-down");
+      $(".credit-invitation-container").toggleClass("minimize");
+    }else{
+      $(".credit-invitation-container").animate({ bottom: '-323'}, "fast")
+      $(".credit-invitation-minimize").toggleClass("fa-caret-up");
+      $(".credit-invitation-minimize").toggleClass("fa-caret-down");
+      $(".credit-invitation-container").toggleClass("minimize");
     }
   });
 });
