@@ -8,7 +8,12 @@
           %span{"aria-hidden" => "true"} &times;
       .modal-body
         %h2= @reel.name
-        %p Share on Facebook or Twitter!
+        %br
+        URL
+        %input{ :type => 'text', :value => request.original_url, :style => "width: 250px;"}
+        %br
+        %p
+        Or share on Facebook or Twitter!
         %ul.list-inline.social-list
           %li
             %a.modal-share-button.modal-facebook-share{:href => "#", target: "_blank"}

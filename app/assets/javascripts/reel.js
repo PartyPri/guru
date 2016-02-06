@@ -18,7 +18,15 @@ $(function() {
 
   // Tagging
   $('#reel_tag_list').tagsInput({
-    autocomplete_url:'/api/tags'
+    autocomplete_url:'/api/tags',
+    messages: {
+        noResults: '',
+        results: function() {}
+    },
+    'height':'100px',
+    'width':'100%',
+    'interactive':true,
+    'defaultText':'add a tag'
   });
 });
 
