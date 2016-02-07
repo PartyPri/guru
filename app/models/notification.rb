@@ -10,6 +10,11 @@ class Notification < ActiveRecord::Base
 
   enum(:action, :gave_props, :sent_credit, :accepted_credit_invite, :commented_on)
 
+  scope :by_receiver, -> (receiver_id) { where(receiver_id: receiver_id) }
+  scope :unread, -> { where(read: false) }
+  scope :newest, -> { order("created_at desc") }
+
+
   class << self
     # Overwrite the .create method to work with enum helper (for now)
     def create(opts = {})
