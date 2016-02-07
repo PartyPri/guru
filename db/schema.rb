@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160120013847) do
+ActiveRecord::Schema.define(:version => 20160206233253) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -193,6 +193,17 @@ ActiveRecord::Schema.define(:version => 20160120013847) do
     t.string   "type"
     t.integer  "position"
     t.boolean  "featured_medium"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.boolean  "read",                 :default => false
+    t.integer  "action",               :default => 0
+    t.integer  "receiver_id"
+    t.integer  "action_taker_id"
+    t.integer  "action_taken_on_id"
+    t.string   "action_taken_on_type"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
   create_table "reel_interests", :force => true do |t|

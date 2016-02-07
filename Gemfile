@@ -80,7 +80,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'timecop'
@@ -88,6 +87,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry'
   gem 'factory_girl'
   gem "bullet"
