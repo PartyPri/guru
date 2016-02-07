@@ -21,4 +21,9 @@ class ApplicationController < ActionController::Base
     return unless user_signed_in?
     @notifications = Notification.by_receiver(current_user.id).unread.newest
   end
+
+  def authenticate_user!
+    return if user_signed_in?
+    redirect_with_notice(AUTH_NOTICE)
+  end
 end
