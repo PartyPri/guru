@@ -21,5 +21,9 @@ class Medium < ActiveRecord::Base
   	self.get_upvotes.size
   end
 
+  def user
+    reel.user
+  end
+
   acts_as_commentable
 end

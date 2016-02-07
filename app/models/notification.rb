@@ -1,7 +1,8 @@
 class Notification < ActiveRecord::Base
   include EnumHelper
 
-  attr_accessible :action_taker_id, :action, :read, :receiver_id, :action_taken_on_id, :action_taken_on_type
+  attr_accessible :action_taker_id, :action, :read, :receiver_id, :action_taken_on_id, :action_taken_on_type,
+    :action_taker, :action_taken_on, :receiver
 
   belongs_to :action_taker, class_name: "User"
   belongs_to :receiver, class_name: "User"
@@ -9,17 +10,12 @@ class Notification < ActiveRecord::Base
 
   enum(:action, :gave_props, :sent_credit, :accepted_credit_invite, :commented_on)
 
-  module Helper
-    module InstanceMethods
-      def notify
-        Notification.create(
-          action_taker:
-        )
-      end
-    end
-
-    def self.included(receiver)
-      receiver.send :include, InstanceMethods
+  class << self
+    # Overwrite the .create method to work with enum helper (for now)
+    def create(opts = {})
+      value = opts[:action]
+      opts[:action] = action_states.invert[value] if value.is_a?(Symbol)
+      super
     end
   end
 end
