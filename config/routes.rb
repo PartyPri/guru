@@ -59,4 +59,7 @@ Guru::Application.routes.draw do
   namespace :api do
     resources :tags, only: [:index]
   end
+
+  # Delayed Job Web Route
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 end

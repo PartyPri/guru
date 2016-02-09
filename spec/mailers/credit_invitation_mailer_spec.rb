@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe CreditInvitationMailer do
+describe CreditInvitationMailer, :type => :mailer do
   describe '#send_invitation' do
     subject { described_class }
 
