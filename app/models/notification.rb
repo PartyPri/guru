@@ -14,6 +14,8 @@ class Notification < ActiveRecord::Base
   scope :unread, -> { where(read: false) }
   scope :newest, -> { order("created_at desc") }
 
+  after_create :send_notification
+
 
   class << self
     # Overwrite the .create method to work with enum helper (for now)
@@ -23,24 +25,33 @@ class Notification < ActiveRecord::Base
       super
     end
 
-    def message(notification)
-      name = notification.action_taker.first_name
-      {
-        gave_props: "#{name} gave you props on your #{obj_class(notification.action_taken_on)} '#{obj_name(notification.action_taken_on)}'",
-        sent_credit: "",
-        accepted_credit_invite: "#{name} accepted your credit on the #{obj_class(notification.action_taken_on)} '#{obj_name(notification.action_taken_on)}'",
-        commented_on: "#{name} commented on your #{obj_class(notification.action_taken_on)} '#{obj_name(notification.action_taken_on)}'"
-      }[notification.action]
+    def message(n)
+      case n.action
+      when :gave_props
+        "#{action_taker_name(n)} gave you props on your #{obj_class(n)}" \
+        " \"#{obj_name(n)}\""
+      when :sent_credit
+        ""
+      when :accepted_credit_invite
+        "#{action_taker_name(n)} accepted your credit on the #{obj_class(n)}" \
+        " \"#{obj_name(n)}\""
+      when :commented_on
+        "#{action_taker_name(n)} commented on your #{obj_class(n)} \"#{obj_name(n)}\""
+      end
     end
 
-    def obj_class(action_taken_on)
-      action_taken_on.class.name.downcase
+    def action_taker_name(n)
+      n.action_taker.try(:first_name)
     end
 
-    def obj_name(action_taken_on)
-      return unless action_taken_on
-      return action_taken_on.name if action_taken_on.respond_to?(:name)
-      return action_taken_on.description if action_taken_on.respond_to?(:description)
+    def obj_class(n)
+      n.action_taken_on.class.name.downcase
+    end
+
+    def obj_name(n)
+      return unless n.action_taken_on
+      return n.action_taken_on.name if n.action_taken_on.respond_to?(:name)
+      return n.action_taken_on.description if n.action_taken_on.respond_to?(:description)
     end
   end
 
@@ -50,5 +61,9 @@ class Notification < ActiveRecord::Base
 
   def message
     self.class.message(self)
+  end
+
+  def send_notification
+    NotificationMailer.delay.send_notification(notification_id: id)
   end
 end

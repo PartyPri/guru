@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160206233253) do
+ActiveRecord::Schema.define(:version => 20160209065412) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -96,6 +96,22 @@ ActiveRecord::Schema.define(:version => 20160206233253) do
   add_index "credits", ["credit_receiver_id"], :name => "index_credits_on_credit_receiver_id"
   add_index "credits", ["reel_id"], :name => "index_credits_on_reel_id"
   add_index "credits", ["reel_owner_id"], :name => "index_credits_on_reel_owner_id"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0, :null => false
+    t.integer  "attempts",   :default => 0, :null => false
+    t.text     "handler",                   :null => false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "email_contacts", :force => true do |t|
     t.string   "email"

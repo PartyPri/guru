@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', "< 3.0.0"
 gem 'jquery-ui-sass-rails'
 gem 'coffee-script-source', '1.8.0'
+gem 'delayed_job_active_record'
 
 #Database
 gem 'pg'
