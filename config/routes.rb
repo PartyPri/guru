@@ -34,6 +34,8 @@ Guru::Application.routes.draw do
     get :reply, on: :member
   end
 
+  resources :notifications, only: [:update, :index]
+
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
   get '/videos/get_video_uid', to: 'videos#get_video_uid', as: :get_video_uid
@@ -57,4 +59,7 @@ Guru::Application.routes.draw do
   namespace :api do
     resources :tags, only: [:index]
   end
+
+  # Delayed Job Web Route
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 end

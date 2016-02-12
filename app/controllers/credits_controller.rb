@@ -54,7 +54,7 @@ class CreditsController < ApplicationController
   end
 
   def send_invitation
-    CreditInvitationMailer.send_invitation(credit_id: @credit.id).deliver
+    CreditInvitationMailer.delay.send_invitation(credit_id: @credit.id)
   rescue => e
     Rails.logger.error(e)
   end

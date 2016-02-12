@@ -1,0 +1,4 @@
+- @notifications.each do |notification|
+  %li
+    = notification.message
+    = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true)

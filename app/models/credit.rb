@@ -25,6 +25,8 @@ class Credit < ActiveRecord::Base
   before_validation :set_credit_receiver_email
   before_validation :set_credit_receiver_id
 
+  after_save :notify, on: :update
+
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
   scope :accepted, -> { where(invitation_status: 1) }
@@ -32,6 +34,17 @@ class Credit < ActiveRecord::Base
   scope :by_receiver, ->(credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
 
   private
+
+  def notify
+    return unless invitation_status_changed?
+    return unless accepted?
+    Notification.create(
+      action_taker: receiver,
+      action_taken_on: reel,
+      receiver: owner,
+      action: :accepted_credit_invite,
+    )
+  end
 
   def set_reel_owner
     return if reel_owner_id

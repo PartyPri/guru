@@ -11,7 +11,8 @@ gem 'uglifier', '>= 1.0.3'
 gem 'jquery-rails', "< 3.0.0"
 gem 'jquery-ui-sass-rails'
 gem 'coffee-script-source', '1.8.0'
-
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
 #Database
 gem 'pg'
 
@@ -80,7 +81,6 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'timecop'
@@ -88,6 +88,7 @@ group :test do
 end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'pry'
   gem 'factory_girl'
   gem "bullet"
