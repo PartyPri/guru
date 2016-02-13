@@ -4,14 +4,9 @@
     - if current_user && current_user.id == @user.id
       .add-new-media-container.m-bottom-20
         = link_to pages_select_media_path(reel: @reel) do
-          - if params[:circle_add].present?
-            .add-new-media-circle
-              %i.fa.fa-plus-circle
-              Add to Reel
-          - else
-            .add-new-media
-              %i.fa.fa-plus-circle
-              Add to Reel
+          .btn.btn-default.add-new-media
+            %i.fa.fa-plus-circle
+            Add to Reel
     %section.media-section
       - @media.each do |medium|
         - if medium.is_a? Image

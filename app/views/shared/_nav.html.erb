@@ -46,22 +46,22 @@
           <li>
             <% unless user_signed_in? %>
               <a href="/users/auth/google_oauth2?create_reel=true" class="nav-link">
-                <%= image_tag "red_reel.png", height: "30px" %>
-                CREATE REEL
+                Share Your Passion
               </a>
             <% else %>
-              <a href="/reels/new" class="nav-link">
-                <%= image_tag "red_reel.png", height: "30px" %>
-                CREATE REEL
-              </a>
-            <% end %>
-          </li>
-          <li>
-            <% if user_signed_in? && current_user.reels.length > 0 %>
-              <a href="/pages/select_media" class="nav-link">
-                <%= image_tag "lt-turq_add.png", height: "30px" %>
-                ADD MEDIA
-              </a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle explore" data-toggle="dropdown">Share Your Passion<b class="caret m-left-5"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/reels/new" class="nav-link">New Reel</a></li>
+                  <li>
+                    <% if user_signed_in? && current_user.reels.length > 0 %>
+                      <a href="/pages/select_media" class="nav-link">
+                        Add to Reel
+                      </a>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
             <% end %>
           </li>
           <% if user_signed_in? %>
@@ -76,8 +76,20 @@
           <% else %>
             <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>
           <% end %>
-          <li><h2><%= @notifications.try(:length) %></h2></li>
-        </ul>
+          <% if user_signed_in? %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown">
+              <% unless @notifications.blank? %>
+                <i class="fa fa-circle"></i>
+                <div class="badge">
+                  <%= @notifications.try(:length) %>
+                </div></a>
+              <% end %>
+              <ul class="dropdown-menu notifications-dropdown">
+                <li><%= render "notifications/notifications" %></li>
+              </ul>
+            </li>
+          <% end %>
       </div><!-- /.navbar-collapse -->
     </div>
   </div>

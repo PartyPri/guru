@@ -17,26 +17,14 @@
   padding: 20px 0;
   background-color: white;
   width: 100px;
+  margin-left: -19px;
   a {
     color: $turq;
   }
 }
 
 .add-new-media {
-  width: 70px;
-  height: 70px;
-  border-radius: 50px;
-  border: none;
-  text-align: center;
-  padding: 15px 0;
-  margin-left: 12px;
-  background-color: white;
-  line-height: 18px;
-}
-
-.add-new-media-circle {
-  @extend .add-new-media;
-  border: 2px solid $lt-turq;
+  font-size: $base-font-size/1.2;
 }
 
 .media-container {
@@ -195,12 +183,8 @@
     }
   }
   .add-new-media-container {
-    width: 100%;
-  }
-  .add-new-media {
-    border-radius: 25px;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    margin-left: 0;
   }
   .section-media {
     iframe {

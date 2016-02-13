@@ -143,6 +143,12 @@ $header-height: 400px;
   z-index: -2;
 }
 
+.new-reel {
+  &:hover {
+    color: $turq;
+  }
+}
+
 .user-about-me {
   display: block;
   margin: 0 35px;

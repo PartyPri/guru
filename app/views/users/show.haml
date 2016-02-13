@@ -76,13 +76,13 @@
                 -else
                   %small= @user.first_name + " has not created a reel yet."
             -else
-              - if current_user && current_user.id == @user.id
-                .teaser.new-reel
-                  = link_to new_reel_path do
-                    %i.fa.fa-plus-circle
-                    Add new reel
               - @reels.each do |reel|
                 =render :partial => 'shared/teaser', :locals => {:reel => reel}
+              - if current_user && current_user.id == @user.id
+                = link_to new_reel_path do
+                  .teaser.new-reel
+                    %i.fa.fa-plus-circle
+                    Add new reel
 
 %section.content-container
   .row
