@@ -7,10 +7,11 @@
         %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
           %span{"aria-hidden" => "true"} &times;
       .modal-body
-        %h2= @reel.name
+        %h2#share-title= @reel.name
+        %img#modal-share-image
         %br
         URL
-        %input{ :type => 'text', :value => request.original_url, :style => "width: 250px;"}
+        %input#share-url{ :type => 'text', :value => request.original_url, :style => "width: 250px;"}
         %br
         %p
         Or share on Facebook or Twitter!

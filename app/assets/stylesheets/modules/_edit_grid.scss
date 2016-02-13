@@ -1,18 +1,20 @@
 .edit-grid {
-  padding: 30px 15px;
+  padding: 30px 200px;
   background: #fff;
   text-align: center;
 
   li {
     float: left;
-    width: 25%;
-    height: 200px;
+    width: 100%;
+    height: 100px;
     margin-bottom: 15px;
     padding-left: 0;
     vertical-align: top;
 
     .edit-item {
+      padding-top: 10%;
       height: 100%;
+      background-color: lighten($lt-gray, 40);
       @include background-image;
       @include border-radius(10px);
     }
@@ -24,18 +26,24 @@
 }
 
 .sortable-placeholder {
-  height: 200px;
+  height: 100px;
   width: 350px;
   border: dashed 2px $med-gray;
   @include border-radius(10px);
 }
 
-@media (max-width: 769px) {
+@media (max-width: 991px) {
   .edit-grid {
+    padding: 30px 10px;
     li {
-      width: 50%;
+      .edit-item {
+        padding-top: 10%;
+      }
     }
   }
+}
+
+@media (max-width: 769px) {
 
   .sortable-placeholder {
     padding: 22% 0;
@@ -46,7 +54,7 @@
   .edit-grid {
     li {
       width: 100%;
-      height: 200px;
+      height: 100px;
     }
   }
 }
