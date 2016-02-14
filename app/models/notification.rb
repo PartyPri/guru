@@ -98,7 +98,15 @@ class Notification < ActiveRecord::Base
 
   private
 
+  def sent_credit?
+    action == :sent_credit
+  end
+
   def send_notification
-    NotificationMailer.delay.send_notification(notification_id: id)
+    if sent_credit?
+      CreditInvitationMailer.delay.send_invitation(credit_id: action_taken_on.id)
+    else
+      NotificationMailer.delay.send_notification(notification_id: id)
+    end
   end
 end
