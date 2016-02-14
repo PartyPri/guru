@@ -14,14 +14,14 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
 
-      unless @create_reel.nil?
+      if @create_reel.present?
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         sign_in @user, :event => :authentication
         redirect_to "/reels/new"
       else
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         sign_in @user, :event => :authentication
-        redirect_to user_path(@user)
+        redirect_to previous_path
       end
 
     else

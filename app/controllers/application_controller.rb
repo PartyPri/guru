@@ -15,4 +15,13 @@ class ApplicationController < ActionController::Base
     return false unless user_signed_in?
     @user == current_user
   end
+
+  def previous_path
+    uri = URI.parse(request.referer)
+    uri.path
+  end
+
+  def after_sign_out_path_for(resource_name)
+    previous_path
+  end
 end
