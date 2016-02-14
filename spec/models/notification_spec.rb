@@ -57,21 +57,22 @@ describe Notification do
     end
   end
 
-  describe '#path_to_reel' do
+  describe '#path_to_action_taken_on' do
     subject { Notification.create(action_taken_on: action_taken_on) }
 
     context 'when the action_taken_on is a reel' do
       let(:action_taken_on) { create(:reel) }
 
       it 'returns the path to the reel' do
-        expect(subject.path_to_reel).to eq "/reels/#{action_taken_on.id}"
+        expect(subject.path_to_action_taken_on).to eq "/reels/#{action_taken_on.id}"
       end
     end
 
     context 'when the action_taken_on is a medium' do
       let(:action_taken_on) { create(:medium, reel_id: 1) }
+      let(:path) { "/reels/#{action_taken_on.reel_id}##{action_taken_on.id}" }
       it 'returns the path to the reel' do
-        expect(subject.path_to_reel).to eq "/reels/#{action_taken_on.reel_id}"
+        expect(subject.path_to_action_taken_on).to eq path
       end
     end
 
@@ -79,7 +80,7 @@ describe Notification do
       let(:action_taken_on) { nil }
 
       it 'returns nil' do
-        expect(subject.path_to_reel).to be_nil
+        expect(subject.path_to_action_taken_on).to be_nil
       end
     end
   end

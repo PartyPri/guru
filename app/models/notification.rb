@@ -74,11 +74,13 @@ class Notification < ActiveRecord::Base
     "#{time_ago_in_words(created_at)} ago"
   end
 
-  def path_to_reel(reel = nil)
-    reel = action_taken_on_id if action_taken_on_reel?
-    reel = action_taken_on.reel_id if action_taken_on_medium?
-    return unless reel
-    PATH_HELPER.reel_path(reel)
+  def path_to_action_taken_on
+    if action_taken_on_reel?
+      PATH_HELPER.reel_path(action_taken_on_id)
+    elsif action_taken_on_medium?
+      path = PATH_HELPER.reel_path(action_taken_on.reel_id)
+      "#{path}##{action_taken_on_id}"
+    end
   end
 
   def action_taken_on_reel?
