@@ -17,8 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def previous_path
-    uri = URI.parse(request.referer)
-    uri.path
+    request.referer
   end
 
   def after_sign_out_path_for(resource_name)
