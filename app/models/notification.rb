@@ -66,6 +66,12 @@ class Notification < ActiveRecord::Base
     self.class.message(self)
   end
 
+  def message_with_link
+    link = "<a href='#{path_to_action_taken_on}'>#{self.class.obj_class(self)}</a>"
+    m = message.gsub(self.class.obj_class(self), link)
+    m || message
+  end
+
   def action_taker_avatar_url
     action_taker.try(:avatar).try(:url)
   end

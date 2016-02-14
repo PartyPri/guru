@@ -1,5 +1,8 @@
 %h1= "Hi #{@receiver.first_name},"
 
-%p= "We are writing to inform you that #{@notification.message}!"
+%p
+  %span We are writing to inform you that
+  %span= @notification.message_with_link.html_safe
+  %span !
 
 %h4 xo Evrystep
