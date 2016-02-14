@@ -1,5 +1,8 @@
 class Notification < ActiveRecord::Base
   include EnumHelper
+  include ActionView::Helpers::DateHelper
+
+  PATH_HELPER = Rails.application.routes.url_helpers
 
   attr_accessible :action_taker_id, :action, :read, :receiver_id, :action_taken_on_id, :action_taken_on_type,
     :action_taker, :action_taken_on, :receiver
@@ -62,6 +65,31 @@ class Notification < ActiveRecord::Base
   def message
     self.class.message(self)
   end
+
+  def action_taker_avatar_url
+    action_taker.try(:avatar).try(:url)
+  end
+
+  def action_happened_at
+    "#{time_ago_in_words(created_at)} ago"
+  end
+
+  def path_to_reel(reel = nil)
+    reel = action_taken_on_id if action_taken_on_reel?
+    reel = action_taken_on.reel_id if action_taken_on_medium?
+    return unless reel
+    PATH_HELPER.reel_path(reel)
+  end
+
+  def action_taken_on_reel?
+    action_taken_on_type == "Reel"
+  end
+
+  def action_taken_on_medium?
+    action_taken_on_type == "Medium"
+  end
+
+  private
 
   def send_notification
     NotificationMailer.delay.send_notification(notification_id: id)
