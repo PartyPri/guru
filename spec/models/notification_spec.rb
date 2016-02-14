@@ -64,7 +64,7 @@ describe Notification do
       let(:action_taken_on) { create(:reel) }
 
       it 'returns the path to the reel' do
-        expect(subject.path_to_action_taken_on).to eq "/reels/#{action_taken_on.id}"
+        expect(subject.path_to_action_taken_on).to end_with "/reels/#{action_taken_on.id}"
       end
     end
 
@@ -72,7 +72,7 @@ describe Notification do
       let(:action_taken_on) { create(:medium, reel_id: 1) }
       let(:path) { "/reels/#{action_taken_on.reel_id}##{action_taken_on.id}" }
       it 'returns the path to the reel' do
-        expect(subject.path_to_action_taken_on).to eq path
+        expect(subject.path_to_action_taken_on).to end_with path
       end
     end
 

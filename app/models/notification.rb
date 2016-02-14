@@ -76,10 +76,9 @@ class Notification < ActiveRecord::Base
 
   def path_to_action_taken_on
     if action_taken_on_reel?
-      PATH_HELPER.reel_path(action_taken_on_id)
+      PATH_HELPER.reel_url(action_taken_on_id)
     elsif action_taken_on_medium?
-      path = PATH_HELPER.reel_path(action_taken_on.reel_id)
-      "#{path}##{action_taken_on_id}"
+      PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: action_taken_on_id)
     end
   end
 
