@@ -1,5 +1,8 @@
 class Notification < ActiveRecord::Base
   include EnumHelper
+  include ActionView::Helpers::DateHelper
+
+  PATH_HELPER = Rails.application.routes.url_helpers
 
   attr_accessible :action_taker_id, :action, :read, :receiver_id, :action_taken_on_id, :action_taken_on_type,
     :action_taker, :action_taken_on, :receiver
@@ -63,7 +66,47 @@ class Notification < ActiveRecord::Base
     self.class.message(self)
   end
 
+  def message_with_link
+    link = "<a href='#{path_to_action_taken_on}'>#{self.class.obj_class(self)}</a>"
+    m = message.gsub(self.class.obj_class(self), link)
+    m || message
+  end
+
+  def action_taker_avatar_url
+    action_taker.try(:avatar).try(:url)
+  end
+
+  def action_happened_at
+    "#{time_ago_in_words(created_at)} ago"
+  end
+
+  def path_to_action_taken_on
+    if action_taken_on_reel?
+      PATH_HELPER.reel_url(action_taken_on_id)
+    elsif action_taken_on_medium?
+      PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: action_taken_on_id)
+    end
+  end
+
+  def action_taken_on_reel?
+    action_taken_on_type == "Reel"
+  end
+
+  def action_taken_on_medium?
+    action_taken_on_type == "Medium"
+  end
+
+  private
+
+  def sent_credit?
+    action == :sent_credit
+  end
+
   def send_notification
-    NotificationMailer.delay.send_notification(notification_id: id)
+    if sent_credit?
+      CreditInvitationMailer.delay.send_invitation(credit_id: action_taken_on.id)
+    else
+      NotificationMailer.delay.send_notification(notification_id: id)
+    end
   end
 end

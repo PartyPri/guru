@@ -16,7 +16,6 @@ class CreditsController < ApplicationController
 
     return redirect_with_notice(GENERAL_ERROR) unless @credit.save
 
-    send_invitation
     redirect_with_notice(ADDED_NOTICE, reel_path(reel))
   end
 

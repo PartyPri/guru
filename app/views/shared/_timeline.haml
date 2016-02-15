@@ -143,9 +143,9 @@
                     = render :partial => 'comments/form_login'
                   = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
         -if medium.is_a? Video
-          .row.media-container{:id => "media-id-#{medium.id}"}
+          .row.media-container
             .section-description.col-sm-2
-              .timeline-teaser{:style => "background-image: url(http://img.youtube.com/vi/#{medium.uid}/0.jpg); background-size: 180%;"}
+              .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
               %p= medium.created_at.strftime("%b %-d, %Y")
               -if current_user && current_user.id == @user.id
                 %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
@@ -154,7 +154,7 @@
               %p.timeline-description= truncate(medium.description, length: 250)
               .media-comments-icon
                 %a.media-share{href: "#media-id-#{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "#media-id-#{medium.id}", "data-share-url" => "#{request.original_url}#media-id-#{medium.id}",
-                "data-share-img" => "http://img.youtube.com/vi/#{medium.uid}/0.jpg",
+                "data-share-img" => "#{medium.screenshot_url}",
                 "data-share-title" => "#{truncate(medium.description, length: 25)}"}
                   %i.fa.fa-share-square-o
                 = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
@@ -173,7 +173,7 @@
                   - if medium.comment_threads.count > 0
                     .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
             .section-media.col-sm-10
-              %iframe{"src" => "https://www.youtube.com/embed/#{medium.uid}?rel=0&amp;showinfo=0", "frameborder" => "0"}
+              %iframe{"src" => "#{medium.embed_url}?rel=0&amp;showinfo=0", "frameborder" => "0"}
               .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
                 - if current_user
                   .row-fluid.m-top-20
