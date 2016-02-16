@@ -1,0 +1,104 @@
+.cover-bg {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background: url("cover-bg.jpg");
+  background-size: cover;
+  background-repeat: none;
+}
+
+.cover-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 300px;
+  width: 600px;
+  background-color: white;
+  @include drop-shadow-2;
+}
+
+.cover-logo {
+  height: 50px;
+  width: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url("Evrystep_logo_only.png");
+  background-size: 100px auto;
+  background-repeat: none;
+  z-index: 1;
+}
+
+.cover-carousel {
+  .slick-prev {
+    left: 5px;
+    &:before {
+      color: white;
+      opacity: 1;
+    }
+  }
+  .slick-next {
+    right: 5px;
+    &:before {
+      color: white;
+      opacity: 1;
+    }
+  }
+  .slick-slide {
+    height: 300px;
+  }
+}
+
+.cover-carousel-header {
+  height: 100%;
+  width: 100%;
+  color: white;
+  h2 {
+    color: white;
+  }
+}
+
+.cover-carousel-slide-1 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("cover-carousel-1.jpg");
+  background-size: cover;
+  background-repeat: none;
+}
+
+.cover-carousel-slide-2 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("cover-carousel-2.jpg");
+  background-size: cover;
+  background-repeat: none;
+}
+
+.cover-carousel-slide-3 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("cover-carousel-3.jpg");
+  background-size: cover;
+  background-repeat: none;
+}
+
+.cover-carousel-slide-4 {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ), url("cover-carousel-4.jpg");
+  background-size: cover;
+  background-repeat: none;
+}

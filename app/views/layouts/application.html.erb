@@ -41,13 +41,18 @@
   -->
   <!-- End Google Tag Manager -->
   <!-- add master-container class to above div? -->
-  <div class="wrapper">
-    <%= render "shared/flash_messages" %>
-    <!-- pad for height of footer -->
-    <div style="padding-bottom: 39px; overflow: hidden;">
-      <%= yield %>
-    </div>
+  <% unless user_signed_in? %>
+    <%= render "shared/cover" %>
     <%= render "shared/footer" %>
-  </div>
+  <% else %>
+    <div class="wrapper">
+      <%= render "shared/flash_messages" %>
+      <!-- pad for height of footer -->
+      <div style="padding-bottom: 39px; overflow: hidden;">
+        <%= yield %>
+      </div>
+      <%= render "shared/footer" %>
+    </div>
+  <% end %>
 </body>
 </html>
