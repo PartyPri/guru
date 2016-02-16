@@ -10,7 +10,7 @@
     %section.media-section
       - @media.each do |medium|
         - if medium.is_a? Image
-          .row.media-container{:id => "media-id-#{medium.id}"}
+          .row.media-container{:id => "#{medium.id}"}
             .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
               %p= medium.created_at.strftime("%b %-d, %Y")
@@ -20,7 +20,7 @@
                   Edit
               %p.timeline-description= truncate(medium.description, length: 250)
               .media-comments-icon
-                %a.media-share{href: "#media-id-#{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "#media-id-#{medium.id}", "data-share-url" => "#{request.original_url}#media-id-#{medium.id}",
+                %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
                 "data-share-img" => "#{medium.photo.url}",
                 "data-share-title" => "#{truncate(medium.description, length: 25)}"}
                   %i.fa.fa-share-square-o
@@ -43,10 +43,8 @@
               .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
                 - if current_user
                   .row-fluid.m-top-20
-                    .col-md-2
+                    .col-sm-2
                       .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-                      %b= current_user.first_name + " " + current_user.last_name
-                      %small Now
                     .col-sm-10
                       = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
                 - else
@@ -55,7 +53,7 @@
 
         - if medium.is_a? Story
           - if medium.photo.present?
-            .row.media-container{:id => "media-id-#{medium.id}"}
+            .row.media-container{:id => "#{medium.id}"}
               .section-description.col-sm-2
                 .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
                 %p= medium.created_at.strftime("%b %-d, %Y")
@@ -65,7 +63,7 @@
                     Edit
                 %h4= medium.title
                 .media-comments-icon
-                  %a.media-share{href: "#media-id-#{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "#media-id-#{medium.id}", "data-share-url" => "#{request.original_url}#media-id-#{medium.id}",
+                  %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
                   "data-share-img" => "#{medium.photo.url}",
                   "data-share-title" => "#{medium.title}"}
                     %i.fa.fa-share-square-o
@@ -91,17 +89,15 @@
                 .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
                   - if current_user
                     .row-fluid.m-top-20
-                      .col-md-2
+                      .col-sm-2
                         .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-                        %b= current_user.first_name + " " + current_user.last_name
-                        %small Now
                       .col-sm-10
                         = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
                   - else
                     = render :partial => 'comments/form_login'
                   = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
           - else
-            .row.media-container{:id => "media-id-#{medium.id}"}
+            .row.media-container{:id => "#{medium.id}"}
               .section-description.col-sm-2
                 %p= medium.created_at.strftime("%b %-d, %Y")
                 -if current_user && current_user.id == @user.id
@@ -110,7 +106,7 @@
                     Edit
                 %h4= medium.title
                 .media-comments-icon
-                  %a.media-share{href: "#media-id-#{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "#media-id-#{medium.id}", "data-share-url" => "#{request.original_url}#media-id-#{medium.id}",
+                  %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
                   "data-share-title" => "#{medium.title}"}
                     %i.fa.fa-share-square-o
                   -# = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
@@ -133,17 +129,15 @@
                 .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
                   - if current_user
                     .row-fluid.m-top-20
-                      .col-md-2
+                      .col-sm-2
                         .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-                        %b= current_user.first_name + " " + current_user.last_name
-                        %small Now
                       .col-sm-10
                         = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
                   - else
                     = render :partial => 'comments/form_login'
                   = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
         -if medium.is_a? Video
-          .row.media-container
+          .row.media-container{:id => "#{medium.id}"}
             .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
               %p= medium.created_at.strftime("%b %-d, %Y")
@@ -153,7 +147,7 @@
                   Edit
               %p.timeline-description= truncate(medium.description, length: 250)
               .media-comments-icon
-                %a.media-share{href: "#media-id-#{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "#media-id-#{medium.id}", "data-share-url" => "#{request.original_url}#media-id-#{medium.id}",
+                %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
                 "data-share-img" => "#{medium.screenshot_url}",
                 "data-share-title" => "#{truncate(medium.description, length: 25)}"}
                   %i.fa.fa-share-square-o
@@ -177,10 +171,8 @@
               .media-comment-section.hidden{:id => "comments-id-#{medium.id}"}
                 - if current_user
                   .row-fluid.m-top-20
-                    .col-md-2
+                    .col-sm-2
                       .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-                      %b= current_user.first_name + " " + current_user.last_name
-                      %small Now
                     .col-sm-10
                       = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
                 - else

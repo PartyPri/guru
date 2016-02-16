@@ -20,6 +20,13 @@ class ApplicationController < ActionController::Base
   def notifications
     return unless user_signed_in?
     @notifications = Notification.by_receiver(current_user.id).unread.newest
+    @notification_icons = {
+      :action => "fa-exclamation",
+      :gave_props => "fa-hand-peace-o",
+      :sent_credit => "fa-users",
+      :accepted_credit_invite => "fa-users",
+      :commented_on => "fa-comment-o"
+    }
   end
 
   def authenticate_user!

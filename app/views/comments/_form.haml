@@ -1,4 +1,6 @@
 .comment-form
+  %b= current_user.first_name + " " + current_user.last_name
+  %small.time-ago Now
   = form_for comment, :remote => true do |f|
     = f.text_area :body, :rows => 3, :label => false, :placeholder => "Add a comment..."
     = f.hidden_field :commentable_id, :as => :hidden, :value => comment.commentable_id

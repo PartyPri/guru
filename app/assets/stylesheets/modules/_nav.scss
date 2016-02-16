@@ -27,18 +27,33 @@ nav {
 }
 
 .notifications-dropdown {
-  width: 250px;
+  width: 300px;
+  max-height: 350px;
+  overflow-y: scroll;
   background-color: white;
   .notification-item,  {
     padding: 20px;
+    line-height: 12px;
     border-bottom: solid lighten($lt-gray, 40) 1px;
     &:last-child{
       border-bottom: none;
     }
+    b{
+      color: $drk-gray;
+    }
+    a{
+      color: $lt-gray;
+      &:hover{
+        color: $lt-turq;
+      }
+    }
     a.notification-read {
-      color: $lt-turq;
+      color: lighten($lt-red, 11);
       display: inline;
-      padding: 0 10px;
+    }
+    .fa {
+      font-size: $base-font-size*1.5;
+      margin-right: 10px;
     }
   }
   &:before, &:after {
