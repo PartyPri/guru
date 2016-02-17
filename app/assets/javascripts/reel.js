@@ -54,10 +54,13 @@ $(document).ready(function() {
     $(this).toggleClass('media-comments-icon-on');
   });
 
-  //expanding comments
+  //scrolling to and expanding comments
   $('.comment-btn-expand').click(function(event) {
     var commentId = event.target.id;
     $('#comments-id-' + commentId).toggleClass('hidden');
+    $('html, body').animate({
+      scrollTop: $('#comments-id-' + commentId).offset().top - 150
+    }, 1000);
   });
 
   //if textarea empty hide submit button

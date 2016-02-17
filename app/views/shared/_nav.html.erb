@@ -81,7 +81,7 @@
               <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown">
               <% unless @notifications.blank? %>
                 <i class="fa fa-circle"></i>
-                <div class="badge">
+                <div class="badge notification-badge">
                   <%= @notifications.try(:length) %>
                 </div></a>
               <% end %>

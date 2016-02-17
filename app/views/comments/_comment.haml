@@ -13,8 +13,8 @@
             %span.dot= "&middot; ".html_safe
         %small.time-ago= "#{time_ago_in_words(comment.updated_at)} ago"
         %p= comment.body
-        - if current_user
-          = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"
+        -# - if current_user
+        -#   = link_to "Reply", reply_comment_path(comment), :method => :get, :remote => true, class: "reply"
   .row-fluid.m-top-20.clearfix
     .replies.clearfix{ :id => "replies-#{comment.id}" }
       - if !comment.descendants.empty?

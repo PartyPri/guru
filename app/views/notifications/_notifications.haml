@@ -1,11 +1,11 @@
 .notification-header.text-center
   Notifications
-  .badge= @notifications.try(:length)
+  .badge.notification-badge= @notifications.try(:length)
 - if @notifications.blank?
   %li.notification-item No notifications yet!
 -else
 - @notifications.each do |notification|
-  %li.notification-item.container
+  %li.notification-item{:id => "notification-#{notification.id}"}
     .row
       .col-sm-3
         = link_to user_path(notification.action_taker_id) do
@@ -19,4 +19,4 @@
         %br
         %small.time-ago= notification.action_happened_at
         %span.dot= "&middot; ".html_safe
-        = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read")
+        = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})

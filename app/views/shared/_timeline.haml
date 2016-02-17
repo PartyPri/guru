@@ -10,7 +10,7 @@
     %section.media-section
       - @media.each do |medium|
         - if medium.is_a? Image
-          .row.media-container{:id => "#{medium.id}"}
+          .row.media-container{:id => "media-#{medium.id}"}
             .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
               %p= medium.created_at.strftime("%b %-d, %Y")
@@ -53,7 +53,7 @@
 
         - if medium.is_a? Story
           - if medium.photo.present?
-            .row.media-container{:id => "#{medium.id}"}
+            .row.media-container{:id => "media-#{medium.id}"}
               .section-description.col-sm-2
                 .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
                 %p= medium.created_at.strftime("%b %-d, %Y")
@@ -97,7 +97,7 @@
                     = render :partial => 'comments/form_login'
                   = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
           - else
-            .row.media-container{:id => "#{medium.id}"}
+            .row.media-container{:id => "media-#{medium.id}"}
               .section-description.col-sm-2
                 %p= medium.created_at.strftime("%b %-d, %Y")
                 -if current_user && current_user.id == @user.id
@@ -137,7 +137,7 @@
                     = render :partial => 'comments/form_login'
                   = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
         -if medium.is_a? Video
-          .row.media-container{:id => "#{medium.id}"}
+          .row.media-container{:id => "media-#{medium.id}"}
             .section-description.col-sm-2
               .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
               %p= medium.created_at.strftime("%b %-d, %Y")

@@ -35,5 +35,6 @@
 //= require jquery-ui
 //= require ckeditor/init
 //= require share_modal
+//= require notifications
 //= require_tree .
 //

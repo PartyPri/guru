@@ -84,7 +84,7 @@ class Notification < ActiveRecord::Base
     if action_taken_on_reel?
       PATH_HELPER.reel_url(action_taken_on_id)
     elsif action_taken_on_medium?
-      PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: action_taken_on_id)
+      PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: "media-#{action_taken_on_id}")
     end
   end
 
