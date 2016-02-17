@@ -60,7 +60,7 @@ $(document).ready(function() {
     $('#comments-id-' + commentId).toggleClass('hidden');
     $('html, body').animate({
       scrollTop: $('#comments-id-' + commentId).offset().top - 150
-    }, 1000);
+    }, 500);
   });
 
   //if textarea empty hide submit button
