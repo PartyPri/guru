@@ -87,6 +87,7 @@ group :test do
   gem 'timecop'
   gem 'simplecov', require: false
   gem 'capybara'
+  gem 'selenium-webdriver'
 end
 
 group :development, :test do
