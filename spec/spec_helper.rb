@@ -1,7 +1,3 @@
-# run simplecov to see coverage report look in coverage/index.html
-require 'simplecov'
-SimpleCov.start 'rails'
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
@@ -9,6 +5,12 @@ require 'rspec/rails'
 require "factory_girl"
 require "devise"
 require 'support/authentication_helper'
+require 'capybara/rspec'
+require 'capybara/rails'
+
+# run simplecov to see coverage report look in coverage/index.html
+require 'simplecov'
+SimpleCov.start 'rails'
 
 FactoryGirl.find_definitions
 
@@ -53,7 +55,6 @@ RSpec.configure do |config|
     allow_any_instance_of(Mail::Message).to receive(:deliver) { self }
   end
 
-
   if Bullet.enable?
     config.before(:each) do
       Bullet.start_request
@@ -65,4 +66,5 @@ RSpec.configure do |config|
     end
   end
 
+  config.infer_spec_type_from_file_location!
 end

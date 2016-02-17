@@ -86,6 +86,7 @@ group :test do
   gem 'shoulda-callback-matchers', '~> 1.1.1'
   gem 'timecop'
   gem 'simplecov', require: false
+  gem 'capybara'
 end
 
 group :development, :test do
