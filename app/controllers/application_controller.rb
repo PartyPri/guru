@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   end
 
   def previous_path
-    request.referer
+    request.env['omniauth.origin'] || '/'
   end
 
   def after_sign_out_path_for(resource_name)

@@ -1,28 +1,2 @@
 = render 'shared/nav'
-.hero-image.landing
-  .hero
-    .container.hero-content
-      .row
-        .col-xs-12.c-white
-          %h1.hero-text.p-bottom-5 Showcase your passion.
-          %h4 Create beautiful portfolios to showcase what you do.
-          %h4 Discover inspiration, friends, and gigs!
-      .row.p-top-50
-        .col-med-4.col-med-offset-4.col-sm-8.col-sm-offset-2.p-bottom-60
-          = form_for @email_contact, class: "form-inline" do |f|
-            = f.text_field :email, class: "input-lg launch-input", style: "vertical-align: middle", placeholder: "email"
-            = f.submit "Join launch list", class: "btn btn-primary btn-lg"
-            /- if Rails.env == 'development' && !user_signed_in?
-            /= link_to "sign in with google", user_omniauth_authorize_path(:google_oauth2), class: "btn btn-primary btn-large"
-            /= link_to "Register for Event", new_event_registration_path(@event)
-            /= link_to event.name, new_event_registration_path(event.id)
-    .hero-caption Photography by Neil Yuzon | B-Boy Noi
-/= render 'shared/tag_nav'
-.container
-  = render 'shared/what_is_evrystep'
-- if Reel.where(:featured => true).any?
-  = render 'shared/featured_reels'
-= render 'shared/interests_grid'
-/=render 'shared/featured_event'
-/%hr.sm-p-top-40.sm-p-bottom-0
-= render 'shared/how_it_works'
+= render 'shared/cover'
