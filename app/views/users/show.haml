@@ -6,11 +6,15 @@
   %meta{ property: "og:description", content: "<%=user_description%>" }
 = render 'shared/nav'
 .page
-  %nav.navbar#user-page-navbar
+  %nav.navbar.clearfix#user-page-navbar
     .container
       .row
         .navbar-collapse.collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav.navbar-right
+            %li.hidden
+              %a.user-page-nav#user-reel-link{:href => "#reels"}
+                Reels
+                %span.badge= @reels.length.to_s
             %li
               %a.user-page-nav#user-reel-link{:href => "#reels"}
                 Reels
