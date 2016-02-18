@@ -33,4 +33,12 @@ class ApplicationController < ActionController::Base
     return if user_signed_in?
     redirect_with_notice(AUTH_NOTICE)
   end
+
+  def previous_path
+    request.referer
+  end
+
+  def after_sign_out_path_for(resource_name)
+    previous_path
+  end
 end
