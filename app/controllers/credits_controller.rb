@@ -16,7 +16,6 @@ class CreditsController < ApplicationController
 
     return redirect_with_notice(GENERAL_ERROR) unless @credit.save
 
-    send_invitation
     redirect_with_notice(ADDED_NOTICE, reel_path(reel))
   end
 
@@ -54,7 +53,7 @@ class CreditsController < ApplicationController
   end
 
   def send_invitation
-    CreditInvitationMailer.send_invitation(credit_id: @credit.id).deliver
+    CreditInvitationMailer.delay.send_invitation(credit_id: @credit.id)
   rescue => e
     Rails.logger.error(e)
   end
