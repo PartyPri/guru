@@ -1,4 +1,11 @@
 describe "the login process" do
+
+  around(:each) do |example|
+    DatabaseCleaner.cleaning do
+      example.run
+    end
+  end
+
   it "logs me in" do
     visit '/'
     click_link('Sign In')

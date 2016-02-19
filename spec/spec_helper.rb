@@ -5,12 +5,15 @@ require 'rspec/rails'
 require "factory_girl"
 require "devise"
 require 'support/authentication_helper'
-
 require 'capybara/rspec'
 require 'capybara/rails'
+require 'database_cleaner'
+
 Capybara.default_driver = :selenium
 Capybara.server_port = 62998
 Capybara.default_max_wait_time = 15
+
+DatabaseCleaner.strategy = :truncation
 
 # run simplecov to see coverage report look in coverage/index.html
 require 'simplecov'
