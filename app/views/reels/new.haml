@@ -21,8 +21,10 @@
             = interest.name
             %br
         .form-group
-          = f.label :tag_list, "Tags (separated by commas)"
+          = f.label :tag_list, "Tags (search and add available tags):"
+          %br
+          %small You can only add available tags. Sorry! No custom tags for now.
+          %br
           = f.text_field :tag_list
-        %hr.m-y-20
         .text-center
-          = f.submit "Save", class: "button btn btn-info w-100"
+          = f.submit "Save", class: "button btn btn-primary pull-right"

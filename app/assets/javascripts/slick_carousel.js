@@ -1,4 +1,12 @@
 $(document).ready(function(){
+
+  $('.cover-carousel').slick({
+    dots: false,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  });
+
   $('.reel-carousel').slick({
     dots: false,
     speed: 300,

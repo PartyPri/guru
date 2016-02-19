@@ -70,7 +70,7 @@ describe Notification do
 
     context 'when the action_taken_on is a medium' do
       let(:action_taken_on) { create(:medium, reel_id: 1) }
-      let(:path) { "/reels/#{action_taken_on.reel_id}##{action_taken_on.id}" }
+      let(:path) { "/reels/#{action_taken_on.reel_id}#media-#{action_taken_on.id}" }
       it 'returns the path to the reel' do
         expect(subject.path_to_action_taken_on).to end_with path
       end

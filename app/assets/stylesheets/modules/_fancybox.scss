@@ -70,13 +70,13 @@
 .comment {
   clear: both;
 
-  span.time-ago {
-    color: $med-gray;
-  }
-
   .reply {
     color: $turq;
   }
+}
+
+.time-ago {
+  color: lighten($lt-gray, 10%);
 }
 
 .replies {

@@ -1,7 +1,9 @@
 .btn {
   border-radius: 10px;
   text-transform: uppercase;
-  padding: 18px 20px;
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin: 5px;
   font-family: $sans-serif;
   color: $gray;
   @include transition(all 0.1s ease-in-out);
@@ -11,16 +13,18 @@
 }
 
 .btn-primary {
-  background-color: $red;
+  background-color: $turq;
   border-color: none;
-  border: 1px solid $red;
+  border: none;
+  color: white;
   &:hover, &:active, &:focus {
-    background-color: darken($red, 5);
+    background-color: darken($turq, 10);
   }
 }
 
 .btn-info {
   background-color: $turq;
+  color: white;
   border-color: none;
   border: none;
   &:hover, &:active, &:focus {
@@ -33,11 +37,18 @@
   border-color: $turq;
   border: 1px solid;
   color: $turq;
+  border-radius: 20px;
   &:hover, &:active, &:focus {
     background-color: $turq;
     color: $white;
     border-color: $turq;
   }
+}
+
+.btn-danger {
+  color: white;
+  border-radius: 20px;
+  padding: 5px 20px;
 }
 
 // Disabled Buttons
@@ -93,7 +104,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  background-color: darken($red, 5);
+  background-color: darken($turq, 10);
   border-color: transparent;
 }
 

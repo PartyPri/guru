@@ -6,11 +6,15 @@
   %meta{ property: "og:description", content: "<%=user_description%>" }
 = render 'shared/nav'
 .page
-  %nav.navbar#user-page-navbar
+  %nav.navbar.clearfix#user-page-navbar
     .container
       .row
         .navbar-collapse.collapse.navbar-ex1-collapse
           %ul.nav.navbar-nav.navbar-right
+            %li.hidden
+              %a.user-page-nav#user-reel-link{:href => "#reels"}
+                Reels
+                %span.badge= @reels.length.to_s
             %li
               %a.user-page-nav#user-reel-link{:href => "#reels"}
                 Reels
@@ -54,7 +58,7 @@
             %span= @user.location
     -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
-        .add-cover-image-btn.add-credit-button change cover photo
+        .add-cover-image-btn.btn.btn-primary change cover photo
   .page-content
     .tab-content
       .content-container.tab-pane.active#work{role: "tabpanel"}
@@ -76,13 +80,13 @@
                 -else
                   %small= @user.first_name + " has not created a reel yet."
             -else
-              - if current_user && current_user.id == @user.id
-                .teaser.new-reel
-                  = link_to new_reel_path do
-                    %i.fa.fa-plus-circle
-                    Add new reel
               - @reels.each do |reel|
                 =render :partial => 'shared/teaser', :locals => {:reel => reel}
+              - if current_user && current_user.id == @user.id
+                = link_to new_reel_path do
+                  .teaser.new-reel
+                    %i.fa.fa-plus-circle
+                    Add new reel
 
 %section.content-container
   .row

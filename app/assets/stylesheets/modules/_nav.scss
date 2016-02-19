@@ -17,9 +17,78 @@ nav {
   }
 }
 
+.dropdown-menu {
+  font-size: $base-font-size - 2;
+}
+
 .main-menu, .explore {
   color: $lt-turq;
   font-weight: 600;
+}
+
+.notifications-dropdown {
+  width: 300px;
+  max-height: 350px;
+  overflow-y: scroll;
+  background-color: white;
+  .notification-item,  {
+    padding: 20px;
+    line-height: 12px;
+    border-bottom: solid lighten($lt-gray, 40) 1px;
+    &:last-child{
+      border-bottom: none;
+    }
+    b{
+      color: $drk-gray;
+    }
+    a{
+      color: $lt-gray;
+      &:hover{
+        color: $lt-turq;
+      }
+    }
+    a.notification-read {
+      color: lighten($lt-red, 11);
+      display: inline;
+    }
+    .fa {
+      font-size: $base-font-size*1.5;
+      margin-right: 10px;
+    }
+  }
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-top: 0;
+  }
+  &:before {
+    top: -6px;
+    right: 30px;
+    border-bottom-color: lighten($lt-gray, 40);
+    border-width: 6px;
+  }
+  &:after {
+    top: -5px;
+    right: 31px;
+    border-bottom-color: white;
+    border-width: 5px;
+  }
+}
+
+.dropdown {
+  .badge {
+    background-color: $red;
+  }
+}
+
+.notification-header {
+  border-bottom: solid lighten($lt-gray, 30) 1px;
+  padding: 10px;
+  color: $lt-gray;
 }
 
 .nav-link, .nav-link:hover {
@@ -28,7 +97,6 @@ nav {
 }
 
 .footer {
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;

@@ -1,7 +1,7 @@
 #edit-modal.modal.fade
   .modal-dialog
     .modal-content
-      = form_for @reel, :html => { :method => :put, :multipart => true } do |f| 
+      = form_for @reel, :html => { :method => :put, :multipart => true } do |f|
         .modal-header
           %h4 Edit Media
           %button.close{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
@@ -21,8 +21,8 @@
               .modal-footer
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Image?
-                = f.submit "Save Changes", class: "btn-save pull-right"
-                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
+                = f.submit "Save Changes", class: "btn-primary btn pull-right"
+                = f.button "Cancel", type: :reset, class: "btn pull-right"
           = f.fields_for :videos do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
@@ -37,8 +37,8 @@
               .modal-footer
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Video?
-                = f.submit "Save Changes", class: "btn-save pull-right"
-                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
+                = f.submit "Save Changes", class: "btn-primary btn pull-right"
+                = f.button "Cancel", type: :reset, class: "btn pull-right"
           = f.fields_for :stories do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               -if builder.object.photo.present?
@@ -64,5 +64,5 @@
               .modal-footer
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Story?
-                = f.submit "Save Changes", class: "btn-save pull-right"
-                = f.button "Cancel", type: :reset, class: "btn-cancel pull-right"
+                = f.submit "Save Changes", class: "btn-primary btn pull-right"
+                = f.button "Cancel", type: :reset, class: "btn pull-right"
