@@ -9,6 +9,8 @@ require 'support/authentication_helper'
 require 'capybara/rspec'
 require 'capybara/rails'
 Capybara.default_driver = :selenium
+Capybara.server_port = 62998
+Capybara.default_max_wait_time = 15
 
 # run simplecov to see coverage report look in coverage/index.html
 require 'simplecov'
