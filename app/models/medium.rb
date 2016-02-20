@@ -25,5 +25,10 @@ class Medium < ActiveRecord::Base
     reel.user
   end
 
+  def reference_title
+    return title if is_a?(Story)
+    description
+  end
+
   acts_as_commentable
 end
