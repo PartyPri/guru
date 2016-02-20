@@ -50,9 +50,10 @@ class Credit < ActiveRecord::Base
 
   def notify_creation
     Notification.create(
-      action_taker: receiver,
-      action_taken_on: reel,
-      receiver: owner,
+      action_taker_id: reel_owner_id,
+      action_taken_on_id: reel_id,
+      action_taken_on_type: "Reel",
+      receiver_id: credit_receiver_id,
       action: :sent_credit,
       credit_id: id
     )

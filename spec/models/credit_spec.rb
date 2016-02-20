@@ -112,5 +112,26 @@ describe Credit do
         subject.send(:notify_creation)
       end.to change(Notification, :count).by(1)
     end
+
+    context 'notification' do
+      let!(:notification) { subject.send(:notify_creation) }
+
+      it 'sets the correct action_taker' do
+        expect(notification.action_taker_id).to eq subject.reel_owner_id
+      end
+
+      it 'sets the correct receiver' do
+        expect(notification.receiver_id).to eq subject.credit_receiver_id
+      end
+
+      it 'sets the correct action' do
+        expect(notification.action).to eq :sent_credit
+      end
+
+      it 'sets the correct action_taken_on' do
+        expect(notification.action_taken_on_id).to eq subject.reel_id
+        expect(notification.action_taken_on_type).to eq "Reel"
+      end
+    end
   end
 end
