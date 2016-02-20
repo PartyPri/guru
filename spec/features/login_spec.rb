@@ -41,7 +41,7 @@ def fill_in_ckeditor(locator, opts)
 end
 
 def login_via_google
-  click_link('Sign In')
+  click_link('nav_signin')
   fill_in 'Email', with: 'evrysteptestuser@gmail.com'
   click_button('Next')
   fill_in 'Passwd', with: 'testevrysteptest'
