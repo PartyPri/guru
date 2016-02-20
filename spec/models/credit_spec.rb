@@ -43,5 +43,74 @@ describe Credit do
         end
       end
     end
+
+    describe 'after_save' do
+      it { should callback(:notify_acceptance).after(:save) }
+      it { should callback(:notify_creation).after(:save) }
+    end
+  end
+
+  describe 'notify_acceptance' do
+    subject { build(:credit) }
+
+    context 'when the invitation_status has not changed' do
+      it 'does not create a new notification' do
+        expect do
+          subject.send(:notify_acceptance)
+        end.to_not change(Notification, :count)
+      end
+    end
+
+    context 'when the invitation_status has changed' do
+      context 'when the invitation_status has change to accepted' do
+        before { subject.accepted = true }
+
+        it 'creates a new notification' do
+          expect do
+            subject.send(:notify_acceptance)
+          end.to change(Notification, :count).by(1)
+        end
+
+        context 'notification' do
+          let!(:notification) { subject.send(:notify_acceptance) }
+
+          it 'sets the correct action_taker' do
+            expect(notification.action_taker_id).to eq subject.credit_receiver_id
+          end
+
+          it 'sets the correct receiver' do
+            expect(notification.receiver_id).to eq subject.reel_owner_id
+          end
+
+          it 'sets the correct action' do
+            expect(notification.action).to eq :accepted_credit_invite
+          end
+
+          it 'sets the correct action_taken_on' do
+            expect(notification.action_taken_on_id).to eq subject.reel_id
+            expect(notification.action_taken_on_type).to eq "Reel"
+          end
+        end
+      end
+
+      context 'when the invitation_status has changed to not accepted' do
+        before { subject.rejected = true }
+        it 'does not create a new notification' do
+          expect do
+            subject.send(:notify_acceptance)
+          end.to_not change(Notification, :count)
+        end
+      end
+    end
+  end
+
+  describe 'notify_creation' do
+    subject { build(:credit) }
+
+    it 'creates a new notification' do
+      expect do
+        subject.send(:notify_creation)
+      end.to change(Notification, :count).by(1)
+    end
   end
 end
