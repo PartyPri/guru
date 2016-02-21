@@ -67,17 +67,15 @@
                   "data-share-img" => "#{medium.photo.url}",
                   "data-share-title" => "#{medium.title}"}
                     %i.fa.fa-share-square-o
-                  -# = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                  -#   - if current_user && current_user.voted_on?(medium)
-                  -#     -# %span.action-props-on
-                  -#     %i.fa.fa-hand-peace-o.media-comments-icon-on
-                  -#   - else
-                  -#     -# %span.action-props-off
-                  -#     %i.fa.fa-hand-peace-o
-                  -#   - if medium.score < 1
-                  -#     .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                  -#   - else
-                  -#     .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+                  = link_to like_story_path(medium), method: :put, remote: true, class: "footer-link vote" do
+                    - if current_user && current_user.voted_on?(medium)
+                      %i.fa.fa-hand-peace-o.media-comments-icon-on
+                    - else
+                      %i.fa.fa-hand-peace-o
+                    - if medium.score < 1
+                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+                    - else
+                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
                   %a.comment-btn-expand{:id => "#{medium.id}"}
                     %i.fa.fa-comment-o{:id => "#{medium.id}"}
                     - if medium.comment_threads.count > 0
@@ -109,17 +107,15 @@
                   %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
                   "data-share-title" => "#{medium.title}"}
                     %i.fa.fa-share-square-o
-                  -# = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                  -#   - if current_user && current_user.voted_on?(medium)
-                  -#     -# %span.action-props-on
-                  -#     %i.fa.fa-hand-peace-o.media-comments-icon-on
-                  -#   - else
-                  -#     -# %span.action-props-off
-                  -#     %i.fa.fa-hand-peace-o
-                  -#   - if medium.score < 1
-                  -#     .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                  -#   - else
-                  -#     .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+                  = link_to like_story_path(medium), method: :put, remote: true, class: "footer-link vote" do
+                    - if current_user && current_user.voted_on?(medium)
+                      %i.fa.fa-hand-peace-o.media-comments-icon-on
+                    - else
+                      %i.fa.fa-hand-peace-o
+                    - if medium.score < 1
+                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+                    - else
+                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
                   %a.comment-btn-expand{:id => "#{medium.id}"}
                     %i.fa.fa-comment-o{:id => "#{medium.id}"}
                     - if medium.comment_threads.count > 0
@@ -153,10 +149,8 @@
                   %i.fa.fa-share-square-o
                 = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
                   - if current_user && current_user.voted_on?(medium)
-                    -# %span.action-props-on
                     %i.fa.fa-hand-peace-o.media-comments-icon-on
                   - else
-                    -# %span.action-props-off
                     %i.fa.fa-hand-peace-o
                   - if medium.score < 1
                     .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
