@@ -1,21 +1,4 @@
 $(function() {
-  //Only execute on facebook share pages
-  if($("#fb-root").length) {
-    var share_object = $("#fb-root").data("share-object");
-    var fb_app_id = $("#fb-root").data("fb-app-id");
-
-    window.fbAsyncInit = function() {
-      FB.init({appId: fb_app_id, status: true, cookie: true, xfbml: true});
-    };
-
-    (function() {
-      var e = document.createElement('script'); e.async = true;
-      e.src = document.location.protocol +
-      '//connect.facebook.net/en_US/all.js';
-      document.getElementById('fb-root').appendChild(e);
-    }());
-  }
-
   // Tagging
   $('#reel_tag_list').tagsInput({
     autocomplete_url:'/api/tags',
@@ -30,23 +13,22 @@ $(function() {
   });
 });
 
-//stick reel navigation right under main nav on scroll
-$(window).scroll(function() {
-  var scrollPos = $(this).scrollTop();
-  var scrollStick = $(".reel-header-container").outerHeight();
-  var stickyCta = $('.reel-sticky-cta-bg');
-  if ( scrollPos > scrollStick ){
-      stickyCta.addClass("stick");
-    }
-    else{
-      stickyCta.removeClass("stick");
-    }
-});
-
-//Reel page view options
 $(document).ready(function() {
+  //stick reel navigation right under main nav on scroll
 
-  //like button on click
+  $(window).scroll(function() {
+    var scrollPos = $(this).scrollTop();
+    var scrollStick = $(".reel-header-container").outerHeight();
+    var stickyCta = $('.reel-sticky-cta-bg');
+    if ( scrollPos > scrollStick ){
+        stickyCta.addClass("stick");
+      }
+      else{
+        stickyCta.removeClass("stick");
+      }
+  });
+
+  //like button and comment button focus on click
   $('.fa-hand-peace-o').click(function() {
     $(this).toggleClass('media-comments-icon-on');
   });
@@ -63,7 +45,7 @@ $(document).ready(function() {
     }, 500);
   });
 
-  //if textarea empty hide submit button
+  //comments - if textarea empty hide submit button
   var checkText = function(){
     $(".new_comment").each(function(index){
        if($(this).find("textarea").val().trim().length === 0){
@@ -73,11 +55,11 @@ $(document).ready(function() {
        }
      });
    };
-
+   //comments - show submit button on key up
   $(".fa-comment-o").click( checkText() );
   $("textarea").keyup( function() { checkText(); });
 
-  //viewing options
+  //reel - viewing options
   $(".reel-view-item").on('click', function() {
     var ref = $(this).text().trim();
 

@@ -91,26 +91,35 @@
           %p.reel-description= @reel.description
   .reel-sticky-cta-bg
     .reel-sticky-cta.container#reel-sticky-anchor
-      .share-button
-        .share-line
-        .share-triangle
-        - @media.order("position").take(1).each do |media|
-          - if media.is_a? Image
-            %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}",
-            "data-share-title" => "#{@reel.name}", "data-share-img" => "#{media.photo.url}"}
-              .share-circle.text-center
-                %i.fa.fa-share-alt
-                Share!
-          - elsif media.is_a? Video
-            %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}", "data-share-img" => "http://img.youtube.com/vi/#{media.uid}/0.jpg"}
-              .share-circle.text-center
-                %i.fa.fa-share-alt
-                Share!
-          - elsif media.is_a? Story
-            %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}", "data-share-img" => "#{media.photo.url}"}
-              .share-circle.text-center
-                %i.fa.fa-share-alt
-                Share!
+      - if @media.any?
+        .share-button
+          .share-line
+          .share-triangle
+          - @media.order("position").take(1).each do |media|
+            - if media.is_a? Image
+              %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}",
+              "data-share-title" => "#{@reel.name}", "data-share-img" => "#{media.photo.url}"}
+                .share-circle.text-center
+                  %i.fa.fa-share-alt
+                  Share!
+            - elsif media.is_a? Video
+              %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}", "data-share-img" => "http://img.youtube.com/vi/#{media.uid}/0.jpg"}
+                .share-circle.text-center
+                  %i.fa.fa-share-alt
+                  Share!
+            - elsif media.is_a? Story
+              %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}", "data-share-img" => "#{media.photo.url}"}
+                .share-circle.text-center
+                  %i.fa.fa-share-alt
+                  Share!
+      - else
+        .share-button
+          .share-line
+          .share-triangle
+          %a.media-share{href: "#", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-title" => "#{@reel.name}"}
+            .share-circle.text-center
+              %i.fa.fa-share-alt
+              Share!
       %ul.list-inline.reel-view-options.pull-right
         %li#credit-dropdown.reel-view-item.dropdown
           .dropdown-toggle#credits{"type" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}

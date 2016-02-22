@@ -19,7 +19,11 @@ Guru::Application.routes.draw do
       end
     end
   end
-  resources :stories
+  resources :stories do
+    member do
+      put "like", to: "stories#upvote"
+    end
+  end
   resources :images do
     member do
       put "like", to: "images#upvote"
