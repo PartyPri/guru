@@ -84,4 +84,37 @@ describe Notification do
       end
     end
   end
+
+  describe '#send_notification' do
+    subject { Notification.new }
+    let(:delay) { double(send_notification: nil, send_invitation: nil) }
+
+    context 'when the action is sent_credit' do
+      before { subject.sent_credit = true }
+
+      it 'sends the credit invitation mailer' do
+        expect(CreditInvitationMailer).to receive(:delay) { delay }
+        subject.send(:send_notification)
+      end
+
+      it 'does not send the notification mailer' do
+        expect(NotificationMailer).to_not receive(:delay)
+        subject.send(:send_notification)
+      end
+    end
+
+    context 'when the action is not sent_credit' do
+      before { subject.gave_props = true }
+
+      it 'sends the notification mailer' do
+        expect(NotificationMailer).to receive(:delay) { delay }
+        subject.send(:send_notification)
+      end
+
+      it 'does not send the credit invitation mailer' do
+        expect(CreditInvitationMailer).to_not receive(:delay)
+        subject.send(:send_notification)
+      end
+    end
+  end
 end

@@ -40,19 +40,22 @@ class Credit < ActiveRecord::Base
     return unless invitation_status_changed?
     return unless accepted?
     Notification.create(
-      action_taker: owner,
-      action_taken_on: reel,
-      receiver: receiver,
+      action_taker_id: credit_receiver_id,
+      action_taken_on_id: reel_id,
+      action_taken_on_type: "Reel",
+      receiver_id: reel_owner_id,
       action: :accepted_credit_invite,
     )
   end
 
   def notify_creation
     Notification.create(
-      action_taker: receiver,
-      action_taken_on: self,
-      receiver: owner,
+      action_taker_id: reel_owner_id,
+      action_taken_on_id: reel_id,
+      action_taken_on_type: "Reel",
+      receiver_id: credit_receiver_id,
       action: :sent_credit,
+      credit_id: id
     )
   end
 

@@ -29,6 +29,10 @@ class Reel < ActiveRecord::Base
     update_attributes(media_last_added_at: Time.now)
   end
 
+  def reference_title
+    name
+  end
+
   private
     def assign_featured_artist
       if self.featured?

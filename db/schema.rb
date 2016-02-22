@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160209065412) do
+ActiveRecord::Schema.define(:version => 20160220224705) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -220,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20160209065412) do
     t.string   "action_taken_on_type"
     t.datetime "created_at",                              :null => false
     t.datetime "updated_at",                              :null => false
+    t.integer  "credit_id"
   end
 
   create_table "reel_interests", :force => true do |t|

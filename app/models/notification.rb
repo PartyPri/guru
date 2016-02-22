@@ -5,7 +5,7 @@ class Notification < ActiveRecord::Base
   PATH_HELPER = Rails.application.routes.url_helpers
 
   attr_accessible :action_taker_id, :action, :read, :receiver_id, :action_taken_on_id, :action_taken_on_type,
-    :action_taker, :action_taken_on, :receiver
+    :action_taker, :action_taken_on, :receiver, :credit_id
 
   belongs_to :action_taker, class_name: "User"
   belongs_to :receiver, class_name: "User"
@@ -34,7 +34,8 @@ class Notification < ActiveRecord::Base
         "#{action_taker_name(n)} gave you props on your #{obj_class(n)}" \
         " \"#{obj_name(n)}\""
       when :sent_credit
-        ""
+        "#{action_taker_name(n)} wants to credit you on the #{obj_class(n)}" \
+        " \"#{obj_name(n)}\""
       when :accepted_credit_invite
         "#{action_taker_name(n)} accepted your credit on the #{obj_class(n)}" \
         " \"#{obj_name(n)}\""
@@ -48,13 +49,14 @@ class Notification < ActiveRecord::Base
     end
 
     def obj_class(n)
-      n.action_taken_on.class.name.downcase
+      klass = n.action_taken_on.class
+      klass.name.downcase
     end
 
     def obj_name(n)
       return unless n.action_taken_on
-      return n.action_taken_on.name if n.action_taken_on.respond_to?(:name)
-      return n.action_taken_on.description if n.action_taken_on.respond_to?(:description)
+      return unless n.action_taken_on.respond_to?(:reference_title)
+      n.action_taken_on.reference_title
     end
   end
 
@@ -104,7 +106,7 @@ class Notification < ActiveRecord::Base
 
   def send_notification
     if sent_credit?
-      CreditInvitationMailer.delay.send_invitation(credit_id: action_taken_on.id)
+      CreditInvitationMailer.delay.send_invitation(credit_id: credit_id)
     else
       NotificationMailer.delay.send_notification(notification_id: id)
     end
