@@ -5,24 +5,44 @@
     .cover-carousel-slide-1
       .cover-carousel-header
         %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic
-        %p.m-top-30 Join Evrystep to document & share your passion.
-        =link_to user_omniauth_authorize_path(:google_oauth2) do
-          .btn.btn-primary.m-top-30 Sign In
+        -unless current_user
+          %p.m-top-30 Join Evrystep to document & share your passion.
+          =link_to user_omniauth_authorize_path(:google_oauth2) do
+            .btn.btn-primary.m-top-30 Sign In
+        -else
+          %p.m-top-30 Start your journey today!
+          =link_to "/reels/new" do
+            .btn.btn-primary.m-top-30 Create a reel!
     .cover-carousel-slide-2
       .cover-carousel-header
         %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic
-        %p.m-top-30 Join Evrystep to document & share your passion.
-        =link_to user_omniauth_authorize_path(:google_oauth2) do
-          .btn.btn-primary.m-top-30 Sign In
+        -unless current_user
+          %p.m-top-30 Join Evrystep to document & share your passion.
+          =link_to user_omniauth_authorize_path(:google_oauth2) do
+            .btn.btn-primary.m-top-30 Sign In
+        -else
+          %p.m-top-30 Start your journey today!
+          =link_to "/reels/new" do
+            .btn.btn-primary.m-top-30 Create a reel!
     .cover-carousel-slide-3
       .cover-carousel-header
         %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic
-        %p.m-top-30 Join Evrystep to document & share your passion.
-        =link_to user_omniauth_authorize_path(:google_oauth2) do
-          .btn.btn-primary.m-top-30 Sign In
+        -unless current_user
+          %p.m-top-30 Join Evrystep to document & share your passion.
+          =link_to user_omniauth_authorize_path(:google_oauth2) do
+            .btn.btn-primary.m-top-30 Sign In
+        -else
+          %p.m-top-30 Start your journey today!
+          =link_to "/reels/new" do
+            .btn.btn-primary.m-top-30 Create a reel!
     .cover-carousel-slide-4
       .cover-carousel-header
         %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic
-        %p.m-top-30 Join Evrystep to document & share your passion.
-        =link_to user_omniauth_authorize_path(:google_oauth2) do
-          .btn.btn-primary.m-top-30 Sign In
+        -unless current_user
+          %p.m-top-30 Join Evrystep to document & share your passion.
+          =link_to user_omniauth_authorize_path(:google_oauth2) do
+            .btn.btn-primary.m-top-30 Sign In
+        -else
+          %p.m-top-30 Start your journey today!
+          =link_to "/reels/new" do
+            .btn.btn-primary.m-top-30 Create a reel!
