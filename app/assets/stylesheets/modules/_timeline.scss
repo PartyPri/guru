@@ -106,7 +106,7 @@
   height: 150px;
 }
 
-.media-comments-icon {
+.media-engagement-icon {
   padding: 10px 0;
   margin-left: -3px;
   background-color: white;
@@ -130,7 +130,7 @@
     }
   }
 }
-.media-comments-icon-on {
+.media-engagement-icon-on {
   background-color: $turq;
   color: white;
   i {
@@ -159,6 +159,18 @@
   &:hover {
     margin-left: 35%;
   }
+}
+
+.comment-toggle-check:not(checked) ~ .media-comment-section {
+  display: none;
+}
+
+.comment-toggle-check:checked ~ .media-comment-section {
+  display: block;
+}
+
+.comment-btn-expand {
+  margin-top: -10px;
 }
 
 #modal-share-image {
