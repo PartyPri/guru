@@ -58,7 +58,7 @@
             %span= @user.location
     -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
-        .add-cover-image-btn.btn.btn-primary change cover photo
+        .add-cover-image-btn.btn.btn-primary change cover photo & edit your profile
   .page-content
     .tab-content
       .content-container.tab-pane.active#work{role: "tabpanel"}

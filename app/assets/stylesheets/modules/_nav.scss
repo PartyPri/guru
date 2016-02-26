@@ -27,7 +27,7 @@ nav {
 }
 
 .notifications-dropdown {
-  width: 300px;
+  width: 350px;
   max-height: 350px;
   overflow-y: scroll;
   background-color: white;
@@ -80,6 +80,9 @@ nav {
 }
 
 .dropdown {
+  .fa-circle-o {
+    margin-right: 15px;
+  }
   .badge {
     background-color: $red;
   }
