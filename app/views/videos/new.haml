@@ -16,6 +16,8 @@
         .form-group
           %label Enter caption:
           = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control", rows: 2
-        = f.submit 'Save', class: 'btn btn-info w-100', id: 'submit-media'
-        #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
-        = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
+        = f.submit 'Save', class: 'btn btn-info pull-right', id: 'submit-media'
+        .preloader
+          #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
+          = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
+          Uploading...

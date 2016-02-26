@@ -10,8 +10,9 @@
           .select-style#reel_select
             = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
         .form-group
-          %label{for: "cover"} Add cover photo:
-          = f.file_field :photo
+          = f.label :photo, 'Add a cover photo', class: "btn btn-default file-upload"
+          = f.file_field :photo, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'
+          %p.text-center#emp-image-print.m-top-10
         .form-group
           %label{for: "title"} Add title:
           = f.text_field :title, placeholder: 'Your story\'s title', class: "form-control", required: true
@@ -23,4 +24,4 @@
               %p.c-red.m-top-10= msg
         %hr.m-y-20
         .text-center
-          = f.submit "Save", class: "button btn btn-info w-100"
+          = f.submit "Save", class: "button btn btn-info pull-right"

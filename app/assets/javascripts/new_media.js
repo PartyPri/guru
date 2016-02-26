@@ -20,12 +20,13 @@ $(document).ready(function() {
     }
   });
 
-  var upload_video = function(media_upload, submit_button) { 
+  var upload_video = function(media_upload, submit_button) {
     $('.preloader').show();
     media_upload.submit();
   }
 
   var upload_image = function(media_upload) {
+    $('.preloader').show();
     var image_upload_url = $('#image-upload-url').data("image-upload-url");
 
     if(($("#video_description").val() != "") && ($("#video_reel_id").val() != "")) {
@@ -34,7 +35,7 @@ $(document).ready(function() {
 
     else {
       alert("Please fill out all form fields");
-    }    
+    }
   }
 
   var getFileExtension = function(filename) {
