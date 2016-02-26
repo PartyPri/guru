@@ -4,45 +4,26 @@
   .cover-carousel.text-center
     .cover-carousel-slide-1
       .cover-carousel-header
-        %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic.
-        -unless current_user
-          %p.m-top-30 Join Evrystep to document & share your passion.
-          =link_to user_omniauth_authorize_path(:google_oauth2) do
-            .btn.btn-primary.m-top-30 Sign In
-        -else
-          %p.m-top-30 Start your journey today!
-          =link_to "/reels/new" do
-            .btn.btn-primary.m-top-30 Create a reel!
+        %h3 John Tso uses Evrystep to share the creative process behind his web comic.
+        -if current_user
+          -# %p.m-top-30 Start your journey today!
+          =link_to "/users/20" do
+            .btn.btn-primary.m-top-30 John Tso
     .cover-carousel-slide-2
       .cover-carousel-header
-        %h2.m-top-80 Huy Ha uses Evrystep to track his martials arts and dance journeys.
-        -unless current_user
-          %p.m-top-30 Join Evrystep to document & share your passion.
-          =link_to user_omniauth_authorize_path(:google_oauth2) do
-            .btn.btn-primary.m-top-30 Sign In
-        -else
-          %p.m-top-30 Start your journey today!
-          =link_to "/reels/new" do
-            .btn.btn-primary.m-top-30 Create a reel!
+        %h3 Huy Ha uses Evrystep to track his martials arts and dance journeys.
+        -if current_user
+          -# %p.m-top-30 Start your journey today!
+          =link_to "/users/23" do
+            .btn.btn-primary.m-top-30 Huy Ha
     .cover-carousel-slide-3
       .cover-carousel-header
-        %h2.m-top-80 Gary Fabian uses Evrystep to organize & share teachings on creativity.
-        -unless current_user
-          %p.m-top-30 Join Evrystep to document & share your passion.
-          =link_to user_omniauth_authorize_path(:google_oauth2) do
-            .btn.btn-primary.m-top-30 Sign In
-        -else
-          %p.m-top-30 Start your journey today!
-          =link_to "/reels/new" do
-            .btn.btn-primary.m-top-30 Create a reel!
-    /.cover-carousel-slide-4
-    /  .cover-carousel-header
-    /    %h2.m-top-80 John Tso uses Evrystep to share the creative process behind his web comic
-    /    -unless current_user
-    /      %p.m-top-30 Join Evrystep to document & share your passion.
-    /      =link_to user_omniauth_authorize_path(:google_oauth2) do
-    /        .btn.btn-primary.m-top-30 Sign In
-    /    -else
-    /      %p.m-top-30 Start your journey today!
-    /      =link_to "/reels/new" do
-    /        .btn.btn-primary.m-top-30 Create a reel!
+        %h3 Gary Fabian uses Evrystep to organize & share teachings on creativity.
+        -if current_user
+          -# %p.m-top-30 Start your journey today!
+          =link_to "/users/74" do
+            .btn.btn-primary.m-top-30 Gary Fabian
+  -unless current_user
+    %p.m-top-30.cover-cta-text Join Evrystep to document & share your passion.
+    =link_to user_omniauth_authorize_path(:google_oauth2) do
+      .btn.btn-primary.cover-cta.m-top-30 Sign In
