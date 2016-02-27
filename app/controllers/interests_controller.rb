@@ -3,7 +3,7 @@ class InterestsController < ApplicationController
     @interest = Interest.find_by_id(params[:id])
     return redirect_to :root unless @interest
 
-    @tags = @interest.reels.tag_counts
+    @tags = @interest.tag_list
     @followers = @interest.users
     @reels = @interest.reels.includes(:media, :user).with_enough_media.recently_added_media
   end

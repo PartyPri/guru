@@ -17,8 +17,8 @@
           - unless @tags.length < 1
             %ul.list-inline.m-bottom-10.interests
               - @tags.each do |tag|
-                %li.interest-tags.tag-select{:value => "#{tag.name}"}
-                  = tag.name
+                %li.interest-tags.tag-select{:value => "#{tag}"}
+                  = tag
 
 .page
   .page-content
@@ -29,7 +29,7 @@
             =render :partial => 'shared/teaser', :locals => {:reel => reel}
       .jumbotron.bottom-jumbotron-cta.text-center
         %h2
-          Feeling Inspired? Share Your Passion!  
+          Feeling Inspired? Share Your Passion!
         Stories, videos, images. Anything goes. It's easy & fun!
         %br
         = link_to new_reel_path do
