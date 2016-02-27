@@ -1,0 +1,27 @@
+= render 'shared/nav'
+.page
+  .page-content
+    .tab-content
+      .jumbotron.bottom-jumbotron-cta-cover.text-center
+        %h2
+          Start by sharing a passion!  
+        Add stories, videos, & images of the things you love to do. 
+        %br
+        Share your journey with friends.
+        %br
+        = link_to new_reel_path do
+          .teaser
+            %i.fa.fa-plus
+            %br
+            %h4
+              Start Reel
+      .container.text-center.reel-cta-footer
+        %h3
+          Or discover reels from our passion topics
+        - interest = Interest.all
+        %ul.list-inline
+          - interest.each do |interest|
+            %li= link_to interest.name, "/interests/#{interest.id}"
+      .content-container
+        - Reel.featured.each do |reel|
+          =render :partial => 'shared/teaser', :locals => {:reel => reel}

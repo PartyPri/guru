@@ -1,3 +1,4 @@
--if user_signed_in?
-  = render 'shared/nav'
-= render 'shared/cover'
+- if current_user
+  = render 'shared/cover_logged_in'
+- else
+  = render 'shared/cover'
