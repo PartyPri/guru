@@ -108,3 +108,21 @@
   background-size: cover;
   background-repeat: none;
 }
+
+.bottom-jumbotron-cta-cover {
+  background-image: url("starry-bg-transp.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #FFF5F1;
+  .teaser {
+    margin-left: 65px;
+    background-size: 160px;
+    margin-top: 20px;
+    padding: 40px 24px 50px;
+    text-align: left;
+    height: 150px;
+    .fa {
+      padding-left: 35.5px;
+    }
+  }
+}
