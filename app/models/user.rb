@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :registrations
   has_many :events, through: :registrations, uniq: true
   has_many :credits, through: :reels
+  has_many :notifications, class_name: "Notification", foreign_key: :receiver_id, dependent: :destroy
+
 
   acts_as_voter
 
