@@ -32,4 +32,7 @@ FactoryGirl.define do
     reel_id 1
     reel_owner_id 1
   end
+
+  factory :notification do
+  end
 end

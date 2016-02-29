@@ -38,7 +38,7 @@ Guru::Application.routes.draw do
     get :reply, on: :member
   end
 
-  resources :notifications, only: [:update, :index]
+  resources :notifications, only: [:update]
 
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token
