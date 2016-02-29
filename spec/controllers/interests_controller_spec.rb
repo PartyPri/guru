@@ -60,13 +60,13 @@ describe InterestsController, type: :controller do
           end
         end
 
-        context 'when the reels have tags associated to them' do
-          let!(:reel) { create(:reel, interest_ids: [interest.id], tag_list: ["dance"]) }
-
-          it 'sets the tags variable to a list of associated tags' do
-            expect(assigns(:tags)).to match_array reel.tags
-          end
-        end
+        # context 'when the reels have tags associated to them' do
+        #   let!(:reel) { create(:reel, interest_ids: [interest.id], tag_list: ["dance"]) }
+        #
+        #   it 'sets the tags variable to a list of associated tags' do
+        #     expect(assigns(:tags)).to match_array reel.tags
+        #   end
+        # end
 
         context 'when the reels have no tags assigns to them' do
           it 'sets the tags variable to an empty array' do

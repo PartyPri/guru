@@ -65,4 +65,5 @@
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Story?
                 = f.submit "Save Changes", class: "btn-primary btn pull-right"
-                = f.button "Cancel", type: :reset, class: "btn pull-right"
+                %button.btn.pull-right{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  Cancel

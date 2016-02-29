@@ -8,23 +8,22 @@
       = form_for :reel, url: reels_path, :html => { :multipart => true } do |f|
         .form-group
           %label{for: "name"} Name:
-          = f.text_field :name, :placeholder => 'Like "tap dance" or "comic sketches"', class: "form-control"
+          = f.text_field :name, :placeholder => 'Like "tap dance" or "comic sketches"', required: true, class: "form-control"
         .form-group
           %label{for: "description"} Description:
           = f.text_area :description, :placeholder => 'What\'s your reel about?', class: "form-control", rows: 3
         .form-group
           %label{for: "interests"} Interests:
-          %span.help-block Choose the interests the best describe your reel.
+          %small.help-block Choose the interests the best describe your reel.
           - @interests.each do |interest|
             = hidden_field_tag "reel[interest_ids][]", nil
-            = check_box_tag "reel[interest_ids][]", interest.id
+            = check_box_tag "reel[interest_ids][]", interest.id, false, class: "interest-check"
             = interest.name
             %br
-        .form-group
-          = f.label :tag_list, "Tags (search and add available tags):"
+        .form-group#tag_options
+          = f.label :tag_list, "Tags:"
           %br
-          %small You can only add available tags. Sorry! No custom tags for now.
-          %br
-          = f.text_field :tag_list
+          %small.help-block Select an interest above and then double click to add or remove tags.
+          = f.text_field :tag_list, class: "tag_options_ hidden"
         .text-center
           = f.submit "Save", class: "button btn btn-primary pull-right"

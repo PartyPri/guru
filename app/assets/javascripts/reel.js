@@ -1,19 +1,74 @@
-$(function() {
-  // Tagging
-  $('#reel_tag_list').tagsInput({
-    autocomplete_url:'/api/tags',
-    messages: {
-        noResults: '',
-        results: function() {}
-    },
-    'height':'100px',
-    'width':'100%',
-    'interactive':true,
-    'defaultText':'add a tag'
-  });
-});
+// $(function() {
+//   //Tagging
+//   $('#reel_tag_list').tagsInput({
+//     autocomplete_url:'/api/tags',
+//     messages: {
+//         noResults: '',
+//         results: function() {}
+//     },
+//     'height':'100px',
+//     'width':'100%',
+//     'interactive':true,
+//     'defaultText':'add a tag'
+//   });
+// });
 
 $(document).ready(function() {
+  //Tagging when creating new reels
+  //only call api in create new reel view
+  if ($('#tag_options').length === 1){
+    //function to create checkbox for each tag
+    var newTagElement = function(interest, interest_id, tag){
+      var tagPill = document.createElement("div");
+      var tagIcon = document.createElement("i");
+      var tagName = document.createTextNode(" "+tag)
+      tagPill.className = "tag-disable " + interest;
+      tagIcon.className = "fa fa-tag";
+      tagPill.setAttribute("value", tag);
+      tagPill.appendChild(tagIcon);
+      tagPill.appendChild(tagName);
+
+      $('#tag_options').append(tagPill)
+    }
+
+    //api call to get the tags
+    $.get('/api/tags', function(tags){
+      tags.forEach(function(interest){
+        for (var i =0; i < interest['tags'].length; i++){
+          newTagElement(interest['interest'],interest['id'],interest['tags'][i]);
+        }
+      });
+    });
+
+    //selecting and deselecting interest
+    $('.interest-check').change(function(){
+      var interest = $(this)[0].nextSibling.nodeValue.trim();
+      $('.'+interest).toggleClass('tag-disable');
+      $('.'+interest).toggleClass('tag');
+      $('.'+interest).removeClass('tag-selected');
+      tagSelected();
+    });
+
+    //refreshes list of available tags
+    $(document).click(function(){
+      //selecting and deselecting tags
+      $('.tag').click(function(){
+        $(this).toggleClass('tag-selected');
+        tagSelected();
+      });
+    });
+
+    //set selected tags
+    function tagSelected(){
+      var tagList = $('.tag-selected').text();
+      tagList = tagList.split(" ");
+      tagList = tagList.join(", ");
+      $('#reel_tag_list').val(tagList.slice(2));
+    }
+  }
+
+
+
 
   //like button and comment button focus on click
   $('.fa-hand-peace-o').click(function() {

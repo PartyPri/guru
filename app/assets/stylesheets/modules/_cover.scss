@@ -8,19 +8,17 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
-  background: url("cover-bg.jpg");
-  background-size: cover;
-  background-repeat: none;
+  background-color: transparent;
 }
 
 .cover-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
+  background-color: transparent;
   transform: translate(-50%, -50%);
   height: 300px;
   width: 600px;
-  background-color: white;
   @include drop-shadow-2;
 }
 
@@ -34,6 +32,16 @@
   background-size: 100px auto;
   background-repeat: no-repeat;
   z-index: 1;
+}
+
+.cover-cta {
+  left: 50%;
+  transform: translate(-50%, -350%);
+  position: absolute;
+}
+
+.cover-cta-text{
+  color: white;
 }
 
 .cover-carousel {
@@ -60,6 +68,7 @@
   height: 100%;
   width: 100%;
   color: white;
+  padding: 80px 30px;
   h2 {
     color: white;
   }
@@ -73,7 +82,8 @@
       rgba(0, 0, 0, 0.5)
     ), url("cover-carousel-JT.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .cover-carousel-slide-2 {
@@ -84,7 +94,8 @@
       rgba(0, 0, 0, 0.5)
     ), url("cover-carousel-2.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 .cover-carousel-slide-3 {
@@ -95,7 +106,8 @@
       rgba(0, 0, 0, 0.5)
     ), url("cover-carousel-3.jpg");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .cover-carousel-slide-4 {
@@ -107,6 +119,7 @@
     ), url("cover-carousel-4.jpg");
   background-size: cover;
   background-repeat: none;
+  background-position: center;
 }
 
 .bottom-jumbotron-cta-cover {

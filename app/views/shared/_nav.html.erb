@@ -87,15 +87,6 @@
                   <li><%= render "notifications/notifications" %></li>
                 </ul>
               </li>
-            <% else %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown">
-                  <i class="fa fa-circle-o"></i>
-                </a>
-                <ul class="dropdown-menu notifications-dropdown">
-                  <li><%= render "notifications/notifications" %></li>
-                </ul>
-              </li>
             <% end %>
           <% else %>
             <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>

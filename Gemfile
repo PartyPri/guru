@@ -13,6 +13,7 @@ gem 'jquery-ui-sass-rails'
 gem 'coffee-script-source', '1.8.0'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
+gem "autoprefixer-rails"
 #Database
 gem 'pg'
 
