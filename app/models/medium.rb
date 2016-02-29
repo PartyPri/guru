@@ -2,6 +2,7 @@ class Medium < ActiveRecord::Base
   attr_accessible :title, :reel_id
 
   belongs_to :reel, counter_cache: true
+  has_many :notifications, class_name: "Notification", foreign_key: :action_taken_on_id, dependent: :destroy
 
   validates_presence_of :reel_id
 
