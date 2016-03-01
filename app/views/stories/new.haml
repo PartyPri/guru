@@ -24,4 +24,8 @@
               %p.c-red.m-top-10= msg
         %hr.m-y-20
         .text-center
-          = f.submit "Save", class: "button btn btn-info pull-right"
+          = f.submit "Save", class: "button btn btn-info pull-right", onclick: "$('.preloader').show();"
+        .preloader
+          #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
+          = image_tag 'ajax-loader.gif', class: "preloader", alt: "Saving...", title: "Saving..."
+          &nbsp; Saving...

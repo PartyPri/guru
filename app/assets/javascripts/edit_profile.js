@@ -10,13 +10,13 @@ function setSelectionToCanvas(c) {
   profileAvatarUpdated = true;
 }
 
-function readURL(input) {
+function readURL(input, viewer) {
   if (input.files && input.files[0]) {
     var reader = new FileReader();
 
     reader.onload = function(e) {
-      $('#profile_image_viewer').attr('src', e.target.result);
-      $('#profile_image_viewer').Jcrop({
+      $(viewer).attr('src', e.target.result);
+      $(viewer).Jcrop({
         keySupport: false,
         aspectRatio: 1,
         boxWidth: $(".edit_user").width() - 5,
@@ -65,16 +65,29 @@ $(function() {
   window.profileAvatarUpdated = false;
 
   $("#user_avatar").change(function(){
-    readURL(this);
+    readURL(this, '#profile_image_viewer');
+    $('#cropped_image_canvas').removeClass('hidden');
+    var imagePath = $('#user_avatar').val().split("\\");
+    imagePath = imagePath[imagePath.length - 1]
+    $('#avatar-image-path').html(imagePath);
   });
-
   $('img#profile_image_viewer[src=""]').hide();
+
+  $("#user_cover_photo").change(function(){
+    readURL(this, '#cover_image_viewer');
+    var imagePath = $('#user_cover_photo').val().split("\\");
+    imagePath = imagePath[imagePath.length - 1]
+    $('#cover-image-path').html(imagePath);
+  });
+  $('img#cover_image_viewer[src=""]').hide();
 
   if (typeof evryStepUserId != 'undefined')  {
     var formSelectorString = "form#edit_user_" + evryStepUserId;
     $(formSelectorString).submit(function(event) {
       var formData = cloneFormDataAndAddCroppedImage($(formSelectorString)[0]);
 
+      $('.preloader').show();
+      
       $.ajax({
         url: "/users/" + evryStepUserId,
         data: formData,

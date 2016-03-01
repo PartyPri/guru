@@ -244,6 +244,7 @@
       }
     }
     .add-credit-button {
+      cursor: pointer;
       display: inline-block;
       .fa {
         font-size: 15px;
@@ -286,6 +287,7 @@
     cursor: pointer;
   }
   .add-credit-button {
+    cursor: pointer;
     .fa {
       font-size: 15px;
     }
@@ -313,6 +315,7 @@
   border-radius: 20px;
   padding: 5px 20px;
   color: white;
+  cursor: pointer;
   &:hover {
     color: white;
     background-color: lighten($lt-turq, 10%);
@@ -583,6 +586,11 @@ li.reel-credit-item {
     width: 360px;
     right: 10px;
   }
+  .media-engagement-icon {
+    a {
+      display: inline-block;
+    }
+  }
 }
 
 @media (max-width: 450px) {
@@ -592,7 +600,7 @@ li.reel-credit-item {
       padding: 0 0 10px;
     }
     .share-button-mobile {
-      margin-left: 36%;
+      margin-left: 39%;
     }
     .hero {
       .container {

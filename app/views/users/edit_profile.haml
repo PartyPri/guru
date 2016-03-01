@@ -7,51 +7,59 @@
       = form_for @user, :html => { :method => :put, :multipart => true } do |f|
         .form-group
           %label{for: "first_name"} First name:
-          = f.text_field :first_name, class: "form-control"
+          = f.text_field :first_name,  required: true, class: "form-control"
         .form-group
           %label{for: "last_name"} Last name:
-          = f.text_field :last_name, class: "form-control"
+          = f.text_field :last_name,  required: true, class: "form-control"
         .form-group
           %label{for: "location"} Location:
           = f.text_field :location, class: "form-control"
         .form-group
           %label{for: "description"} Tagline:
           = f.text_field :description, class: "form-control"
+        .form-group.edit-cover
+          %hr
+          %label Cover Picture:
+          - if @user.cover_photo.exists?
+            <br>
+            = image_tag @user.cover_photo.url(:medium)
+            %br
+            %br
+            -# = @user.cover_photo_file_name
+            -# <br><br>
+            = f.label :cover_photo, 'New cover picture', class: "btn btn-default file-upload"
+          - else
+            = f.label :cover_photo, 'Choose a cover picture', class: "btn btn-default file-upload"
+          = f.file_field :cover_photo, class: "hidden"
+          %small.text-center.file-path#cover-image-path.m-top-10
+          %img{ id: "cover_image_viewer", src: "", alt: "your image" }
         .form-group
+          %hr
           %label{for: "avatar"} Profile Picture:
           - if @user.avatar.exists?
             <br>
             = image_tag @user.avatar.url(:small)
-            <br>
-            =# @user.avatar_file_name
-            <br><br>
-            %p Select a new profile picture
+            %br
+            %br
+            -# = @user.avatar_file_name
+            = f.label :avatar, 'New profile picture', class: "btn btn-default file-upload"
           - else
-            %p Choose a profile picture
-          = f.file_field :avatar
+            = f.label :avatar, 'Choose a profile picture', class: "btn btn-default file-upload"
+          = f.file_field :avatar, class: "hidden"
+          %small.text-center.file-path#avatar-image-path.m-top-10
           %img{ id: "profile_image_viewer", src: "", alt: "your image" }
+          %small.help-block Click your picture and drag to crop
           %br
-          %canvas{ id: "cropped_image_canvas"}
-        .form-group.edit-cover
-          %label{for: "cover_photo"} Cover Picture:
-          - if @user.cover_photo.exists?
-            <br>
-            = image_tag @user.cover_photo.url(:medium)
-            <br>
-            = @user.cover_photo_file_name
-            <br><br>
-            %p Select a new cover picture
-          - else
-            %p Choose a cover picture
-          = f.file_field :cover_photo
-          / %button.btn.btn-default.file-upload
-          /   Choose picture
-          /   = file_field_tag :file, required: false, id: :avatar, class: "upload", "data-print" => "#emp-image-print"
+          %canvas.hidden{ id: "cropped_image_canvas"}
         .form-group
           %label{for: "bio"} Bio:
           = f.text_area :bio, class: "form-control"
         %hr.m-y-20
         .text-center
           = f.submit "Save Changes", class: "button btn btn-primary"
+        .preloader.text-center
+          #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
+          = image_tag 'ajax-loader.gif', class: "preloader", alt: "Saving...", title: "Saving..."
+          &nbsp; Saving...
 = javascript_tag do
   window.evryStepUserId = "#{@user.id}";
