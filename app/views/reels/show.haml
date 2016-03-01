@@ -71,9 +71,15 @@
           %h3.reel-name-header.m-bottom-5.m-top-10
             = @reel.name
             - if current_user && current_user.id == @user.id
-              = link_to edit_reel_path(@reel) do
-                %i.fa.fa-pencil-square
-                Edit
+              .edit-block
+                = link_to edit_reel_path(@reel) do
+                  %i.fa.fa-pencil-square
+                  Edit
+            %small.visible-xs.help-block
+              %i
+                by
+                %b
+                  = link_to @user.first_name + " " + @user.last_name, user_path(@reel.user)
           .share-button-mobile
             .share-line
             .share-triangle
@@ -128,9 +134,12 @@
               %p Credits
           %ul.reel-credit-list.pull-right.dropdown-menu{"aria-labelledby" => "credits"}
             - if owned_by_current_user?
-              %a.add-credit-button{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
+              %a.add-credit-button.hidden-xs{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
                 %i.fa.fa-plus-circle
                 Add Credit to the Reel
+              %a.add-credit-button.visible-xs{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
+                %i.fa.fa-plus-circle
+                Add Credit
             - else
               - if @credits.blank?
                 %p= "#{@reel.name} has no credits yet."

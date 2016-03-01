@@ -15,7 +15,7 @@
               - interest.each do |interest|
                 %li= link_to interest.name, "/interests/#{interest.id}"
           - unless @tags.length < 1
-            %ul.list-inline.m-bottom-10.interests
+            %ul.list-inline.m-bottom-10.interests.hidden-xs
               - @tags.each do |tag|
                 %li.interest-tags.tag-select{:value => "#{tag}"}
                   = tag

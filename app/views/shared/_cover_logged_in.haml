@@ -1,11 +1,14 @@
 = render 'shared/nav'
-.page
-  .page-content
+.reel-page
+  .content.p-top-10
     .tab-content
+      .content-container.m-top-20
+        - Reel.featured.each do |reel|
+          =render :partial => 'shared/teaser', :locals => {:reel => reel}
       .jumbotron.bottom-jumbotron-cta-cover.text-center
         %h2
-          Start by sharing a passion!  
-        Add stories, videos, & images of the things you love to do. 
+          Start by sharing a passion!
+        Add stories, videos, & images of the things you love to do.
         %br
         Share your journey with friends.
         %br
@@ -22,6 +25,3 @@
         %ul.list-inline
           - interest.each do |interest|
             %li= link_to interest.name, "/interests/#{interest.id}"
-      .content-container
-        - Reel.featured.each do |reel|
-          =render :partial => 'shared/teaser', :locals => {:reel => reel}

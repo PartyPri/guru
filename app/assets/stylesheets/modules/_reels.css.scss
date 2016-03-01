@@ -134,6 +134,10 @@
   }
 }
 
+.edit-block {
+  display: inline-block;
+}
+
 #links {
   margin-top: 48px;
   margin-left: 18px;
@@ -240,6 +244,7 @@
       }
     }
     .add-credit-button {
+      display: inline-block;
       .fa {
         font-size: 15px;
       }
@@ -499,8 +504,14 @@ li.reel-credit-item {
     .reel-top-header {
       text-align: center;
     }
-    .reel-artist-name, .reel-sticky-cta{
+    .reel-artist-name, .share-button {
       display: none;
+    }
+    .reel-credit-list {
+      min-width: 80vw;
+    }
+    .reel-view-options {
+      padding-top: 10px;
     }
     .share-button-mobile {
       display: block;

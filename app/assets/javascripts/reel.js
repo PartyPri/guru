@@ -38,7 +38,10 @@ $(document).ready(function() {
           newTagElement(interest['interest'],interest['id'],interest['tags'][i]);
         }
       });
-    });
+    })
+      .done(function(){
+        tagsInit();
+      });
 
     //selecting and deselecting interest
     $('.interest-check').change(function(){
@@ -60,6 +63,23 @@ $(document).ready(function() {
         }
       });
     });
+
+    //enable tags based on selected interests and highlight previously selected tags
+    function tagsInit(){
+      var selectedInterests = [];
+      var currentTags = $('#reel_tag_list').val().split(',');
+      $(':checkbox:checked').each(function(){
+        selectedInterests.push(escChar($(this)[0].nextSibling.nodeValue.trim().split(' ').join('')));
+      })
+      selectedInterests.forEach(function(interest){
+        $('.'+interest).toggleClass('selectable');
+        $('.'+interest).toggleClass('tag');
+        $('.'+interest).toggleClass('tag-disable');
+      });
+      currentTags.forEach(function(tag){
+        $("div[value='" + tag.trim() +"']").toggleClass('tag-selected')
+      });
+    }
 
     //set selected tags for the form
     function tagSelected(){
