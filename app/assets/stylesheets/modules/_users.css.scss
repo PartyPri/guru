@@ -290,6 +290,10 @@ li.user-entourage-item {
   font-size: $base-font-size*1.5;
 }
 
+.file-path {
+  word-wrap: break-word;
+}
+
 @media (max-width: 990px) {
   .user-page-content {
     margin-left: 32%;

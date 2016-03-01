@@ -112,23 +112,24 @@
             %li.empty-profile-avatar
             %li.empty-profile-avatar
         - else
-          %h2= @user.first_name + "'s reels were influenced by..."
-          %ul.user-entourage-list.row
-            - @entourage.each do |credit|
-              %li.user-entourage-item.col-xs-6
-                - if credit.receiver.nil?
-                  %img.user-credit-avatar.blank-user
-                  %p= credit.credit_receiver_email
-                  %p
-                  %strong= credit.role + " in"
-                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
-                - else
-                  = link_to user_path(credit.receiver) do
-                    %img.user-credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
-                  %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
-                  %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
-                  %strong= credit.role + " in"
-                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+          - unless @entourage.blank?
+            %h2= @user.first_name + "'s reels were influenced by..."
+            %ul.user-entourage-list.row
+              - @entourage.each do |credit|
+                %li.user-entourage-item.col-xs-6
+                  - if credit.receiver.nil?
+                    %img.user-credit-avatar.blank-user
+                    %p= credit.credit_receiver_email
+                    %p
+                    %strong= credit.role + " in"
+                    %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+                  - else
+                    = link_to user_path(credit.receiver) do
+                      %img.user-credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                    %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
+                    %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
+                    %strong= credit.role + " in"
+                    %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
 
 - if @user_credits.length > 0
   %section.content-container

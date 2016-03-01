@@ -32,27 +32,13 @@
                   %i.fa.fa-pencil-square-o
                   Edit
               %p.timeline-description= truncate(medium.description, length: 250)
-              .media-engagement-icon
-                %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
-                "data-share-img" => "#{medium.photo.url}",
-                "data-share-title" => "#{truncate(medium.description, length: 25)}"}
-                  %i.fa.fa-share-square-o
-                = link_to like_image_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                  - if current_user && current_user.voted_on?(medium)
-                    %i.fa.fa-hand-peace-o.media-engagement-icon-on
-                  - else
-                    %i.fa.fa-hand-peace-o
-                  - if medium.score < 1
-                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                  - else
-                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-                %label.comment-btn-expand{:for => "comments-toggle-id-#{medium.id}", :id => "#{medium.id}"}
-                  %i.fa.fa-comment-o{:id => "#{medium.id}"}
-                  - if medium.comment_threads.count > 0
-                    .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
+              .media-engagement-icon.hidden-xs
+                = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_image_path(medium), :share_image => "#{medium.photo.url}"}
             .section-media.col-sm-10
               .section-photo-container
                 %img.section-photo{"src" => "#{medium.photo.url}"}
+                .media-engagement-icon.visible-xs
+                  = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_image_path(medium), :share_image => "#{medium.photo.url}"}
               %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
               .media-comment-section{:id => "comments-id-#{medium.id}"}
                 - if current_user
@@ -76,28 +62,14 @@
                     %i.fa.fa-pencil-square-o
                     Edit
                 %h4= medium.title
-                .media-engagement-icon
-                  %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
-                  "data-share-img" => "#{medium.photo.url}",
-                  "data-share-title" => "#{medium.title}"}
-                    %i.fa.fa-share-square-o
-                  = link_to like_story_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                    - if current_user && current_user.voted_on?(medium)
-                      %i.fa.fa-hand-peace-o.media-engagement-icon-on
-                    - else
-                      %i.fa.fa-hand-peace-o
-                    - if medium.score < 1
-                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                    - else
-                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-                  %label.comment-btn-expand{:for => "comments-toggle-id-#{medium.id}", :id => "#{medium.id}"}
-                    %i.fa.fa-comment-o{:id => "#{medium.id}"}
-                    - if medium.comment_threads.count > 0
-                      .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
+                .media-engagement-icon.hidden-xs
+                  = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
               .section-media.col-sm-10
                 .section-photo-container
                   %img.section-photo{"src" => "#{medium.photo.url}"}
                 %p.story-container= sanitize(medium.body)
+                .media-engagement-icon.visible-xs
+                  = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
                 %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
                 .media-comment-section{:id => "comments-id-#{medium.id}"}
                   - if current_user
@@ -118,25 +90,13 @@
                     %i.fa.fa-pencil-square-o
                     Edit
                 %h4= medium.title
-                .media-engagement-icon
-                  %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
-                  "data-share-title" => "#{medium.title}"}
-                    %i.fa.fa-share-square-o
-                  = link_to like_story_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                    - if current_user && current_user.voted_on?(medium)
-                      %i.fa.fa-hand-peace-o.media-engagement-icon-on
-                    - else
-                      %i.fa.fa-hand-peace-o
-                    - if medium.score < 1
-                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                    - else
-                      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-                  %label.comment-btn-expand{:for => "comments-toggle-id-#{medium.id}", :id => "#{medium.id}"}
-                    %i.fa.fa-comment-o{:id => "#{medium.id}"}
-                    - if medium.comment_threads.count > 0
-                      .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
+                .media-engagement-icon.hidden-xs
+                  = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
+
               .section-media.col-sm-10
                 %p.story-container= sanitize(medium.body)
+                .media-engagement-icon.visible-xs
+                  = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
                 %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
                 .media-comment-section{:id => "comments-id-#{medium.id}"}
                   - if current_user
@@ -158,26 +118,12 @@
                   %i.fa.fa-pencil-square-o
                   Edit
               %p.timeline-description= truncate(medium.description, length: 250)
-              .media-engagement-icon
-                %a.media-share{href: "##{medium.id}", "data-toggle" => "modal", "data-target" => "#share-modal", "data-reel-id" => "#{@reel.id}", "data-share-id" => "##{medium.id}", "data-share-url" => "#{request.original_url}##{medium.id}",
-                "data-share-img" => "#{medium.screenshot_url}",
-                "data-share-title" => "#{truncate(medium.description, length: 25)}"}
-                  %i.fa.fa-share-square-o
-                = link_to like_video_path(medium), method: :put, remote: true, class: "footer-link vote" do
-                  - if current_user && current_user.voted_on?(medium)
-                    %i.fa.fa-hand-peace-o.media-engagement-icon-on
-                  - else
-                    %i.fa.fa-hand-peace-o
-                  - if medium.score < 1
-                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-                  - else
-                    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
-                %label.comment-btn-expand{:for => "comments-toggle-id-#{medium.id}", :id => "#{medium.id}"}
-                  %i.fa.fa-comment-o{:id => "#{medium.id}"}
-                  - if medium.comment_threads.count > 0
-                    .engagement-badge.badge{:id => "#{medium.id}"}= medium.comment_threads.count
+              .media-engagement-icon.hidden-xs
+                = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}
             .section-media.col-sm-10
               %iframe{"src" => "#{medium.embed_url}?rel=0&amp;showinfo=0", "frameborder" => "0"}
+              .media-engagement-icon.visible-xs
+                = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}
               %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
               .media-comment-section{:id => "comments-id-#{medium.id}"}
                 - if current_user

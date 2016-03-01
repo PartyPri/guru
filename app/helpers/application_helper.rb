@@ -1,15 +1,15 @@
 module ApplicationHelper
 
   def share_object(type)
-    if Rails.env != "production" 
+    if Rails.env != "production"
       'https://developers.facebook.com/docs/'
     else
       case type
         when 'reel'
-          reel_url(@reel) 
+          reel_url(@reel)
         when 'user'
           user_url(@user)
-        else 
+        else
           'https://developers.facebook.com/docs/'
       end
     end
@@ -25,7 +25,7 @@ module ApplicationHelper
 
   def last_reel_medium
     if @reel.media.any?
-      if @reel.media.last.is_a? Image 
+      if @reel.media.last.is_a? Image
         "#{root_url}#{@reel.images.last.photo}"
       else
         "http://www.youtube.com/v/#{@reel.media.last.uid}"
@@ -36,7 +36,7 @@ module ApplicationHelper
   end
 
   def user_image
-    @user.avatar ? @user.avatar.url : "http://evrystep.herokuapp.com/assets/mighty_1.jpg"  
+    @user.avatar ? @user.avatar.url : "http://evrystep.herokuapp.com/assets/mighty_1.jpg"
   end
 
   def user_description
