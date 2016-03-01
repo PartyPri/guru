@@ -300,6 +300,7 @@ li.user-entourage-item {
   .add-cover-image-btn {
     margin: 0 100px;
     float: none;
+    min-width: 160px;
   }
   #contact {
     margin-top: 80px;
@@ -337,9 +338,6 @@ li.user-entourage-item {
 }
 
 @media (max-width: 650px) {
-  .user-hero-image {
-    display: none;
-  }
   .page {
     .user-page-info{
       width: 100%;
