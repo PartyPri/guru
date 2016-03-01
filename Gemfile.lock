@@ -362,7 +362,7 @@ DEPENDENCIES
   acts_as_list
   acts_as_votable
   autoprefixer-rails
-  aws-sdk (< 2.0)
+  aws-sdk
   bootstrap-sass-rails
   bullet
   byebug
