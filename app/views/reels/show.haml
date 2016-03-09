@@ -48,7 +48,7 @@
                 %span
                   = @user.location
             %br
-        .col-sm-9.reel-header
+        .col-sm-7.reel-header
           .reel-top-header
             -if @reel.featured?
               .featured-reel-tag
@@ -126,13 +126,13 @@
             .share-circle.text-center
               %i.fa.fa-share-alt
               Share!
-      %ul.list-inline.reel-view-options.pull-right
+      %ul.list-inline.reel-view-options.pull-right.visible-xs
         %li#credit-dropdown.reel-view-item.dropdown
           .dropdown-toggle#credits{"type" => "button", "data-toggle" => "dropdown", "aria-haspopup" => "true", "aria-expanded" => "true"}
             #credit-button-drop
               %i.fa.fa-group
-              %p Credits
-          %ul.reel-credit-list.pull-right.dropdown-menu{"aria-labelledby" => "credits"}
+              Credits
+          %ul.reel-credit-list-dropdown.pull-right.dropdown-menu{"aria-labelledby" => "credits"}
             - if owned_by_current_user?
               %a.add-credit-button.hidden-xs{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
                 %i.fa.fa-plus-circle
@@ -177,6 +177,57 @@
                       - if owned_by_current_user?
                         = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
                           %i.fa.fa-times-circle.credit-delete
+  .reel-credit-sidebar.hidden-xs
+    %ul.reel-credit-list
+      .reel-credit-header.text-center
+        %i.fa.fa-group
+        Credits
+        %i.fa.fa-times.pull-right#credit-list-close
+      %hr
+      - if owned_by_current_user?
+        %a.add-credit-button.hidden-xs{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
+          %i.fa.fa-plus-circle
+          Add Credit to the Reel
+        %a.add-credit-button.visible-xs{"data-toggle" => "modal", "data-target" => "#add-credit-modal"}
+          %i.fa.fa-plus-circle
+          Add Credit
+      - else
+        - if @credits.blank?
+          %p= "#{@reel.name} has no credits yet."
+      - @credits.each do |credit|
+        - if owned_by_current_user?
+          - if credit.pending?
+            %li.reel-credit-item.reel-credit-pending
+              %p.reel-credit-role= credit.role.upcase
+              - if credit.receiver.nil?
+                %strong
+                  = "#{credit.credit_receiver_email} (pending)"
+                  = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                    %i.fa.fa-times-circle.credit-delete
+              - else
+                = link_to user_path(credit.receiver) do
+                  %img.credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                %strong
+                  = link_to "#{credit.receiver.first_name} #{credit.receiver.last_name} (pending)", user_path(credit.receiver)
+                  = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                    %i.fa.fa-times-circle.credit-delete
+        - if credit.accepted?
+          %li.reel-credit-item
+            %p.reel-credit-role= credit.role.upcase
+            - if credit.receiver.nil?
+              %strong
+                = credit.credit_receiver_email
+                - if current_user && current_user.id == @user.id
+                  = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                    %i.fa.fa-times-circle.credit-delete
+            - else
+              = link_to user_path(credit.receiver) do
+                %img.credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+              %strong
+                = link_to "#{credit.receiver.first_name} #{credit.receiver.last_name}", user_path(credit.receiver)
+                - if owned_by_current_user?
+                  = link_to reel_credit_path(@reel.id, credit.id), method: :delete do
+                    %i.fa.fa-times-circle.credit-delete
   .tab-content
     #timeline.tab-pane.active
       = render 'shared/timeline'

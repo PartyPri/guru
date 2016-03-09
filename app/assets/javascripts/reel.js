@@ -95,8 +95,18 @@ $(document).ready(function() {
     }
   }
 
-
-
+  //stick reel navigation right under main nav on scroll
+  $(window).scroll(function() {
+    var scrollPos = $(this).scrollTop();
+    var scrollStick = $(".reel-header-container").outerHeight();
+    var stickyCta = $('.reel-sticky-cta-bg');
+    if ( scrollPos > scrollStick ){
+        stickyCta.addClass("stick");
+      }
+      else{
+        stickyCta.removeClass("stick");
+      }
+  });
 
   //like button and comment button focus on click
   $('.fa-hand-peace-o').click(function() {
@@ -119,6 +129,18 @@ $(document).ready(function() {
    //comments - show submit button on key up
   $(".fa-comment-o").click( checkText() );
   $(".comment-form-textbox").keyup( function() { checkText(); });
+
+  //minimize credit sidebar
+  $(".reel-credit-header").click(function(){
+    $(".reel-credit-list").toggleClass("reel-credit-list-min");
+    $("#credit-list-close").toggleClass("hidden");
+    $(".section-media").toggleClass("col-sm-7");
+    $(".section-media").toggleClass("col-sm-10");
+    $("#timeline-bottom-container").toggleClass("col-sm-10");
+    $("#timeline-bottom-container").toggleClass("col-sm-12");
+    $("#timeline-related-reels").toggleClass("col-sm-10");
+    $("#timeline-related-reels").toggleClass("col-sm-12");
+  })
 
   //minimizing credit-invitation
   $(".credit-invitation-minimize").click(function () {

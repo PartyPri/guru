@@ -10,7 +10,7 @@
       .col-sm-3
         = link_to user_path(notification.action_taker_id) do
           .timeline-teaser{style: "background-image:url(#{notification.action_taker_avatar_url})"}
-      .col-sm-9
+      .col-sm-7
         = link_to notification.path_to_action_taken_on do
           %div
             %i.pull-left.fa{:class => @notification_icons[notification.action]}
@@ -21,3 +21,6 @@
         %small.time-ago= notification.action_happened_at
         %span.dot= "&middot; ".html_safe
         = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
+      .col-sm-2.notification-read.hidden-xs
+        = link_to notification_path(id: notification, read: true), method: :put, remote: true, :data => {:nId => notification.id} do
+          %i.fa.fa-times-circle
