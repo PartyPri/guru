@@ -49,4 +49,11 @@ class CreditInvitationMailer < ActionMailer::Base
   def reel
     @reel ||= @credit.reel
   end
+
+  def link
+    @link ||= begin
+      params = credit.invitation_opts.to_query
+      "#{reel_url(@reel.id)}?#{params}"
+    end
+  end
 end
