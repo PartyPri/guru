@@ -317,7 +317,7 @@
   padding: 30px;
   border-left: solid #e6e6e6 1px;
   border-bottom: solid #e6e6e6 1px;
-  max-width: 300px;
+  max-width: 235px;
   font-size: $base-font-size;
   max-height: 100vh;
   overflow-y: scroll;
@@ -453,7 +453,7 @@ li.reel-credit-item {
   height: 375px;
   width: 400px;
   background-color: white;
-  z-index: 1;
+  z-index: 4;
   border: solid $lt-gray 1px;
 }
 
