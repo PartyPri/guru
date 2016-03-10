@@ -150,6 +150,12 @@
   background-color: $red;
   margin: -22px 33px;
   position: absolute;
+  user-select: none;
+  cursor: pointer;
+}
+
+.props-non-user {
+  width: 65px;
 }
 
 .media-comment-section {

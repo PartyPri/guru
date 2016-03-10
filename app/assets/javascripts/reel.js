@@ -14,6 +14,11 @@
 // });
 
 $(document).ready(function() {
+  //bootstrap tooltip init for props
+  // $('[data-toggle="props-tooltip"]').tooltip({
+  //   template: '<div class="props-tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="props-tooltip-inner"></div></div>'
+  // });
+
   //Tagging when creating new reels
   //only call api in create new reel view
   if ($('#tag_options').length === 1){
