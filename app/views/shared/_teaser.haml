@@ -17,7 +17,7 @@
     .reel-teaser-info
       %h3.name= truncate(reel.name, length: 35)
       = link_to user_path(reel.user) do
-        %h5
+        %h5.teaser-time-ago
           = reel.user.first_name
           = reel.user.last_name
           |

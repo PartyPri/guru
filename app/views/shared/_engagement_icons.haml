@@ -2,15 +2,24 @@
 "data-share-img" => share_image,
 "data-share-title" => title}
   %i.fa.fa-share-square-o
-= link_to like_path, method: :put, remote: true, class: "footer-link vote" do
-  - if current_user && current_user.voted_on?(medium)
-    %i.fa.fa-hand-peace-o.media-engagement-icon-on
-  - else
-    %i.fa.fa-hand-peace-o
-  - if medium.score < 1
-    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
-  - else
-    .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+-if current_user && current_user.id == @user.id
+  = link_to like_path, method: :put, remote: true, class: "footer-link vote" do
+    - if current_user && current_user.voted_on?(medium)
+      %i.fa.fa-hand-peace-o.media-engagement-icon-on
+    - else
+      %i.fa.fa-hand-peace-o
+    - if medium.score < 1
+      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none"}= medium.score
+    - else
+      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count"}= medium.score
+-else
+  .props-non-user{"data-tooltip" => "Please sign in to give props!"}
+    %i.fa.fa-hand-peace-o{"style" => "cursor: not-allowed;"}
+    - if medium.score < 1
+      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "display: none;"}= medium.score
+    - else
+      .engagement-badge.badge{"data-id" => "#{medium.id}", class: "votes-count", style: "cursor: not-allowed;"}= medium.score
+
 %label.comment-btn-expand{:for => "comments-toggle-id-#{medium.id}", :id => "#{medium.id}"}
   %i.fa.fa-comment-o{:id => "#{medium.id}"}
   - if medium.comment_threads.count > 0
