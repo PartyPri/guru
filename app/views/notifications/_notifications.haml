@@ -19,8 +19,7 @@
             %br
             %br
         %small.time-ago= notification.action_happened_at
-        %span.dot= "&middot; ".html_safe
-        = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
+        -# %span.dot= "&middot; ".html_safe
+        -# = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
       .col-sm-2.notification-read.hidden-xs
-        = link_to notification_path(id: notification, read: true), method: :put, remote: true, :data => {:nId => notification.id} do
-          %i.fa.fa-times-circle
+        = link_to("", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read fa fa-times-circle", :data => {:nId => notification.id})
