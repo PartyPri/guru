@@ -13,10 +13,10 @@
           = f.text_field :last_name,  required: true, class: "form-control"
         .form-group
           %label{for: "location"} Location:
-          = f.text_field :location, class: "form-control"
+          = f.text_field :location, class: "form-control", maxlength: 15
         .form-group
           %label{for: "description"} Tagline:
-          = f.text_field :description, class: "form-control"
+          = f.text_field :description, class: "form-control", maxlength: 35
         .form-group.edit-cover
           %hr
           %label Cover Picture:

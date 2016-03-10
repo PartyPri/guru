@@ -28,7 +28,7 @@ nav {
 
 .notifications-dropdown {
   width: 350px;
-  max-height: 350px;
+  max-height: 90vh;
   overflow-y: scroll;
   background-color: white;
   .notification-item,  {
@@ -47,9 +47,15 @@ nav {
         color: $lt-turq;
       }
     }
-    a.notification-read {
+    .notification-read {
       color: lighten($lt-red, 11);
       display: inline;
+      a {
+        color: $lt-red;
+        &:hover {
+          color: red;
+        }
+      }
     }
     .fa {
       font-size: $base-font-size*1.5;
