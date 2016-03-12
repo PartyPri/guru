@@ -66,6 +66,15 @@ describe Notification do
       it 'returns the path to the reel' do
         expect(subject.path_to_action_taken_on).to end_with "/reels/#{action_taken_on.id}"
       end
+
+      context 'when the notification has a credit_id' do
+        let(:credit) { create(:credit) }
+        before { subject.credit_id = credit.id }
+        it 'returns the path to the reel with the credit invitation param' do
+          expect(subject.path_to_action_taken_on).to include("/reels/#{action_taken_on.id}")
+          expect(subject.path_to_action_taken_on).to end_with "?credit_invitation=#{credit.id}"
+        end
+      end
     end
 
     context 'when the action_taken_on is a medium' do

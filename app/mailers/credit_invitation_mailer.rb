@@ -20,6 +20,7 @@ class CreditInvitationMailer < ActionMailer::Base
     raise Error.new("Receiver email cannot be blank") unless receiver_email
     raise Error.new("Owner cannot be blank") unless owner
     raise Error.new("Reel cannot be blank") unless reel
+    raise Error.new("Error generating link") unless link_url
   end
 
   def receiver_email
@@ -48,5 +49,12 @@ class CreditInvitationMailer < ActionMailer::Base
 
   def reel
     @reel ||= @credit.reel
+  end
+
+  def link_url
+    @link_url ||= begin
+      params = credit.invitation_opts.to_query
+      "#{reel_url(@reel.id)}?#{params}"
+    end
   end
 end

@@ -10,6 +10,7 @@ class Notification < ActiveRecord::Base
   belongs_to :action_taker, class_name: "User"
   belongs_to :receiver, class_name: "User"
   belongs_to :action_taken_on, polymorphic: true
+  belongs_to :credit
 
   enum(:action, :gave_props, :sent_credit, :accepted_credit_invite, :commented_on)
 
@@ -83,11 +84,18 @@ class Notification < ActiveRecord::Base
   end
 
   def path_to_action_taken_on
-    if action_taken_on_reel?
-      PATH_HELPER.reel_url(action_taken_on_id)
-    elsif action_taken_on_medium?
-      PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: "media-#{action_taken_on_id}")
-    end
+    return action_taken_on_reel_url if action_taken_on_reel?
+    return action_taken_on_medium_url if action_taken_on_medium?
+  end
+
+  def action_taken_on_reel_url
+    url = PATH_HELPER.reel_url(action_taken_on_id)
+    return url unless credit_id
+    "#{url}?#{credit.invitation_opts.to_query}"
+  end
+
+  def action_taken_on_medium_url
+    PATH_HELPER.reel_url(action_taken_on.reel_id, anchor: "media-#{action_taken_on_id}")
   end
 
   def action_taken_on_reel?

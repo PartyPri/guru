@@ -23,6 +23,7 @@
 .DS_STORE
 .rspec
 .rvmrc
+.env
 logfile
 
 # Ignore application configuration

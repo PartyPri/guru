@@ -34,6 +34,10 @@ class Credit < ActiveRecord::Base
   scope :pending, -> { where(invitation_status: 0) }
   scope :by_receiver, ->(credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
 
+  def invitation_opts
+    {credit_invitation: id}
+  end
+
   private
 
   def notify_acceptance
