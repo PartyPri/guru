@@ -3,7 +3,7 @@ require "spec_helper"
 describe Reel do
 
   describe 'Associations' do
-    it { should have_many(:credits) }
+    it { should have_many(:credits).dependent(:destroy) }
   end
 
   describe '#update_media_added!' do

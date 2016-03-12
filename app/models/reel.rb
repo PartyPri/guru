@@ -12,7 +12,7 @@ class Reel < ActiveRecord::Base
   has_many :images
   has_many :videos
   has_many :stories
-  has_many :credits
+  has_many :credits, :dependent => :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true
   accepts_nested_attributes_for :videos, allow_destroy: true
