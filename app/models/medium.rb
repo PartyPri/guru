@@ -1,8 +1,13 @@
 class Medium < ActiveRecord::Base
-  attr_accessible :title, :reel_id
+  attr_accessible :title, :reel_id, :milestone, :milestone_id
+
+  has_one :medium_milestone, :dependent => :destroy
+  has_one :milestone, :through => :medium_milestone
 
   belongs_to :reel, counter_cache: true
   has_many :notifications, class_name: "Notification", foreign_key: :action_taken_on_id, dependent: :destroy
+
+  accepts_nested_attributes_for :medium_milestone
 
   validates_presence_of :reel_id
 
