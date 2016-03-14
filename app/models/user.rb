@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   has_many :user_interests
   has_many :interests, through: :user_interests, uniq: true
-  has_many :reels
+  has_many :reels, dependent: :destroy
   has_many :images, through: :reels
   has_many :videos, through: :reels
   has_many :stories, through: :reels
