@@ -17,6 +17,10 @@ class Notification < ActiveRecord::Base
   scope :by_receiver, -> (receiver_id) { where(receiver_id: receiver_id) }
   scope :unread, -> { where(read: false) }
   scope :newest, -> { order("created_at desc") }
+  scope :gave_props, -> { where(action: 0) }
+  scope :sent_credit, -> { where(action: 1) }
+  scope :accepted_credit_invite, -> { where(action: 2) }
+  scope :commented_on, -> { where(action: 3) }
 
   after_create :send_notification
 
