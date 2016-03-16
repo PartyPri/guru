@@ -2,7 +2,7 @@
 "data-share-img" => share_image,
 "data-share-title" => title}
   %i.fa.fa-share-square-o
--if current_user && current_user.id == @user.id
+-if current_user
   = link_to like_path, method: :put, remote: true, class: "footer-link vote" do
     - if current_user && current_user.voted_on?(medium)
       %i.fa.fa-hand-peace-o.media-engagement-icon-on
