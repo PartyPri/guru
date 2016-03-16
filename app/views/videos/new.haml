@@ -13,8 +13,10 @@
           = f.label :file, 'Select Media', class: "btn btn-default file-upload"
           = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'
           %p.text-center#emp-image-print.m-top-10
+          %small
+            %b Note: Uploading videos will upload to your Youtube account.
         .form-group
-          %label Enter caption:
+          %label Enter caption (100 word limit):
           = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control", rows: 2
         = f.submit 'Save', class: 'btn btn-info pull-right', id: 'submit-media'
         .preloader
