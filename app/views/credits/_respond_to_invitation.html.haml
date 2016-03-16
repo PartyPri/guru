@@ -2,7 +2,7 @@
   -if @pending_credit.present?
     .credit-invitation-container
       .credit-invitation-header
-        %b Accept this accreditation?
+        %b Accept this credit?
         = link_to("YES", accept_reel_credit_path(@reel, @pending_credit), method: :put, class: "btn btn-primary")
         = link_to("Ignore", reject_reel_credit_path(@reel, @pending_credit), method: :put)
         %i.fa.fa-caret-down.pull-right.credit-invitation-minimize

@@ -1,9 +1,9 @@
 class CreditsController < ApplicationController
   before_filter :validate_user, except: [:index, :respond_to_invitation]
 
-  ADDED_NOTICE = "Credit added! Waiting for the credit receiver to accept"
-  DELETED_NOTICE = "Credit deleted"
-  NOT_FOUND_NOTICE = "Credit not found"
+  ADDED_NOTICE = "Credit added! Waiting for the credit receiver to accept."
+  DELETED_NOTICE = "Credit deleted."
+  NOT_FOUND_NOTICE = "Credit not found."
 
   def create
     @credit = Credit.new(
@@ -38,7 +38,7 @@ class CreditsController < ApplicationController
       credit_receiver_id: current_user.id,
       credit_receiver_email: current_user.email
     )
-    return redirect_with_notice("Credit #{new_state}", path) if credit.save
+    return redirect_with_notice("Credit #{new_state}!", path) if credit.save
 
     redirect_with_notice(GENERAL_ERROR, path)
   end
