@@ -7,7 +7,8 @@
   .section-media.col-sm-7
     .section-photo-container
       %p.timeline-description
-        = truncate(medium.description, length: 250)
+        %h3.story-title= medium.description[0,30]
+        = medium.description[30,250]
         -if current_user && current_user.id == @user.id
           %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             %i.fa.fa-pencil-square-o

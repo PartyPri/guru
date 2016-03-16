@@ -6,7 +6,8 @@
       = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}
   .section-media.col-sm-7
     %p.timeline-description
-      = truncate(medium.description, length: 250)
+      %h3.story-title= medium.description[0,30]
+      = medium.description[30,250]
       -if current_user && current_user.id == @user.id
         %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
           %i.fa.fa-pencil-square-o
