@@ -25,8 +25,8 @@ class Credit < ActiveRecord::Base
   before_validation :set_credit_receiver_email
   before_validation :set_credit_receiver_id
 
-  after_save :notify_acceptance, on: :update
-  after_save :notify_creation, on: :create
+  after_save :notify_acceptance
+  after_save :notify_creation
 
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
@@ -53,6 +53,8 @@ class Credit < ActiveRecord::Base
   end
 
   def notify_creation
+    return unless id_changed?
+    return unless pending?
     Notification.create(
       action_taker_id: reel_owner_id,
       action_taken_on_id: reel_id,

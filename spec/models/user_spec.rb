@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   context 'Associations' do
     it { should have_many(:credits) }
+    it { should have_many(:reels).dependent(:destroy) }
   end
 
   context "instance methods" do

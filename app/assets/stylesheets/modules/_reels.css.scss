@@ -317,7 +317,7 @@
   padding: 30px;
   border-left: solid #e6e6e6 1px;
   border-bottom: solid #e6e6e6 1px;
-  max-width: 300px;
+  width: 300px;
   font-size: $base-font-size;
   max-height: 100vh;
   overflow-y: scroll;
@@ -342,7 +342,7 @@
 }
 
 .add-credit-button {
-  margin-left: 5px;
+  margin-left: 45px;
   background-color: $turq;
   border-radius: 20px;
   padding: 5px 20px;
@@ -453,7 +453,7 @@ li.reel-credit-item {
   height: 375px;
   width: 400px;
   background-color: white;
-  z-index: 1;
+  z-index: 4;
   border: solid $lt-gray 1px;
 }
 
@@ -536,6 +536,12 @@ li.reel-credit-item {
         margin: 10px 0;
       }
     }
+  }
+  .reel-credit-list {
+    max-width: 235px;
+  }
+  .add-credit-button {
+    margin-left: 10px;
   }
 }
 

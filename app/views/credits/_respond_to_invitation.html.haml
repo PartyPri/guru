@@ -1,16 +1,14 @@
 - if params[:credit_invitation].present?
-  - if user_signed_in?
-    -if @pending_credit.present?
-      .credit-invitation-container
-        .credit-invitation-header
-          %b Accept this accreditation?
-          = link_to("YES", accept_reel_credit_path(@reel, @pending_credit), method: :put, class: "btn btn-primary")
-          = link_to("Ignore", reject_reel_credit_path(@reel, @pending_credit), method: :put)
-          %i.fa.fa-caret-down.pull-right.credit-invitation-minimize
-        .credit-invitation-body
-          %h2= "Hello #{current_user.first_name},"
-          %p Of all people, you have been a crucial part of making this reel a reality.
-          %p= "#{@pending_credit.owner.first_name} would like to say thank you by crediting you as a..."
-          %h3.credit-invitation-role
-            = @pending_credit.role.upcase
-          .credit-invitation-footer See how others have been involved in this reel!
+  -if @pending_credit.present?
+    .credit-invitation-container
+      .credit-invitation-header
+        %b Accept this credit?
+        = link_to("YES", accept_reel_credit_path(@reel, @pending_credit), method: :put, class: "btn btn-primary")
+        = link_to("Ignore", reject_reel_credit_path(@reel, @pending_credit), method: :put)
+        %i.fa.fa-caret-down.pull-right.credit-invitation-minimize
+      .credit-invitation-body
+        %h2= "Hello #{current_user.first_name},"
+        %p Of all people, you have been a crucial part of making this reel a reality.
+        %p= "#{@pending_credit.owner.first_name} would like to say thank you by crediting you as a..."
+        %h3.credit-invitation-role
+          = @pending_credit.role.upcase
