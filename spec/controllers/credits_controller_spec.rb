@@ -206,7 +206,7 @@ describe CreditsController, type: :controller do
 
           it 'shows the correct flash notice' do
             subject
-            expect(flash[:notice]).to eq "Credit accepted"
+            expect(flash[:notice]).to eq "Credit accepted!"
           end
         end
 
