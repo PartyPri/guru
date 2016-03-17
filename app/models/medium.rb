@@ -1,4 +1,5 @@
 class Medium < ActiveRecord::Base
+  include Notification::ActionTakenOnHelper
   attr_accessible :title, :reel_id
 
   belongs_to :reel, counter_cache: true

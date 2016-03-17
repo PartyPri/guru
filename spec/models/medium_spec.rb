@@ -6,6 +6,7 @@ describe Medium do
   end
 
   describe 'Callbacks' do
+    it { is_expected.to callback(:destroy_notifications).before(:destroy) }
     it { is_expected.to callback(:update_reel_media_added).after(:save) }
   end
 

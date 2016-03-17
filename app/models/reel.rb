@@ -1,4 +1,5 @@
 class Reel < ActiveRecord::Base
+  include Notification::ActionTakenOnHelper
   attr_accessible :name, :interest_ids, :images_attributes, :videos_attributes, :stories_attributes,
     :user_id, :tag_list, :description, :media_last_added_at
   before_save :assign_featured_artist
