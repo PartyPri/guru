@@ -7,7 +7,7 @@
         = link_to("Ignore", reject_reel_credit_path(@reel, @pending_credit), method: :put)
         %i.fa.fa-caret-down.pull-right.credit-invitation-minimize
       .credit-invitation-body
-        %h2= "Hello #{current_user.first_name},"
+        %h2= "Hello #{current_user.try(:first_name) || @pending_credit.credit_receiver_email},"
         %p Of all people, you have been a crucial part of making this reel a reality.
         %p= "#{@pending_credit.owner.first_name} would like to say thank you by crediting you as a..."
         %h3.credit-invitation-role

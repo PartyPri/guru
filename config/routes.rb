@@ -16,6 +16,9 @@ Guru::Application.routes.draw do
       member do
         put "accept", to: "credits#respond_to_invitation"
         put "reject", to: "credits#respond_to_invitation"
+        # WARNING: these GETs are not idempotent
+        get "accept", to: "credits#respond_to_invitation"
+        get "reject", to: "credits#respond_to_invitation"
       end
     end
   end

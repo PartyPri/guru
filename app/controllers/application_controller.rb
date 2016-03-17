@@ -41,9 +41,4 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_name)
     previous_path
   end
-
-  def notice_to_sign_in
-    notice = "Please <a href='/users/auth/google_oauth2'>sign in</a> to see your invitation".html_safe
-    flash[:notice] = notice
-  end
 end

@@ -98,7 +98,6 @@ class ReelsController < ApplicationController
 
   def credit_invitation
     return if params[:credit_invitation].nil?
-    return notice_to_sign_in unless user_signed_in?
     @pending_credit = Credit.includes(:owner)
                     .pending
                     .where(id: params[:credit_invitation])
