@@ -68,7 +68,7 @@ describe ReelsController, :type => :controller do
         context 'when there is not a user signed in' do
           it 'does not set the credit instance var' do
             subject
-            expect(assigns(:pending_credit)).to be_nil
+            expect(assigns(:pending_credit)).to eq credit
           end
         end
       end
