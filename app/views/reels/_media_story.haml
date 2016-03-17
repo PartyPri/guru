@@ -12,8 +12,9 @@
           %a.story-edit.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             %i.fa.fa-pencil-square-o
             Edit
-      %img.section-photo.story-photo.pull-right{"src" => "#{medium.photo.url}"}
-      %p.story-container= sanitize(medium.body)
+      %p.story-container
+        %img.section-photo.story-photo.pull-right{"src" => "#{medium.photo.url}"}
+        = sanitize(medium.body)
       .media-engagement-icon.visible-xs
         = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
       %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
