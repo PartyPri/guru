@@ -155,7 +155,9 @@
 }
 
 .props-non-user {
+  display: inline-block;
   width: 65px;
+  z-index: 1;
 }
 
 .media-comment-section {
@@ -191,7 +193,8 @@
 }
 
 .story-photo {
- padding: 0 20px;
+ padding-left: 20px;
+ margin-top: 15px;
  max-width: 50%;
  height: auto;
 }
@@ -271,5 +274,8 @@
    padding: 10px;
    max-width: 150px;
    height: auto;
+  }
+  .media-engagement-icon {
+    margin-left: 16px;
   }
 }
