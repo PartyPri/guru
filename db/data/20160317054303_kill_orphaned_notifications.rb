@@ -2,7 +2,7 @@ class KillOrphanedNotifications < SeedMigration::Migration
   def up
     Notification.includes(:action_taken_on).find_each(batch_size: 100) do |notification|
       next if notification.action_taken_on.present?
-      log(n) if notification.destroy
+      log(notification) if notification.destroy
     end
   end
 
