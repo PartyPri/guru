@@ -21,7 +21,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       else
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
         sign_in @user, :event => :authentication
-        redirect_to previous_path
+        redirect_to request.env['omniauth.params']['redirect_path'] || previous_path
       end
 
     else

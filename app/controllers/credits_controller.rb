@@ -1,4 +1,5 @@
 class CreditsController < ApplicationController
+  before_filter :sign_in_user, only: [:respond_to_invitation]
   before_filter :validate_user, except: [:index, :respond_to_invitation]
 
   ADDED_NOTICE = "Credit added! Waiting for the credit receiver to accept."
@@ -91,5 +92,10 @@ class CreditsController < ApplicationController
 
   def reel
     @reel ||= Reel.where(id: params[:reel_id], user_id: current_user.id).first
+  end
+
+  def sign_in_user
+    return if user_signed_in?
+    redirect_to user_omniauth_authorize_path(:google_oauth2, redirect_path: request.fullpath)
   end
 end

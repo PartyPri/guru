@@ -24,6 +24,18 @@ class Notification < ActiveRecord::Base
 
   after_create :send_notification
 
+  module ActionTakenOnHelper
+    module InstanceMethods
+      def destroy_notifications
+        Notification.destroy_all(action_taken_on_id: id)
+      end
+    end
+
+    def self.included(receiver)
+      receiver.send :include, InstanceMethods
+      receiver.send(:before_destroy, :destroy_notifications)
+    end
+  end
 
   class << self
     # Overwrite the .create method to work with enum helper (for now)

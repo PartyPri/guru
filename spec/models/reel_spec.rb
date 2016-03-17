@@ -6,6 +6,10 @@ describe Reel do
     it { should have_many(:credits).dependent(:destroy) }
   end
 
+  describe 'Callbacks' do
+    it { is_expected.to callback(:destroy_notifications).before(:destroy) }
+  end
+
   describe '#update_media_added!' do
     subject { create(:reel) }
     let(:now) { Time.now }

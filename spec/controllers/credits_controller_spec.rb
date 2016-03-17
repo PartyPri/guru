@@ -237,13 +237,14 @@ describe CreditsController, type: :controller do
     end
 
     context 'when a user is not signed in' do
-      it 'redirects to reel show' do
-        expect(subject).to redirect_to(reel_url(reel))
+      let(:url) do
+        path = user_omniauth_authorize_path(:google_oauth2)
+        q = {redirect_path: "/reels/#{reel.id}/credits/0/accept"}
+        "#{path}?#{q.to_query}"
       end
 
-      it 'shows the correct flash notice' do
-        subject
-        expect(flash[:notice]).to eq described_class::AUTH_NOTICE
+      it 'redirects to sign in' do
+        expect(subject).to redirect_to(url)
       end
     end
   end
