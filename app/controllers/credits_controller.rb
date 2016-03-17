@@ -96,6 +96,6 @@ class CreditsController < ApplicationController
 
   def sign_in_user
     return if user_signed_in?
-    redirect_to user_omniauth_authorize_path(:google_oauth2, redirect_url: request.original_url)
+    redirect_to user_omniauth_authorize_path(:google_oauth2, redirect_path: request.fullpath)
   end
 end
