@@ -15,14 +15,15 @@
                   = image_tag(builder.object.photo.url(:medium))
               .row
                 .col-sm-2
-                  = builder.label :description, "Caption"
+                  = builder.label :description, "Caption (100 word limit)"
                 .col-sm-10
                   = builder.text_area :description, class: "form-control", rows: 2
               .modal-footer
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Image?
                 = f.submit "Save Changes", class: "btn-primary btn pull-right"
-                = f.button "Cancel", type: :reset, class: "btn pull-right"
+                %button.btn.pull-right{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  Cancel
           = f.fields_for :videos do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
@@ -38,7 +39,8 @@
                 = builder.check_box :_destroy, class: "pull-left"
                 %span.pull-left.m-x-15 Delete Video?
                 = f.submit "Save Changes", class: "btn-primary btn pull-right"
-                = f.button "Cancel", type: :reset, class: "btn pull-right"
+                %button.btn.pull-right{"aria-label" => "Close", "data-dismiss" => "modal", :type => "button"}
+                  Cancel
           = f.fields_for :stories do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               -if builder.object.photo.present?
