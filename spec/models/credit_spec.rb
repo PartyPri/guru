@@ -87,6 +87,8 @@ describe Credit do
         end
       end
     end
+
+    it { is_expected.to callback(:destroy_notifications).before(:destroy) }
   end
 
   describe 'notify_acceptance' do
@@ -173,6 +175,13 @@ describe Credit do
         expect(notification.action_taken_on_id).to eq subject.reel_id
         expect(notification.action_taken_on_type).to eq "Reel"
       end
+    end
+  end
+
+  describe 'destroy_notifications' do
+    it 'destroys the associated notifications' do
+      credit = create(:credit)
+      expect { credit.send(:destroy_notifications) }.to change(Notification, :count).by(-1)
     end
   end
 end
