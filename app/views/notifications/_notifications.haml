@@ -11,14 +11,13 @@
         = link_to user_path(notification.action_taker_id) do
           .timeline-teaser{style: "background-image:url(#{notification.action_taker_avatar_url})"}
       .col-sm-7
-        -unless link_to notification.blank?
-          = link_to notification.path_to_action_taken_on do
-            %div
-              %i.pull-left.fa{:class => @notification_icons[notification.action]}
-              %b= notification.message.partition(" ").first
-              = truncate(notification.message.partition(" ").last, length: 150)
-              %br
-              %br
+        = link_to notification.path_to_action_taken_on do
+          %div
+            %i.pull-left.fa{:class => @notification_icons[notification.action]}
+            %b= notification.message.partition(" ").first
+            = truncate(notification.message.partition(" ").last, length: 150)
+            %br
+            %br
         %small.time-ago= notification.action_happened_at
         -# %span.dot= "&middot; ".html_safe
         -# = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
