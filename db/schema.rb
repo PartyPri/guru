@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160220224705) do
+ActiveRecord::Schema.define(:version => 20160312214706) do
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"
@@ -209,6 +209,19 @@ ActiveRecord::Schema.define(:version => 20160220224705) do
     t.string   "type"
     t.integer  "position"
     t.boolean  "featured_medium"
+  end
+
+  create_table "medium_milestones", :force => true do |t|
+    t.integer  "medium_id"
+    t.integer  "milestone_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "milestones", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "notifications", :force => true do |t|
