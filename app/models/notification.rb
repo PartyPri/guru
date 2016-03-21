@@ -27,7 +27,7 @@ class Notification < ActiveRecord::Base
   module ActionTakenOnHelper
     module InstanceMethods
       def destroy_notifications
-        Notification.destroy_all(action_taken_on_id: id)
+        Notification.destroy_all(action_taken_on_id: id, action_taken_on_type: self.class.base_class.name)
       end
     end
 
@@ -107,6 +107,7 @@ class Notification < ActiveRecord::Base
   def action_taken_on_reel_url
     url = PATH_HELPER.reel_url(action_taken_on_id)
     return url unless credit_id
+    return unless credit
     "#{url}?#{credit.invitation_opts.to_query}"
   end
 

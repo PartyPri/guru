@@ -27,6 +27,7 @@ class Credit < ActiveRecord::Base
 
   after_save :notify_acceptance
   after_save :notify_creation
+  before_destroy :destroy_notifications
 
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
@@ -83,5 +84,9 @@ class Credit < ActiveRecord::Base
   def set_default_role
     return if role
     self.role = DEFAULT_ROLE
+  end
+
+  def destroy_notifications
+    Notification.destroy_all(credit_id: id)
   end
 end
