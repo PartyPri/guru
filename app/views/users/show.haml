@@ -21,17 +21,17 @@
                 %span.badge= @reels.length.to_s
             %li
               %a.user-page-nav#user-entourage-link{:href => "#entourage"}
-                Entourage
+                Credits
                 %span.badge= @entourage.length.to_s
             %li
               %a.user-page-nav#user-credits-reel-link{:href => "#credits"}
-                Credits
+                Credited In
                 %span.badge= @user_credits.length.to_s
             %li
               %a.user-page-nav#user-about-link{:href => "#about"} About
             %li
               %a#user-contact-link{:href => "#contact"} Contact
-  .user-hero-image{style: "background-image: linear-gradient(to bottom, rgba(0,0,0,0) 50%, white 100%), url(#{@user.cover_photo.url(:medium)});"}
+  .user-hero-image{style: "background-image: url(#{@user.cover_photo.url(:medium)});"}
   .content-container.user-page-header
     .row
       .user-page-info
@@ -51,15 +51,14 @@
             - else
               =@user.first_name + " " + @user.last_name
         .m-top-5
-          %i.m-top-1= @user.description
+          %i.m-top-1= truncate(@user.description, length: 35)
         .m-top-5
           - if @user.location.present?
             %i.fa.fa-map-marker
-            %span= @user.location
+            %span= truncate(@user.location, length: 15)
     -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
-        .add-cover-image-btn.btn.btn-primary.hidden-xs change cover photo & edit your profile
-        .add-cover-image-btn.btn.btn-primary.visible-xs Update Profile
+        .add-cover-image-btn.btn.btn-primary Edit Profile
   .page-content
     .tab-content
       .content-container.tab-pane.active#work{role: "tabpanel"}
@@ -93,7 +92,7 @@
   .row
     .col-sm-8.col-sm-offset-2.user-page-content
       .user-about-me#entourage
-        - if @reels.blank?
+        - if @entourage.blank?
           %ul.empty-profile
             %li.empty-profile-avatar
             %li.empty-profile-avatar
@@ -101,35 +100,34 @@
             %li.empty-profile-avatar
           .text-center.new-user-cta
             - if current_user && current_user.id == @user.id
-              %small You have not added anyone to an entourage yet.
-              %p An entourage is a group of individuals who you can invite to follow along in your reels.
-              %p You can give specific people credits and titles based on how they have influenced your journey.
+              %small You have not credited anyone in your reels yet.
+              %p Credits are a group of individuals you invite to your reels.
+              %p You can give them special roles based on how they have influenced your journey.
             -else
-              %small= @user.first_name + " has not added anyone to an entourage yet."
+              %small= @user.first_name + " has not credited anyone yet."
           %ul.empty-profile
             %li.empty-profile-avatar
             %li.empty-profile-avatar
             %li.empty-profile-avatar
             %li.empty-profile-avatar
         - else
-          - unless @entourage.blank?
-            %h2= @user.first_name + "'s reels were influenced by..."
-            %ul.user-entourage-list.row
-              - @entourage.each do |credit|
-                %li.user-entourage-item.col-xs-6
-                  - if credit.receiver.nil?
-                    %img.user-credit-avatar.blank-user
-                    %p= credit.credit_receiver_email
-                    %p
-                    %strong= credit.role + " in"
-                    %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
-                  - else
-                    = link_to user_path(credit.receiver) do
-                      %img.user-credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
-                    %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
-                    %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
-                    %strong= credit.role + " in"
-                    %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+          %h2= @user.first_name + "'s reels were influenced by..."
+          %ul.user-entourage-list.row
+            - @entourage.each do |credit|
+              %li.user-entourage-item.col-xs-6
+                - if credit.receiver.nil?
+                  %img.user-credit-avatar.blank-user
+                  %p= credit.credit_receiver_email
+                  %p
+                  %strong= credit.role + " in"
+                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
+                - else
+                  = link_to user_path(credit.receiver) do
+                    %img.user-credit-avatar{:style => "background-image: url(#{credit.receiver.avatar.url});"}
+                  %strong= link_to credit.receiver.first_name + " " + credit.receiver.last_name, user_path(credit.receiver)
+                  %p.user-entourage-role=  truncate(credit.receiver.description, length: 26, omission: '...')
+                  %strong= credit.role + " in"
+                  %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
 
 - if @user_credits.length > 0
   %section.content-container
@@ -151,9 +149,11 @@
                         %li.user-credit-avatar.teaser-story{:style => "background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url(#{medium.photo.url})"}
                           %h1= truncate(medium.title, length: 1, omission: '')
                 %strong= credit.role
-                %p for...
+                %p in...
                 %p.user-entourage-role= link_to credit.reel.name, reel_path(credit.reel)
-                %small= time_ago_in_words(credit.reel.media_last_added_at) + " ago"
+                %p.credited-in-user= link_to "by " + credit.reel.user.first_name + " " + credit.reel.user.last_name, user_path(credit.reel.user)
+                - if credit.reel.media_last_added_at
+                  %small= time_ago_in_words(credit.reel.media_last_added_at) + " ago"
 
 
 -if @user.bio.blank?

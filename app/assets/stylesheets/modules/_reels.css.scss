@@ -11,6 +11,10 @@
   .reel-artist-name{
     color: $lt-gray;
     display: block;
+    word-wrap: break-word;
+    span {
+      word-wrap: break-word;
+    }
     a{
       color: darken($lt-gray, 10%);
       &:hover {
@@ -207,12 +211,11 @@
 
 .stick {
   position: fixed;
+  min-height: 50px;
   top: 50px;
   width: 100%;
   z-index: 2;
-  -webkit-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
-  -moz-box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
-  box-shadow: 0px 1px 2px 0px rgba(0,0,0,.22);
+  border-bottom: solid #e6e6e6 1px;
   .share-button {
     height: 50px;
     margin-top: -16px;
@@ -229,6 +232,7 @@
       height: 45px;
       width: 45px;
       line-height: 44px;
+      font-size: 12px;
       .fa {
         display: none;
       }
@@ -276,9 +280,6 @@
       padding-left: 6px;
     }
   }
-  #credit-button-drop {
-    color: lighten($lt-gray, 10);
-  }
   .fa {
     font-size: 30px;
     transition: all 0.1s ease;
@@ -294,11 +295,8 @@
   }
 }
 
-.display-none{
-  display: none;
-}
-
-.reel-credit-list {
+.reel-credit-list-dropdown {
+  margin-top: -3px;
   background-color: white;
   padding: 30px;
   border: solid lighten($lt-gray, 20%) 1px;
@@ -308,7 +306,43 @@
   overflow-y: scroll;
 }
 
+.reel-credit-list {
+  position: fixed;
+  z-index: 3;
+  height: 100%;
+  top: 0;
+  right: 0;
+  list-style: none;
+  background-color: white;
+  padding: 30px;
+  border-left: solid #e6e6e6 1px;
+  border-bottom: solid #e6e6e6 1px;
+  width: 300px;
+  font-size: $base-font-size;
+  max-height: 100vh;
+  overflow-y: scroll;
+  transition: all 0.1s ease;
+  hr {
+    margin-top: 8px;
+  }
+}
+
+.reel-credit-list-min {
+  height: 100px;
+  overflow: hidden;
+}
+
+.reel-credit-header {
+  margin-top: 40px;
+  user-select: none;
+  cursor: pointer;
+  &:hover {
+    color: $turq;
+  }
+}
+
 .add-credit-button {
+  margin-left: 45px;
   background-color: $turq;
   border-radius: 20px;
   padding: 5px 20px;
@@ -337,6 +371,7 @@ li.reel-credit-item {
 
 .credit-delete{
   float: right;
+  margin-top: 4px;
 }
 
 .credit-avatar {
@@ -346,7 +381,7 @@ li.reel-credit-item {
   border-radius: 20px;
   background-size: cover;
   background-position: center center;
-  margin: 0 10px 0 -20px;
+  margin: 0 10px 0 0;
   border: solid lighten($lt-gray, 10%) 1px;
 }
 
@@ -364,6 +399,11 @@ li.reel-credit-item {
   border-bottom: solid lighten($lt-gray, 20%) 1px;
 }
 
+#credit-button-drop {
+  cursor: pointer;
+  margin-top: 5px;
+}
+
 #add-credit-modal {
   .modal-dialog {
     width: 400px;
@@ -376,6 +416,11 @@ li.reel-credit-item {
 }
 
 .reel-page-explore {
+  background-image: url(polybg-purp.png);
+  background-size: cover;
+}
+
+.reel-page-landing {
   background-image: url(polybg-orange.png);
   background-size: cover;
 }
@@ -409,7 +454,7 @@ li.reel-credit-item {
   height: 375px;
   width: 400px;
   background-color: white;
-  z-index: 1;
+  z-index: 4;
   border: solid $lt-gray 1px;
 }
 
@@ -492,6 +537,12 @@ li.reel-credit-item {
         margin: 10px 0;
       }
     }
+  }
+  .reel-credit-list {
+    max-width: 235px;
+  }
+  .add-credit-button {
+    margin-left: 10px;
   }
 }
 

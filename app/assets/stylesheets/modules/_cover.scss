@@ -1,7 +1,10 @@
 .cover {
-  background: url("cover-bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-image: url("cover-bg.png");
+  // background-size: cover;
+  // background-repeat: no-repeat;
+  // background-position: right;
+
+  background-color: lighten($lt-turq, 40);;
 }
 
 .cover-bg {
@@ -38,10 +41,6 @@
   left: 50%;
   transform: translate(-50%, -350%);
   position: absolute;
-}
-
-.cover-cta-text{
-  color: white;
 }
 
 .cover-carousel {

@@ -3,7 +3,11 @@ require "spec_helper"
 describe Reel do
 
   describe 'Associations' do
-    it { should have_many(:credits) }
+    it { should have_many(:credits).dependent(:destroy) }
+  end
+
+  describe 'Callbacks' do
+    it { is_expected.to callback(:destroy_notifications).before(:destroy) }
   end
 
   describe '#update_media_added!' do

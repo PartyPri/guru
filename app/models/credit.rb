@@ -25,14 +25,19 @@ class Credit < ActiveRecord::Base
   before_validation :set_credit_receiver_email
   before_validation :set_credit_receiver_id
 
-  after_save :notify_acceptance, on: :update
-  after_save :notify_creation, on: :create
+  after_save :notify_acceptance
+  after_save :notify_creation
+  before_destroy :destroy_notifications
 
   scope :by_reel, -> (reel_id) { where(reel_id: reel_id) }
   scope :by_reel_owner, -> (reel_owner_id) { where(reel_owner_id: reel_owner_id) }
   scope :accepted, -> { where(invitation_status: 1) }
   scope :pending, -> { where(invitation_status: 0) }
   scope :by_receiver, ->(credit_receiver_id) { where(credit_receiver_id: credit_receiver_id) }
+
+  def invitation_opts
+    {credit_invitation: id}
+  end
 
   private
 
@@ -49,6 +54,8 @@ class Credit < ActiveRecord::Base
   end
 
   def notify_creation
+    return unless id_changed?
+    return unless pending?
     Notification.create(
       action_taker_id: reel_owner_id,
       action_taken_on_id: reel_id,
@@ -77,5 +84,9 @@ class Credit < ActiveRecord::Base
   def set_default_role
     return if role
     self.role = DEFAULT_ROLE
+  end
+
+  def destroy_notifications
+    Notification.destroy_all(credit_id: id)
   end
 end

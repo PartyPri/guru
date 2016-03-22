@@ -27,6 +27,10 @@
   background: $lt-turq;
 }
 
+.navbar-collapse {
+  max-height: 515px;
+}
+
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
   background-color: transparent;
   border-color: transparent;
