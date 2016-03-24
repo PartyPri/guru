@@ -7,7 +7,7 @@
       = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload'} do |f|
         .form-group
           %label Select milestone:
-          = f.select(:milestone, [['Eureka', 'Eureka'], ['Challenge', 'Challenge']], {include_blank: "None"})
+          = f.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
         .form-group
           %label Select reel:
           #reel_select

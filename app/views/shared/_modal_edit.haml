@@ -11,6 +11,12 @@
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
                 .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+              .row
+                .col-sm-2
                 .col-sm-10
                   = image_tag(builder.object.photo.url(:medium))
               .row
@@ -28,6 +34,12 @@
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
                 .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+              .row
+                .col-sm-2
                 .col-sm-10
                   %iframe.youtube-player{type: "text/html", width: "263", height: "175", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
               .row
@@ -43,6 +55,12 @@
                   Cancel
           = f.fields_for :stories do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              .row
+                .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
               -if builder.object.photo.present?
                 .row
                   .col-sm-2
