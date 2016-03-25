@@ -5,7 +5,7 @@
 
 .timeline-vertical-line {
   position: absolute;
-  background: lighten($lt-gray, 40%) none repeat scroll 0% 0%;
+  background: lighten($lt-gray, 50%) none repeat scroll 0% 0%;
   margin-top: -10px;
   margin-left: 45px;
   height: 100%;
@@ -125,6 +125,15 @@
   background-color: white;
   display: block;
   font-size: $base-font-size*1.5;
+  &:before {
+    position: absolute;
+    content: " ";
+    margin-top: 27px;
+    margin-left: -155px;
+    height: 3px;
+    width: 150px;
+    background-color: lighten($lt-gray, 50%);
+  }
   a {
     display: inline-block;
   }
