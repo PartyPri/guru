@@ -2,8 +2,6 @@
   .section-description.col-sm-2
     .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
     %p= medium.created_at.strftime("%b %-d, %Y")
-    .media-engagement-icon.hidden-xs
-      = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}
   .section-media.col-sm-7
     %p.timeline-description
       %h3.story-title= medium.description.split(/\s+/, 5+1)[0...5].join(' ').to_s
@@ -14,7 +12,7 @@
           %i.fa.fa-pencil-square-o
           Edit
     %iframe{"src" => "#{medium.embed_url}?rel=0&amp;showinfo=0", "frameborder" => "0"}
-    .media-engagement-icon.visible-xs
+    .media-engagement-icon
       = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}
     %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
     .media-comment-section{:id => "comments-id-#{medium.id}"}
