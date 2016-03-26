@@ -14,7 +14,8 @@ class Comment < ActiveRecord::Base
   # NOTE: Comments belong to a user
   belongs_to :user
 
-  after_create :notify
+  after_create :notify_owner
+  after_create :notify_other_participants
 
   # Helper class method that allows you to build a comment
   # by passing a commentable object, a user_id, and comment text
@@ -51,7 +52,16 @@ class Comment < ActiveRecord::Base
 
   private
 
-  def notify
+  def notify_other_participants
+    Comments::NotifyWorker.delay.perform(
+      commentable_id: commentable_id,
+      commentable_type: commentable_type,
+      action_taker_id: user_id,
+      action: :added_comment_to_thread
+    )
+  end
+
+  def notify_owner
     Notification.create(
       action_taker: user,
       action_taken_on: commentable,
