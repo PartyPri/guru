@@ -133,6 +133,7 @@
     height: 3px;
     width: 150px;
     background-color: lighten($lt-gray, 50%);
+    visibility: visible;
   }
   a {
     display: inline-block;
@@ -223,7 +224,22 @@
   font-weight: bold;
 }
 
+@media (max-width: 1200px) {
+  .media-engagement-icon {
+    &:before {
+      margin-left: -123px;
+      width: 127px;
+    }
+  }
+}
+
 @media (max-width: 991px) {
+  .media-engagement-icon {
+    &:before {
+      margin-left: -85px;
+      width: 80px;
+    }
+  }
   .media-comment-section {
     //reply box responsive sizing
     .col-sm-10 {
@@ -238,6 +254,11 @@
 }
 
 @media (max-width: 768px) {
+  .media-engagement-icon {
+    &:before {
+      visibility: hidden;
+    }
+  }
   .media-comment-section {
     //reply box responsive sizing
     .col-sm-10 {
