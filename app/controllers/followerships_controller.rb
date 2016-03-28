@@ -4,25 +4,29 @@ class FollowershipsController < ApplicationController
   ALDREADY_FOLLOWING = "You are already following this person!"
 
   def create
-    return redirect_with_notice(FOLLOW_YOURSELF) if current_user.id == params[:id].to_i
+    return redirect_with_notice(FOLLOW_YOURSELF) if current_user.id == params[:user_id].to_i
 
-    followership = Followership.new(follower_id: current_user.id, user_id: params[:id])
-    path = user_path(params[:id])
-    return redirect_with_notice(ALDREADY_FOLLOWING, path) unless followership.save
+    followership = Followership.new(follower_id: current_user.id, user_id: params[:user_id])
+    return redirect_with_notice(ALDREADY_FOLLOWING, redirect_path) unless followership.save
     flash[:notice] = "You are now following #{followership.user.try(:first_name)}"
-    redirect_to path
+    redirect_to redirect_path
   end
 
   def index
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id])
     @followers = @user.followers
     @follows = @user.follows
     @interests = Interest.all
   end
 
   def destroy
-    @followership = Followership.find(params[:id])
-    @followership.destroy
-    redirect_to user_path(@followership.user)
+    followership = Followership.where(user_id: params[:user_id], follower_id: current_user.id).first
+    return redirect_with_notice(GENERAL_ERROR, redirect_path) unless followership.destroy
+    flash[:notice] = "You are no longer following #{followership.user.try(:first_name)}"
+    redirect_to redirect_path
+  end
+
+  def redirect_path
+    user_path(params[:user_id])
   end
 end

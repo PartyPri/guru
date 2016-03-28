@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     self.expires_at < Time.now
   end
 
+  def already_following?(user)
+    follows.map(&:id).include?(user.id)
+  end
+
   # Get a list of users that follow the user
   def followers
     self.class.joins("INNER JOIN followerships ON followerships.follower_id = users.id")

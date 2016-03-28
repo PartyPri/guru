@@ -58,7 +58,10 @@
             %span= truncate(@user.location, length: 15)
         - if current_user && !owned_by_current_user?
           .m-top-5
-            = link_to("FOLLOW", followerships_path(@user.id), method: :post)
+            - if current_user.already_following?(@user)
+              = link_to("UNFOLLOW", user_followerships_path(@user.id), method: :delete)
+            - else
+              = link_to("FOLLOW", user_followerships_path(@user.id), method: :post)
 
     -if owned_by_current_user? && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
