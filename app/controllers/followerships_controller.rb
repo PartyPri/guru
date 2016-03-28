@@ -1,26 +1,23 @@
 class FollowershipsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :destroy]
+  FOLLOW_YOURSELF = "Sorry, but you can't follow yourself"
+  ALDREADY_FOLLOWING = "You are already following this person!"
+
   def create
-    if user_signed_in? && current_user.id != params[:id]
-      followership = Followership.new(follower_id: current_user.id, user_id: params[:id])
-      if !followership.save
-        flash[:error] = "You are already following this person!"
-      end
-      redirect_to user_path(params[:id])
-    else
-      redirect_to :root
-    end
+    return redirect_with_notice(FOLLOW_YOURSELF) if current_user.id == params[:id].to_i
+
+    followership = Followership.new(follower_id: current_user.id, user_id: params[:id])
+    path = user_path(params[:id])
+    return redirect_with_notice(ALDREADY_FOLLOWING, path) unless followership.save
+    flash[:notice] = "You are now following #{followership.user.try(:first_name)}"
+    redirect_to path
   end
 
-  def show
+  def index
     @user = User.find(params[:id])
-    @followers      = @user.followers
-    @followed_users = @user.followed_users    
-  end
-
-  def show_following
-    @user = User.find(params[:id])
-    @followers      = @user.followers
-    @followed_users = @user.followed_users    
+    @followers = @user.followers
+    @follows = @user.follows
+    @interests = Interest.all
   end
 
   def destroy

@@ -41,11 +41,11 @@
         .avatar{:style => "background-image: url(#{@user.avatar.url});"}
         .user-name-header.m-top-25
           %p.edit-profile
-            - if current_user && current_user.id == @user.id
+            - if owned_by_current_user?
               = link_to edit_profile_path do
                 %i.fa.fa-pencil-square
           %h3
-            - if current_user && current_user.id == @user.id
+            - if owned_by_current_user?
               = link_to edit_profile_path do
                 =@user.first_name + " " + @user.last_name
             - else
@@ -56,7 +56,11 @@
           - if @user.location.present?
             %i.fa.fa-map-marker
             %span= truncate(@user.location, length: 15)
-    -if current_user && current_user.id == @user.id && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
+        - if current_user && !owned_by_current_user?
+          .m-top-5
+            = link_to("FOLLOW", followerships_path(@user.id), method: :post)
+
+    -if owned_by_current_user? && @user.cover_photo.url == "https://s3.amazonaws.com/evrystep-assets/users/cover_photos/default/default_cover_photo.jpg"
       = link_to edit_profile_path do
         .add-cover-image-btn.btn.btn-primary Edit Profile
   .page-content
@@ -71,7 +75,7 @@
                 %li.empty-profile-reel
                 %li.empty-profile-reel
               .text-center.new-user-cta
-                - if current_user && current_user.id == @user.id
+                - if owned_by_current_user?
                   %small You have not created a reel yet.
                   %p A reel is where you track updates from your journey as you pursue your passion.
                   = link_to new_reel_path do
@@ -99,7 +103,7 @@
             %li.empty-profile-avatar
             %li.empty-profile-avatar
           .text-center.new-user-cta
-            - if current_user && current_user.id == @user.id
+            - if owned_by_current_user?
               %small You have not credited anyone in your reels yet.
               %p Credits are a group of individuals you invite to your reels.
               %p You can give them special roles based on how they have influenced your journey.
@@ -157,7 +161,7 @@
 
 
 -if @user.bio.blank?
-  - if current_user && current_user.id == @user.id && @reels.length == 0
+  - if owned_by_current_user? && @reels.length == 0
     %section.content-container
       .row
         .col-sm-8.col-sm-offset-2.user-page-content

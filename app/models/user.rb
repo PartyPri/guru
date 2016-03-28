@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
   has_many :stories, through: :reels
 
   has_many :followerships, dependent: :destroy
-  has_many :followers, through: :followerships
 
   has_many :registrations
   has_many :events, through: :registrations, uniq: true
@@ -90,12 +89,16 @@ class User < ActiveRecord::Base
     self.expires_at < Time.now
   end
 
-  def followed_users #refactor to use built in rails associations
-    Followership.all.map { |followership|
-      if followership.follower_id == self.id
-        User.find(followership.user_id)
-      end
-    }.delete_if {|x| x == nil}
+  # Get a list of users that follow the user
+  def followers
+    self.class.joins("INNER JOIN followerships ON followerships.follower_id = users.id")
+      .where("followerships.user_id = #{self.id}")
+  end
+
+  # Get a list of users that the user is following
+  def follows
+    self.class.joins("INNER JOIN followerships ON followerships.user_id = users.id")
+      .where("followerships.follower_id = #{self.id}")
   end
 
   def entourage

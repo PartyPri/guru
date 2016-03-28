@@ -1,0 +1,18 @@
+%h1 People that you follow:
+%ul
+- @follows.each do |user|
+  %li.user-entourage-item
+    = link_to user_path(user) do
+      %img.user-credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
+    %strong= link_to user.first_name + " " + user.last_name, user_path(user)
+    %p= user.id
+
+
+%h1 People that follow you:
+- @followers.each do |user|
+  %li.user-entourage-item
+    = link_to user_path(user) do
+      %img.user-credit-avatar{:style => "background-image: url(#{user.avatar.url});"}
+    %strong= link_to user.first_name + " " + user.last_name, user_path(user)
+    %p.user-entourage-role=  truncate(user.description, length: 26, omission: '...')
+    %p= user.id
