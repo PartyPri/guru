@@ -1,6 +1,12 @@
 .row.media-container{:id => "media-#{medium.id}"}
   .section-description.col-sm-2
-    .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
+    - unless medium.milestone.blank?
+      .timeline-teaser.text-center
+        %i.fa{:class => @milestone_icons[medium.milestone], :style => "font-size:30px;"}
+      .milestone-label.text-center
+        %small= medium.milestone.split("_").map(&:capitalize).join(" ")
+    - else
+      .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
     %p= medium.created_at.strftime("%b %-d, %Y")
   .section-media.col-sm-7
     .section-photo-container

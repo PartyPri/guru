@@ -6,9 +6,13 @@
     .col-xs-12.col-md-6.col-md-offset-3
       = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload'} do |f|
         .form-group
+          %label Select milestone:
+          .select-style#milestone_select
+            = f.select(:milestone, options_for_select(@milestone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "Add a milestone"}, { :class => 'selectpicker show-tick' })
+        .form-group
           %label Select reel:
           #reel_select
-            = f.collection_select(:reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
+            = f.collection_select(:reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style show-tick'})
         .form-group
           = f.label :file, 'Select Media', class: "btn btn-default file-upload"
           = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'

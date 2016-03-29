@@ -1,16 +1,21 @@
 .row.media-container{:id => "media-#{medium.id}"}
   .section-description.col-sm-2
-    .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
+    - unless medium.milestone.blank?
+      .timeline-teaser.text-center
+        %i.fa{:class => @milestone_icons[medium.milestone], :style => "font-size:30px;"}
+      .milestone-label.text-center
+        %small= medium.milestone.split("_").map(&:capitalize).join(" ")
+    - else
+      .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
     %p= medium.created_at.strftime("%b %-d, %Y")
   .section-media.col-sm-7
-    %p.timeline-description
-      %h3.story-title= medium.description.split(/\s+/, 5+1)[0...5].join(' ').to_s
-      -if medium.description.split(' ').length > 5
-        = medium.description.split(' ')[5..100].join(' ').to_s
-      -if current_user && current_user.id == @user.id
-        %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-          %i.fa.fa-pencil-square-o
-          Edit
+    %h3.story-title= medium.description.split(/\s+/, 5+1)[0...5].join(' ').to_s
+    -if medium.description.split(' ').length > 5
+      = medium.description.split(' ')[5..100].join(' ').to_s
+    -if current_user && current_user.id == @user.id
+      %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+        %i.fa.fa-pencil-square-o
+        Edit
     %iframe{"src" => "#{medium.embed_url}?rel=0&amp;showinfo=0", "frameborder" => "0"}
     .media-engagement-icon
       = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{truncate(medium.description, length: 25)}", :like_path => like_video_path(medium), :share_image => "#{medium.screenshot_url}"}

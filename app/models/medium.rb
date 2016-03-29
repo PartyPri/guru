@@ -1,6 +1,6 @@
 class Medium < ActiveRecord::Base
   include Notification::ActionTakenOnHelper
-  attr_accessible :title, :reel_id
+  attr_accessible :title, :reel_id, :milestone
 
   belongs_to :reel, counter_cache: true
   has_many :notifications, class_name: "Notification", foreign_key: :action_taken_on_id, dependent: :destroy
