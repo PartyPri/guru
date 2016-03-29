@@ -29,5 +29,25 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
+
+    columns do
+      column do
+        panel "Users" do
+          ul do
+            User.count
+          end
+        end
+        panel "Reels" do
+          ul do
+            Reel.count
+          end
+        end
+        panel "Media" do
+          ul do
+            Medium.count
+          end
+        end
+      end
+    end
   end # content
 end
