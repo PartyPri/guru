@@ -1,8 +1,8 @@
 .row.media-container{:id => "media-#{medium.id}"}
   .section-description.col-sm-2
-    - if medium.milestone.empty? && medium.photo.present?
+    - if medium.milestone.blank? && medium.photo.present?
       .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
-    - unless medium.milestone.empty?
+    - unless medium.milestone.blank?
       .timeline-teaser.text-center
         %i.fa{:class => @milestone_icons[medium.milestone], :style => "font-size:30px;"}
     %p= medium.created_at.strftime("%b %-d, %Y")

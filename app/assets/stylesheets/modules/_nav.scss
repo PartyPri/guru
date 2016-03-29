@@ -95,9 +95,13 @@ nav {
 }
 
 .notification-header {
+  cursor: pointer;
   border-bottom: solid lighten($lt-gray, 30) 1px;
   padding: 10px;
   color: $lt-gray;
+  &:hover {
+    color: $turq;
+  }
 }
 
 .nav-link, .nav-link:hover {

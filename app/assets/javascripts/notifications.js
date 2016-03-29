@@ -9,4 +9,22 @@ $(document).ready(function(){
     var num = parseInt(badgeCount.html(), 10);
     badgeCount.html(num - 1);
   });
+
+  $("#notification-header").click(function(){
+    var notificationItems = $('.notification-item').map(function() {
+      return $(this).attr('id');
+    }).get();
+    var notificationId = notificationItems.map(function(item){
+      return item.split("-")[1];
+    });
+    notificationId.forEach(function(id) {
+      $.ajax({
+        type: 'PUT',
+        url: '/notifications/' +id+ '?read=true',
+        success: function(response) {
+          console.log('notification-item-'+id+' : is marked as read');
+        }
+      })
+    });
+  });
 });
