@@ -14,7 +14,7 @@
                   = builder.label :milestone, "Milestone"
                 .col-sm-10
                   .form-group
-                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
               .row
                 .col-sm-2
                 .col-sm-10
@@ -37,7 +37,7 @@
                   = builder.label :milestone, "Milestone"
                 .col-sm-10
                   .form-group
-                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
               .row
                 .col-sm-2
                 .col-sm-10
@@ -60,7 +60,7 @@
                   = builder.label :milestone, "Milestone"
                 .col-sm-10
                   .form-group
-                    = builder.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
               -if builder.object.photo.present?
                 .row
                   .col-sm-2

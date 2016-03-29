@@ -8,7 +8,7 @@
         .form-group
           %label Select milestone:
           .select-style#milestone_select
-            = f.select(:milestone, options_for_select(@milesetone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "None"}, { :class => 'selectpicker show-tick' })
+            = f.select(:milestone, options_for_select(@milestone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "None"}, { :class => 'selectpicker show-tick' })
         .form-group
           %label{for: "reel_select"} Select reel:
           .select-style#reel_select

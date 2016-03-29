@@ -5,7 +5,7 @@ class StoriesController < ApplicationController
       redirect_to :root#error
     end
     @story = Story.new
-    @milesetone_options = [[' Eureka', 'Eureka', 'fa-lightbulb-o'], [' Mission Accomplished', 'Mission Accomplished', 'fa-flag-checkered'], [' Challenge', 'Challenge', 'fa-exclamation-triangle'], [' Victory', 'Victory', 'fa-trophy'], [' Done', 'Done', 'fa-check-square'], [' Experiment', 'Experiment', 'fa-flask'], [' Lesson Learned', 'Lesson Learned', 'fa-bookmark'] ]
+    @milestone_options = [[' Eureka', 'eureka', 'fa-lightbulb-o'], [' Mission Accomplished', 'mission_accomplished', 'fa-flag-checkered'], [' Challenge', 'challenge', 'fa-exclamation-triangle'], [' Victory', 'victory', 'fa-trophy'], [' Done', 'done', 'fa-check-square'], [' Experiment', 'experiment', 'fa-flask'], [' Lesson Learned', 'lesson_learned', 'fa-bookmark'] ]
   end
 
   def create
