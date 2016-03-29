@@ -91,12 +91,17 @@
 .section-description {
   background-color: white;
   padding: 15px 20px 15px;
-  margin-top: -30px;
+  margin-top: -21px;
   p {
     color: $lt-gray;
     margin-bottom: 0;
     margin-left: -15px;
   }
+}
+
+.milestone-label {
+  color: $lt-gray;
+  margin-left: -33px;
 }
 
 .timeline-teaser{
