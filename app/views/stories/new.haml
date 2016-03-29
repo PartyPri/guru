@@ -7,11 +7,12 @@
       = form_for :story, url: stories_path, html: { :multipart => true } do |f|
         .form-group
           %label Select milestone:
-          = f.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+          .select-style#milestone_select
+            = f.select(:milestone, options_for_select(@milesetone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "None"}, { :class => 'selectpicker show-tick' })
         .form-group
           %label{for: "reel_select"} Select reel:
           .select-style#reel_select
-            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
+            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style show-tick'})
         .form-group
           = f.label :photo, 'Add a cover photo', class: "btn btn-default file-upload"
           = f.file_field :photo, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'

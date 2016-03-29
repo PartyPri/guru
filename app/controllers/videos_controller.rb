@@ -9,6 +9,7 @@ class VideosController < ApplicationController
     end
     @pre_upload_info = {}
     @video = Video.new
+    @milesetone_options = [[' Eureka', 'Eureka', 'fa-lightbulb-o'], [' Mission Accomplished', 'Mission Accomplished', 'fa-flag-checkered'], [' Challenge', 'Challenge', 'fa-exclamation-triangle'], [' Victory', 'Victory', 'fa-trophy'], [' Done', 'Done', 'fa-check-square'], [' Experiment', 'Experiment', 'fa-flask'], [' Lesson Learned', 'Lesson Learned', 'fa-bookmark'] ]
   end
 
   def create
