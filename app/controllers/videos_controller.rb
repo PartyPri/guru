@@ -32,7 +32,7 @@ class VideosController < ApplicationController
     end
 
     @reel = Reel.find(params[:video][:reel_id])
-    @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id])
+    @video = Video.new(description: params[:video][:description], reel_id: params[:video][:reel_id], milestone: params[:video][:milestone])
 
     if @video.save
       @video.title = "#{@reel.name} - #{@reel.videos.length}"
@@ -54,7 +54,7 @@ class VideosController < ApplicationController
   end
 
   def create_youtube_video
-    @video = Video.new(:uid => params[:uid], :description => params[:description], :reel_id => params[:video][:reel_id], :title => params[:title])
+    @video = Video.new(:uid => params[:uid], :description => params[:description], :reel_id => params[:video][:reel_id], :title => params[:title], :milestone => params[:milestone])
     @reel = Reel.find(params[:video][:reel_id])
     if @video.save
       redirect_to @reel

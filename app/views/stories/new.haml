@@ -6,7 +6,7 @@
     .col-xs-12.col-md-6.col-md-offset-3
       = form_for :story, url: stories_path, html: { :multipart => true } do |f|
         .form-group
-          = f.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "None"})
+          = f.select(:milestone, [['Eureka', 'Eureka'], ['Mission Accomplished', 'Mission Accomplished'], ['Challenge', 'Challenge'], ['Victory', 'Victory'], ['Done', 'Done'], ['Experiment', 'Experiment'], ['Lesson Learned', 'Lesson Learned'] ], {include_blank: "Add a milestone"})
         .form-group
           %label{for: "reel_select"} Select reel:
           .select-style#reel_select
