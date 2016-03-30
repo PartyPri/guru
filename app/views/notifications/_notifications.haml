@@ -14,7 +14,6 @@
         = link_to notification.path_to_action_taken_on do
           %div
             %i.pull-left.fa{:class => @notification_icons[notification.action]}
-            %b= notification.read
             %b= notification.message.partition(" ").first
             = truncate(notification.message.partition(" ").last, length: 150)
             %br
@@ -34,7 +33,6 @@
         = link_to notification.path_to_action_taken_on do
           %div
             %i.pull-left.fa{:class => @notification_icons[notification.action]}
-            %b= notification.read
             %b= notification.message.partition(" ").first
             = truncate(notification.message.partition(" ").last, length: 150)
             %br
