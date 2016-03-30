@@ -10,7 +10,7 @@ $(document).ready(function(){
     badgeCount.html(num - 1);
   });
 
-  $("#notification-header").click(function(){
+  $("#notification-btn").click(function(){
     var notificationItems = $('.notification-item').map(function() {
       return $(this).attr('id');
     }).get();

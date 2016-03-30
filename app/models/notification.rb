@@ -16,6 +16,7 @@ class Notification < ActiveRecord::Base
 
   scope :by_receiver, -> (receiver_id) { where(receiver_id: receiver_id) }
   scope :unread, -> { where(read: false) }
+  scope :read, -> { where(read: true).limit(10) }
   scope :newest, -> { order("created_at desc") }
   scope :gave_props, -> { where(action: 0) }
   scope :sent_credit, -> { where(action: 1) }

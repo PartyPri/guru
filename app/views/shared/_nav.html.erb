@@ -75,19 +75,19 @@
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
               </ul>
             </li>
-            <% unless @notifications.blank? %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown" id="notification-btn">
-                  <i class="fa fa-circle"></i>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown" id="notification-btn">
+                <i class="fa fa-circle"></i>
+                <% unless @notifications_new.empty? %>
                   <div class="badge notification-badge">
-                    <%= @notifications.try(:length) %>
+                    <%= @notifications_new.try(:length) %>
                   </div>
-                </a>
-                <ul class="dropdown-menu notifications-dropdown">
-                  <li><%= render "notifications/notifications" %></li>
-                </ul>
-              </li>
-            <% end %>
+                <% end %>
+              </a>
+              <ul class="dropdown-menu notifications-dropdown">
+                <li><%= render "notifications/notifications" %></li>
+              </ul>
+            </li>
           <% else %>
             <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>
           <% end %>
