@@ -40,7 +40,7 @@ gem 'newrelic_rpm'
 gem 'activeadmin'
 
 #Upload
-gem 'paperclip', '~> 4.3.1'
+gem 'paperclip', github: 'thoughtbot/paperclip'
 
 #Frontend
 gem 'masonry-rails'
