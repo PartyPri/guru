@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby "2.1.8"
 
 #General
-gem 'rails', '3.2.12'
+gem 'rails', '4.2.0'
 gem 'haml'
 gem 'bootstrap-sass-rails'
 gem 'sass-rails'
@@ -14,6 +14,7 @@ gem 'coffee-script-source', '1.8.0'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
 gem "autoprefixer-rails"
+gem 'protected_attributes'
 #Database
 gem 'pg'
 
@@ -37,10 +38,10 @@ gem 'meta-tags'
 gem 'newrelic_rpm'
 
 #Admin
-gem 'activeadmin'
+gem 'activeadmin', '~> 1.0.0.pre2'
 
 #Upload
-gem 'paperclip', '~> 4.3.6'
+gem 'paperclip', '~> 5.0.0.beta1'
 
 #Frontend
 gem 'masonry-rails'
@@ -73,7 +74,7 @@ gem 'acts_as_votable'
 gem 'acts_as_commentable_with_threading', '1.2.0'
 
 group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', '~> 4.1.1'
 end
 
 group :development do

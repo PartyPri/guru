@@ -8,7 +8,7 @@ class Reel < ActiveRecord::Base
 
   belongs_to :user
   has_many :reel_interests, :dependent => :destroy
-  has_many :interests, through: :reel_interests, uniq: true
+  has_many :interests, through: :reel_interests
   has_many :media
   has_many :images
   has_many :videos

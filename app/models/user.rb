@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   # Associations
 
   has_many :user_interests
-  has_many :interests, through: :user_interests, uniq: true
+  has_many :interests, through: :user_interests
   has_many :reels, dependent: :destroy
   has_many :images, through: :reels
   has_many :videos, through: :reels
@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :followerships
 
   has_many :registrations
-  has_many :events, through: :registrations, uniq: true
+  has_many :events, through: :registrations
   has_many :credits, through: :reels
   has_many :notifications, class_name: "Notification", foreign_key: :receiver_id, dependent: :destroy
 
