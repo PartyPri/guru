@@ -1,3 +1,31 @@
+.fa-lightbulb-o {
+  color: #FCA17D;
+}
+
+.fa-flag-checkered {
+  color: #3A435E;
+}
+
+.fa-trophy {
+  color: orange;
+}
+
+.fa-exclamation-triangle {
+  color: #5E0B15;
+}
+
+.fa-flask {
+  color: #2F97C1;
+}
+
+.fa-check-square {
+  color: #52AA5E;
+}
+
+.fa-bookmark {
+  color: #587291;
+}
+
 .timeline-container {
   position: relative;
   transition: all 0.1s ease;
@@ -39,8 +67,8 @@
   &:before {
     display: block;
     content: " ";
-    margin-top: -210px;
-    height: 193px;
+    margin-top: -150px;
+    height: 150px;
     visibility: hidden;
   }
   &:first-child {
@@ -62,7 +90,8 @@
 
 .section-description {
   background-color: white;
-  padding: 20px;
+  padding: 15px 20px 15px;
+  margin-top: -21px;
   p {
     color: $lt-gray;
     margin-bottom: 0;
@@ -70,14 +99,24 @@
   }
 }
 
+.milestone-label {
+  color: $lt-gray;
+  margin-top: -22px;
+  margin-left: -33px;
+  width: 120px;
+}
+
 .timeline-teaser{
   height: 50px;
   width: 50px;
   border-radius: 50px;
   margin-right: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-size: cover;
   background-position: center center;
+  .fa {
+    margin-top: 10px;
+  }
 }
 .media-edit {
   display: inline-block;
@@ -91,7 +130,6 @@
 
 .section-photo-container {
   width: 100%;
-  padding-top: 20px;
 }
 .section-photo {
   max-width: 100%;

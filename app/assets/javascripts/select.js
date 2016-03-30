@@ -1,3 +1,7 @@
 $(function() {
-  $('.selectpicker').selectpicker();
+  $('.selectpicker').selectpicker({
+    iconBase: 'fa',
+    showTick: true,
+    tickIcon: 'fa-check'
+  });
 });

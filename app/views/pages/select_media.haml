@@ -7,22 +7,22 @@
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3#reel-select
       %label Select reel:
-      %select.select-style.selectpicker#media-select
+      %select.select-style.show-tick.selectpicker#media-select
         - @reels.each do |reel|
           - if reel.id.to_s == @params
-            %option{:value => "#{reel.id}", :selected => "selected"}= reel.name
+            %option{:value => "#{reel.id}", :selected => "selected"}= truncate(reel.name, length: 30)
           - else
-            %option{:value => "#{reel.id}"}= reel.name
+            %option{:value => "#{reel.id}"}= truncate(reel.name, length: 30)
     .col-xs-12.col-md-6.col-md-offset-3
       %label Select media type:
       %a.select-media.video-link{:href => "/videos/new"}
         =image_tag 'select_media_image.png'
         Image
     .col-xs-12.col-md-6.col-md-offset-3
-      %a.select-media.video-link{:href => "/videos/new"} 
+      %a.select-media.video-link{:href => "/videos/new"}
         =image_tag 'select_media_video.png'
         Video
     .col-xs-12.col-md-6.col-md-offset-3
-      %a.select-media.story-link{:href => "/stories/new"} 
+      %a.select-media.story-link{:href => "/stories/new"}
         =image_tag 'select_media_story.png'
         Story
