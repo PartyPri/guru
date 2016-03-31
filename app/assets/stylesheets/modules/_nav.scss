@@ -85,6 +85,10 @@ nav {
   }
 }
 
+.notification-unread {
+  background-color: lighten($lt-turq, 45);
+}
+
 .dropdown {
   .fa-circle-o {
     margin-right: 15px;

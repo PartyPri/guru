@@ -1,16 +1,16 @@
 .notification-header.text-center#notification-header
   Notifications
-  .badge.notification-badge= @notifications.try(:length)
-- if @notifications.blank?
+  .badge.notification-badge= @notifications_new.try(:length)
+- if @notifications_new.blank? && @notifications_old.blank?
   %li.notification-item No notifications yet!
 -else
-- @notifications.each do |notification|
-  %li.notification-item{:id => "notification-#{notification.id}"}
+- @notifications_new.each do |notification|
+  %li.notification-item.notification-unread{:id => "notification-#{notification.id}"}
     .row
       .col-sm-3
         = link_to user_path(notification.action_taker_id) do
           .timeline-teaser{style: "background-image:url(#{notification.action_taker_avatar_url})"}
-      .col-sm-7
+      .col-sm-9
         = link_to notification.path_to_action_taken_on do
           %div
             %i.pull-left.fa{:class => @notification_icons[notification.action]}
@@ -21,5 +21,24 @@
         %small.time-ago= notification.action_happened_at
         -# %span.dot= "&middot; ".html_safe
         -# = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
-      .col-sm-2.notification-read.hidden-xs
-        = link_to("", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read fa fa-times-circle", :data => {:nId => notification.id})
+      -# .col-sm-2.notification-read.hidden-xs
+      -#   = link_to("", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read fa fa-times-circle", :data => {:nId => notification.id})
+- @notifications_old.each do |notification|
+  %li.notification-item{:id => "notification-#{notification.id}"}
+    .row
+      .col-sm-3
+        = link_to user_path(notification.action_taker_id) do
+          .timeline-teaser{style: "background-image:url(#{notification.action_taker_avatar_url})"}
+      .col-sm-9
+        = link_to notification.path_to_action_taken_on do
+          %div
+            %i.pull-left.fa{:class => @notification_icons[notification.action]}
+            %b= notification.message.partition(" ").first
+            = truncate(notification.message.partition(" ").last, length: 150)
+            %br
+            %br
+        %small.time-ago= notification.action_happened_at
+        -# %span.dot= "&middot; ".html_safe
+        -# = link_to("mark as read", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read", :data => {:nId => notification.id})
+      -# .col-sm-2.notification-read.hidden-xs
+      -#   = link_to("", notification_path(id: notification, read: true), method: :put, remote: true, class: "notification-read fa fa-times-circle", :data => {:nId => notification.id})
