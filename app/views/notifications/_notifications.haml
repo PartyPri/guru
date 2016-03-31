@@ -1,6 +1,6 @@
 .notification-header.text-center#notification-header
   Notifications
-  .badge.notification-badge= @notifications_new.try(:length)
+  -# .badge.notification-badge= @notifications_new.try(:length)
 - if @notifications_new.blank? && @notifications_old.blank?
   %li.notification-item No notifications yet!
 -else
