@@ -7,7 +7,8 @@
         %i.fa{:class => @milestone_icons[medium.milestone], :style => "font-size:30px;"}
       .milestone-label.text-center
         %small= medium.milestone.split("_").map(&:capitalize).join(" ")
-    %p= medium.created_at.strftime("%b %-d, %Y")
+    .date-label.text-center
+      = medium.created_at.strftime("%b %-d, %Y")
   .section-media.col-sm-7
     %h3.story-title
       = medium.title

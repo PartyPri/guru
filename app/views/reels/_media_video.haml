@@ -7,7 +7,8 @@
         %small= medium.milestone.split("_").map(&:capitalize).join(" ")
     - else
       .timeline-teaser{:style => "background-image: url(#{medium.screenshot_url}); background-size: 180%;"}
-    %p= medium.created_at.strftime("%b %-d, %Y")
+    .date-label.text-center
+      = medium.created_at.strftime("%b %-d, %Y")
   .section-media.col-sm-7
     %h3.story-title= medium.description.split(/\s+/, 5+1)[0...5].join(' ').to_s
     -if medium.description.split(' ').length > 5
