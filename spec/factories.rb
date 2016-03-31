@@ -23,6 +23,7 @@ FactoryGirl.define do
 
   factory :medium do
     title "I'm a Medium"
+    reel
   end
 
   factory :credit do
