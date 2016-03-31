@@ -23,6 +23,7 @@ $(document).ready(function(){
         url: '/notifications/' +id+ '?read=true',
         success: function(response) {
           console.log('notification-item-'+id+' : is marked as read');
+          $('#notification-badge').hide();
         }
       })
     });
