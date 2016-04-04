@@ -1,4 +1,9 @@
 class InterestsController < ApplicationController
+
+  def index
+    @reels = Reel.select{|reel| reel.interests!=[]}
+  end
+
   def show
     @interest = Interest.find_by_id(params[:id])
     return redirect_to :root unless @interest
@@ -7,4 +12,5 @@ class InterestsController < ApplicationController
     @followers = @interest.users
     @reels = @interest.reels.includes(:media, :user).with_enough_media.recently_added_media
   end
+
 end

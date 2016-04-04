@@ -8,18 +8,18 @@
           Explore the imagination behind
           .dropdown.header-explore
             %a.dropdown-toggle.explore{"data-toggle" => "dropdown", :href => "#"}
-              =@interest.name
+              ="Everything"
               %b.caret.m-left-5
             - interest = Interest.all
             %ul.dropdown-menu
               %li= link_to "Everything", "/interests"
               - interest.each do |interest|
                 %li= link_to interest.name, "/interests/#{interest.id}"
-          - unless @tags.length < 1
-            %ul.list-inline.m-bottom-10.interests.hidden-xs
-              - @tags.each do |tag|
-                %li.interest-tags.tag-select{:value => "#{tag}"}
-                  = tag
+          / - unless @tags.length < 1
+          /   %ul.list-inline.m-bottom-10.interests.hidden-xs
+          /     - @tags.each do |tag|
+          /       %li.interest-tags.tag-select{:value => "#{tag}"}
+          /         = tag
 
 .page
   .page-content
