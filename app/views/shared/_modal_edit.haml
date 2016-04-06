@@ -21,7 +21,7 @@
                   = image_tag(builder.object.photo.url(:medium))
               .row
                 .col-sm-2
-                  = builder.label :description, "Caption (100 word limit)"
+                  = builder.label :description, "Caption (10 word limit)"
                 .col-sm-10
                   = builder.text_area :description, class: "form-control", rows: 2
               .modal-footer
