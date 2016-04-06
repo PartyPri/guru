@@ -44,7 +44,7 @@
                   %iframe.youtube-player{type: "text/html", width: "263", height: "175", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
               .row
                 .col-sm-2
-                  = builder.label :description, "Caption"
+                  = builder.label :description, "Caption (10 word limit)"
                 .col-sm-10
                   = builder.text_area :description, class: "form-control", rows: 2
               .modal-footer
