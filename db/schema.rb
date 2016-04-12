@@ -132,13 +132,14 @@ ActiveRecord::Schema.define(:version => 20160412064008) do
   end
 
   create_table "followerships", :force => true do |t|
-    t.integer  "user_id"
     t.integer  "follower_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "followed_id"
     t.string   "followed_type"
   end
+
+  add_index "followerships", ["followed_id", "followed_type"], :name => "index_followerships_on_followed_id_and_followed_type", :unique => true
 
   create_table "images", :force => true do |t|
     t.text     "description"

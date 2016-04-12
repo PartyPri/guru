@@ -96,17 +96,21 @@ class User < ActiveRecord::Base
   # Get a list of users that follow the user
   def followers
     self.class.joins("INNER JOIN followerships ON followerships.follower_id = users.id")
-      .where("followerships.user_id = #{self.id}")
+      .where("followerships.followed_id = #{self.id} and followed_type = 'User'")
   end
 
   # Get a list of users that the user is following
   def follows
-    self.class.joins("INNER JOIN followerships ON followerships.user_id = users.id")
-      .where("followerships.follower_id = #{self.id}")
+    self.class.joins("INNER JOIN followerships ON followerships.followed_id = users.id")
+      .where("followerships.follower_id = #{self.id} and followed_type = 'User'")
   end
 
   def entourage
     Credit.by_reel_owner(id).accepted
+  end
+
+  def reference_title
+    first_name
   end
 end
 
