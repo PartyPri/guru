@@ -69,4 +69,8 @@ Guru::Application.routes.draw do
 
   # Delayed Job Web Route
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/devel/emails"
+  end
 end

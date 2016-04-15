@@ -12,9 +12,9 @@
   .section-media.col-sm-7
     .section-photo-container
       %p.timeline-description
-        %h3.story-title= medium.description.split(/\s+/, 5+1)[0...5].join(' ').to_s
-        -if medium.description.split(' ').length > 5
-          = medium.description.split(' ')[5..100].join(' ').to_s
+        %h3.story-title= medium.description.split(/\s+/, 10+1)[0...10].join(' ').to_s
+        -# -if medium.description.split(' ').length > 5
+        -#   = medium.description.split(' ')[5..100].join(' ').to_s
         -if current_user && current_user.id == @user.id
           %a.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
             %i.fa.fa-pencil-square-o

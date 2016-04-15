@@ -20,7 +20,7 @@
           %small
             %b Note: Uploading videos will upload to your Youtube account.
         .form-group
-          %label Enter caption (100 word limit):
+          %label Enter caption (10 word limit):
           = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control", rows: 2
         = f.submit 'Save', class: 'btn btn-info pull-right', id: 'submit-media'
         .preloader
