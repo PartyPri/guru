@@ -1,7 +1,7 @@
 =render :layout => 'shared/form_layout' do
   .row
     .col-xs-12.text-center#new-media
-      %h1 Add vVideo to Reel
+      %h1 Add Video to Reel
   .row.p-top-40
     .col-xs-12.col-md-6.col-md-offset-3
       = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload'} do |f|
