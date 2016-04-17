@@ -1,11 +1,11 @@
 =render :layout => 'shared/form_layout' do
   .row
     .col-xs-12.text-center#new-media
-      %h1 Add vVideo to Reel
+      %h1 Add Images to Reel
   .row.p-top-40
-    .col-xs-12.col-md-6.col-md-offset-3
-      = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload'} do |f|
-        .form-group
+    .col-sm-12.col-md-8.col-md-offset-2
+      = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload', multipart: true, class: "dropzone"} do |f|
+        .form-group.hidden
           %label Select milestone:
           .select-style#milestone_select
             = f.select(:milestone, options_for_select(@milestone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "Add a milestone"}, { :class => 'selectpicker show-tick' })
@@ -13,17 +13,24 @@
           %label Select reel:
           #reel_select
             = f.collection_select(:reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style show-tick'})
-        .form-group
-          = f.label :file, 'Select Media', class: "btn btn-default file-upload"
-          = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'
+        .form-group.fallback
+          = f.file_field :file, "data-print" => "#emp-image-print", style: 'display: none;'
           %p.text-center#emp-image-print.m-top-10
           %small
             %b Note: Uploading videos will upload to your Youtube account.
-        .form-group
+        .form-group.hidden
           %label Enter caption (100 word limit):
           = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control", rows: 2
-        = f.submit 'Save', class: 'btn btn-info pull-right', id: 'submit-media'
+        = f.submit 'Save', class: 'btn btn-info pull-right hidden', id: 'submit-media'
         .preloader
           #image-upload-url{"data-image-upload-url" => "#{ images_path }"}
           = image_tag 'ajax-loader.gif', class: "preloader", alt: "Uploading...", title: "Uploading..."
           &nbsp; Uploading...
+
+    .col-sm-12.col-md-8.col-md-offset-2
+      - if params[:reel].blank?
+        %a.w-100.btn.btn-default#image-new-finish{:href => "/"}
+          Finish
+      - else
+        %a.w-100.btn.btn-default#image-new-finish{:href => "/reels/#{params[:reel]}"}
+          Finish
