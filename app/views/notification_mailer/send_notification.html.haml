@@ -1,8 +1,29 @@
-%h1= "Hi #{@receiver.first_name},"
-
-%p
-  %span We are writing to inform you that
-  %span= @notification.message_with_link.html_safe
-  %span !
-
-%h4 xo Evrystep
+%html
+  %head
+    %meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+    =stylesheet_link_tag 'emails.css'
+    =stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'
+  %body
+    %br
+    %table
+      %thead
+        %tr
+          %th
+            -# Column 1
+      %tbody
+        %tr
+          %td.text-center
+            %h2= "Hi #{@receiver.first_name},"
+            %p
+              %span Just letting you know that
+            %p
+              %span= @notification.message_with_link.html_safe
+              %span !
+            %h4
+              %i.fa.fa-heart.red
+              %a(href="/")
+                = image_tag "http://www.evrystep.com/assets/evrystep_logo-c8f795438d997e6321ede0f6c1e2c6d5.svg", height: "20px", class: "logo"
+            %br
+            %br
+    %br
+    %br
