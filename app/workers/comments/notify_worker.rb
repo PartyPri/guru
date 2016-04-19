@@ -12,6 +12,7 @@ module Comments
 
     def comments
       Comment.where(args.slice(:commentable_id, :commentable_type))
+        .where("user_id not in (#{args[:action_taker_id]})")
         .group(:user_id)
         .select(:user_id)
     end
