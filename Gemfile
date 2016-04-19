@@ -72,6 +72,10 @@ gem 'acts_as_votable'
 #Comments
 gem 'acts_as_commentable_with_threading', '1.2.0'
 
+#Mailer CSS styling
+gem 'premailer-rails'
+gem 'nokogiri'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
@@ -79,6 +83,7 @@ end
 group :development do
   gem 'byebug'
   gem 'faker'
+  gem 'letter_opener_web', '~> 1.2.0'
 end
 
 group :test do
