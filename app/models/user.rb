@@ -96,16 +96,66 @@ class User < ActiveRecord::Base
   # Get a list of users that follow the user
   def followers
     self.class.joins("INNER JOIN followerships ON followerships.follower_id = users.id")
-      .where("followerships.user_id = #{self.id}")
+      .where("followerships.followed_id = #{self.id} and followed_type = 'User'")
   end
 
   # Get a list of users that the user is following
   def follows
-    self.class.joins("INNER JOIN followerships ON followerships.user_id = users.id")
-      .where("followerships.follower_id = #{self.id}")
+    self.class.joins("INNER JOIN followerships ON followerships.followed_id = users.id")
+      .where("followerships.follower_id = #{self.id} and followed_type = 'User'")
   end
 
   def entourage
     Credit.by_reel_owner(id).accepted
   end
+
+  def reference_title
+    first_name
+  end
 end
+
+# == Schema Information
+#
+# Table name: users
+#
+#  id                       :integer          not null, primary key
+#  email                    :string(255)      default(""), not null
+#  encrypted_password       :string(255)      default(""), not null
+#  reset_password_token     :string(255)
+#  reset_password_sent_at   :datetime
+#  remember_created_at      :datetime
+#  sign_in_count            :integer          default(0)
+#  current_sign_in_at       :datetime
+#  last_sign_in_at          :datetime
+#  current_sign_in_ip       :string(255)
+#  last_sign_in_ip          :string(255)
+#  created_at               :datetime         not null
+#  updated_at               :datetime         not null
+#  first_name               :string(255)
+#  last_name                :string(255)
+#  description              :text
+#  avatar_file_name         :string(255)
+#  avatar_content_type      :string(255)
+#  avatar_file_size         :integer
+#  avatar_updated_at        :datetime
+#  categories               :text
+#  location                 :string(255)
+#  provider                 :string(255)
+#  uid                      :string(255)
+#  token                    :string(255)
+#  expires_at               :datetime
+#  bio                      :text
+#  cover_photo_file_name    :string(255)
+#  cover_photo_content_type :string(255)
+#  cover_photo_file_size    :integer
+#  cover_photo_updated_at   :datetime
+#  claim_token              :string(255)
+#  claim_email              :string(255)
+#  claim_user               :boolean
+#  featured_artist          :boolean
+#
+# Indexes
+#
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#

@@ -79,6 +79,7 @@ end
 group :development do
   gem 'byebug'
   gem 'faker'
+  gem 'annotate'
 end
 
 group :test do

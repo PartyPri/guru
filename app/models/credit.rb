@@ -90,3 +90,24 @@ class Credit < ActiveRecord::Base
     Notification.destroy_all(credit_id: id)
   end
 end
+
+# == Schema Information
+#
+# Table name: credits
+#
+#  id                    :integer          not null, primary key
+#  reel_id               :integer
+#  reel_owner_id         :integer
+#  credit_receiver_id    :integer
+#  role                  :string(255)
+#  credit_receiver_email :string(255)
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
+#  invitation_status     :integer          default(0)
+#
+# Indexes
+#
+#  index_credits_on_credit_receiver_id  (credit_receiver_id)
+#  index_credits_on_reel_id             (reel_id)
+#  index_credits_on_reel_owner_id       (reel_owner_id)
+#

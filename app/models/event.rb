@@ -8,3 +8,19 @@ class Event < ActiveRecord::Base
   has_many :registrations
 
 end
+
+# == Schema Information
+#
+# Table name: events
+#
+#  id               :integer          not null, primary key
+#  name             :string(255)
+#  date             :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  payment_required :boolean
+#  time             :string(255)
+#  special_copy     :string(255)
+#  location         :string(255)
+#  description      :string(255)
+#

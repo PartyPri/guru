@@ -7,15 +7,13 @@ Guru::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
+  post   "/followerships/:followed_id/:followed_type", to: "followerships#create", as: "followerships"
+  delete "/followerships/:followed_id/:followed_type", to: "followerships#destroy", as: "followerships"
+  get "/users/:user_id/followerships", to: "followerships#index", as: "my_followerships"
+
   resources :email_contacts, only: :create
   resources :interests
-  resources :users, :only => [:show, :edit, :update] do
-    resources :followerships, only: [:create, :index] do
-      collection do
-        delete "destroy"
-      end
-    end
-  end
+  resources :users, :only => [:show, :edit, :update]
   resources :reels do
     collection { post :sort }
     resources :credits, except: [:show, :edit, :update] do

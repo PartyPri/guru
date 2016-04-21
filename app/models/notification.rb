@@ -137,3 +137,19 @@ class Notification < ActiveRecord::Base
     end
   end
 end
+
+# == Schema Information
+#
+# Table name: notifications
+#
+#  id                   :integer          not null, primary key
+#  read                 :boolean          default(FALSE)
+#  action               :integer          default(0)
+#  receiver_id          :integer
+#  action_taker_id      :integer
+#  action_taken_on_id   :integer
+#  action_taken_on_type :string(255)
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  credit_id            :integer
+#

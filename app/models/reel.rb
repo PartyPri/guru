@@ -42,3 +42,18 @@ class Reel < ActiveRecord::Base
       end
     end
 end
+
+# == Schema Information
+#
+# Table name: reels
+#
+#  id                  :integer          not null, primary key
+#  name                :string(255)
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  user_id             :integer
+#  featured            :boolean
+#  description         :text
+#  media_count         :integer          default(0)
+#  media_last_added_at :datetime
+#
