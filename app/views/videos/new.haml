@@ -18,10 +18,14 @@
           = f.file_field :file, required: true, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'
           %p.text-center#emp-image-print.m-top-10
           %small
-            %b Note: Uploading videos will upload to your Youtube account.
+            %b.orange-warning Note: Uploading videos will upload to your Youtube account.
         .form-group
-          %label Enter caption (100 word limit):
+          %label Enter caption (10 word limit):
           = f.text_area :description, required: true, placeholder: 'Enter a caption here...', class: "form-control", rows: 2
+          %small#caption-counter
+            0/10
+          %small.hidden#caption-limit-warning
+            You have more than 10 words. Please keep it short!
         = f.submit 'Save', class: 'btn btn-info pull-right', id: 'submit-media'
         .preloader
           #image-upload-url{"data-image-upload-url" => "#{ images_path }"}

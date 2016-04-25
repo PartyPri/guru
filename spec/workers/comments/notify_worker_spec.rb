@@ -40,6 +40,18 @@ describe Comments::NotifyWorker do
       end
     end
 
+    describe 'when the action taker creates a comment' do
+      let!(:other_user) { create(:user) }
+      let!(:action_taker_comment) { Comment.create(user: action_taker, commentable: medium, body: "hi") }
+      let!(:other_user_comment) { Comment.create(user: other_user, commentable: medium, body: "hi") }
+
+      it 'does not create a notification for the action taker' do
+        subject
+        expect(Notification.where(receiver_id: action_taker.id).count).to eq 0
+        expect(Notification.where(receiver_id: other_user.id).count).to eq 1
+      end
+    end
+
     describe 'when a user has commented multiple times on a medium' do
       let(:users) { (0..2).map { create(:user) } }
       let(:comments) do

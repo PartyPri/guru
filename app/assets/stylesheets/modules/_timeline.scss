@@ -278,18 +278,27 @@
 }
 
 @media (max-width: 991px) {
+  .media-comment-section {
+    .timeline-teaser {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
   .media-engagement-icon {
     &:before {
       margin-left: -85px;
       width: 80px;
     }
   }
+
   .media-comment-section {
     //reply box responsive sizing
     .col-sm-10 {
       padding-left: 0px;
     }
   }
+  
   .section-media {
     iframe {
       height: 400px;

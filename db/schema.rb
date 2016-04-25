@@ -212,19 +212,6 @@ ActiveRecord::Schema.define(:version => 20160323032303) do
     t.string   "milestone"
   end
 
-  create_table "medium_milestones", :force => true do |t|
-    t.integer  "medium_id"
-    t.integer  "milestone_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  create_table "milestones", :force => true do |t|
-    t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "notifications", :force => true do |t|
     t.boolean  "read",                 :default => false
     t.integer  "action",               :default => 0
