@@ -36,5 +36,6 @@
 //= require ckeditor/init
 //= require share_modal
 //= require notifications
+//= require dropzone.min
 //= require_tree .
 //

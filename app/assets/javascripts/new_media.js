@@ -60,6 +60,7 @@ $(document).ready(function() {
   };
 
   var validate_and_upload = function(media_upload, submit_button) {
+
     if(($("#video_description").val() !== "") && ($("#video_reel_id").val() !== "") && $("#video_description").val().split(" ").length < 11) {
       $('.preloader').show();
       upload_video(media_upload, submit_button);
@@ -68,4 +69,40 @@ $(document).ready(function() {
       alert("Please fill out all form fields. Or your caption is too long.");
     }
   };
+
+  //changing finished link based on reel selected
+  $("#video_reel_id").change(function(){
+    var reelNum = $("#video_reel_id").val();
+    console.log(reelNum);
+    $("#image-new-finish").attr("href", "../reels/" + reelNum);
+  });
+
+  $("#media_upload").dropzone({
+    paramName: "video[file]",
+    url: "../images",
+    method: "post",
+    addRemoveLinks: true,
+    success: function(file, response){
+			// find the remove button link of the uploaded file and give it an id
+			// based of the fileID response from the server
+			$(file.previewTemplate).find('.dz-remove').attr('id', response.fileID);
+			// add the dz-success class (the green tick sign)
+			$(file.previewElement).addClass("dz-success");
+		},
+    //when the remove button is clicked
+    removedfile: function(file){
+      // grap the id of the uploaded file we set earlier
+      var id = $(file.previewTemplate).find('.dz-remove').attr('id');
+
+      // make a DELETE ajax request to delete the file
+      $.ajax({
+        type: 'DELETE',
+        url: '../images/' + id,
+        success: function(data){
+          console.log(data.message);
+          $(file.previewTemplate).find('.dz-remove').parent().remove();
+        }
+      });
+    }
+  });
 });
