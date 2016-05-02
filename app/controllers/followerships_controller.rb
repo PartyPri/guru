@@ -7,7 +7,6 @@ class FollowershipsController < ApplicationController
     reel: Reel
   }
 
-
   def followed_type
     type_key = params[:followed_type].to_sym
     TYPE_MAP[type_key]
@@ -54,6 +53,7 @@ class FollowershipsController < ApplicationController
   end
 
   def redirect_path
-    polymorphic_path(params[:followed_type], id: params[:followed_id])
+    # redirect back to where the request was made from
+    request.env["HTTP_REFERER"]
   end
 end

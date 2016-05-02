@@ -44,11 +44,11 @@ module ApplicationHelper
   end
 
   def reel_description
-    if @reel.description.empty?
+    if @reel.description.blank?
       "What do you rep?"
     else
       @reel.description
     end
   end
-  
+
 end
