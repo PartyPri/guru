@@ -13,3 +13,28 @@ class Image < Medium
   	self.get_upvotes.size
   end
 end
+
+# == Schema Information
+#
+# Table name: media
+#
+#  id                 :integer          not null, primary key
+#  description        :text
+#  project_id         :integer
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  uid                :string(255)
+#  reel_id            :integer
+#  title              :string(255)
+#  user_id            :integer
+#  interest_id        :integer
+#  photo_file_name    :string(255)
+#  photo_content_type :string(255)
+#  photo_file_size    :integer
+#  photo_updated_at   :datetime
+#  body               :text
+#  type               :string(255)
+#  position           :integer
+#  featured_medium    :boolean
+#  milestone          :string(255)
+#

@@ -28,4 +28,8 @@
       %h5
         %i.fa.fa-eye
         #{reel.impressionist_count} views
+      - if current_user.already_following?(reel)
+        = link_to("UNFOLLOW", followerships_path(reel.id, :reel), method: :delete, :class => "btn btn-default")
+      - else
+        = link_to("FOLLOW", followerships_path(reel.id, :reel), method: :post, :class => "btn btn-info")
     %hr

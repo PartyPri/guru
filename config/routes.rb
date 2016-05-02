@@ -1,4 +1,5 @@
 Guru::Application.routes.draw do
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root to: "pages#landing"
@@ -6,6 +7,10 @@ Guru::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+
+  post   "/followerships/:followed_id/:followed_type", to: "followerships#create", as: "followerships"
+  delete "/followerships/:followed_id/:followed_type", to: "followerships#destroy", as: "followerships"
+  get "/users/:user_id/followerships", to: "followerships#index", as: "my_followerships"
 
   resources :email_contacts, only: :create
   resources :interests
@@ -42,6 +47,7 @@ Guru::Application.routes.draw do
   end
 
   resources :notifications, only: [:update]
+  resources :activities, only: [:index, :show]
 
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token

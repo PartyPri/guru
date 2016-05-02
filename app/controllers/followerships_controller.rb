@@ -1,31 +1,59 @@
 class FollowershipsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :destroy]
+  FOLLOW_YOURSELF = "Sorry, but you can't follow yourself"
+  ALDREADY_FOLLOWING = "You are already following this person!"
+  TYPE_MAP = {
+    user: User,
+    reel: Reel
+  }
+
+  def followed_type
+    type_key = params[:followed_type].to_sym
+    TYPE_MAP[type_key]
+  end
+
+  def followed_id
+    params[:followed_id].to_i
+  end
+
+  def following_user?
+    followed_type.is_a?(User)
+  end
+
+  def following_self?
+    return false unless following_user?
+    current_user.id == followed_id
+  end
+
   def create
-    if user_signed_in? && current_user.id != params[:id]
-      followership = Followership.new(follower_id: current_user.id, user_id: params[:id])
-      if !followership.save
-        flash[:error] = "You are already following this person!"
-      end
-      redirect_to user_path(params[:id])
-    else
-      redirect_to :root
-    end
+    return redirect_with_notice(FOLLOW_YOURSELF) if following_self?
+    attrs = {follower_id: current_user.id, followed_type: followed_type.name, followed_id: followed_id}
+    followership = Followership.new(attrs)
+    return redirect_with_notice(ALDREADY_FOLLOWING, redirect_path) unless followership.save
+    flash[:notice] = "You are now following #{followership.followed.try(:reference_title)}"
+    redirect_to redirect_path
   end
 
-  def show
-    @user = User.find(params[:id])
-    @followers      = @user.followers
-    @followed_users = @user.followed_users    
-  end
-
-  def show_following
-    @user = User.find(params[:id])
-    @followers      = @user.followers
-    @followed_users = @user.followed_users    
+  def index
+    @user = User.find(params[:user_id])
+    @followers = @user.followers
+    @follows = @user.followed_users
+    @interests = Interest.all
   end
 
   def destroy
-    @followership = Followership.find(params[:id])
-    @followership.destroy
-    redirect_to user_path(@followership.user)
+    followership = Followership.where(
+      followed_id: followed_id,
+      followed_type: followed_type.name,
+      follower_id: current_user.id
+    ).first
+    return redirect_with_notice(GENERAL_ERROR, redirect_path) unless followership.destroy
+    flash[:notice] = "You are no longer following #{followership.followed.try(:reference_title)}"
+    redirect_to redirect_path
+  end
+
+  def redirect_path
+    # redirect back to where the request was made from
+    request.env["HTTP_REFERER"]
   end
 end

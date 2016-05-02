@@ -12,3 +12,18 @@ class Registration < ActiveRecord::Base
   validates :name, :email, :phone, :presence => {:message => "cannot be blank"}
 
 end
+
+# == Schema Information
+#
+# Table name: registrations
+#
+#  id                        :integer          not null, primary key
+#  created_at                :datetime         not null
+#  updated_at                :datetime         not null
+#  name                      :string(255)
+#  email                     :string(255)
+#  phone                     :string(255)
+#  user_id                   :integer
+#  event_id                  :integer
+#  availability_confirmation :boolean
+#
