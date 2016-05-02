@@ -35,14 +35,15 @@
         <ul class="nav navbar-nav">
           <li><%#= link_to "Register for Rugby", new_event_registration_path(event_id: 2), :style => "color: yellow;" %></li>
           <li><%#= link_to "About", about_path %></li>
-          <li class="dropdown">
+          <li><%= link_to "Explore", interests_path, class: "explore" %></li>
+<!--           <li class="dropdown">
             <a href="#" class="dropdown-toggle explore" data-toggle="dropdown">Explore<b class="caret m-left-5"></b></a>
             <ul class="dropdown-menu">
-              <% interest.each do |interest| %>
-                <li><%= link_to interest.name, "/interests/#{interest.id}" %></li>
-              <% end %>
+              <%# interest.each do |interest| %>
+                <li><%#= link_to interest.name, "/interests/#{interest.id}" %></li>
+              <%# end %>
             </ul>
-          </li>
+          </li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>
@@ -75,19 +76,19 @@
                 <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
               </ul>
             </li>
-            <% unless @notifications.blank? %>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown">
-                  <i class="fa fa-circle"></i>
-                  <div class="badge notification-badge">
-                    <%= @notifications.try(:length) %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle main-menu" data-toggle="dropdown" id="notification-btn">
+                <i class="fa fa-circle"></i>
+                <% unless @notifications_new.empty? %>
+                  <div id="notification-badge" class="badge notification-badge">
+                    <%= @notifications_new.try(:length) %>
                   </div>
-                </a>
-                <ul class="dropdown-menu notifications-dropdown">
-                  <li><%= render "notifications/notifications" %></li>
-                </ul>
-              </li>
-            <% end %>
+                <% end %>
+              </a>
+              <ul class="dropdown-menu notifications-dropdown">
+                <li><%= render "notifications/notifications" %></li>
+              </ul>
+            </li>
           <% else %>
             <li><%= link_to "Sign In", user_omniauth_authorize_path(:google_oauth2) %></li>
           <% end %>

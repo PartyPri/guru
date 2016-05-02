@@ -12,10 +12,11 @@ class Notification < ActiveRecord::Base
   belongs_to :action_taken_on, polymorphic: true
   belongs_to :credit
 
-  enum(:action, :gave_props, :sent_credit, :accepted_credit_invite, :commented_on)
+  enum(:action, :gave_props, :sent_credit, :accepted_credit_invite, :commented_on, :added_comment_to_thread)
 
   scope :by_receiver, -> (receiver_id) { where(receiver_id: receiver_id) }
   scope :unread, -> { where(read: false) }
+  scope :read, -> { where(read: true).limit(10) }
   scope :newest, -> { order("created_at desc") }
   scope :gave_props, -> { where(action: 0) }
   scope :sent_credit, -> { where(action: 1) }
@@ -58,6 +59,8 @@ class Notification < ActiveRecord::Base
         " \"#{obj_name(n)}\""
       when :commented_on
         "#{action_taker_name(n)} commented on your #{obj_class(n)} \"#{obj_name(n)}\""
+      when :added_comment_to_thread
+        "#{action_taker_name(n)} added a new comment to #{obj_class(n)} \"#{obj_name(n)}\""
       end
     end
 

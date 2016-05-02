@@ -38,6 +38,15 @@ class ReelsController < ApplicationController
     @featured_video = @videos.where(featured_medium: true)
     @all_user = User.all
     @credits = Credit.includes(:receiver).by_reel(params[:id])
+    @milestone_icons = {
+      "eureka" => "fa-lightbulb-o",
+      "mission_accomplished" => "fa-flag-checkered",
+      "challenge" => "fa-exclamation-triangle",
+      "victory" => "fa-trophy",
+      "done" => "fa-check-square",
+      "experiment" => "fa-flask",
+      "lesson_learned" => "fa-bookmark"
+    }
   end
 
   def new

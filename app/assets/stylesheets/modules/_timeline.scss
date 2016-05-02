@@ -1,3 +1,31 @@
+.fa-lightbulb-o {
+  color: #FCA17D;
+}
+
+.fa-flag-checkered {
+  color: #3A435E;
+}
+
+.fa-trophy {
+  color: orange;
+}
+
+.fa-exclamation-triangle {
+  color: #5E0B15;
+}
+
+.fa-flask {
+  color: #2F97C1;
+}
+
+.fa-check-square {
+  color: #52AA5E;
+}
+
+.fa-bookmark {
+  color: #587291;
+}
+
 .timeline-container {
   position: relative;
   transition: all 0.1s ease;
@@ -39,8 +67,8 @@
   &:before {
     display: block;
     content: " ";
-    margin-top: -210px;
-    height: 193px;
+    margin-top: -150px;
+    height: 150px;
     visibility: hidden;
   }
   &:first-child {
@@ -62,12 +90,25 @@
 
 .section-description {
   background-color: white;
-  padding: 20px;
+  padding: 15px 20px 15px;
+  margin-top: -21px;
+  color: $lt-gray;
   p {
-    color: $lt-gray;
     margin-bottom: 0;
-    margin-left: -15px;
+    margin-left: -20px;
   }
+}
+
+.milestone-label {
+  color: $lt-gray;
+  margin-top: -22px;
+  margin-left: -35px;
+  width: 120px;
+}
+
+.date-label {
+  margin-left: -35px;
+  width: 120px;
 }
 
 .timeline-teaser{
@@ -75,9 +116,12 @@
   width: 50px;
   border-radius: 50px;
   margin-right: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   background-size: cover;
   background-position: center center;
+  .fa {
+    margin-top: 10px;
+  }
 }
 .media-edit {
   display: inline-block;
@@ -91,7 +135,6 @@
 
 .section-photo-container {
   width: 100%;
-  padding-top: 20px;
 }
 .section-photo {
   max-width: 100%;
@@ -133,6 +176,7 @@
     height: 3px;
     width: 150px;
     background-color: lighten($lt-gray, 50%);
+    visibility: visible;
   }
   a {
     display: inline-block;
@@ -203,6 +247,7 @@
 }
 
 .comment-btn-expand {
+  margin-left: 3px;
   margin-top: -10px;
 }
 
@@ -223,13 +268,37 @@
   font-weight: bold;
 }
 
+@media (max-width: 1200px) {
+  .media-engagement-icon {
+    &:before {
+      margin-left: -123px;
+      width: 127px;
+    }
+  }
+}
+
 @media (max-width: 991px) {
+  .media-comment-section {
+    .timeline-teaser {
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  .media-engagement-icon {
+    &:before {
+      margin-left: -85px;
+      width: 80px;
+    }
+  }
+
   .media-comment-section {
     //reply box responsive sizing
     .col-sm-10 {
       padding-left: 0px;
     }
   }
+  
   .section-media {
     iframe {
       height: 400px;
@@ -238,6 +307,11 @@
 }
 
 @media (max-width: 768px) {
+  .media-engagement-icon {
+    &:before {
+      visibility: hidden;
+    }
+  }
   .media-comment-section {
     //reply box responsive sizing
     .col-sm-10 {

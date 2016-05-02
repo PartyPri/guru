@@ -1,0 +1,119 @@
+//imports
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+$montserrat: 'Montserrat', Arial, sans-serif;
+$base-font-size: 14px;
+$white:    #FFFFFF;
+$ivory:    #FFF5F1;
+$lt-red:   #F64C73;
+$red:      #E6365F;
+$turq:     #10BBA7;
+$lt-turq:  #20D2BB;
+$drk-gray: #404040;
+$med-gray: #4C4767;
+$gray:     #5a5a5a;
+$lt-gray:  #737373;
+
+html {
+  font-family: $montserrat;
+  font-size: $base-font-size;
+  color: $drk-gray;
+  box-sizing: border-box;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("http://www.evrystep.com/assets/starry-bg.jpg");
+}
+
+a{
+  text-decoration: none;
+  color: $turq;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: none;
+  margin-bottom: 20px;
+  max-width: 100%;
+  text-shadow: none;
+  width: 100%;
+}
+
+thead {
+  background-color: transparent;
+  display: table-header-group;
+}
+
+tr {
+  background-color: transparent;
+  page-break-inside: avoid;
+}
+
+th {
+  // border-bottom-color: #ddd;
+  // border-bottom-style: solid;
+  // border-bottom-width: 2px;
+  // border-top-color: #ddd;
+  // border-top-style: solid;
+  // border-top-width: 0;
+  line-height: 1.428571429;
+  padding: 8px;
+  vertical-align: bottom;
+  text-align: left;
+}
+
+td {
+//  border-top-color: #ddd;
+//  border-top-style: solid;
+//  border-top-width: 1px;
+  line-height: 1.428571429;
+  padding: 8px;
+  vertical-align: top;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  margin: 0 10px;
+}
+
+.table {
+
+}
+
+.red {
+  color: $red;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.link-button {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $turq;
+  border-radius: 20px;
+  padding: 5px 20px;
+  color: white;
+  cursor: pointer;
+  width: 200px;
+  display: block;
+  &:hover {
+    color: white;
+    background-color: lighten($lt-turq, 10%);
+  }
+  &:active {
+    background-color: darken($turq, 10%);
+  }
+  a {
+    color: white;
+  }
+}

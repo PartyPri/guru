@@ -11,11 +11,17 @@
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
                 .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
+              .row
+                .col-sm-2
                 .col-sm-10
                   = image_tag(builder.object.photo.url(:medium))
               .row
                 .col-sm-2
-                  = builder.label :description, "Caption (100 word limit)"
+                  = builder.label :description, "Caption (10 word limit)"
                 .col-sm-10
                   = builder.text_area :description, class: "form-control", rows: 2
               .modal-footer
@@ -28,11 +34,17 @@
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
               .row
                 .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
+              .row
+                .col-sm-2
                 .col-sm-10
                   %iframe.youtube-player{type: "text/html", width: "263", height: "175", src: "http://www.youtube.com/embed/#{builder.object.uid}", "allowfullscreen" => "true", "frameborder" => "0", "rel" => "0"}
               .row
                 .col-sm-2
-                  = builder.label :description, "Caption"
+                  = builder.label :description, "Caption (10 word limit)"
                 .col-sm-10
                   = builder.text_area :description, class: "form-control", rows: 2
               .modal-footer
@@ -43,6 +55,12 @@
                   Cancel
           = f.fields_for :stories do |builder|
             .modal-edit-media{id: "modal-edit-#{builder.object.id}", style: "display: none;"}
+              .row
+                .col-sm-2
+                  = builder.label :milestone, "Milestone"
+                .col-sm-10
+                  .form-group
+                    = builder.select(:milestone, [['Eureka', 'eureka', { 'data-icon' => 'fa-lightbulb-o' }], ['Mission Accomplished', 'mission_accomplished', { 'data-icon' => 'fa-flag-checkered' }], ['Challenge', 'challenge', { 'data-icon' => 'fa-exclamation-triangle' }], ['Victory', 'victory', { 'data-icon' => 'fa-trophy' }], ['Done', 'done', { 'data-icon' => 'fa-check-square' }], ['Experiment', 'experiment', { 'data-icon' => 'fa-flask' }], ['Lesson Learned', 'lesson_learned', { 'data-icon' => 'fa-bookmark' }] ], {include_blank: "None"}, { :class => 'selectpicker show-tick' })
               -if builder.object.photo.present?
                 .row
                   .col-sm-2

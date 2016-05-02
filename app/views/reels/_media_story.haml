@@ -1,53 +1,35 @@
-- if medium.photo.present?
-  .row.media-container{:id => "media-#{medium.id}"}
-    .section-description.col-sm-2
+.row.media-container{:id => "media-#{medium.id}"}
+  .section-description.col-sm-2
+    - if medium.milestone.blank? && medium.photo.present?
       .timeline-teaser{:style => "background-image: url(#{medium.photo.url})"}
-      %p= medium.created_at.strftime("%b %-d, %Y")
-    .section-media.col-sm-7
-      %h3.story-title
-        = medium.title
-        -if current_user && current_user.id == @user.id
-          %a.story-edit.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            %i.fa.fa-pencil-square-o
-            Edit
-      %p.story-container
+    - unless medium.milestone.blank?
+      .timeline-teaser.text-center
+        %i.fa{:class => @milestone_icons[medium.milestone], :style => "font-size:30px;"}
+      .milestone-label.text-center
+        %small= medium.milestone.split("_").map(&:capitalize).join(" ")
+    .date-label.text-center
+      = medium.created_at.strftime("%b %-d, %Y")
+  .section-media.col-sm-7
+    %h3.story-title
+      = medium.title
+      -if current_user && current_user.id == @user.id
+        %a.story-edit.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
+          %i.fa.fa-pencil-square-o
+          Edit
+    %p.story-container
+      - if medium.photo.present?
         %img.section-photo.story-photo.pull-right{"src" => "#{medium.photo.url}"}
-        = sanitize(medium.body)
-      .media-engagement-icon
-        = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
-      %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
-      .media-comment-section{:id => "comments-id-#{medium.id}"}
-        - if current_user
-          .row-fluid.m-top-20
-            .col-sm-2
-              .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-            .col-sm-10
-              = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-        - else
-          = render :partial => 'comments/form_login'
-        = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
-- else
-  .row.media-container{:id => "media-#{medium.id}"}
-    .section-description.col-sm-2
-      %p= medium.created_at.strftime("%b %-d, %Y")
-    .section-media.col-sm-7
-      %h3.story-title
-        = medium.title
-        -if current_user && current_user.id == @user.id
-          %a.story-edit.media-edit{"data-toggle" => "modal", "data-target" => "#edit-modal", "data-medium" => "#{medium.id}"}
-            %i.fa.fa-pencil-square-o
-            Edit
-      %p.story-container= sanitize(medium.body)
-      .media-engagement-icon
-        = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
-      %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
-      .media-comment-section{:id => "comments-id-#{medium.id}"}
-        - if current_user
-          .row-fluid.m-top-20
-            .col-sm-2
-              .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
-            .col-sm-10
-              = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
-        - else
-          = render :partial => 'comments/form_login'
-        = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }
+      = sanitize(medium.body)
+    .media-engagement-icon
+      = render partial: 'shared/engagement_icons', :locals => { :medium => medium, :title => "#{medium.title}", :like_path => like_story_path(medium), :share_image => "#{medium.photo.url}"}
+    %input.comment-toggle-check.hidden{:type => "checkbox", :id => "comments-toggle-id-#{medium.id}"}
+    .media-comment-section{:id => "comments-id-#{medium.id}"}
+      - if current_user
+        .row-fluid.m-top-20
+          .col-sm-2
+            .timeline-teaser{style: "background-image:url(#{current_user.avatar.url})"}
+          .col-sm-10
+            = render :partial => 'comments/form', :locals => { :comment => Comment.build_from(medium, current_user.id, "") }
+      - else
+        = render :partial => 'comments/form_login'
+      = render :partial => 'comments/comment', :collection => medium.root_comments.order('created_at desc'), :as => :comment, :locals => { :reel_user => @user.id }

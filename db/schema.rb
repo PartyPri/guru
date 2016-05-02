@@ -11,7 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20160412064008) do
+=======
+ActiveRecord::Schema.define(:version => 20160323032303) do
+>>>>>>> develop
 
   create_table "about_interests", :force => true do |t|
     t.integer  "about_id"

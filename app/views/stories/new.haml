@@ -6,9 +6,13 @@
     .col-xs-12.col-md-6.col-md-offset-3
       = form_for :story, url: stories_path, html: { :multipart => true } do |f|
         .form-group
+          %label Select milestone:
+          .select-style#milestone_select
+            = f.select(:milestone, options_for_select(@milestone_options.map {|m| [m[0], m[1], {'data-icon' => m[2]}]}), {include_blank: "Add a milestone"}, { :class => 'selectpicker show-tick' })
+        .form-group
           %label{for: "reel_select"} Select reel:
           .select-style#reel_select
-            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style'})
+            = collection_select(:story, :reel_id, current_user.reels.all, :id, :name, {:selected => params[:reel], required: true}, {:class => 'selectpicker select-style show-tick'})
         .form-group
           = f.label :photo, 'Add a cover photo', class: "btn btn-default file-upload"
           = f.file_field :photo, class: "upload", "data-print" => "#emp-image-print", style: 'display: none;'

@@ -40,7 +40,7 @@ gem 'newrelic_rpm'
 gem 'activeadmin'
 
 #Upload
-gem 'paperclip', github: 'thoughtbot/paperclip'
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
 
 #Frontend
 gem 'masonry-rails'
@@ -72,6 +72,10 @@ gem 'acts_as_votable'
 #Comments
 gem 'acts_as_commentable_with_threading', '1.2.0'
 
+#Mailer CSS styling
+gem 'premailer-rails'
+gem 'nokogiri'
+
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
 end
@@ -80,6 +84,7 @@ group :development do
   gem 'byebug'
   gem 'faker'
   gem 'annotate'
+  gem 'letter_opener_web', '~> 1.2.0'
 end
 
 group :test do
