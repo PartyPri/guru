@@ -1,4 +1,5 @@
 Guru::Application.routes.draw do
+
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
   root to: "pages#landing"
@@ -46,6 +47,7 @@ Guru::Application.routes.draw do
   end
 
   resources :notifications, only: [:update]
+  resources :activities, only: [:index, :show]
 
   #YouTube video creation:
   post '/videos/get_upload_token', to: 'videos#get_upload_token', as: :get_upload_token

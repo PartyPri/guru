@@ -12,6 +12,7 @@ class Followership < ActiveRecord::Base
 
 
   after_create :follow_all_reels
+  after_create :create_activity
 
   def reel_followership?
     followed_type == "Reel"
@@ -21,6 +22,10 @@ class Followership < ActiveRecord::Base
     followed_type == "User"
   end
 
+  def reference_title
+    followed.reference_title
+  end
+
   private
 
   def follow_all_reels
@@ -28,6 +33,14 @@ class Followership < ActiveRecord::Base
     followed.reels.each do |reel|
       self.class.create(follower: follower, followed: reel)
     end
+  end
+
+  def create_activity
+    Activity.create(
+      followed_user: self.follower,
+      action: :followed_item,
+      item: self
+    )
   end
 end
 
