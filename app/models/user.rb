@@ -89,8 +89,14 @@ class User < ActiveRecord::Base
     self.expires_at < Time.now
   end
 
-  def already_following?(user)
-    follows.map(&:id).include?(user.id)
+  def already_following?(followed)
+    num = Followership.where(
+      follower_id: self.id,
+      followed_id: followed.id,
+      followed_type: followed.class.name
+    ).count
+
+    !num.zero?
   end
 
   # Get a list of users that follow the user
@@ -100,9 +106,14 @@ class User < ActiveRecord::Base
   end
 
   # Get a list of users that the user is following
-  def follows
+  def followed_users
     self.class.joins("INNER JOIN followerships ON followerships.followed_id = users.id")
       .where("followerships.follower_id = #{self.id} and followed_type = 'User'")
+  end
+
+  def followed_reels
+    Reel.joins("INNER JOIN followerships ON followerships.followed_id = reels.id")
+      .where("followerships.follower_id = #{self.id} and followed_type = 'Reel'")
   end
 
   def entourage

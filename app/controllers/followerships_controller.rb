@@ -38,7 +38,7 @@ class FollowershipsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @followers = @user.followers
-    @follows = @user.follows
+    @follows = @user.followed_users
     @interests = Interest.all
   end
 
