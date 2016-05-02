@@ -57,4 +57,5 @@ end
 #  type               :string(255)
 #  position           :integer
 #  featured_medium    :boolean
+#  milestone          :string(255)
 #

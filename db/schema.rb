@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20160412064008) do
     t.string   "type"
     t.integer  "position"
     t.boolean  "featured_medium"
+    t.string   "milestone"
   end
 
   create_table "notifications", :force => true do |t|
