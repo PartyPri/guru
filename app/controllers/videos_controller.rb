@@ -38,7 +38,7 @@ class VideosController < ApplicationController
     if @video.save
       @video.title = "#{@reel.name} - #{@reel.videos.length}"
 
-      file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
+      file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), privacy_status: :unlisted, title: @video.title, description: @video.description, category: 'Entertainment'
       @video.uid = file.id
       @video.save!
 
