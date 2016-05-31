@@ -4,7 +4,7 @@
       %h1 Add Images to Reel
   .row.p-top-40
     .col-sm-12.col-md-8.col-md-offset-2
-      = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload', multipart: true, class: "dropzone"} do |f|
+      = form_for :video, :url => {:controller => 'videos', :action => 'create'}, html: {id: 'media_upload', multipart: true, class: "dropzone image_dropzone"} do |f|
         .form-group.hidden
           %label Select milestone:
           .select-style#milestone_select

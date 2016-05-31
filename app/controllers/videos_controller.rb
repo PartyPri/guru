@@ -38,15 +38,19 @@ class VideosController < ApplicationController
     if @video.save
       @video.title = "#{@reel.name} - #{@reel.videos.length}"
 
-      file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), title: @video.title, description: @video.description, category: 'Entertainment'
+      file = account.upload_video params[:video][:file].try(:tempfile).try(:to_path), privacy_status: :unlisted, title: @video.title, description: @video.description, category: 'Entertainment'
       @video.uid = file.id
       @video.save!
 
-      flash[:success] = 'Your video has been uploaded!'
-      redirect_to @reel
+      # flash[:success] = 'Your video has been uploaded!'
+      # redirect_to @reel
+
+      render json: { message: "success", fileID: @video.id }, :status => 200
     else
-      flash[:error] = 'Something went wrong'
-      render :new
+      # flash[:error] = 'Something went wrong'
+      # render :new
+      
+      render json: { error: @video.errors.full_messages.join(',')}, :status => 400
     end
   end
 
@@ -58,11 +62,17 @@ class VideosController < ApplicationController
     @video = Video.new(:uid => params[:uid], :description => params[:description], :reel_id => params[:video][:reel_id], :title => params[:title], :milestone => params[:milestone])
     @reel = Reel.find(params[:video][:reel_id])
     if @video.save
-      redirect_to @reel
-      flash[:success] = "Video successfully added!"
+      # redirect_to @reel
+      # flash[:success] = "Video successfully added!"
+
+      # send success header
+      render json: { message: "success", fileID: @video.uid }, :status => 200
     else
-      render 'youtube'
-      flash[:error] = "Uh oh, something went wrong."
+      # render 'youtube'
+      # flash[:error] = "Uh oh, something went wrong."
+
+      #  need an error header, otherwise Dropzone will not interpret the response as an error:
+      render json: { error: @video.errors.full_messages.join(',')}, :status => 400
     end
   end
 
