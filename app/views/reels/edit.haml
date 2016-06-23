@@ -47,6 +47,7 @@
                   .edit-item{:style => "background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(#{medium.photo.url})"}
                     = medium.title
         %hr.m-y-20
+        %script{:src => "js/jquery.ui.touch-punch.js"}
         .text-center
           = f.submit "Save Changes", class: "button btn btn-primary", id: "sort_reel"
 .container
