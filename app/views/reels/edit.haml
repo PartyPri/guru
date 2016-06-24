@@ -1,3 +1,6 @@
+%script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
+%script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
+%script{:src => "js/jquery.ui.touch-punch.min.js"}
 =render :layout => 'shared/form_layout' do
   .row-fluid
     .col-xs-12.text-center#new-media
@@ -28,9 +31,6 @@
             = f.text_field :tag_list, class: "tag_options_ hidden"
           %hr
       .row-fluid.text-center
-        %script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
-        %script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
-        %script{:src => "js/jquery.ui.touch-punch.min.js"}
         %label{for: "media"} Drag up or down to Reorder:
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           - @media.each do |medium|
@@ -47,7 +47,6 @@
                   .edit-item{:style => "background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(#{medium.photo.url})"}
                     = medium.title
         %hr.m-y-20
-        %script{:src => "js/jquery.ui.touch-punch.min.js"}
         .text-center
           = f.submit "Save Changes", class: "button btn btn-primary", id: "sort_reel"
 .container
@@ -62,3 +61,4 @@
           %hr.m-y-20
             .text-center
               = button_to "Delete Reel", reel_path(@reel), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button btn btn-danger"
+%script{:src => "js/jquery.ui.touch-punch.min.js"}
