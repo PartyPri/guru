@@ -1,6 +1,3 @@
-%script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
-%script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
-%script{:src => "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"}
 =render :layout => 'shared/form_layout' do
   .row-fluid
     .col-xs-12.text-center#new-media
@@ -32,6 +29,9 @@
           %hr
       .row-fluid.text-center
         %label{for: "media"} Drag up or down to Reorder:
+        / %script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
+        / %script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
+        %script{:src => "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"}
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           - @media.each do |medium|
             - unless medium.featured_medium?
@@ -61,4 +61,3 @@
           %hr.m-y-20
             .text-center
               = button_to "Delete Reel", reel_path(@reel), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button btn btn-danger"
-%script{:src => "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"}
