@@ -31,7 +31,7 @@
         %label{for: "media"} Drag up or down to Reorder:
         / %script{:src => "http://code.jquery.com/jquery-1.7.2.min.js"}
         / %script{:src => "http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"}
-        %script{:src => "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"}
+        / %script{:src => "https://raw.githubusercontent.com/furf/jquery-ui-touch-punch/master/jquery.ui.touch-punch.min.js"}
         %ul.list-inline.form-group.edit-grid.clearfix#reeldrag{"data-update-url" => sort_reels_url}
           - @media.each do |medium|
             - unless medium.featured_medium?
