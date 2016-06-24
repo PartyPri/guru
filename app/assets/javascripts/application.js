@@ -37,5 +37,6 @@
 //= require share_modal
 //= require notifications
 //= require dropzone.min
+//= require jquery.ui.touch-punch.min
 //= require_tree .
 //
